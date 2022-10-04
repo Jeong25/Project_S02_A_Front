@@ -6,7 +6,7 @@ import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
 // import client from '../../common/api/client';
-import { ustStateCnt, payCnt } from '../repository/repository';
+import { ustStateCnt, payCntReq } from '../repository/repository';
 import { setUserTp } from '../../common/lib/getuserinfo';
 
 const QrCode = (props) => {
@@ -52,7 +52,7 @@ const QrCode = (props) => {
     }, {}) || {}
     setStatusCount(reduceStatCnt)
     // const payCountResult = await client.get(`/rest/v1/s0221a0010/pay-cnt?eventCode=${eventCode}&hpNo=${hpNo}`)
-    const payCountResult = await payCnt(hpNo, eventCode)
+    const payCountResult = await payCntReq(hpNo, eventCode)
     const reducePayCnt = payCountResult?.data?.data[0]?.payCnt || 0
     setPayCnt(reducePayCnt)
   }
