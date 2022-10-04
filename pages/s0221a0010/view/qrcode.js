@@ -5,7 +5,8 @@ import { Dimensions } from 'react-native';
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
-import client from '../../common/api/client';
+// import client from '../../common/api/client';
+import { ustStateCnt, payCnt } from '../repository/repository';
 import { setUserTp } from '../../common/lib/getuserinfo';
 
 const QrCode = (props) => {
@@ -41,7 +42,8 @@ const QrCode = (props) => {
   }
 
   const getUserInfo = async (hpNo, eventCode) => {
-    const statCountResult = await client.get(`/rest/v1/s0221a0010/use-state-cnt?eventCode=${eventCode}&hpNo=${hpNo}`)
+    // const statCountResult = await client.get(`/rest/v1/s0221a0010/use-state-cnt?eventCode=${eventCode}&hpNo=${hpNo}`)
+    const statCountResult = await ustStateCnt(hpNo, eventCode);
     const reduceStatCnt = statCountResult?.data?.data?.reduce((a, b) => {
       return {
         ...a,
@@ -49,7 +51,8 @@ const QrCode = (props) => {
       }
     }, {}) || {}
     setStatusCount(reduceStatCnt)
-    const payCountResult = await client.get(`/rest/v1/s0221a0010/pay-cnt?eventCode=${eventCode}&hpNo=${hpNo}`)
+    // const payCountResult = await client.get(`/rest/v1/s0221a0010/pay-cnt?eventCode=${eventCode}&hpNo=${hpNo}`)
+    const payCountResult = await payCnt(hpNo, eventCode)
     const reducePayCnt = payCountResult?.data?.data[0]?.payCnt || 0
     setPayCnt(reducePayCnt)
   }

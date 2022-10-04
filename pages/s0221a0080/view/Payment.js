@@ -3,7 +3,8 @@ import { Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-nativ
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import client from '../../common/api/client';
+import { costReqDetail, processingCostReq } from '../repository/repository';
+// import client from '../../common/api/client';
 import Footer from '../../common/footer/Footer';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
@@ -18,9 +19,10 @@ const Payment = (props) => {
 
   const callDetail = async () => {
     const { eventUseId } = props.route.params
-    const response = await client.get(`/rest/v1/s0221a0080/cost-req-detail?eventUseId=${eventUseId}`).catch((e) => {
-      console.log(e)
-    })
+    // const response = await client.get(`/rest/v1/s0221a0080/cost-req-detail?eventUseId=${eventUseId}`).catch((e) => {
+    //   console.log(e)
+    // })
+    const response = costReqDetail(eventUseId)
     if (response.status === 200) {
       console.log('?')
       console.log(JSON.stringify(response, null, 4))
@@ -42,10 +44,11 @@ const Payment = (props) => {
     }
 
     console.log(body)
-    const response = await client.post(`/rest/v1/s0221a0080/processing-cost-req`, body).catch((e) => {
-      console.log(e)
-    })
-    console.log(JSON.stringify(response?.data, null, 4))
+    // const response = await client.post(`/rest/v1/s0221a0080/processing-cost-req`, body).catch((e) => {
+    //   console.log(e)
+    // })
+    // console.log(JSON.stringify(response?.data, null, 4))
+    const response = await processingCostReq(body)
 
     if (response?.data?.status === 200) {
       props.navigation.goBack()
