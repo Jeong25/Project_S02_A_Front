@@ -10,6 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import TempoModal from '../../common/modal/modal';
 import Footer from '../../common/footer/Footer';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import numberToCost from '../../common/util/numberToCost';
 
 const CostList = (props) => {
   const styles = styleSheet()
@@ -99,7 +100,7 @@ const CostList = (props) => {
                 <Text style={styles.cellDate}>
                   <Text style={styles.name}>{item?.memberName}</Text> {item?.useDate}
                 </Text>
-                <Text style={styles.cellAmount}>{item?.useAmount && `${item?.useAmount} 원`}</Text>
+                <Text style={styles.cellAmount}>{numberToCost(item?.useAmount) && `${numberToCost(item?.useAmount)} 원`}</Text>
               </View>
             </View>
           </TouchableOpacity>

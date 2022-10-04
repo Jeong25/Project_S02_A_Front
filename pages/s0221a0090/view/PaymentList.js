@@ -8,6 +8,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import numberToCost from '../../common/util/numberToCost';
 
 const PaymentList = (props) => {
   const styles = styleSheet()
@@ -72,7 +73,7 @@ const PaymentList = (props) => {
                 <Text style={styles.cellDate}>
                   <Text style={styles.name}>{item?.memberName}</Text> /{item?.usedDate}/{item?.useProStatusNm}
                 </Text>
-                <Text style={styles.cellAmount}>{item?.useAmount && `${item?.useAmount} 원`}</Text>
+                <Text style={styles.cellAmount}>{numberToCost(item?.useAmount) && `${numberToCost(item?.useAmount)} 원`}</Text>
               </View>
             </View>
           </TouchableOpacity>

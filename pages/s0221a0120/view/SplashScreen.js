@@ -23,16 +23,6 @@ const SplashScreen = (props) => {
 
   return (
     <View style={styles.wrap}>
-      <View style={styles.inner}>
-        <View style={styles.titleWrap}>
-          <Text style={styles.subTitle}>
-            <Text style={styles.subTitleBold}>쉽고 빠른</Text> 비용처리
-          </Text>
-          <Text style={styles.title}>토  브</Text>
-        </View>
-        <View style={styles.progressBar}>
-        </View>
-      </View>
     </View>
   );
 }

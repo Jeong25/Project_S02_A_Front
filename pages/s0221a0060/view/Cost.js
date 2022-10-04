@@ -13,6 +13,7 @@ import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AlertAsync from 'react-native-alert-async';
 import Footer from '../../common/footer/Footer';
+import numberToCost from '../../common/util/numberToCost';
 
 const Cost = (props) => {
   const styles = styleSheet()
@@ -256,7 +257,8 @@ const Cost = (props) => {
                   console.log(e.nativeEvent.text.replace(/,/gi, ""))
                   setInputData({ ...inputData, useAmount: e.nativeEvent.text.replace(/,/gi, "") })
                 }}
-                value={inputData?.useAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                // value={inputData?.useAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                value={numberToCost(inputData?.useAmount)}
                 keyboardType={'number-pad'}
               />
               <Text style={styles.won}>원</Text>

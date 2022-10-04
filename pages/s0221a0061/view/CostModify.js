@@ -13,6 +13,7 @@ import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AlertAsync from 'react-native-alert-async';
 import Footer from '../../common/footer/Footer';
+import numberToCost from '../../common/util/numberToCost';
 
 const CostModify = (props) => {
   const height = Dimensions.get('window').height
@@ -233,7 +234,7 @@ const CostModify = (props) => {
               <View style={styles.contentsInner}>
                 <View style={styles.modifyInputWrap}>
                   <Text style={styles.modifyLabel}>결제금액</Text>
-                  <TextInput style={styles.modifyText} onChange={(e) => setInputData({ ...inputData, useAmount: e.nativeEvent.text })} value={`${inputData.useAmount}`} />
+                  <TextInput style={styles.modifyText} onChange={(e) => setInputData({ ...inputData, useAmount: e.nativeEvent.text })} value={`${numberToCost(inputData.useAmount)}`} />
                   <Text style={styles.modifyWon}>원</Text>
                 </View>
               </View>
