@@ -3,7 +3,7 @@ import { Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-nativ
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { costReqDetail, processingCostReq } from '../repository/repository';
+import { costReqDetailReq, processingCostReq } from '../store/store';
 // import client from '../../common/api/client';
 import Footer from '../../common/footer/Footer';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -22,7 +22,7 @@ const Payment = (props) => {
     // const response = await client.get(`/rest/v1/s0221a0080/cost-req-detail?eventUseId=${eventUseId}`).catch((e) => {
     //   console.log(e)
     // })
-    const response = costReqDetail(eventUseId)
+    const response = costReqDetailReq(eventUseId)
     if (response.status === 200) {
       console.log('?')
       console.log(JSON.stringify(response, null, 4))

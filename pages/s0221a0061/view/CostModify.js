@@ -5,8 +5,8 @@ import { Image as ReactImage } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { deleteEventCost } from '../repository/repository';
-import { eventList } from '../../s0221a2000/repository/repository';
+import { eventCostReq, patchEventCostReq, deleteEventCostReq } from '../store/store';
+import { eventListReq } from '../../s0221a2000/store/store';
 // import client from '../../common/api/client';
 import TempoModal from '../../common/modal/modal';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
@@ -60,7 +60,6 @@ const CostModify = (props) => {
     // }
     // const res = await client.get(`rest/v1/s0221a0060/event-cost?eventUseId=${eventUseId}`).catch((e) => {
     //   console.log(JSON.stringify(e, null, 4))
-
     // })
     // console.log(JSON.stringify(res, null, 4))
   }
@@ -90,7 +89,7 @@ const CostModify = (props) => {
     //   console.log(JSON.stringify(e, null, 4))
     // })
     // console.log(JSON.stringify(response, null, 4))
-    const response = await patchEventCost(body)
+    const response = await patchEventCostReq(body)
 
     if (response.status === 200) {
       goback()
@@ -110,7 +109,7 @@ const CostModify = (props) => {
             //   console.log(e)
             // })
             // console.log(response)
-            const response = await deleteEventCost(eventUseId)
+            const response = await deleteEventCostReq(eventUseId)
             if (response.status === 200) {
               await AlertAsync('삭제되었습니다.')
               await goback()
@@ -138,7 +137,7 @@ const CostModify = (props) => {
     // const res = await client.get(`/rest/v1/s0221a2000/event-list?&orgId=39`).catch(e => {
     //   console.log(JSON.stringify(e, null, 4))
     // })
-    const res = await eventList(39)
+    const res = await eventListReq(39)
     if (res.status === 200) {
       const option = res.data?.data?.map(i => {
         return {

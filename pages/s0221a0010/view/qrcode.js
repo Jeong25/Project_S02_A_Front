@@ -6,7 +6,7 @@ import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
 // import client from '../../common/api/client';
-import { ustStateCnt, payCntReq } from '../repository/repository';
+import { useStateCntReq, payCntReq } from '../store/store';
 import { setUserTp } from '../../common/lib/getuserinfo';
 
 const QrCode = (props) => {
@@ -43,7 +43,7 @@ const QrCode = (props) => {
 
   const getUserInfo = async (hpNo, eventCode) => {
     // const statCountResult = await client.get(`/rest/v1/s0221a0010/use-state-cnt?eventCode=${eventCode}&hpNo=${hpNo}`)
-    const statCountResult = await ustStateCnt(hpNo, eventCode);
+    const statCountResult = await useStateCntReq(hpNo, eventCode);
     const reduceStatCnt = statCountResult?.data?.data?.reduce((a, b) => {
       return {
         ...a,

@@ -2,8 +2,8 @@ import React, { Component, useEffect, useMemo, useState } from 'react';
 import { Text, View, TextInput, ScrollView, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
-import { retrieveCostReq } from '../repository/repository';
-import { eventList } from '../../s0221a2000/repository/repository';
+import { retrieveCostReq } from '../store/store';
+import { eventListReq } from '../../s0221a2000/store/store';
 // import client from '../../common/api/client';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -59,7 +59,7 @@ const CostList = (props) => {
     //   console.log(JSON.stringify(e, null, 4))
     // })
     // console.log(JSON.stringify(res, null, 4))
-    const res = await eventList(39, eventCode)
+    const res = await eventListReq(39, eventCode)
     if (res.status === 200) {
       const option = res.data?.data?.map(i => {
         return {

@@ -2,7 +2,7 @@ import React, { Component, useEffect, useMemo, useState } from 'react';
 import { Text, View, TextInput, ScrollView, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
-import { costPayList } from '../repository/repository';
+import { costPayListReq } from '../store/store';
 // import client from '../../common/api/client';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -32,7 +32,7 @@ const PaymentList = (props) => {
     // const response = await client.get(`rest/v1/s0221a0090/cost-pay-list?eventPayUserId=${memberId}&fromDate=${confirmFromVal}&toDate=${confirmToVal}&eventCode=AAA03`)
     //   .catch((e) => console.log(JSON.stringify(e, null, 4)))
     // console.log(console.log(JSON.stringify(response, null, 4)))
-    const response = await costPayList(memberId, confirmFromVal, confirmToVal, 'AAA03')
+    const response = await costPayListReq(memberId, confirmFromVal, confirmToVal, 'AAA03')
     setListData(response?.data?.data || [])
   }
 

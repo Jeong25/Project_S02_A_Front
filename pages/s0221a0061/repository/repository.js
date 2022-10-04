@@ -1,20 +1,18 @@
 import client from '../../common/api/client';
 
+const eventCost = async (eventUseId) => {
+    const res = await client.post(`rest/v1/s0221a0060/event-cost?&eventUseId=${eventUseId}`);
+    return res;
+}
+
 const patchEventCost = async (body) => {
-    const res = await client.post(`rest/v1/s0221a0060/patch-event-cost`, body).catch((e) => {
-        console.log('error')
-        console.log(JSON.stringify(e, null, 4))
-    })
-    console.log(JSON.stringify(res, null, 4))
+    const res = await client.post(`rest/v1/s0221a0060/patch-event-cost`, body);
     return res;
 }
 
 const deleteEventCost = async (eventUseId) => {
-    const res = await client.post(`/rest/v1/s0221a0060/delete-event-cost`, [eventUseId]).catch((e) => {
-        console.log(e)
-    });
-    console.log(res);
+    const res = await client.post(`/rest/v1/s0221a0060/delete-event-cost`, [eventUseId]);
     return res;
 }
 
-export { patchEventCost, deleteEventCost };
+export { eventCost, patchEventCost, deleteEventCost };

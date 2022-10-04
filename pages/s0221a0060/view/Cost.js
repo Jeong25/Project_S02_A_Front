@@ -5,8 +5,8 @@ import { Image as ReactImage } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { registerEventCost } from '../repository/repository';
-import { eventList } from '../../s0221a2000/repository/repository';
+import { registerEventCostReq } from '../store/store';
+import { eventListReq } from '../../s0221a2000/store/store';
 // import client from '../../common/api/client';
 import TempoModal from '../../common/modal/modal';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
@@ -92,7 +92,7 @@ const Cost = (props) => {
     //   console.log(JSON.stringify(e, null, 4))
     // })
     // console.log(JSON.stringify(response, null, 4))
-    const response = await registerEventCost(body, headers)
+    const response = await registerEventCostReq(body, headers)
 
     if (response.status === 200) {
       goback()
@@ -113,7 +113,7 @@ const Cost = (props) => {
     //   console.log(JSON.stringify(e, null, 4))
     // })
     // console.log(JSON.stringify(res, null, 4))
-    const res = await eventList(39)
+    const res = await eventListReq(39)
     if (res.status === 200) {
       const option = res.data?.data?.map(i => {
         return {

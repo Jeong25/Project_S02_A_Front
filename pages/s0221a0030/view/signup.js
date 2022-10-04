@@ -5,7 +5,7 @@ import { Image as ReactImage } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import client from '../../common/api/client';
-import { signUp } from '../repository/repository';
+import { signUpReq } from '../store/store';
 import { styleSheet } from './stylesheet';
 import { setUserTp } from '../../common/lib/getuserinfo';
 
@@ -97,7 +97,7 @@ const Signup = (props) => {
       //     console.log(JSON.stringify(error.response, null, 4))
       //   })
       // console.log(JSON.stringify(result, null, 4))
-      const result = await signUp(paramName, paramHpNo, paramEventCode)
+      const result = await signUpReq(paramName, paramHpNo, paramEventCode)
       if (result?.status === 200) {
         const { data } = result
         console.log(data)

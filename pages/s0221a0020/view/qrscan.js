@@ -6,7 +6,7 @@ import { Path as SvgPath } from 'react-native-svg';
 import { RNCamera } from 'react-native-camera';
 import { Dimensions } from 'react-native';
 import { styleSheet } from './stylesheet';
-import { qrScan } from '../repository/repository';
+import { qrScanReq } from '../store/store';
 // import client from '../../common/api/client';
 
 const Qrscan = (props) => {
@@ -27,7 +27,7 @@ const Qrscan = (props) => {
     console.log(JSON.stringify(qrData, null, 4))
 
     // const response = await client.post('rest/v1/s0221a0020/qr-scan', { ...qrData, "orgId": "39", "eventId": "4" })
-    const response = await qrScan(...qrData, 39, 4);
+    const response = await qrScanReq(...qrData, 39, 4);
     console.log(JSON.stringify(response, null, 4))
 
     setTimeout(() => {
