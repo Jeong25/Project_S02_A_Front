@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity, Keyboard } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
@@ -9,6 +9,8 @@ import Footer from '../../common/footer/Footer';
 // import client from '../../common/api/client';
 import { useStateCntReq, payCntReq } from '../store/store';
 import { setUserTp } from '../../common/lib/getuserinfo';
+import QrModal from '../../common/modal/s0221a0040/QrModal';
+import faqModal from '../../common/modal/s0221a0130/faqmodal';
 
 const QrCode = (props) => {
   const [memberName, setMemberName] = useState('')
@@ -18,6 +20,8 @@ const QrCode = (props) => {
   const [payCnt, setPayCnt] = useState(0)
   // const [hpNo, setHpNo] = useState('')
   // const [eventCode, setEventCode] = useState('')
+  const [qrModalBool, setQrModalBool] = useState(false)
+  const [faqModalBool, setFaqModalBool] = useState(false)
   const { windowHeight, windowWidth } = props
   const styles = useMemo(() => styleSheet(windowHeight, windowWidth), [windowHeight, windowWidth])
   const isFocused = useIsFocused();
@@ -70,6 +74,16 @@ const QrCode = (props) => {
     const payCountResult = await payCntReq(hpNo, eventCode)
     const reducePayCnt = payCountResult?.data?.data[0]?.payCnt || 0
     setPayCnt(reducePayCnt)
+  }
+
+  const openQrModal = () => {
+    Keyboard.dismiss()
+    setQrModalBool(true)
+  }
+
+  const openFaqModal = () => {
+    Keyboard.dismiss()
+    setFaqModalBool(true)
   }
 
   return (
@@ -170,13 +184,13 @@ const QrCode = (props) => {
 
             </View>
             <View style={styles.layer2}>
-              <TouchableOpacity style={styles.centerQrBtnWrap} onPress={() => props.navigation.navigate('')}>
+              <TouchableOpacity style={styles.centerQrBtnWrap} onPress={() => openQrModal()}>
                 <View style={styles.centerQrBtn}>
                   <ReactImage source={require('./assets/sampleQr-w.png')} style={styles.centerIcon} />
                 </View>
                 <Text style={styles.centerText}>QR보기</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.centerGuideBtnWrap}>
+              <TouchableOpacity style={styles.centerGuideBtnWrap} onPress={() => openFaqModal()}>
                 <View style={styles.centerGuideBtn}>
                   <ReactImage source={require('./assets/guide-w.png')} style={styles.centerIcon} />
                 </View>
@@ -186,6 +200,14 @@ const QrCode = (props) => {
 
           </View>
         </ScrollView>
+        <QrModal
+          openModal={qrModalBool}
+          onClose={() => setQrModalBool(false)}
+        />
+        {/* <faqModal
+          openModal={faqModalBool}
+          onClose={() => setFaqModalBool(false)}
+        /> */}
       </View>
       <Footer
         navigation={props.navigation}

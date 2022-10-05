@@ -1,7 +1,6 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { color } from 'react-native-reanimated';
 
-export const modalStyleSheet = (windowHeight = Dimensions.get('window').height, windowWidth = Dimensions.get('window').width) => {
+export const QrModalStyleSheet = (windowHeight = Dimensions.get('window').height, windowWidth = Dimensions.get('window').width) => {
   const wp = windowWidth / 360
   const hp = windowHeight / 800
   return StyleSheet.create({

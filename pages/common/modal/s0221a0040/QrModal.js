@@ -1,12 +1,12 @@
 import React from "react";
 import { Text, View, BackHandler, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
-import { QrModalStyleSheet } from './QrModalStylesheet';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { useState, useEffect } from "react";
+import { QrModalStyleSheet } from './QrModalStylesheet';
 
-const TempoModal = (props) => {
-    const { onClick, onClose, option, openModal } = props
+const QrModal = (props) => {
+    const { onClose, openModal } = props
     const [display, setDisplay] = useState(false)
     const styles = QrModalStyleSheet()
 
@@ -40,7 +40,7 @@ const TempoModal = (props) => {
             <View style={styles.box}>
                 <View style={styles.titleSection}>
                     <Text style={styles.modalTitle}>QR코드</Text>
-                   <View style={styles.closeBtn}>
+                    <View style={styles.closeBtn}>
                         <TouchableOpacity onPress={() => closeModal()}>
                             <ReactImage source={require('../assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
                         </TouchableOpacity>
@@ -52,11 +52,11 @@ const TempoModal = (props) => {
                     <Text style={styles.memberName}>userName</Text>
                     <Text style={styles.memberPosition}>소속부서 / 직책</Text>
                 </View>
-                
+
             </View>
         </View>
     );
 
 }
 
-export default TempoModal;
+export default QrModal;

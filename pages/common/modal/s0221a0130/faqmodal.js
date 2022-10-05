@@ -1,14 +1,14 @@
 import React from "react";
 import { Text, View, BackHandler, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
-import { modalStyleSheet } from '../modalStylesheet';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { useState, useEffect } from "react";
+import { faqmodalStyleSheet } from './faqmodalStylesheet';
 
-const TempoModal = (props) => {
-    const { onClick, onClose, option, openModal } = props
+const faqModal = (props) => {
+    const { onClose, openModal } = props
     const [display, setDisplay] = useState(false)
-    const styles = modalStyleSheet()
+    const styles = faqmodalStyleSheet()
 
     useEffect(() => {
         setDisplay(openModal)
@@ -54,4 +54,4 @@ const TempoModal = (props) => {
 
 }
 
-export default TempoModal;
+export default faqModal;
