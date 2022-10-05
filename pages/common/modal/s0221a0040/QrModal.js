@@ -42,7 +42,7 @@ const TempoModal = (props) => {
                     <Text style={styles.modalTitle}>QR코드</Text>
                    <View style={styles.closeBtn}>
                         <TouchableOpacity onPress={() => closeModal()}>
-                            <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+                            <ReactImage source={require('../assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
                         </TouchableOpacity>
                     </View>
                 </View>

@@ -41,13 +41,18 @@ const QrCode = (props) => {
   }, [isFocused])
 
   const logOut = async () => {
-    await AsyncStorage.setItem('id', '')
+    await AsyncStorage.setItem('memberName', '')
     await AsyncStorage.setItem('hpNo', '')
+    await AsyncStorage.setItem('eventCode', '')
+    await AsyncStorage.setItem('orgEventName', '')
     await AsyncStorage.setItem('memberTp', '')
+    await AsyncStorage.setItem('mobileId', '')
+    await AsyncStorage.setItem('orgId', '')
+    await AsyncStorage.setItem('memberId', '')
     await AsyncStorage.setItem('eventNm', '')
     await AsyncStorage.setItem('eventRole', '')
-    await AsyncStorage.setItem('mobileId', '')
-    await AsyncStorage.setItem('memberName', '')
+    await AsyncStorage.setItem('eventId', '')
+    await AsyncStorage.setItem('defaultEventId', '')
     props.navigation.reset({ routes: [{ name: 'Signup' }] })
   }
 

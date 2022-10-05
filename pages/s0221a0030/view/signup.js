@@ -79,12 +79,14 @@ const Signup = (props) => {
       alert('성명을 입력해주세요')
       return
     }
-
     if (paramHpNo === '' || paramHpNo.length < 11) {
       alert('핸드폰 번호를 확인해주세요')
       return
     }
-
+    if (paramEventCode === '') {
+      alert('부서코드를 확인해주세요.')
+      return
+    }
     if (!paramName || !paramHpNo) {
       return
     }
@@ -115,13 +117,17 @@ const Signup = (props) => {
         await AsyncStorage.setItem('eventCode', paramEventCode || '')
 
         const userInfo = await setUserTp()
-        const { orgId, memberTp, orgEventName, mobileId, memberId, } = userInfo
+        const { orgId, memberTp, orgEventName, mobileId, memberId, eventNm, eventRole, eventId, defaultEventId } = userInfo
 
         await AsyncStorage.setItem('orgEventName', orgEventName || '')
         await AsyncStorage.setItem('memberTp', memberTp || '')
         await AsyncStorage.setItem('mobileId', mobileId || '')
         await AsyncStorage.setItem('orgId', JSON.stringify(orgId) || '')
         await AsyncStorage.setItem('memberId', JSON.stringify(memberId) || '')
+        await AsyncStorage.setItem('eventNm', eventNm || '')
+        await AsyncStorage.setItem('eventRole', eventRole || '')
+        await AsyncStorage.setItem('eventId', JSON.stringify(eventId) || '')
+        await AsyncStorage.setItem('defaultEventId', JSON.stringify(defaultEventId) || '')
 
       } else {
         return

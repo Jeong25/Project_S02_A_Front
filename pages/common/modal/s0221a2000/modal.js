@@ -35,19 +35,39 @@ const TempoModal = (props) => {
         setDisplay(false)
     }
 
+    const renderList = (item, i) => {
+        const { text, value } = item
+        return (
+            <>
+                <View style={styles.cellWrap} key={i}>
+                    <TouchableOpacity onPress={() => onClick(value, text)}>
+                        <View style={styles.cell}>
+                            <Text style={styles.cellNum}>{i + 1}</Text>
+                            <Text style={styles.cellName}>{text}</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.divider}></View>
+            </>
+        )
+    }
+
     return (
         <View style={{ ...styles.modalBox, display: display ? 'flex' : 'none' }} nestedScrollEnabled={true}>
             <View style={styles.box}>
                 <View style={styles.titleSection}>
-                    <Text style={styles.modalTitle}>FAQ</Text>
-                   <View style={styles.closeBtn}>
+                    <Text style={styles.modalTitle}>행사명</Text>
+                    <View style={styles.closeBtn}>
                         <TouchableOpacity onPress={() => closeModal()}>
-                            <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+                            <ReactImage source={require('../assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
                         </TouchableOpacity>
                     </View>
                 </View>
-               
-                
+                <ScrollView style={styles.modalInner} contentContainerStyle={{ height: option ? option.length * 90 + 70 : '100%' }}>
+                    {option?.map((e, i) => renderList(e, i))}
+                </ScrollView>
+
             </View>
         </View>
     );

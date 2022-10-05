@@ -7,7 +7,7 @@ import { eventListReq } from '../../s0221a2000/store/store';
 // import client from '../../common/api/client';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import TempoModal from '../../common/modal/modal';
+import TempoModal from '../../common/modal/s0221a2000/modal';
 import Footer from '../../common/footer/Footer';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import numberToCost from '../../common/util/numberToCost';

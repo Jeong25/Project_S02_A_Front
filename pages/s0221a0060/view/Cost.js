@@ -8,7 +8,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { registerEventCostReq } from '../store/store';
 import { eventListReq } from '../../s0221a2000/store/store';
 // import client from '../../common/api/client';
-import TempoModal from '../../common/modal/modal';
+import TempoModal from '../../common/modal/s0221a2000/modal';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AlertAsync from 'react-native-alert-async';
