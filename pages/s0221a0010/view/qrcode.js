@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
@@ -11,13 +12,15 @@ import { setUserTp } from '../../common/lib/getuserinfo';
 
 const QrCode = (props) => {
   const [memberName, setMemberName] = useState('')
-  const [memberTp, setMemberTp] = useState('')
+  const [eventNm, setEventNm] = useState('')
+  const [eventRole, setEventRole] = useState('')
   const [statusCnt, setStatusCount] = useState({})
   const [payCnt, setPayCnt] = useState(0)
   // const [hpNo, setHpNo] = useState('')
   // const [eventCode, setEventCode] = useState('')
   const { windowHeight, windowWidth } = props
   const styles = useMemo(() => styleSheet(windowHeight, windowWidth), [windowHeight, windowWidth])
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     const getData = async () => {
@@ -27,16 +30,23 @@ const QrCode = (props) => {
       if (localName) {
         setMemberName(localName)
       }
-      await getUserInfo(localHpNo, localEventCode)
       await setUserTp()
+      const localEventNm = await AsyncStorage.getItem('eventNm')
+      const localEventRole = await AsyncStorage.getItem('eventRole')
+      setEventNm(localEventNm)
+      setEventRole(localEventRole)
+      await getUserInfo(localHpNo, localEventCode)
     }
     getData()
-  }, [])
+  }, [isFocused])
 
   const logOut = async () => {
     await AsyncStorage.setItem('id', '')
     await AsyncStorage.setItem('hpNo', '')
     await AsyncStorage.setItem('memberTp', '')
+    await AsyncStorage.setItem('eventNm', '')
+    await AsyncStorage.setItem('eventRole', '')
+    await AsyncStorage.setItem('mobileId', '')
     await AsyncStorage.setItem('memberName', '')
     props.navigation.reset({ routes: [{ name: 'Signup' }] })
   }
@@ -75,7 +85,7 @@ const QrCode = (props) => {
           <View style={styles.profileCard} >
             <View style={styles.profileTextGroup}>
               <Text style={styles.memberName}>{memberName}</Text>
-              <Text style={styles.memberPosition}>소속부서 / 직책</Text>
+              <Text style={styles.memberPosition}>{eventNm} / {eventRole}</Text>
             </View>
             <View style={styles.processInfoWrap}>
               <View style={styles.leftProcessBox}>
@@ -161,7 +171,7 @@ const QrCode = (props) => {
                 </View>
                 <Text style={styles.centerText}>QR보기</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.centerGuideBtnWrap}>
+              <TouchableOpacity style={styles.centerGuideBtnWrap} onPress={() => props.navigation.navigate('')}>
                 <View style={styles.centerGuideBtn}>
                   <ReactImage source={require('./assets/guide-w.png')} style={styles.centerIcon} />
                 </View>

@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 const TempoModal = (props) => {
     const { onClick, onClose, option, openModal } = props
     const [display, setDisplay] = useState(false)
-    const styles = modalStyleSheet()
+    const styles = QrModalStyleSheet()
 
     useEffect(() => {
         setDisplay(openModal)
