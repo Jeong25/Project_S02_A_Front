@@ -16,7 +16,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'height': '100%',
       "marginLeft": 'auto',
       "marginRight": 'auto',
-      'position': 'relative',
     },
     "topMenu": {
       "width": "100%",
@@ -40,9 +39,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "backBtn": {
       "overflow": "hidden",
-      'position': 'absolute',
-      'left': 16,
-      'top': 15,
+      'position' : 'absolute',
+      'left' : 16,
+      'top' : 15,
       "width": 40,
       "height": 40,
     },
@@ -98,10 +97,40 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'color': '#383838',
       'textAlign': 'center',
       "fontSize": 13,
-
-
     },
-    "inputTextLong": {
+  
+    "dateText": {
+      'width': 90,
+      'lineHeight': 5,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'color': '#383838',
+      'textAlign': 'center',
+      "fontSize": 13,
+    },
+  
+    "centerAlignText": {
+      'width': 80,
+      'lineHeight': 23,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'color': '#383838',
+      'textAlign': 'center',
+      "fontSize": 13,
+      'marginTop': 5,
+    },
+    "rightAlignText": {
+      'width': 80,
+      'lineHeight': 23,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'color': '#383838',
+      'textAlign': 'right',
+      "fontSize": 13,
+      'marginTop': 5,
+    },
+    
+    "centerAlignDate": {
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'lineHeight': 30,
@@ -110,6 +139,34 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontSize": 13,
       'marginTop': 10,
       'marginBottom': 5,
+      'backgroundColor' :'red'
+    },
+   
+    "modifyTextLongAlignCenter": {
+      'width' : '85%',
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'lineHeight': 30,
+      'textAlign': 'center',
+      'color': '#383838',
+      "fontSize": 13,
+      'marginTop': 10,
+      'marginBottom': 5,
+      'paddingHorizontal' : 10,
+    },
+    
+    "inputTextLong": {
+      'width' : '85%',
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'lineHeight': 30,
+      'textAlign': 'left',
+      'color': '#383838',
+      "fontSize": 13,
+      'marginTop': 10,
+      'marginBottom': 5,
+      'paddingHorizontal' : 10,
+
     },
     "won": {
       "fontFamily": "Apple SD Gothic Neo",
@@ -120,6 +177,13 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'marginBottom': 5,
     },
     "searchBtn": {
+      "marginTop": 5,
+      "marginLeft": 5,
+      "width": 22,
+      "height": 22,
+      'zIndex': 1
+    },
+    "dateSearchBtn": {
       "marginTop": 5,
       "width": 22,
       "height": 22,

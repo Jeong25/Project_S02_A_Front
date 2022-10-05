@@ -22,21 +22,21 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
         "title": {
             'fontFamily': 'Jalnan',
             'textAlign': 'center',
-            'fontSize': 75,
+            'fontSize': 80,
             'color': 'white'
         },
         "subTitle": {
             'fontFamily': 'Apple SD Gothic Neo',
             'fontWeight': '400',
             'textAlign': 'center',
-            'fontSize': 25,
+            'fontSize': 20,
             'color': 'white'
         },
         "subTitleBold": {
             'fontFamily': 'Apple SD Gothic Neo',
             'fontWeight': '900',
             'textAlign': 'center',
-            'fontSize': 27,
+            'fontSize': 23,
             'color': 'white'
         },
 
@@ -69,7 +69,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             "fontWeight": '700',
             "color": "#383838",
             "paddingTop": 0,
-            "paddingBottom": 10,
+            "paddingBottom": 3,
         },
         "inputCode": {
             "width": "100%",
@@ -82,7 +82,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             "fontWeight": '700',
             "color": "#383838",
             "paddingTop": 0,
-            "paddingBottom": 10,
+            "paddingBottom": 5,
             'marginTop': '8%',
         },
         "phoneInputWrap": {
@@ -103,7 +103,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             "fontWeight": '700',
             "color": "#383838",
             "paddingTop": 0,
-            "paddingBottom": 0,
+            "paddingBottom": 5,
             "textAlign": 'center'
         },
 
@@ -117,7 +117,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             "fontWeight": '700',
             "color": "#383838",
             "paddingTop": 0,
-            "paddingBottom": 0,
+            "paddingBottom": 5,
             "textAlign": 'center'
         },
 
@@ -131,7 +131,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             "fontWeight": '700',
             "color": "#383838",
             "paddingTop": 0,
-            "paddingBottom": 0,
+            "paddingBottom": 5,
             "textAlign": 'center'
         },
 

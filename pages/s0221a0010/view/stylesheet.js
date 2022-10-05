@@ -18,7 +18,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'left': -180,
             'top': -350,
         },
-
         'topMenu': {
             'width': '100%',
             'height': 50,
@@ -28,15 +27,11 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'paddingVertical': 5,
             'paddingHorizontal': 10,
             'marginTop': 10,
-
         },
-
         'topLogo': {
-
             'fontFamily': 'Jalnan',
             'color': 'white',
             'fontSize': 32,
-
         },
 
         "profileCard": {
@@ -138,9 +133,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
         'processNumber': {
 
             'color': 'white',
-            'fontSize': 26,
+            'fontSize': 24,
             'fontWeight': '700',
-            'marginTop': 4,
+            'marginTop': '8%',
 
 
         },

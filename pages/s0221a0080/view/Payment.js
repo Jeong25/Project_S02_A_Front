@@ -102,11 +102,11 @@ const Payment = (props) => {
               <View style={styles.contents}>
                 <View style={styles.contentsInner}>
                   <Text style={styles.label}>작성자</Text>
-                  <TextInput style={styles.inputText} />
+                  <TextInput style={styles.centerAlignText}/>
                 </View>
                 <View style={styles.contentsInner}>
-                  <Text style={styles.label}>결제상태</Text>
-                  <TextInput style={styles.inputText} />
+                  <Text style={styles.label}>진행상태</Text>
+                  <TextInput style={styles.centerAlignText}/>
                 </View>
               </View>
 
@@ -131,10 +131,10 @@ const Payment = (props) => {
                 <View style={styles.contentsInner}>
                   <Text style={styles.label}>사용일자</Text>
                   <View style={styles.inputWrap}>
-                    <TextInput style={styles.inputText}>
+                    <TextInput style={styles.dateText}>
                     </TextInput>
 
-                    <View style={styles.searchBtn} >
+                    <View style={styles.dateSearchBtn} >
                       <TouchableOpacity>
                         <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
                       </TouchableOpacity>
@@ -143,8 +143,8 @@ const Payment = (props) => {
                 </View>
                 <View style={styles.contentsInner}>
                   <View style={styles.inputWrap}>
-                    <Text style={styles.label}>결제금액</Text>
-                    <TextInput style={styles.inputText} />
+                  <Text style={styles.label}>사용금액</Text>
+                    <TextInput style={styles.rightAlignText} />
                     <Text style={styles.won}>원</Text>
                   </View>
                 </View>
@@ -177,19 +177,19 @@ const Payment = (props) => {
 
               <View style={styles.contents}>
                 <Text style={styles.label}>결제자명</Text>
-                <TextInput>결제자A</TextInput>
+                <TextInput style={styles.centerAlignText}>결제자A</TextInput>
                 <Text style={styles.label}>결제여부</Text>
-                <TextInput>승인</TextInput>
+                <TextInput style={styles.centerAlignText}>승인</TextInput>
               </View>
 
               <View style={styles.contents}>
                 <Text style={styles.label}>결제일자</Text>
-                <TextInput>2022-01-01</TextInput>
+                <TextInput style={styles.modifyTextLongAlignCenter}>2022-01-01</TextInput>
 
               </View>
               <View style={styles.contents}>
                 <Text style={styles.label}>결제의견</Text>
-                <TextInput>상기 내역을 승인함.</TextInput>
+                <TextInput style={styles.modifyTextLong}>상기 내역을 승인함.</TextInput>
               </View>
 
               <View style={styles.sepLine}></View>

@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo ,useRef } from 'react';
 import { Dimensions, } from 'react-native';
-import { Text, View, } from 'react-native';
+import {  View } from 'react-native';
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -22,7 +22,7 @@ const SplashScreen = (props) => {
   }, [])
 
   return (
-    <View style={styles.wrap}>
+    <View>
     </View>
   );
 }

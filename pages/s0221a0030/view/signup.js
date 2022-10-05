@@ -163,9 +163,9 @@ const Signup = (props) => {
         >
           <View style={styles.titleWrap}>
             <Text style={styles.subTitle}>
-              <Text style={styles.subTitleBold}>쉽고 빠른</Text> 비용처리
+              <Text style={styles.subTitleBold}>쉽고 편리한</Text> 영수증처리
             </Text>
-            <Text style={styles.title}>토  브</Text>
+            <Text style={styles.title}>삐  용</Text>
           </View>
           <View style={styles.contentsWrap}>
             <View style={styles.contentsInner}>
@@ -259,9 +259,9 @@ const Signup = (props) => {
               <View style={styles.textBox}>
                 <View>
                   <Text style={styles.textBoxTitle}>[ 개인정보수집 및 사용 ]</Text>
-                  <Text>목적 : 토브 앱 이용</Text>
-                  <Text>수집 : 이름, 전화번호</Text>
-                  <Text>보유기간 : 목적 달성 시 지체없이 폐기</Text>
+                  <Text style={styles.text}>목적 : 토브 앱 이용</Text>
+                  <Text style={styles.text}>수집 : 이름, 전화번호</Text>
+                  <Text style={styles.text}>보유기간 : 목적 달성 시 지체없이 폐기</Text>
                 </View>
               </View>
 

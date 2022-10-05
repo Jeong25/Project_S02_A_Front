@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { color } from 'react-native-reanimated';
+import { color, Transition } from 'react-native-reanimated';
 
 export const styleSheet = (windowHeight = Dimensions.get('window').height, windowWidth = Dimensions.get('window').width) => {
     const wp = windowWidth / 360
@@ -30,7 +30,8 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
         'fontFamily' : 'Jalnan',
         'textAlign' :'center',
         'fontSize': 75,
-        'color' : '#f15a24'
+        'color' : '#f15a24',
+
     },
     "subTitle" : {
         'fontFamily' : 'Apple SD Gothic Neo',

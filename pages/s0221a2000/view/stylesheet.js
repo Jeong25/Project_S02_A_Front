@@ -4,6 +4,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
   const wp = windowWidth / 360
   const hp = windowHeight / 640
   return StyleSheet.create({
+
+   
     "wrap": {
       "width": "100%",
       "height": "100%",
@@ -33,7 +35,10 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'center',
+
+
     },
+
 
     "backBtn": {
       "overflow": "hidden",
@@ -44,10 +49,13 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "height": 40,
     },
 
+
     "backBtnIcon": {
       "width": 30,
       "height": 30
     },
+
+
 
     "title": {
       "color": "white",
@@ -63,6 +71,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'alignItems': 'center',
       'justifyContent': 'space-between',
     },
+
 
     "searchInput": {
       "width": 120,
@@ -95,23 +104,13 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "marginRight": "auto",
     },
 
-    "searchDate": {
+    "input": {
       "width": '85%',
       "height": 40,
+      "color": "#ababab",
       "borderWidth": 2,
       "borderColor": "#707070",
       "borderRadius": 50,
-      "color": "#707070",
-      "textAlign": "center",
-      "lineHeight": 38,
-      "flexDirection": "row",
-      "justifyContent": "space-evenly",
-      "alignItems": "center",
-    },
-
-    "inputDate": {
-      "height": 40,
-      "color": "#ababab",
       "fontSize": 16,
       "textAlign": "center",
       "backgroundColor": "transparent",
@@ -121,29 +120,29 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "cellWrap": {
       "width": "100%",
-      "height": "65%",
+      "height": "55%",
       "position": "absolute",
       "top": 165,
       'zIndex': 3,
-      'marginTop': -20,
-      'paddingBottom': '20%',
+      'marginTop' : -20,
+      'paddingBottom' : '10%',
     },
 
-    'divider': {
-      'width': '100%',
-      'height': 2,
-      'backgroundColor': '#bcbcbc',
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-      'marginTop': 20,
+    'divider':{
+      'width' : '100%',
+      'height' : 2,
+      'backgroundColor' : '#bcbcbc',
+      'marginLeft' : 'auto',
+      'marginRight' : 'auto',
+      'marginTop' : 20,
     },
-    'cellDivider': {
-      'width': '90%',
-      'height': 2,
-      'backgroundColor': '#bcbcbc',
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-      'marginTop': 5,
+    'cellDivider':{
+      'width' : '90%',
+      'height' : 2,
+      'backgroundColor' : '#bcbcbc',
+      'marginLeft' : 'auto',
+      'marginRight' : 'auto',
+      'marginTop' : 5,
 
     },
 
@@ -196,36 +195,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "lineHeight": 25.2,
     },
 
-    "regBtnWrap": {
-      'position': 'absolute',
-      'left': 0,
-      'right': 0,
-      'bottom': 100,
-      "width": '100%',
-      'height': 80,
-      'zIndex': 9,
-    },
-
-    "regBtn": {
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-      "width": '90%',
-      'height': 80,
-      "borderRadius": 50,
-      'backgroundColor': "#F15A24",
-      'elevation': 6,
-    },
-    "regBtnText": {
-      'width': '100%',
-      'height': '100%',
-      'fontSize': 36,
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '700',
-      'color': 'white',
-      'textAlign': 'center',
-      'lineHeight': 80,
-
-    },
     'bottomMenu': {
       'width': '100%',
       'height': 80,
@@ -240,71 +209,73 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'borderTopColor': "rgba(112, 112, 112 , 0.3)",
 
 
-    },
+  },
     'scanBtnIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
+        'width': 30,
+        'height': 30,
+        'marginLeft': 'auto',
+        'marginRight': 'auto',
     },
 
     'homeBtn': {
 
-      'alignItems': 'center',
+        'alignItems': 'center',
     },
 
     'homeIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
+        'width': 30,
+        'height': 30,
+        'marginLeft': 'auto',
+        'marginRight': 'auto',
     },
     'costIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
+        'width': 30,
+        'height': 30,
+        'marginLeft': 'auto',
+        'marginRight': 'auto',
 
     },
     'paymentIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
+        'width': 30,
+        'height': 30,
+        'marginLeft': 'auto',
+        'marginRight': 'auto',
     },
 
     'homeText': {
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5,
-      'textAlign': 'center'
+        'fontFamily': "Apple SD Gothic Neo",
+        'color': '#707070',
+        'fontSize': 12,
+        'fontWeight': '700',
+        'marginTop': 5,
+        'textAlign': 'center'
 
     },
     'costText': {
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5
+        'fontFamily': "Apple SD Gothic Neo",
+        'color': '#707070',
+        'fontSize': 12,
+        'fontWeight': '700',
+        'marginTop': 5
 
     },
     'paymentText': {
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5
+        'fontFamily': "Apple SD Gothic Neo",
+        'color': '#707070',
+        'fontSize': 12,
+        'fontWeight': '700',
+        'marginTop': 5
     },
     'qrscanText': {
-      'width': 50,
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5,
-      'textAlign': 'center'
+        'width': 50,
+        'fontFamily': "Apple SD Gothic Neo",
+        'color': '#707070',
+        'fontSize': 12,
+        'fontWeight': '700',
+        'marginTop': 5,
+        'textAlign': 'center'
     },
+
+  
   })
 }

@@ -73,7 +73,7 @@ const QrCode = (props) => {
         <View style={styles.circle}></View>
         <View style={styles.topMenu}>
           <View style={styles.topLogoWrap}>
-            <Text style={styles.topLogo}>TOVE</Text>
+            <Text style={styles.topLogo}>삐용</Text>
           </View>
           <View style={styles.logoutBtn}>
             <TouchableOpacity onPress={() => logOut()}>
@@ -143,9 +143,9 @@ const QrCode = (props) => {
                 </View>
               </View>
 
-            </View>
-
           </View>
+
+        </View>
           <View style={styles.centerBtnWrap}>
             <View style={styles.layer1}>
 
@@ -171,11 +171,11 @@ const QrCode = (props) => {
                 </View>
                 <Text style={styles.centerText}>QR보기</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.centerGuideBtnWrap} onPress={() => props.navigation.navigate('')}>
+              <TouchableOpacity style={styles.centerGuideBtnWrap}>
                 <View style={styles.centerGuideBtn}>
                   <ReactImage source={require('./assets/guide-w.png')} style={styles.centerIcon} />
                 </View>
-                <Text style={styles.centerText}>가이드</Text>
+                <Text style={styles.centerText}>FAQ</Text>
               </TouchableOpacity>
             </View>
 

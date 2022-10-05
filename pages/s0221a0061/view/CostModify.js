@@ -183,18 +183,18 @@ const CostModify = (props) => {
               <Image source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
             </TouchableOpacity>
           </View>
-          <Text style={styles.topTitle}>비용상세</Text>
+          <Text style={styles.topTitle}>비용요청결과</Text>
         </View>
         <View style={styles.inner}>
           <View style={styles.contentsWrap}>
             <View style={styles.contents}>
               <View style={styles.contentsInner}>
                 <Text style={styles.modifyLabel}>작성자</Text>
-                <TextInput style={styles.modifyText} />
+                <TextInput style={styles.RcenterAlignText} />
               </View>
               <View style={styles.contentsInner}>
-                <Text style={styles.modifyLabel}>결제상태</Text>
-                <TextInput style={styles.modifyText} />
+                <Text style={styles.modifyLabel}>진행상태</Text>
+                <TextInput style={styles.RcenterAlignText} />
               </View>
             </View>
             <View style={styles.contents}>
@@ -204,7 +204,6 @@ const CostModify = (props) => {
             </View>
             <View style={styles.contents}>
               <Text style={styles.modifyLabel}>행사명</Text>
-              <View style={styles.modifyInputWrap}>
                 <TextInput
                   style={styles.modifyTextLong}
                   editable={false}
@@ -213,7 +212,6 @@ const CostModify = (props) => {
                   <TouchableOpacity onPressIn={() => openEventModal()} >
                     <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
                   </TouchableOpacity>
-                </View>
               </View>
             </View>
 
@@ -221,9 +219,9 @@ const CostModify = (props) => {
               <View style={styles.contentsInner}>
                 <Text style={styles.modifyLabel}>사용일자</Text>
                 <View style={styles.modifyInputWrap}>
-                  <TextInput style={styles.modifyText} editable={false} value={dateState.confirmVal}>
+                <TextInput style={styles.modifyDateText} editable={false} value={dateState.confirmVal}>
                   </TextInput>
-                  <View style={styles.modifySearchBtn} >
+                  <View style={styles.modifyDateSearchBtn} >
                     <TouchableOpacity onPressIn={() => openDateModal()} >
                       <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
                     </TouchableOpacity>
@@ -232,8 +230,8 @@ const CostModify = (props) => {
               </View>
               <View style={styles.contentsInner}>
                 <View style={styles.modifyInputWrap}>
-                  <Text style={styles.modifyLabel}>결제금액</Text>
-                  <TextInput style={styles.modifyText} onChange={(e) => setInputData({ ...inputData, useAmount: e.nativeEvent.text })} value={`${numberToCost(inputData.useAmount)}`} />
+                <Text style={styles.modifyLabel}>사용금액</Text>
+                  <TextInput style={styles.rightAlignText} onChange={(e) => setInputData({ ...inputData, useAmount: e.nativeEvent.text })} value={`${inputData.useAmount}`} />
                   <Text style={styles.modifyWon}>원</Text>
                 </View>
               </View>
@@ -242,20 +240,18 @@ const CostModify = (props) => {
 
             <View style={styles.contents}>
               <Text style={styles.modifyLabel}>첨부파일</Text>
-              <View style={styles.modifyInputWrap}>
-                <TextInput style={styles.modifyTextLong}></TextInput>
+              <TextInput style={styles.modifyFileInput}></TextInput>
                 <View style={styles.modifyAddBtn}>
                   <TouchableOpacity onPressIn={() => ShowPicker()}>
                     <ReactImage source={require('./assets/plus.png')} style={styles.addIcon} ></ReactImage>
                   </TouchableOpacity>
-                </View>
               </View>
 
             </View>
             <View style={styles.contents}>
               <Text style={styles.modifyLabel}>사용내역</Text>
               <TextInput
-                style={styles.modifyTextLong}
+                style={styles.historyInput}
                 multiline={true}
                 onChange={(e) => setInputData({ ...inputData, useComment: e.nativeEvent.text })}
                 value={inputData.useComment}
@@ -265,30 +261,27 @@ const CostModify = (props) => {
             <View style={styles.sepLine}></View>
             <View style={styles.contents}>
               <Text style={styles.modifyLabel}>결제자명</Text>
-              <TextInput>결제자A</TextInput>
+              <TextInput style={styles.RcenterAlignText}>결제자A</TextInput>
               <Text style={styles.modifyLabel}>결제여부</Text>
-              <TextInput>승인</TextInput>
+              <TextInput style={styles.RcenterAlignText}>승인</TextInput>
             </View>
             <View style={styles.contents}>
               <Text style={styles.modifyLabel}>결제일자</Text>
-              <TextInput>2022-01-01</TextInput>
+              <TextInput style={styles.modifyTextLongAlignCenter}>2022-01-01</TextInput>
             </View>
             <View style={styles.contents}>
               <Text style={styles.modifyLabel}>결제의견</Text>
-              <TextInput>상기 내역을 승인함.</TextInput>
+              <TextInput style={styles.RhistoryInput}>상기 내역을 승인함.</TextInput>
             </View>
             <View style={styles.sepLine}></View>
-            <View style={styles.contentsTextarea}>
-              <Text style={styles.modifyLabel}>결제의견</Text>
-              <TextInput style={styles.opinion} onChange={(e) => setInputData({ ...inputData, payComment: e.nativeEvent.text })} />
-            </View>
+         
           </View>
           <View style={styles.modifyBtnWrap}>
             <TouchableOpacity onPress={modifyEvent}>
-              <Text style={styles.requestBtn}>수정</Text>
+              <Text style={styles.requestBtn}>저장</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={deleteEvent}>
-              <Text style={styles.delBtn}>삭제</Text>
+              <Text style={styles.delBtn}>취소</Text>
             </TouchableOpacity>
           </View>
         </View>

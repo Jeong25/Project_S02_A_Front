@@ -21,7 +21,6 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'position': 'relative',
     },
 
-
     "topMenu": {
       "width": "100%",
       "height": 66,
@@ -29,7 +28,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "marginLeft": 'auto',
       "marginRight": 'auto',
       'paddingHorizontal': 20,
-      'backgroundColor': '#f15a24',
+      'backgroundColor' : '#f15a24',
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'center',
@@ -64,7 +63,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
 
     "contentsWrap": {
       "width": "100%",
-      'marginTop': -5
+      'marginTop' : 10,
     },
     "contentsInner": {
       'width': '45%',
@@ -85,7 +84,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
-      'marginBottom': -20,
+      'marginBottom': '5%',
     },
     "label": {
       "fontFamily": "Apple SD Gothic Neo",
@@ -94,18 +93,12 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "fontSize": 13,
       'marginTop': 10,
       'marginBottom': 5,
-
-      'marginBottom': 5,
-
     },
     "modifyLabel": {
       "fontFamily": "Apple SD Gothic Neo",
       "color": "#f15a24",
       "fontWeight": '700',
       "fontSize": 13,
-      'marginTop': 10,
-      'marginBottom': 5,
-
     },
 
     "modifyText": {
@@ -115,20 +108,139 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "fontWeight": '500',
       'color': '#383838',
       'textAlign': 'center',
-      "fontSize": 13,
-      'marginTop': 5,
-
+      "fontSize": 13,     
     },
-    "modifyTextLong": {
+    "modifyDateText": {
+      'width': '82%',
+      'height' : 40,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'color': '#383838',
+      'textAlign': 'left',
+      "fontSize": 13,
+      'marginLeft' : 10,
+      'marginTop' : -8,
+      'paddingLeft': 10,
+      'paddingBottom': -10,
+      'borderBottomWidth' :1,
+      'borderBottomColor' :'#888',
+    },
+
+    "centerAlignText": {
+      'width': 80,
+      'height' :40,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'color': '#383838',
+      'textAlign': 'center',
+      "fontSize": 13,
+      'marginTop': -5,
+      'paddingBottom': -10,
+      'borderBottomWidth' :1,
+      'borderBottomColor' :'#888',
+    },
+    "RcenterAlignText": {
+      'width': 80,
+      'height' :40,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'color': '#383838',
+      'textAlign': 'center',
+      "fontSize": 13,
+      'marginTop': -5,
+      'paddingBottom': -10,
+      
+    },
+    "rightAlignText": {
+      'width': 75,
+      'height' :40,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'color': '#383838',
+      'textAlign': 'right',
+      "fontSize": 13,
+      'marginTop' : -8,
+      'marginLeft' : 5,
+      'paddingBottom': -10,
+      'borderBottomWidth' :1,
+      'borderBottomColor' :'#888',
+    },
+    
+    "centerAlignDate": {
+      'height' :40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'lineHeight': 30,
       'textAlign': 'center',
       'color': '#383838',
       "fontSize": 13,
-      'marginTop': 10,
-      'marginBottom': 5,
     },
+
+    "modifyTextLong": {
+      'width' : '80%',
+      'height' :40,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'textAlign': 'left',
+      'color': '#383838',
+      "fontSize": 13,
+      'marginTop' : -5,
+      'marginLeft' : 11,
+      'paddingHorizontal' : 10,
+      'paddingBottom': -10,
+      'borderBottomWidth' :1,
+      'borderBottomColor' :'#888',
+    },
+    
+    "modifyTextLongAlignCenter": {
+      'width' : '85%',
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'lineHeight': 30,
+      'textAlign': 'center',
+      'color': '#383838',
+      "fontSize": 13,
+      'paddingHorizontal' : 10,
+    },
+    "modifyFileInput": {
+      'width' : '80%',
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'textAlign': 'left',
+      'color': '#383838',
+      "fontSize": 13,
+      'marginTop' : -5,
+      'marginLeft' : 11,
+      'paddingLeft' : 10,
+      'paddingRight' : 25,
+      'paddingBottom': -10,
+      'borderBottomWidth' :1,
+      'borderBottomColor' :'#888',
+    },
+    "historyInput": {
+      'width' : '80%',
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'textAlign': 'left',
+      'color': '#383838',
+      "fontSize": 13,
+      'marginTop' : -5,
+      'paddingBottom': -10,
+      'borderBottomWidth' :1,
+      'borderBottomColor' :'#888',
+    },
+    "RhistoryInput": {
+      'width' : '80%',
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'textAlign': 'left',
+      'color': '#383838',
+      "fontSize": 13,
+      'marginTop' : -5,
+      'paddingBottom': -10,
+  
+    },
+    
     "modifyWon": {
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
@@ -148,7 +260,14 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'zIndex': 1
     },
     "modifySearchBtn": {
-      "marginTop": 5,
+      "position": "absolute",
+      "right": 0,
+      "width": 22,
+      "height": 22,
+    },
+    "modifyDateSearchBtn": {
+      "position": "absolute",
+      "right": 10,
       "width": 22,
       "height": 22,
       'zIndex': 1
@@ -171,11 +290,12 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "color": "#383838",
       "paddingTop": 0,
       "paddingBottom": 10,
-      'textAlign': 'center'
+      'textAlign' : 'center'
     },
     "modifyInputWrap": {
       'flexDirection': 'row',
       'alignItems': 'center',
+      'justifyContent' : 'space-between'
     },
 
     "amountInput": {
@@ -191,8 +311,8 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "color": "#383838",
       "paddingTop": 0,
       "paddingBottom": 10,
-      'paddingRight': 25,
-      'textAlign': 'right'
+      'paddingRight' : 25,
+      'textAlign' : 'right'
     },
 
 
@@ -207,7 +327,8 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'zIndex': 1
     },
     "modifyAddBtn": {
-
+      "position": "absolute",
+      "right": 0,
       "width": 20,
       "height": 20,
       "backgroundColor": "#f15a24",
@@ -227,7 +348,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'width': '100%',
       'height': 3,
       'backgroundColor': '#bcbcbc',
-      'marginTop': 20,
+      'marginTop': 10,
 
     },
 
@@ -281,12 +402,23 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "height": 50,
       'marginLeft': 'auto',
       'marginRight': 'auto',
+      'marginTop': 40,
       'marginBottom': 40,
       "flexDirection": "row",
       "justifyContent": "space-between",
       "alignItems": "center",
     },
-
+    "btnWrap2": {
+      "width": "100%",
+      "height": 50,
+      'marginLeft': 'auto',
+      'marginRight': 'auto',
+      'marginBottom': 40,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "alignItems": "center",
+    },
+   
     "requestBtn": {
       "width": 140,
       "height": 50,
