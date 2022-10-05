@@ -9,8 +9,25 @@ import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const EventList = (props) => {
-  
+
+  const [eventInfo, setEventInfo] = useState([])
+
   const styles = styleSheet()
+
+  const getData = async () => {
+    const orgId = await AsyncStorage.getItem('orgId')
+    const eventCode = await AsyncStorage.getItem('eventCode')
+    const res = await eventListReq(orgId, eventCode)
+    setEventInfo(res.data.data)
+  }
+
+  const onClick = (eventId, eventNm) => {
+
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   return (
     <View style={styles.wrap}>
@@ -28,7 +45,6 @@ const EventList = (props) => {
             style={styles.input}
             placeholder="행사명으로 검색"
           ></TextInput>
-
           <View style={styles.searchBtn}>
             <TouchableOpacity>
               <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
@@ -36,39 +52,22 @@ const EventList = (props) => {
           </View>
         </View>
         <View style={styles.divider}></View>
-
       </View>
       <View style={styles.cellWrap}>
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
+          {eventInfo.map((v, i) => (
+            <View key={i}>
+              <View style={styles.cellWrap}>
+                <TouchableOpacity onPress={() => onClick(v.eventId, v.eventNm)}>
+                  <View style={styles.cell}>
+                    <Text style={styles.cellName}>{v.eventNm}</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.divider}></View>
+            </View>
+          ))}
         </ScrollView>
-      </View>
-
-      <View style={styles.bottomMenu}>
-        <TouchableOpacity style={styles.homeBtn} onPress={() => props.navigation.navigate('QrCode')}>
-          <View>
-            <ReactImage source={require('./assets/home.png')} style={styles.homeIcon} />
-            <Text style={styles.homeText} >홈</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.costListBtn} onPress={() => props.navigation.navigate('CostList')}>
-          <View>
-            <ReactImage source={require('./assets/receipt.png')} style={styles.costIcon} />
-            <Text style={styles.costText} >비용등록</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.paymentListBtn} onPress={() => props.navigation.navigate('PaymentList')}>
-          <View>
-            <ReactImage source={require('./assets/stamp.png')} style={styles.paymentIcon} />
-            <Text style={styles.paymentText}>비용결제</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.scanBtn} onPress={() => props.navigation.navigate('Qrscan')}>
-          <View>
-            <ReactImage source={require('./assets/scanIcon.png')} style={styles.scanBtnIcon} />
-            <Text style={styles.qrscanText}>QR스캔</Text>
-          </View>
-        </TouchableOpacity>
       </View>
     </View >
   )

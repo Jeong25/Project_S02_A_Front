@@ -47,7 +47,6 @@ const TempoModal = (props) => {
                         </View>
                     </TouchableOpacity>
                 </View>
-
                 <View style={styles.divider}></View>
             </>
         )

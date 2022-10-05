@@ -6,9 +6,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { registerEventCostReq } from '../store/store';
-import { eventListReq } from '../../s0221a2000/store/store';
+// import { eventListReq } from '../../s0221a2000/store/store';
 // import client from '../../common/api/client';
-import TempoModal from '../../common/modal/s0221a2000/modal';
+// import TempoModal from '../../common/modal/s0221a2000/modal';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AlertAsync from 'react-native-alert-async';
@@ -29,10 +29,11 @@ const Cost = (props) => {
   const [inputData, setInputData] = useState({
     "eventId": "",
     "eventNm": "",
-    "useAmount": 0,
+    "useAmount": "",
     "useComment": "",
     "useProStatus": "A",
     "useReceiptId": "",
+    "useReceiptName": "",
     "useSubject": "",
     "usedDate": ""
   })
@@ -42,13 +43,8 @@ const Cost = (props) => {
 
   useEffect(() => {
     getData()
-    callModalData()
-    test()
+    // callModalData()
   }, [])
-
-  const test = () => {
-
-  }
 
   const getData = async () => {
     const localName = await AsyncStorage.getItem('memberName')
@@ -61,15 +57,15 @@ const Cost = (props) => {
     }
   }
 
-  const openDateModal = () => {
-    Keyboard.dismiss()
-    setDateState({ ...dateState, viewModal: true })
-  }
+  // const openDateModal = () => {
+  //   Keyboard.dismiss()
+  //   setDateState({ ...dateState, viewModal: true })
+  // }
 
-  const openEventModal = () => {
-    Keyboard.dismiss()
-    setOpenmodal(true)
-  }
+  // const openEventModal = () => {
+  //   Keyboard.dismiss()
+  //   setOpenmodal(true)
+  // }
 
   const confirmDateChange = (val) => {
     const year = val.getFullYear()
@@ -80,6 +76,22 @@ const Cost = (props) => {
   }
 
   const regist = async () => {
+    if (inputData.useSubject === '') {
+      alert('사용 제목을 확인해 주세요.')
+      return
+    }
+    if (inputData.eventId === '') {
+      alert('행사명을 확인해 주세요.')
+      return
+    }
+    if (inputData.usedDate === '') {
+      alert('사용 일자를 확인해 주세요.')
+      return
+    }
+    if (inputData.useReceiptId === '') {
+      alert('첨부파일을 확인해 주세요.')
+      return
+    }
 
     const body = { ...inputData, usedDate: dateState.confirmVal, "eventUserId": memberId, }
     console.log(JSON.stringify(body, null, 4))
@@ -93,8 +105,8 @@ const Cost = (props) => {
     // })
     // console.log(JSON.stringify(response, null, 4))
     const response = await registerEventCostReq(body, headers)
-
     if (response.status === 200) {
+      alert('비용 청구 영수증 등록 되었습니다.')
       goback()
     }
   }
@@ -108,21 +120,21 @@ const Cost = (props) => {
     props.navigation.goBack()
   }
 
-  const callModalData = async () => {
-    // const res = await client.get(`/rest/v1/s0221a2000/event-list?&orgId=39`).catch(e => {
-    //   console.log(JSON.stringify(e, null, 4))
-    // })
-    // console.log(JSON.stringify(res, null, 4))
-    const res = await eventListReq(39)
-    if (res.status === 200) {
-      const option = res.data?.data?.map(i => {
-        return {
-          text: i.eventNm, value: i.eventId
-        }
-      })
-      setEventOption(option)
-    }
-  }
+  // const callModalData = async () => {
+  //   // const res = await client.get(`/rest/v1/s0221a2000/event-list?&orgId=39`).catch(e => {
+  //   //   console.log(JSON.stringify(e, null, 4))
+  //   // })
+  //   // console.log(JSON.stringify(res, null, 4))
+  //   const res = await eventListReq(39)
+  //   if (res.status === 200) {
+  //     const option = res.data?.data?.map(i => {
+  //       return {
+  //         text: i.eventNm, value: i.eventId
+  //       }
+  //     })
+  //     setEventOption(option)
+  //   }
+  // }
 
   const ShowPicker = async () => {
     let options = {
@@ -151,8 +163,8 @@ const Cost = (props) => {
               launchCamera({ saveToPhotos: true, includeBase64: true }, async (res) => {
                 setInputData({
                   ...inputData,
-                  base64: res.assets[0].base64,
-                  fileName: res.assets[0].fileName
+                  useReceiptId: res.assets[0].base64,
+                  useReceiptName: res.assets[0].fileName
                 })
               }).catch((e) => {
                 console.log(e)
@@ -165,8 +177,8 @@ const Cost = (props) => {
               launchImageLibrary(options, async (res) => {
                 setInputData({
                   ...inputData,
-                  base64: res.assets[0].base64,
-                  fileName: res.assets[0].fileName
+                  useReceiptId: res.assets[0].base64,
+                  useReceiptName: res.assets[0].fileName
                 })
               }).catch((e) => {
                 console.log(e)
