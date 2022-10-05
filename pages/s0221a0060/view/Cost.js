@@ -88,6 +88,10 @@ const Cost = (props) => {
       alert('사용 일자를 확인해 주세요.')
       return
     }
+    if (inputData.useAmount === '' || Number(inputData.useAmount) < 1) {
+      alert('사용 금액을 확인해 주세요.')
+      return
+    }
     if (inputData.useReceiptId === '') {
       alert('첨부파일을 확인해 주세요.')
       return
@@ -256,7 +260,7 @@ const Cost = (props) => {
             <View style={styles.inputWrap}>
               <Text style={styles.label} >사용일자</Text>
               <View style={styles.searchBtn} >
-                <TouchableOpacity onPressIn={() => openDateModal()} >
+                <TouchableOpacity>
                   <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
                 </TouchableOpacity>
               </View>
@@ -267,7 +271,7 @@ const Cost = (props) => {
               <TextInput
                 style={styles.amountInput}
                 onChange={(e) => {
-                  console.log(e.nativeEvent.text.replace(/,/gi, ""))
+                  console.log('금액Log:'+e.nativeEvent.text.replace(/,/gi, ""))
                   setInputData({ ...inputData, useAmount: e.nativeEvent.text.replace(/,/gi, "") })
                 }}
                 // value={inputData?.useAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}

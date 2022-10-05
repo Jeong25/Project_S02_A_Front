@@ -29,6 +29,7 @@ const CostList = (props) => {
   })
 
   useEffect(() => {
+    callList()
     callModalData()
   }, [])
 
