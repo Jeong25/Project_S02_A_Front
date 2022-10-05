@@ -10,7 +10,7 @@ import Footer from '../../common/footer/Footer';
 import { useStateCntReq, payCntReq } from '../store/store';
 import { setUserTp } from '../../common/lib/getuserinfo';
 import QrModal from '../../common/modal/s0221a0040/QrModal';
-import faqModal from '../../common/modal/s0221a0130/faqmodal';
+import FaqModal from '../../common/modal/s0221a0130/faqmodal';
 
 const QrCode = (props) => {
   const [memberName, setMemberName] = useState('')
@@ -204,10 +204,10 @@ const QrCode = (props) => {
           openModal={qrModalBool}
           onClose={() => setQrModalBool(false)}
         />
-        {/* <faqModal
+        <FaqModal
           openModal={faqModalBool}
           onClose={() => setFaqModalBool(false)}
-        /> */}
+        />
       </View>
       <Footer
         navigation={props.navigation}

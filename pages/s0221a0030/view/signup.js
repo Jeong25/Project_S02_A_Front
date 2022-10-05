@@ -100,15 +100,14 @@ const Signup = (props) => {
       //   })
       // console.log(JSON.stringify(result, null, 4))
       const result = await signUpReq(paramName, paramHpNo, paramEventCode)
-      if (result?.status === 200) {
+      if (result?.status === 500) {
+        alert(result.massage)
+        return
+      } else if (result?.status === 200) {
         const { data } = result
-        console.log(data)
-        if (data.status === 500) {
+        console.log('Log1: ' + JSON.stringify(data))
+        if (data.massage === '등록되지 않은 부서코드입니다.') {
           alert(data.massage)
-          return
-        }
-        const loginData = data?.data
-        if (!loginData) {
           return
         }
 
@@ -133,8 +132,7 @@ const Signup = (props) => {
         return
       }
     } catch (error) {
-      console.log('error')
-      console.error(error)
+      console.log(error)
       return
     }
     await props.navigation.reset({ routes: [{ name: 'QrCode' }] })

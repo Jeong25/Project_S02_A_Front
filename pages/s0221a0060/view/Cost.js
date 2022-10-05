@@ -36,7 +36,7 @@ const Cost = (props) => {
     "useSubject": "",
     "usedDate": ""
   })
-  const [openModal, setOpenmodal] = useState(false)
+  // const [openModal, setOpenmodal] = useState(false)
   const [fileState, setFileState] = useState({
   })
 
@@ -195,10 +195,10 @@ const Cost = (props) => {
     }
   }
 
-  const onClick = (e, text) => {
-    setInputData({ ...inputData, eventId: e, eventNm: text })
-    setOpenmodal(false)
-  }
+  // const onClick = (e, text) => {
+  //   setInputData({ ...inputData, eventId: e, eventNm: text })
+  //   setOpenmodal(false)
+  // }
 
   return (
     <View style={styles.wrap}>
@@ -274,7 +274,7 @@ const Cost = (props) => {
               </View>
               <TextInput style={styles.input} editable={false}>{inputData.fileName}</TextInput>
             </View>
-            <View style={styles.textfieldWrap}>
+            <View>
               <Text style={styles.label}>사용내역</Text>
               <TextInput
                 style={styles.textfield}
@@ -298,12 +298,12 @@ const Cost = (props) => {
           }
           date={dateState.confirmDate}
         />
-        <TempoModal
+        {/* <TempoModal
           openModal={openModal}
           onClick={onClick}
           onClose={() => setOpenmodal(false)}
           option={eventOption}
-        />
+        /> */}
       </KeyboardAwareScrollView>
       <Footer
         navigation={props.navigation}

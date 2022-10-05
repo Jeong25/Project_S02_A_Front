@@ -5,7 +5,7 @@ import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { useState, useEffect } from "react";
 import { faqmodalStyleSheet } from './faqmodalStylesheet';
 
-const faqModal = (props) => {
+const FaqModal = (props) => {
     const { onClose, openModal } = props
     const [display, setDisplay] = useState(false)
     const styles = faqmodalStyleSheet()
@@ -54,4 +54,4 @@ const faqModal = (props) => {
 
 }
 
-export default faqModal;
+export default FaqModal;
