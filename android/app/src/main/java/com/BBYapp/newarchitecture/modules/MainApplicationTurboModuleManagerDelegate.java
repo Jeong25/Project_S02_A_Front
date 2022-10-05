@@ -1,4 +1,4 @@
-package com.sampleapps.newarchitecture.modules;
+package com.BBYapp.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
