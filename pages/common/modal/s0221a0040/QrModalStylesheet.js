@@ -15,11 +15,11 @@ export const QrModalStyleSheet = (windowHeight = Dimensions.get('window').height
     },
     "box": {
       "width": '90%',
-      "height": '50%',
+      "height": '70%',
       'backgroundColor': 'white',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop':'40%',
+      'marginTop':'20%',
     },
 
     'modalInner': {
@@ -27,7 +27,6 @@ export const QrModalStyleSheet = (windowHeight = Dimensions.get('window').height
       "width": "100%",
       "marginLeft": 'auto',
       "marginRight": 'auto',
-      // 'overflow': 'scroll'
     },
 
     'titleSection': {
