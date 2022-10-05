@@ -57,10 +57,10 @@ const Cost = (props) => {
     }
   }
 
-  // const openDateModal = () => {
-  //   Keyboard.dismiss()
-  //   setDateState({ ...dateState, viewModal: true })
-  // }
+  const openDateModal = () => {
+    Keyboard.dismiss()
+    setDateState({ ...dateState, viewModal: true })
+  }
 
   // const openEventModal = () => {
   //   Keyboard.dismiss()
@@ -260,7 +260,7 @@ const Cost = (props) => {
             <View style={styles.inputWrap}>
               <Text style={styles.label} >사용일자</Text>
               <View style={styles.searchBtn} >
-                <TouchableOpacity>
+                <TouchableOpacity onPressIn={() => openDateModal()}>
                   <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
                 </TouchableOpacity>
               </View>
@@ -271,7 +271,7 @@ const Cost = (props) => {
               <TextInput
                 style={styles.amountInput}
                 onChange={(e) => {
-                  console.log('금액Log:'+e.nativeEvent.text.replace(/,/gi, ""))
+                  console.log('금액Log:' + e.nativeEvent.text.replace(/,/gi, ""))
                   setInputData({ ...inputData, useAmount: e.nativeEvent.text.replace(/,/gi, "") })
                 }}
                 // value={inputData?.useAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
