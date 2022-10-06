@@ -126,7 +126,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'textAlign': 'left',
       "fontSize": 13,
       'marginTop' : -5,
-      'marginLeft' : 10,
+      'marginLeft' : 15,
       'paddingLeft': 10,
       'paddingBottom': -10,
      
@@ -186,8 +186,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontWeight": '500',
       'color': '#1d1d1d',
       "fontSize": 13,
-      'marginTop': 10,
-      'marginBottom': 5,
+      'marginTop' : 5,
     },
  
     "inputWrap": {
@@ -224,9 +223,11 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'backgroundColor': '#e9e9e9',
       'marginTop': 5,
     },
-
-    'renderWrap' : {
-      'width': '90%',
+    'renderInner' : {
+      'width' : '90%',
+      'marginTop' : 10,
+      'marginLeft': 'auto',
+      'marginRight': 'auto',
     },
   
 

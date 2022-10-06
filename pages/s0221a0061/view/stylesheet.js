@@ -118,7 +118,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'color': '#383838',
       'textAlign': 'left',
       "fontSize": 13,
-      'marginLeft' : 13,
+      'marginLeft' : 15,
       'marginTop' : -8,
       'paddingLeft': 10,
       'paddingBottom': -10,
@@ -445,6 +445,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
 
     'renderInner' : {
       'width' : '90%',
+      'marginTop' : 10,
       'marginLeft': 'auto',
       'marginRight': 'auto',
     }

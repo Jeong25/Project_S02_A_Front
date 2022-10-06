@@ -9,7 +9,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
     "wrap": {
       "width": "100%",
       "height": "100%",
-      "backgroundColor": "#ffffff",
+      'backgroundColor' : 'white',
+      "position": "relative",
       'overflow': 'hidden',
       'zIndex': 1
     },
@@ -20,7 +21,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "position": "relative",
       "marginLeft": 'auto',
       "marginRight": 'auto',
-      'zIndex': 2
+      'zIndex': 2,
+      'backgroundColor' : 'blue'
 
     },
     "topMenu": {
@@ -66,10 +68,12 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "layer1": {
       'marginTop': 20,
-      "width": "100%",
+      "width": "90%",
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
+      'marginLeft' : 'auto',
+      'marginRight' : 'auto',
     },
 
 
@@ -120,26 +124,24 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "cellWrap": {
       "width": "100%",
-      "height": "55%",
+      "height": "65%",
       "position": "absolute",
-      "top": 165,
-      'zIndex': 3,
-      'marginTop' : -20,
-      'paddingBottom' : '10%',
+      "top": 165,      
+      
     },
 
     'divider':{
-      'width' : '100%',
-      'height' : 2,
-      'backgroundColor' : '#bcbcbc',
-      'marginLeft' : 'auto',
-      'marginRight' : 'auto',
-      'marginTop' : 20,
+      'width': '100%',
+      'height': 8,
+      'backgroundColor': '#e9e9e9',
+      'marginLeft': 'auto',
+      'marginRight': 'auto',
+      'marginTop': 20,
     },
     'cellDivider':{
       'width' : '90%',
       'height' : 2,
-      'backgroundColor' : '#bcbcbc',
+      'backgroundColor' : '#e9e9e9',
       'marginLeft' : 'auto',
       'marginRight' : 'auto',
       'marginTop' : 5,
@@ -151,23 +153,22 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "height": 65,
       "marginLeft": 'auto',
       "marginRight": 'auto',
-      'zIndex': 9,
+      'paddingLeft': 20,
+      'flexDirection' : 'row',
+      'alignItems': 'center',
+      
     },
 
-    "cellInner": {
-      "width": "90%",
-      "marginLeft": "auto",
-      "marginRight": "auto",
-      "position": "relative",
+    'cellName': {
+
+      'fontSize': 18,
+      'fontWeight': '800',
+      'fontFamily': "Apple SD Gothic Neo",
+      'color': '#1d1d1d',
+      'marginLeft': 30,
+
     },
 
-    "cellTitle": {
-      "color": "#1d1d1d",
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontSize": 21,
-      "fontWeight": "700",
-      "paddingTop": 8,
-    },
 
     "cellDate": {
 
@@ -185,97 +186,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'lineHeight': 20,
     },
 
-    "cellAmount": {
-      "position": "absolute",
-      "right": 0,
-      "top": 22.5,
-      "color": "#F15A24",
-      "fontSize": 21,
-      "fontWeight": "800",
-      "lineHeight": 25.2,
-    },
-
-    'bottomMenu': {
-      'width': '100%',
-      'height': 80,
-      'backgroundColor': 'white',
-      'position': 'absolute',
-      'bottom': 0,
-      'flexDirection': 'row',
-      'alignItems': 'center',
-      'justifyContent': 'space-around',
-      'paddingHorizontal': 30,
-      'borderTopWidth': 2,
-      'borderTopColor': "rgba(112, 112, 112 , 0.3)",
-
-
-  },
-    'scanBtnIcon': {
-        'width': 30,
-        'height': 30,
-        'marginLeft': 'auto',
-        'marginRight': 'auto',
-    },
-
-    'homeBtn': {
-
-        'alignItems': 'center',
-    },
-
-    'homeIcon': {
-        'width': 30,
-        'height': 30,
-        'marginLeft': 'auto',
-        'marginRight': 'auto',
-    },
-    'costIcon': {
-        'width': 30,
-        'height': 30,
-        'marginLeft': 'auto',
-        'marginRight': 'auto',
-
-    },
-    'paymentIcon': {
-        'width': 30,
-        'height': 30,
-        'marginLeft': 'auto',
-        'marginRight': 'auto',
-    },
-
-    'homeText': {
-        'fontFamily': "Apple SD Gothic Neo",
-        'color': '#707070',
-        'fontSize': 12,
-        'fontWeight': '700',
-        'marginTop': 5,
-        'textAlign': 'center'
-
-    },
-    'costText': {
-        'fontFamily': "Apple SD Gothic Neo",
-        'color': '#707070',
-        'fontSize': 12,
-        'fontWeight': '700',
-        'marginTop': 5
-
-    },
-    'paymentText': {
-        'fontFamily': "Apple SD Gothic Neo",
-        'color': '#707070',
-        'fontSize': 12,
-        'fontWeight': '700',
-        'marginTop': 5
-    },
-    'qrscanText': {
-        'width': 50,
-        'fontFamily': "Apple SD Gothic Neo",
-        'color': '#707070',
-        'fontSize': 12,
-        'fontWeight': '700',
-        'marginTop': 5,
-        'textAlign': 'center'
-    },
-
+  
   
   })
 }
