@@ -16,6 +16,7 @@ const CostModify = (props) => {
   const height = Dimensions.get('window').height
   const styles = styleSheet()
   const [memberId, setMemberId] = useState('')
+  const [eventName, setEventName] = useState('')
   const [dateState, setDateState] = useState({
     viewModal: false,
     confirmVal: '',
@@ -23,11 +24,12 @@ const CostModify = (props) => {
   })
   const [inputData, setInputData] = useState({
     "eventId": "",
-    "eventNm": "",
+    "eventUseId": "",
+    "eventUserId": "",
     "useAmount": "",
     "useComment": "",
-    "useProStatus": "A",
     "useReceiptId": "",
+    "useReceiptName": "",
     "useSubject": "",
     "usedDate": ""
   })
@@ -54,7 +56,9 @@ const CostModify = (props) => {
       const res = await eventCostReq(data.eventUseId)
       setHeaderData(res.data.data.header)
       setDetailData(res.data.data.detail)
+      setEventName(res.data.data.header.eventNm)
       console.log('CostModify_Log1: ' + JSON.stringify(headerData))
+      console.log('CostModify_Log1: ' + JSON.stringify(inputData))
       console.log('CostModify_Log2: ' + JSON.stringify(detailData))
     }
   }
@@ -161,14 +165,14 @@ const CostModify = (props) => {
             <View style={styles.contents}>
               <Text style={styles.modifyLabel}>사용제목</Text>
               <TextInput style={styles.modifyTextLong}
-                onChange={(e) => setInputData({ ...inputData, useSubject: e.nativeEvent.text })} value={headerData?.useSubject} />
+                onChange={(e) => setInputData({ ...inputData, useSubject: e.nativeEvent.text })} value={inputData?.useSubject} />
             </View>
             <View style={styles.contents}>
               <Text style={styles.modifyLabel}>행사명</Text>
               <TextInput
                 style={styles.modifyTextLong}
                 editable={false}
-                value={headerData.eventNm}></TextInput>
+                value={eventName}></TextInput>
               <View style={styles.modifySearchBtn} >
                 <TouchableOpacity onPressIn={() => props.navigation.navigate('EventList')}>
                   <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
@@ -180,8 +184,7 @@ const CostModify = (props) => {
               <View style={styles.contentsInner}>
                 <Text style={styles.modifyLabel}>사용일자</Text>
                 <View style={styles.modifyInputWrap}>
-                  <TextInput style={styles.modifyDateText} editable={false} value={headerData.usedDate}>
-                  </TextInput>
+                  <TextInput style={styles.modifyDateText} editable={false} value={inputData.usedDate}></TextInput>
                   <View style={styles.modifyDateSearchBtn} >
                     <TouchableOpacity onPressIn={() => openDateModal()} >
                       <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
@@ -192,7 +195,7 @@ const CostModify = (props) => {
               <View style={styles.contentsInner}>
                 <View style={styles.modifyInputWrap}>
                   <Text style={styles.modifyLabel}>사용금액</Text>
-                  <TextInput style={styles.rightAlignText} onChange={(e) => setInputData({ ...inputData, useAmount: e.nativeEvent.text })} value={`${numberToCost(headerData.useAmount)}`} />
+                  <TextInput style={styles.rightAlignText} onChange={(e) => setInputData({ ...inputData, useAmount: e.nativeEvent.text })} value={`${numberToCost(inputData.useAmount)}`} />
                   <Text style={styles.modifyWon}>원</Text>
                 </View>
               </View>
@@ -200,7 +203,7 @@ const CostModify = (props) => {
 
             <View style={styles.contents}>
               <Text style={styles.modifyLabel}>첨부파일</Text>
-              <TextInput style={styles.modifyFileInput} value={headerData.useReceiptName}></TextInput>
+              <TextInput style={styles.modifyFileInput} value={inputData.useReceiptName}></TextInput>
               <View style={styles.modifyAddBtn}>
                 <TouchableOpacity onPressIn={() => ShowPicker()}>
                   <ReactImage source={require('./assets/plus.png')} style={styles.addIcon} ></ReactImage>
@@ -214,7 +217,7 @@ const CostModify = (props) => {
                 style={styles.historyInput}
                 multiline={true}
                 onChange={(e) => setInputData({ ...inputData, useComment: e.nativeEvent.text })}
-                value={headerData.useComment}
+                value={inputData.useComment}
               />
             </View>
             <View style={styles.sepLine}></View>

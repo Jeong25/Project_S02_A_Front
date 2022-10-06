@@ -3,7 +3,6 @@ import { Text, View, TextInput, ScrollView, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import { costPayListReq } from '../store/store';
-// import client from '../../common/api/client';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
@@ -26,13 +25,11 @@ const PaymentList = (props) => {
 
   const callList = async () => {
     const memberId = await AsyncStorage.getItem('memberId')
+    const eventCode = await AsyncStorage.getItem('eventCode')
     const { confirmFromDate, confirmToDate } = dateState
     const confirmFromVal = convertDateToVal(confirmFromDate)
     const confirmToVal = convertDateToVal(confirmToDate)
-    // const response = await client.get(`rest/v1/s0221a0090/cost-pay-list?eventPayUserId=${memberId}&fromDate=${confirmFromVal}&toDate=${confirmToVal}&eventCode=AAA03`)
-    //   .catch((e) => console.log(JSON.stringify(e, null, 4)))
-    // console.log(console.log(JSON.stringify(response, null, 4)))
-    const response = await costPayListReq(memberId, confirmFromVal, confirmToVal, 'AAA03')
+    const response = await costPayListReq(memberId, confirmFromVal, confirmToVal, eventCode)
     setListData(response?.data?.data || [])
   }
 
@@ -63,8 +60,8 @@ const PaymentList = (props) => {
       const cutTitle = title ? `${title?.substring(0, 11)}...` : ""
       console.log(item)
       return (
-        <>
-          <TouchableOpacity key={index} onPress={() => {
+        <View key={index}>
+          <TouchableOpacity onPress={() => {
             props.navigation.navigate('Payment', { eventUseId: eventUseId })
           }}>
             <View style={styles.cell} >
@@ -78,8 +75,7 @@ const PaymentList = (props) => {
             </View>
           </TouchableOpacity>
           <View style={styles.cellDivider}></View>
-        </>
-
+        </View>
       )
     } catch (error) {
       console.log(error)
@@ -88,10 +84,8 @@ const PaymentList = (props) => {
   }
 
   return (
-
     <View>
       <View style={styles.wrap}>
-
         <View style={styles.topMenu}>
           <View style={styles.backBtn}>
             <TouchableOpacity onPress={() => props.navigation.goBack()}>

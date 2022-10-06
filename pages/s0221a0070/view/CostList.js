@@ -3,10 +3,8 @@ import { Text, View, TextInput, ScrollView, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import { retrieveCostReq } from '../store/store';
-import { eventListReq } from '../../s0221a2000/store/store';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import TempoModal from '../../common/modal/s0221a2000/modal';
 import Footer from '../../common/footer/Footer';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import numberToCost from '../../common/util/numberToCost';
@@ -14,12 +12,6 @@ import numberToCost from '../../common/util/numberToCost';
 const CostList = (props) => {
   const styles = styleSheet()
   const [listData, setListData] = useState([])
-  const [eventOption, setEventOption] = useState([])
-  const [openModal, setOpenmodal] = useState(false)
-  const [eventState, setEventState] = useState({
-    eventId: "",
-    eventNm: ""
-  })
   const [dateState, setDateState] = useState({
     viewModal: false,
     fromToFlag: '',
@@ -29,7 +21,6 @@ const CostList = (props) => {
 
   useEffect(() => {
     callList()
-    callModalData()
   }, [])
 
   const convertDateToVal = (val) => {
@@ -48,24 +39,6 @@ const CostList = (props) => {
     const eventCode = await AsyncStorage.getItem('eventCode')
     const response = await retrieveCostReq(memberId, confirmFromVal, confirmToVal, eventCode)
     setListData(response?.data?.data || [])
-  }
-
-  const callModalData = async () => {
-    const eventCode = await AsyncStorage.getItem('eventCode')
-    const res = await eventListReq(39, eventCode)
-    if (res.status === 200) {
-      const option = res.data?.data?.map(i => {
-        return {
-          text: i.eventNm, value: i.eventId
-        }
-      })
-      setEventOption(option)
-    }
-  }
-
-  const modalOnClick = (value, text) => {
-    setEventState({ eventId: value, eventNm: text })
-    setOpenmodal(false)
   }
 
   const confirmDateChange = (val, flag) => {
@@ -157,12 +130,6 @@ const CostList = (props) => {
             <Text style={styles.regBtnText}>등록</Text>
           </TouchableOpacity>
         </View>
-        <TempoModal
-          openModal={openModal}
-          onClick={modalOnClick}
-          onClose={() => setOpenmodal(false)}
-          option={eventOption}
-        />
         <DateTimePickerModal
           isVisible={dateState.viewModal}
           mode="date"
