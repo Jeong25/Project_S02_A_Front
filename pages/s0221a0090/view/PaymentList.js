@@ -95,8 +95,6 @@ const PaymentList = (props) => {
           <Text style={styles.title}>결제요청현황</Text>
         </View>
 
-        <View style={styles.inner}>
-
           <View style={styles.layer1}>
             <View style={styles.searchDate}>
               <Text style={styles.inputDate}
@@ -120,7 +118,6 @@ const PaymentList = (props) => {
             </View>
           </View>
           <View style={styles.divider}></View>
-        </View>
         <View style={styles.cellWrap}>
           <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
             {listData.map((t, i) => listItem(t, i))}

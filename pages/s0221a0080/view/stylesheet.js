@@ -6,16 +6,18 @@ export const styleSheet = (windowHeight, windowWidth) => {
   return StyleSheet.create({
 
     "wrap": {
-      "width": "100%",
-      "height": '100%',
+      'position': 'relative',
+      "width": '100%',
+      "height": windowHeight,
       'backgroundColor': 'white',
+      'flex': 1,
     },
 
     "inner": {
-      "width": "85%",
-      'height': '100%',
+      "width": "90%",
       "marginLeft": 'auto',
       "marginRight": 'auto',
+      'position': 'relative',
     },
     "topMenu": {
       "width": "100%",
@@ -52,13 +54,21 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "contentsWrap": {
       "width": "100%",
-      'marginTop': 10
+      'marginTop': 10,
     },
     "contents": {
       'display': 'flex',
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
+      'marginBottom' : '2%',
+    },
+    "renderContents": {
+      'display': 'flex',
+      'flexDirection': 'row',
+      'alignItems': 'center',
+      'justifyContent': 'space-between',
+      'marginBottom' : '2%',
     },
 
     "inputWrap": {
@@ -101,6 +111,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'textAlign': 'left',
       'color': '#383838',
       "fontSize": 13,
+      'marginTop' : -5,
       'marginLeft' : 11,
       'paddingHorizontal' : 10,
       'paddingBottom': -10,
@@ -114,10 +125,10 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'color': '#383838',
       'textAlign': 'left',
       "fontSize": 13,
+      'marginTop' : -5,
       'marginLeft' : 10,
       'paddingLeft': 10,
       'paddingBottom': -10,
-      'backgroundColor' :'green'
      
     },
     "centerAlignText": {
@@ -128,6 +139,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'color': '#383838',
       'textAlign': 'center',
       "fontSize": 13,
+      'marginTop': -5,
       'paddingBottom': -10,
     },
     "rightAlignText": {
@@ -138,23 +150,11 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'color': '#383838',
       'textAlign': 'right',
       "fontSize": 13,
-      'marginTop' : -8,
+      'marginTop' : -5,
       'marginLeft' : 5,
       'paddingBottom': -10,
     },
     
-    "centerAlignDate": {
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'lineHeight': 30,
-      'textAlign': 'center',
-      'color': '#383838',
-      "fontSize": 13,
-      'marginTop': 10,
-      'marginBottom': 5,
-      'backgroundColor' :'red'
-    },
-   
     "textLongAlignCenter": {
       'width' : '85%',
       "fontFamily": "Apple SD Gothic Neo",
@@ -163,6 +163,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'textAlign': 'center',
       'color': '#383838',
       "fontSize": 13,
+      'marginTop' : 5,
       'paddingHorizontal' : 10,
     },
     
@@ -174,10 +175,10 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'color': '#383838',
       "fontSize": 13,
       'marginLeft' : 10,
+      'marginTop' : -5,
       'paddingLeft' : 10,
       'paddingRight' : 25,
       'paddingBottom': -10,
-      'backgroundColor' : 'blue'
 
     },
     "won": {
@@ -201,9 +202,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'textAlign': 'left',
       'color': '#383838',
       "fontSize": 13,
-      'paddingBottom': -10,
-      'backgroundColor' : 'red',
-      
+      'marginTop' : -5,
+      'paddingBottom': -10,      
     },
     "RhistoryInput": {
       'width' : '80%',
@@ -214,17 +214,21 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontSize": 13,
       'marginTop' : -5,
       'paddingBottom': -10,
-      'backgroundColor' : 'red'
 
     },
 
   
-    'sepLine': {
+    'divider': {
       'width': '100%',
-      'height': 3,
-      'backgroundColor': '#bcbcbc',
-      'marginTop': 20,
+      'height': 10,
+      'backgroundColor': '#e9e9e9',
+      'marginTop': 5,
     },
+
+    'renderWrap' : {
+      'width': '90%',
+    },
+  
 
     "textfield": {
       "height": 30,
@@ -237,13 +241,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontSize": 14,
       "textAlignVertical": "top",
     },
-    'contentsTextarea': {
-      'marginTop': 10,
-      'height': '20%'
-    },
 
     'opinion': {
-      'height': '50%',
+      'height': 50,
       'width': '100%',
       'borderRadius': 10,
       'borderWidth': 2,
@@ -251,19 +251,19 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'marginTop': 10,
       'fontFamily': 'Apple SD Gothic Neo',
       'fontSize': 12,
-      'textAlignVertical': 'top'
+      'textAlignVertical': 'top',
     },
 
     "btnWrap": {
-      "width": "100%",
+      "width": "90%",
       "height": 50,
       'marginLeft': 'auto',
       'marginRight': 'auto',
+      'marginTop': 20,
       "flexDirection": "row",
       "justifyContent": "space-between",
       "alignItems": "center",
-      'marginBottom': 40,
-      "zIndex": 9
+      "zIndex": 9,
     },
     'confBtn': {
 

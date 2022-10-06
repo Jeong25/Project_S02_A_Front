@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -9,8 +9,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import numberToCost from '../../common/util/numberToCost';
 
 const Payment = (props) => {
-  const [headerData, setHeaderData] = useState({})
-  const [detailData, setDetailData] = useState([])
+  const height = Dimensions.get('window').height
+  const [detailData, setDetailData] = useState({})
   const [inputData, setInputData] = useState({})
   const styles = styleSheet()
 
@@ -50,7 +50,6 @@ const Payment = (props) => {
   }
 
   return (
-    <View>
       <View style={styles.wrap}>
         <KeyboardAwareScrollView
           resetScrollToCoords={{ x: 0, y: 0 }}
@@ -60,6 +59,8 @@ const Payment = (props) => {
           enableAutomaticScroll={true}
           keyboardShouldPersistTaps='always'
           nestedScrollEnabled={true}
+          contentContainerStyle={{ height: height + 80 }}
+
         >
 
           <View style={styles.topMenu}>
@@ -128,12 +129,16 @@ const Payment = (props) => {
                   value={headerData.useComment}
                 />
               </View>
+            </View>
+          </View>
+            <View style={styles.divider}></View>
 
-              <View style={styles.sepLine}></View>
-
+            <View style={styles.inner}>
+              <View style={styles.contentsWrap}>
               {detailData.length > 0 ?
                 detailData.map((v, k) => (
-                  <View key={k}>
+                
+                    <View key={k}>
                     <View style={styles.contents}>
                       <Text style={styles.label}>결제자명</Text>
                       <TextInput style={styles.centerAlignText} value={v.paiedName}></TextInput>
@@ -148,8 +153,8 @@ const Payment = (props) => {
                       <Text style={styles.label}>결제의견</Text>
                       <TextInput style={styles.RhistoryInput} value={v.payComment}></TextInput>
                     </View>
-                    <View style={styles.sepLine}></View>
-                  </View>
+                    <View style={styles.divider}></View>
+                    </View>
                 )) :
                 <View>
                   <View style={styles.contents}>
@@ -166,7 +171,7 @@ const Payment = (props) => {
                     <Text style={styles.label}>결제의견</Text>
                     <TextInput style={styles.RhistoryInput}></TextInput>
                   </View>
-                  <View style={styles.sepLine}></View>
+                  <View style={styles.divider}></View>
                 </View>
               }
 
@@ -176,6 +181,7 @@ const Payment = (props) => {
               </View>
 
             </View>
+            </View>
             <View style={styles.btnWrap}>
               <TouchableOpacity onPress={() => requestPay("Y")}>
                 <Text style={styles.confBtn}>승인</Text>
@@ -184,10 +190,9 @@ const Payment = (props) => {
                 <Text style={styles.rejBtn}>반려</Text>
               </TouchableOpacity>
             </View>
-          </View>
 
         </KeyboardAwareScrollView>
-      </View>
+      
       <Footer
         navigation={props.navigation}
       />

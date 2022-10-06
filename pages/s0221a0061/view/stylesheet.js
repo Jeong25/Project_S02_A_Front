@@ -14,8 +14,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'flex': 1,
     },
     "inner": {
-      "width": "85%",
-      'height': '100%',
+      "width": "90%",
       "marginLeft": 'auto',
       "marginRight": 'auto',
       'position': 'relative',
@@ -99,6 +98,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "color": "#f15a24",
       "fontWeight": '700',
       "fontSize": 13,
+      'marginTop': 5,
     },
 
     "modifyText": {
@@ -118,7 +118,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'color': '#383838',
       'textAlign': 'left',
       "fontSize": 13,
-      'marginLeft' : 10,
+      'marginLeft' : 13,
       'marginTop' : -8,
       'paddingLeft': 10,
       'paddingBottom': -10,
@@ -343,13 +343,11 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'marginRight': 'auto',
       'marginTop': 3,
     },
-    'sepLine': {
-
+    'divider': {
       'width': '100%',
-      'height': 3,
-      'backgroundColor': '#bcbcbc',
-      'marginTop': 10,
-
+      'height': 10,
+      'backgroundColor': '#e9e9e9',
+      'marginTop': 5,
     },
 
     "textfield": {
@@ -398,7 +396,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "alignItems": "center",
     },
     "modifyBtnWrap": {
-      "width": "100%",
+      "width": "90%",
       "height": 50,
       'marginLeft': 'auto',
       'marginRight': 'auto',
@@ -444,85 +442,12 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "textAlign": "center",
       "lineHeight": 50,
     },
-    'bottomMenu': {
-      'width': '100%',
-      'height': 80,
-      'backgroundColor': 'white',
-      'position': 'absolute',
-      'bottom': 0,
-      'flexDirection': 'row',
-      'alignItems': 'center',
-      'justifyContent': 'space-around',
-      'paddingHorizontal': 30,
-      'borderTopWidth': 2,
-      'borderTopColor': "rgba(112, 112, 112 , 0.3)",
 
-
-    },
-    'scanBtnIcon': {
-      'width': 30,
-      'height': 30,
+    'renderInner' : {
+      'width' : '90%',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-    },
-
-    'homeBtn': {
-
-      'alignItems': 'center',
-    },
-
-    'homeIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-    },
-    'costIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-
-    },
-    'paymentIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-    },
-
-    'homeText': {
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5,
-      'textAlign': 'center'
-
-    },
-    'costText': {
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5
-
-    },
-    'paymentText': {
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5
-    },
-    'qrscanText': {
-      'width': 50,
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5,
-      'textAlign': 'center',
-    },
+    }
+    
   })
 }

@@ -89,8 +89,14 @@ const CostList = (props) => {
             </TouchableOpacity>
           </View>
           <Text style={styles.title}>비용요청현황</Text>
+            <View style={styles.regBtnWrap}>
+            <TouchableOpacity onPress={() => {
+              props.navigation.navigate('Cost', { refresh: callList })
+            }}>
+              <Text style={styles.regBtnText}>등록</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.inner}>
           <View style={styles.layer1}>
             <View style={styles.searchDate}>
               <Text style={styles.inputDate}
@@ -113,23 +119,16 @@ const CostList = (props) => {
                 <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
               </TouchableOpacity>
             </View>
-          </View>
+        </View>
           <View style={styles.divider}></View>
 
-        </View>
         <View style={styles.cellWrap}>
-          <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
-            {listData.map((t, i) => listItem(t, i))}
+          <ScrollView
+          contentContainerStyle={{ flexGrow: 1 }} >
+          {listData.map((t, i) => listItem(t, i))}
           </ScrollView>
         </View>
 
-        <View style={styles.regBtnWrap}>
-          <TouchableOpacity style={styles.regBtn} onPress={() => {
-            props.navigation.navigate('Cost', { refresh: callList })
-          }}>
-            <Text style={styles.regBtnText}>등록</Text>
-          </TouchableOpacity>
-        </View>
         <DateTimePickerModal
           isVisible={dateState.viewModal}
           mode="date"

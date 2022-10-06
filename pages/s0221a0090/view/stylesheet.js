@@ -69,8 +69,10 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     "layer1": {
+      "marginLeft": 'auto',
+      "marginRight": 'auto',
       'marginTop': 20,
-      "width": "100%",
+      "width": "90%",
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
@@ -135,26 +137,23 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "cellWrap": {
       "width": "100%",
-      "height": "80%",
+      "height": "65%",
       "position": "absolute",
       "top": 165,
       'zIndex': 3,
-      'marginTop': -18,
-      'paddingBottom': '20%',
     },
     'divider': {
       'width': '100%',
-      'height': 2,
-      'backgroundColor': '#bcbcbc',
+      'height': 8,
+      'backgroundColor': '#e9e9e9',
       'marginLeft': 'auto',
       'marginRight': 'auto',
       'marginTop': 20,
-      'zIndex': 9,
     },
     'cellDivider': {
       'width': '85%',
       'height': 2,
-      'backgroundColor': '#bcbcbc',
+      'backgroundColor': '#e9e9e9',
       'marginLeft': 'auto',
       'marginRight': 'auto',
       'marginTop': 5,
