@@ -24,11 +24,11 @@ const PaymentList = (props) => {
   }, [])
 
   const callList = async () => {
-    const memberId = await AsyncStorage.getItem('memberId')
-    const eventCode = await AsyncStorage.getItem('eventCode')
     const { confirmFromDate, confirmToDate } = dateState
     const confirmFromVal = convertDateToVal(confirmFromDate)
     const confirmToVal = convertDateToVal(confirmToDate)
+    const memberId = await AsyncStorage.getItem('memberId')
+    const eventCode = await AsyncStorage.getItem('eventCode')
     const response = await costPayListReq(memberId, confirmFromVal, confirmToVal, eventCode)
     setListData(response?.data?.data || [])
   }
@@ -62,7 +62,7 @@ const PaymentList = (props) => {
       return (
         <View key={index}>
           <TouchableOpacity onPress={() => {
-            props.navigation.navigate('Payment', { eventUseId: eventUseId })
+            props.navigation.navigate('Payment', { eventUseId: eventUseId, refresh: callList })
           }}>
             <View style={styles.cell} >
               <View style={styles.cellInner}>

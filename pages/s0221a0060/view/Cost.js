@@ -17,6 +17,7 @@ const Cost = (props) => {
   const [memberName, setMemberName] = useState('')
   const [memberId, setMemberId] = useState('')
   const [mobileId, setMobileId] = useState('')
+  const [eventName, setEventName] = useState('')
   const [dateState, setDateState] = useState({
     viewModal: false,
     confirmVal: '',
@@ -24,7 +25,6 @@ const Cost = (props) => {
   })
   const [inputData, setInputData] = useState({
     "eventId": "",
-    "eventNm": "",
     "useAmount": "",
     "useComment": "",
     "useProStatus": "A",
@@ -66,25 +66,27 @@ const Cost = (props) => {
 
   const regist = async () => {
     if (inputData.useSubject === '') {
-      alert('사용 제목을 확인해 주세요.')
+      alert('사용 제목을 입력해 주세요.')
       return
     }
-    if (inputData.eventId === '') {
-      alert('행사명을 확인해 주세요.')
+    if (inputData.eventNm === '') {
+      alert('행사명을 입력해 주세요.')
       return
     }
     if (inputData.usedDate === '') {
-      alert('사용 일자를 확인해 주세요.')
+      alert('사용 일자를 입력해 주세요.')
       return
     }
     if (inputData.useAmount === '' || Number(inputData.useAmount) < 1) {
-      alert('사용 금액을 확인해 주세요.')
+      alert('사용 금액을 입력해 주세요.')
       return
     }
-    if (inputData.useReceiptId === '') {
-      alert('첨부파일을 확인해 주세요.')
-      return
-    }
+    // if (inputData.useReceiptId === '') {
+    //   alert('첨부파일을 입력해 주세요.')
+    //   return
+    // }
+
+    console.log(JSON.stringify(inputData))
 
     const body = { ...inputData, usedDate: dateState.confirmVal, "eventUserId": memberId, }
     console.log(JSON.stringify(body, null, 4))
@@ -180,8 +182,8 @@ const Cost = (props) => {
   }
 
   const getEventInfo = (params) => {
+    setEventName(params.eventNm)
     setInputData({ ...inputData, eventId: params.eventId })
-    setInputData({ ...inputData, eventNm: params.eventNm })
   }
 
   return (
@@ -222,7 +224,7 @@ const Cost = (props) => {
               <TextInput
                 style={styles.input}
                 editable={false}
-                value={inputData.eventNm}></TextInput>
+                value={eventName}></TextInput>
             </View>
             <View style={styles.inputWrap}>
               <Text style={styles.label} >사용일자</Text>
@@ -238,7 +240,7 @@ const Cost = (props) => {
               <TextInput
                 style={styles.amountInput}
                 onChange={(e) => {
-                  console.log('금액Log:' + e.nativeEvent.text.replace(/,/gi, ""))
+                  console.log(e.nativeEvent.text.replace(/,/gi, ""))
                   setInputData({ ...inputData, useAmount: e.nativeEvent.text.replace(/,/gi, "") })
                 }}
                 value={numberToCost(inputData?.useAmount)}

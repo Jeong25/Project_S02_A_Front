@@ -8,11 +8,12 @@ import { Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styleSheet } from './stylesheet';
 import { qrInfoReq, qrScanReq } from '../store/store';
-// import client from '../../common/api/client';
 
 const Qrscan = (props) => {
   const [qrInfo, setQrInfo] = useState({})
   const [dateData, setDateData] = useState('')
+  const [orgId, setOrgId] = useState('')
+  const [eventId, setEventId] = useState('')
 
   const camera = useRef(null)
   const [controlCamera, setControlCamera] = useState(false)
@@ -22,6 +23,8 @@ const Qrscan = (props) => {
 
   const getQrInfo = async () => {
     const defaultEventId = await AsyncStorage.getItem('defaultEventId')
+    const orgId = await AsyncStorage.getItem('orgId')
+    setOrgId(orgId)
     const res = await qrInfoReq(defaultEventId)
     setQrInfo(res.data.data)
     const val1 = res.data.data.eventStartDate.split(' ')
@@ -39,8 +42,7 @@ const Qrscan = (props) => {
     const qrData = JSON.parse(e.data)
     console.log(JSON.stringify(qrData, null, 4))
 
-    // const response = await client.post('rest/v1/s0221a0020/qr-scan', { ...qrData, "orgId": "39", "eventId": "4" })
-    const response = await qrScanReq(...qrData, 39, 4);
+    const response = await qrScanReq(...qrData, orgId, eventId);
     console.log(JSON.stringify(response, null, 4))
 
     setTimeout(() => {
@@ -50,6 +52,7 @@ const Qrscan = (props) => {
   }
 
   const getEventInfo = async (params) => {
+    setEventId(params.eventId)
     const res = await qrInfoReq(params.eventId)
     setQrInfo(res.data.data)
     const val1 = res.data.data.eventStartDate.split(' ')

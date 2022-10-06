@@ -5,8 +5,8 @@ import { styleSheet } from './stylesheet';
 import { retrieveCostReq } from '../store/store';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Footer from '../../common/footer/Footer';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
 
 const CostList = (props) => {
@@ -22,15 +22,7 @@ const CostList = (props) => {
   useEffect(() => {
     callList()
   }, [])
-
-  const convertDateToVal = (val) => {
-    console.log(val)
-    const year = val.getFullYear()
-    const month = val.getMonth() + 1
-    const date = val.getDate()
-    return `${year}-${month}-${date}`
-  }
-
+  
   const callList = async () => {
     const { confirmFromDate, confirmToDate } = dateState
     const confirmFromVal = convertDateToVal(confirmFromDate)
@@ -39,6 +31,14 @@ const CostList = (props) => {
     const eventCode = await AsyncStorage.getItem('eventCode')
     const response = await retrieveCostReq(memberId, confirmFromVal, confirmToVal, eventCode)
     setListData(response?.data?.data || [])
+  }
+  
+  const convertDateToVal = (val) => {
+    console.log(val)
+    const year = val.getFullYear()
+    const month = val.getMonth() + 1
+    const date = val.getDate()
+    return `${year}-${month}-${date}`
   }
 
   const confirmDateChange = (val, flag) => {
