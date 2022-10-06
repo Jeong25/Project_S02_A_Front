@@ -86,6 +86,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'justifyContent': 'space-between',
       'marginBottom': '5%',
     },
+    
     "label": {
       "fontFamily": "Apple SD Gothic Neo",
       "color": "#f15a24",
@@ -237,8 +238,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'color': '#383838',
       "fontSize": 13,
       'marginTop' : -5,
-      'paddingBottom': -10,
-  
+      'paddingBottom': -10,  
     },
     
     "modifyWon": {

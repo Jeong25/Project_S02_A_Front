@@ -301,7 +301,7 @@ const Cost = (props) => {
           </View>
           <View style={styles.btnWrap}>
             <TouchableOpacity onPress={regist}>
-              <Text style={styles.requestBtn}>등록</Text>
+              <Text style={styles.requestBtn}>저장</Text>
             </TouchableOpacity>
           </View>
         </View>
