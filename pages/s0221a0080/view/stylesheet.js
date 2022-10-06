@@ -214,6 +214,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontSize": 13,
       'marginTop' : -5,
       'paddingBottom': -10,
+      'backgroundColor' : 'red'
 
     },
 
