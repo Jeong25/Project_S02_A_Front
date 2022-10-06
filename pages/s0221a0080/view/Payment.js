@@ -94,7 +94,7 @@ const Payment = (props) => {
                 <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
               </TouchableOpacity>
             </View>
-            <Text style={styles.topTitle}>상세현황</Text>
+            <Text style={styles.topTitle}>승인처리</Text>
           </View>
           <View style={styles.inner}>
             <View style={styles.contentsWrap}>
@@ -120,11 +120,6 @@ const Payment = (props) => {
                 <View style={styles.inputWrap}>
                   <TextInput
                     style={styles.inputTextLong}></TextInput>
-                  <View style={styles.searchBtn} >
-                    <TouchableOpacity>
-                      <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
-                    </TouchableOpacity>
-                  </View>
                 </View>
               </View>
               <View style={styles.contents}>
@@ -133,12 +128,6 @@ const Payment = (props) => {
                   <View style={styles.inputWrap}>
                     <TextInput style={styles.dateText}>
                     </TextInput>
-
-                    <View style={styles.dateSearchBtn} >
-                      <TouchableOpacity>
-                        <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
-                      </TouchableOpacity>
-                    </View>
                   </View>
                 </View>
                 <View style={styles.contentsInner}>
@@ -154,19 +143,14 @@ const Payment = (props) => {
               <View style={styles.contents}>
                 <Text style={styles.label}>첨부파일</Text>
                 <View style={styles.inputWrap}>
-                  <TextInput style={styles.inputTextLong}></TextInput>
-                  <View style={styles.addBtn}>
-                    <TouchableOpacity onPressIn={() => ShowPicker()}>
-                      <ReactImage source={require('./assets/plus.png')} style={styles.addIcon} ></ReactImage>
-                    </TouchableOpacity>
-                  </View>
+                  <TextInput style={styles.fileInput}></TextInput>
                 </View>
 
               </View>
               <View style={styles.contents}>
                 <Text style={styles.label}>사용내역</Text>
                 <TextInput
-                  style={styles.inputTextLong}
+                  style={styles.historyInput}
                   multiline={true}
                   onChange={(e) => setInputData({ ...inputData, useComment: e.nativeEvent.text })}
                   value={inputData.useComment}
@@ -184,12 +168,12 @@ const Payment = (props) => {
 
               <View style={styles.contents}>
                 <Text style={styles.label}>결제일자</Text>
-                <TextInput style={styles.modifyTextLongAlignCenter}>2022-01-01</TextInput>
+                <TextInput style={styles.textLongAlignCenter}>2022-01-01</TextInput>
 
               </View>
               <View style={styles.contents}>
                 <Text style={styles.label}>결제의견</Text>
-                <TextInput style={styles.modifyTextLong}>상기 내역을 승인함.</TextInput>
+                <TextInput style={styles.RhistoryInput}>상기 내역을 승인함.</TextInput>
               </View>
 
               <View style={styles.sepLine}></View>

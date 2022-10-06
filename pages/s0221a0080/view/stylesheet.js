@@ -50,26 +50,21 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "height": 30
     },
 
-
-
     "contentsWrap": {
       "width": "100%",
-      'marginTop': -5
+      'marginTop': 10
     },
     "contents": {
       'display': 'flex',
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
-      'marginBottom': -20,
     },
-
 
     "inputWrap": {
       'flexDirection': 'row',
       'alignItems': 'center',
-      'justifyContent': 'space-between',
-      'marginBottom': -20,
+      'justifyContent' : 'space-between'
     },
     "contentsInner": {
       'width': '45%',
@@ -98,36 +93,54 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'textAlign': 'center',
       "fontSize": 13,
     },
+    "inputTextLong": {
+      'width' : '80%',
+      'height' :40,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'textAlign': 'left',
+      'color': '#383838',
+      "fontSize": 13,
+      'marginLeft' : 11,
+      'paddingHorizontal' : 10,
+      'paddingBottom': -10,
+    },
   
     "dateText": {
-      'width': 90,
-      'lineHeight': 5,
+      'width': '82%',
+      'height' : 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'color': '#383838',
-      'textAlign': 'center',
+      'textAlign': 'left',
       "fontSize": 13,
+      'marginLeft' : 10,
+      'paddingLeft': 10,
+      'paddingBottom': -10,
+      'backgroundColor' :'green'
+     
     },
-  
     "centerAlignText": {
       'width': 80,
-      'lineHeight': 23,
+      'height' :40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'color': '#383838',
       'textAlign': 'center',
       "fontSize": 13,
-      'marginTop': 5,
+      'paddingBottom': -10,
     },
     "rightAlignText": {
-      'width': 80,
-      'lineHeight': 23,
+      'width': 75,
+      'height' :40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'color': '#383838',
       'textAlign': 'right',
       "fontSize": 13,
-      'marginTop': 5,
+      'marginTop' : -8,
+      'marginLeft' : 5,
+      'paddingBottom': -10,
     },
     
     "centerAlignDate": {
@@ -142,7 +155,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'backgroundColor' :'red'
     },
    
-    "modifyTextLongAlignCenter": {
+    "textLongAlignCenter": {
       'width' : '85%',
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
@@ -150,22 +163,21 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'textAlign': 'center',
       'color': '#383838',
       "fontSize": 13,
-      'marginTop': 10,
-      'marginBottom': 5,
       'paddingHorizontal' : 10,
     },
     
-    "inputTextLong": {
-      'width' : '85%',
+    "fileInput": {
+      'width' : '88%',
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
-      'lineHeight': 30,
       'textAlign': 'left',
       'color': '#383838',
       "fontSize": 13,
-      'marginTop': 10,
-      'marginBottom': 5,
-      'paddingHorizontal' : 10,
+      'marginLeft' : 10,
+      'paddingLeft' : 10,
+      'paddingRight' : 25,
+      'paddingBottom': -10,
+      'backgroundColor' : 'blue'
 
     },
     "won": {
@@ -176,44 +188,37 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'marginTop': 10,
       'marginBottom': 5,
     },
-    "searchBtn": {
-      "marginTop": 5,
-      "marginLeft": 5,
-      "width": 22,
-      "height": 22,
-      'zIndex': 1
-    },
-    "dateSearchBtn": {
-      "marginTop": 5,
-      "width": 22,
-      "height": 22,
-      'zIndex': 1
-    },
-    "searchIcon": {
-      "width": "100%",
-      "height": "100%",
-    },
-
+ 
     "inputWrap": {
       'flexDirection': 'row',
       'alignItems': 'center',
     },
 
-    "addBtn": {
+    "historyInput": {
+      'width' : '80%',
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'textAlign': 'left',
+      'color': '#383838',
+      "fontSize": 13,
+      'paddingBottom': -10,
+      'backgroundColor' : 'red',
+      
+    },
+    "RhistoryInput": {
+      'width' : '80%',
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'textAlign': 'left',
+      'color': '#383838',
+      "fontSize": 13,
+      'marginTop' : -5,
+      'paddingBottom': -10,
+      'backgroundColor' : 'red'
 
-      "width": 20,
-      "height": 20,
-      "backgroundColor": "#f15a24",
-      "borderRadius": 50,
-      'zIndex': 1
     },
-    "addIcon": {
-      "width": 13,
-      "height": 13,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-      'marginTop': 3,
-    },
+
+  
     'sepLine': {
       'width': '100%',
       'height': 3,
