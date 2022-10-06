@@ -93,8 +93,8 @@ const CostList = (props) => {
       const title = item?.useSubject
       const cutTitle = title ? `${title?.substring(0, 11)}...` : ""
       return (
-        <>
-          <TouchableOpacity key={index} onPress={() => { props.navigation.navigate('CostModify', { data: { ...item }, refresh: callList }) }}>
+        <View key={index}>
+          <TouchableOpacity onPress={() => { props.navigation.navigate('CostModify', { data: { ...item }, refresh: callList }) }}>
             <View style={styles.cell} >
               <View style={styles.cellInner}>
                 <Text style={styles.cellTitle}>{cutTitle}</Text>
@@ -106,12 +106,11 @@ const CostList = (props) => {
             </View>
           </TouchableOpacity>
           <View style={styles.cellDivider}></View>
-        </>
-
+        </View>
       )
     } catch (error) {
       console.log(error)
-      return <View></View>
+      return <View key={index}></View>
     }
   }
 
