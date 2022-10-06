@@ -18,9 +18,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "position": "relative",
       "marginLeft": 'auto',
       "marginRight": 'auto',
-      'zIndex': 2
-
+      'zIndex': 2,
     },
+
     "topMenu": {
 
       "width": "100%",
@@ -57,8 +57,10 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     "layer1": {
+      "marginLeft": 'auto',
+      "marginRight": 'auto',
       'marginTop': 20,
-      "width": "100%",
+      "width": "90%",
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
@@ -125,14 +127,13 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "position": "absolute",
       "top": 165,
       'zIndex': 3,
-      'marginTop': -20,
-      'paddingBottom': '20%',
+      
     },
 
     'divider': {
       'width': '100%',
-      'height': 2,
-      'backgroundColor': '#bcbcbc',
+      'height': 8,
+      'backgroundColor': '#e9e9e9',
       'marginLeft': 'auto',
       'marginRight': 'auto',
       'marginTop': 20,
@@ -140,7 +141,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
     'cellDivider': {
       'width': '90%',
       'height': 2,
-      'backgroundColor': '#bcbcbc',
+      'backgroundColor': '#e9e9e9',
       'marginLeft': 'auto',
       'marginRight': 'auto',
       'marginTop': 5,
@@ -197,34 +198,20 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     "regBtnWrap": {
-      'position': 'absolute',
-      'left': 0,
-      'right': 0,
-      'bottom': 100,
-      "width": '100%',
-      'height': 80,
-      'zIndex': 9,
+      'position' : 'absolute',
+      'right': 16,
+      'top': 13,
+      "width": 40,
+      "height": 40,
     },
 
-    "regBtn": {
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-      "width": '90%',
-      'height': 80,
-      "borderRadius": 50,
-      'backgroundColor': "#F15A24",
-      'elevation': 6,
-    },
     "regBtnText": {
-      'width': '100%',
-      'height': '100%',
-      'fontSize': 36,
+      'fontSize': 16,
+      'lineHeight' : 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '700',
       'color': 'white',
-      'textAlign': 'center',
-      'lineHeight': 80,
-
+      'textAlign' : 'center',
     },
     'bottomMenu': {
       'width': '100%',

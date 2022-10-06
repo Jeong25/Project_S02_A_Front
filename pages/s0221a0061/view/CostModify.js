@@ -131,6 +131,7 @@ const CostModify = (props) => {
   }
 
   return (
+    
     <View style={styles.wrap}>
       <KeyboardAwareScrollView
         resetScrollToCoords={{ x: 0, y: 0 }}
@@ -225,39 +226,43 @@ const CostModify = (props) => {
             {detailData.length > 0 ?
               detailData.map((v, i) => (
                 <View key={i}>
-                  <View style={styles.contents}>
-                    <Text style={styles.modifyLabel}>결제자명</Text>
-                    <TextInput style={styles.RcenterAlignText} value={v.paiedName}></TextInput>
-                    <Text style={styles.modifyLabel}>결제여부</Text>
-                    <TextInput style={styles.RcenterAlignText} value={v.payResultNm}></TextInput>
+                  <View style={styles.renderInner}>
+                    <View style={styles.contents}>
+                      <Text style={styles.modifyLabel}>결제자명</Text>
+                      <TextInput style={styles.RcenterAlignText} value={v.paiedName}></TextInput>
+                      <Text style={styles.modifyLabel}>결제여부</Text>
+                      <TextInput style={styles.RcenterAlignText} value={v.payResultNm}></TextInput>
+                    </View>
+                    <View style={styles.contents}>
+                      <Text style={styles.modifyLabel}>결제일자</Text>
+                      <TextInput style={styles.modifyTextLongAlignCenter} value={v.payDate}></TextInput>
+                    </View>
+                    <View style={styles.contents}>
+                      <Text style={styles.modifyLabel}>결제의견</Text>
+                      <TextInput style={styles.RhistoryInput} value={v.payComment}></TextInput>
+                    </View>
                   </View>
-                  <View style={styles.contents}>
-                    <Text style={styles.modifyLabel}>결제일자</Text>
-                    <TextInput style={styles.modifyTextLongAlignCenter} value={v.payDate}></TextInput>
-                  </View>
-                  <View style={styles.contents}>
-                    <Text style={styles.modifyLabel}>결제의견</Text>
-                    <TextInput style={styles.RhistoryInput} value={v.payComment}></TextInput>
-                  </View>
-                  <View style={styles.sepLine}></View>
+                <View style={styles.divider}></View>
                 </View>
               )) :
               <View>
-                <View style={styles.contents}>
-                  <Text style={styles.modifyLabel}>결제자명</Text>
-                  <TextInput style={styles.RcenterAlignText}></TextInput>
-                  <Text style={styles.modifyLabel}>결제여부</Text>
-                  <TextInput style={styles.RcenterAlignText}></TextInput>
+                <View style={styles.renderInner}>
+                  <View style={styles.contents}>
+                    <Text style={styles.modifyLabel}>결제자명</Text>
+                    <TextInput style={styles.RcenterAlignText}></TextInput>
+                    <Text style={styles.modifyLabel}>결제여부</Text>
+                    <TextInput style={styles.RcenterAlignText}></TextInput>
+                  </View>
+                  <View style={styles.contents}>
+                    <Text style={styles.modifyLabel}>결제일자</Text>
+                    <TextInput style={styles.modifyTextLongAlignCenter}></TextInput>
+                  </View>
+                  <View style={styles.contents}>
+                    <Text style={styles.modifyLabel}>결제의견</Text>
+                    <TextInput style={styles.RhistoryInput}></TextInput>
+                  </View>
                 </View>
-                <View style={styles.contents}>
-                  <Text style={styles.modifyLabel}>결제일자</Text>
-                  <TextInput style={styles.modifyTextLongAlignCenter}></TextInput>
-                </View>
-                <View style={styles.contents}>
-                  <Text style={styles.modifyLabel}>결제의견</Text>
-                  <TextInput style={styles.RhistoryInput}></TextInput>
-                </View>
-                <View style={styles.sepLine}></View>
+                <View style={styles.divider}></View>
               </View>}
           </View>
 

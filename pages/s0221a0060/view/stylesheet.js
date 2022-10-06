@@ -112,19 +112,19 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "fontSize": 13,     
     },
     "modifyDateText": {
-      'width': '82%',
+      'width': '80%',
       'height' : 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'color': '#383838',
       'textAlign': 'left',
       "fontSize": 13,
-      'marginLeft' : 10,
       'marginTop' : -8,
       'paddingLeft': 10,
       'paddingBottom': -10,
       'borderBottomWidth' :1,
       'borderBottomColor' :'#888',
+      'backgroundColor' : 'red'
     },
 
     "centerAlignText": {
@@ -185,7 +185,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'textAlign': 'left',
       'color': '#383838',
       "fontSize": 13,
-      'marginTop' : -5,
+      'marginTop' : -8,
       'marginLeft' : 11,
       'paddingHorizontal' : 10,
       'paddingBottom': -10,
@@ -344,12 +344,10 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'marginTop': 3,
     },
     'sepLine': {
-
       'width': '100%',
       'height': 3,
       'backgroundColor': '#bcbcbc',
       'marginTop': 10,
-
     },
 
     "textfield": {
