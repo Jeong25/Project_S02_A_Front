@@ -6,9 +6,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { registerEventCostReq } from '../store/store';
-// import { eventListReq } from '../../s0221a2000/store/store';
-// import client from '../../common/api/client';
-// import TempoModal from '../../common/modal/s0221a2000/modal';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AlertAsync from 'react-native-alert-async';
@@ -25,7 +22,6 @@ const Cost = (props) => {
     confirmVal: '',
     confirmDate: new Date()
   })
-  const [eventOption, setEventOption] = useState([])
   const [inputData, setInputData] = useState({
     "eventId": "",
     "eventNm": "",
@@ -37,13 +33,11 @@ const Cost = (props) => {
     "useSubject": "",
     "usedDate": ""
   })
-  // const [openModal, setOpenmodal] = useState(false)
   const [fileState, setFileState] = useState({
   })
 
   useEffect(() => {
     getData()
-    // callModalData()
   }, [])
 
   const getData = async () => {
@@ -61,11 +55,6 @@ const Cost = (props) => {
     Keyboard.dismiss()
     setDateState({ ...dateState, viewModal: true })
   }
-
-  // const openEventModal = () => {
-  //   Keyboard.dismiss()
-  //   setOpenmodal(true)
-  // }
 
   const confirmDateChange = (val) => {
     const year = val.getFullYear()
@@ -103,11 +92,6 @@ const Cost = (props) => {
       'Content-Type': 'multipart/form-data; boundary=someArbitraryUniqueString',
     };
 
-    // const response = await client.post(`rest/v1/s0221a0060/register-event-cost`, body, headers).catch((e) => {
-    //   console.log('error')
-    //   console.log(JSON.stringify(e, null, 4))
-    // })
-    // console.log(JSON.stringify(response, null, 4))
     const response = await registerEventCostReq(body, headers)
     if (response.status === 200) {
       alert('비용 청구 영수증 등록 되었습니다.')
@@ -123,22 +107,6 @@ const Cost = (props) => {
     }
     props.navigation.goBack()
   }
-
-  // const callModalData = async () => {
-  //   // const res = await client.get(`/rest/v1/s0221a2000/event-list?&orgId=39`).catch(e => {
-  //   //   console.log(JSON.stringify(e, null, 4))
-  //   // })
-  //   // console.log(JSON.stringify(res, null, 4))
-  //   const res = await eventListReq(39)
-  //   if (res.status === 200) {
-  //     const option = res.data?.data?.map(i => {
-  //       return {
-  //         text: i.eventNm, value: i.eventId
-  //       }
-  //     })
-  //     setEventOption(option)
-  //   }
-  // }
 
   const ShowPicker = async () => {
     let options = {
@@ -211,11 +179,6 @@ const Cost = (props) => {
     }
   }
 
-  // const onClick = (e, text) => {
-  //   setInputData({ ...inputData, eventId: e, eventNm: text })
-  //   setOpenmodal(false)
-  // }
-
   return (
     <View style={styles.wrap}>
 
@@ -274,7 +237,6 @@ const Cost = (props) => {
                   console.log('금액Log:' + e.nativeEvent.text.replace(/,/gi, ""))
                   setInputData({ ...inputData, useAmount: e.nativeEvent.text.replace(/,/gi, "") })
                 }}
-                // value={inputData?.useAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 value={numberToCost(inputData?.useAmount)}
                 keyboardType={'number-pad'}
               />
@@ -314,12 +276,6 @@ const Cost = (props) => {
           }
           date={dateState.confirmDate}
         />
-        {/* <TempoModal
-          openModal={openModal}
-          onClick={onClick}
-          onClose={() => setOpenmodal(false)}
-          option={eventOption}
-        /> */}
       </KeyboardAwareScrollView>
       <Footer
         navigation={props.navigation}

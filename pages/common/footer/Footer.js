@@ -16,8 +16,6 @@ const Footer = (props) => {
             } else {
                 setMemberTp(d)
             }
-            console.log(d)
-            console.log('?')
         }
         getPermission()
     }, [])

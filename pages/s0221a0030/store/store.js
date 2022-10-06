@@ -5,7 +5,7 @@ const signUpReq = async (memberName, hpNo, eventCode) => {
         console.log('error!!');
         console.log(JSON.stringify(error.response, null, 4));
     });
-    console.log(JSON.stringify(res, null, 4));
+    console.log('SignUp Store Log: '+JSON.stringify(res, null, 4));
     return res;
 }
 

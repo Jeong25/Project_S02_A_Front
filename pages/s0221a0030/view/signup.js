@@ -105,7 +105,6 @@ const Signup = (props) => {
         return
       } else if (result?.status === 200) {
         const { data } = result
-        console.log('Log1: ' + JSON.stringify(data))
         if (data.massage === '등록되지 않은 부서코드입니다.') {
           alert(data.massage)
           return
@@ -114,19 +113,7 @@ const Signup = (props) => {
         await AsyncStorage.setItem('memberName', paramName || '')
         await AsyncStorage.setItem('hpNo', paramHpNo || '')
         await AsyncStorage.setItem('eventCode', paramEventCode || '')
-
-        const userInfo = await setUserTp()
-        const { orgId, memberTp, orgEventName, mobileId, memberId, eventNm, eventRole, eventId, defaultEventId } = userInfo
-
-        await AsyncStorage.setItem('orgEventName', orgEventName || '')
-        await AsyncStorage.setItem('memberTp', memberTp || '')
-        await AsyncStorage.setItem('mobileId', mobileId || '')
-        await AsyncStorage.setItem('orgId', JSON.stringify(orgId) || '')
-        await AsyncStorage.setItem('memberId', JSON.stringify(memberId) || '')
-        await AsyncStorage.setItem('eventNm', eventNm || '')
-        await AsyncStorage.setItem('eventRole', eventRole || '')
-        await AsyncStorage.setItem('eventId', JSON.stringify(eventId) || '')
-        await AsyncStorage.setItem('defaultEventId', JSON.stringify(defaultEventId) || '')
+        await setUserTp()
 
       } else {
         return

@@ -5,7 +5,7 @@ const registerEventCostReq = async (body, headers) => {
         console.log('error');
         console.log(JSON.stringify(e, null, 4));
     });
-    console.log(JSON.stringify(res, null, 4));
+    console.log('Cost Store Log: '+JSON.stringify(res, null, 4));
     return res;
 }
 

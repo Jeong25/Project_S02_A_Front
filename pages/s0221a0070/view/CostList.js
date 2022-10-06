@@ -4,7 +4,6 @@ import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import { retrieveCostReq } from '../store/store';
 import { eventListReq } from '../../s0221a2000/store/store';
-// import client from '../../common/api/client';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import TempoModal from '../../common/modal/s0221a2000/modal';
@@ -47,19 +46,12 @@ const CostList = (props) => {
     const confirmToVal = convertDateToVal(confirmToDate)
     const memberId = await AsyncStorage.getItem('memberId')
     const eventCode = await AsyncStorage.getItem('eventCode')
-    // const response = await client.get(`rest/v1/s0221a0070/retrieve-cost-req?mobileMemberId=${memberId}&fromDate=${confirmFromVal}&toDate=${confirmToVal}&eventCode=${eventCode}`)
-    //   .catch((e) => console.log(JSON.stringify(e, null, 4)))
-    // console.log(JSON.stringify(response?.data, null, 4))
     const response = await retrieveCostReq(memberId, confirmFromVal, confirmToVal, eventCode)
     setListData(response?.data?.data || [])
   }
 
   const callModalData = async () => {
     const eventCode = await AsyncStorage.getItem('eventCode')
-    // const res = await client.get(`/rest/v1/s0221a2000/event-list?&eventCode=${eventCode}&orgId=39`).catch(e => {
-    //   console.log(JSON.stringify(e, null, 4))
-    // })
-    // console.log(JSON.stringify(res, null, 4))
     const res = await eventListReq(39, eventCode)
     if (res.status === 200) {
       const option = res.data?.data?.map(i => {
@@ -99,7 +91,7 @@ const CostList = (props) => {
               <View style={styles.cellInner}>
                 <Text style={styles.cellTitle}>{cutTitle}</Text>
                 <Text style={styles.cellDate}>
-                  <Text style={styles.name}>{item?.memberName}</Text> {item?.useDate}
+                  <Text style={styles.name}>{item?.memberName}</Text> {item?.usedDate}/{item?.useProStatusNm}
                 </Text>
                 <Text style={styles.cellAmount}>{numberToCost(item?.useAmount) && `${numberToCost(item?.useAmount)} 원`}</Text>
               </View>
