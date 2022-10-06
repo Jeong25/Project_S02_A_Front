@@ -268,14 +268,14 @@ const CostModify = (props) => {
             </View>
             <View style={styles.sepLine}></View>
 
-            {detailData.length < 1 ?
+            {detailData.length > 0 ?
               detailData.map((v, i) => (
                 <View key={i}>
                   <View style={styles.contents}>
                     <Text style={styles.modifyLabel}>결제자명</Text>
                     <TextInput style={styles.RcenterAlignText} value={v.paiedName}></TextInput>
                     <Text style={styles.modifyLabel}>결제여부</Text>
-                    <TextInput style={styles.RcenterAlignText} value={v.useProStatusNm}></TextInput>
+                    <TextInput style={styles.RcenterAlignText} value={v.payResultNm}></TextInput>
                   </View>
                   <View style={styles.contents}>
                     <Text style={styles.modifyLabel}>결제일자</Text>
