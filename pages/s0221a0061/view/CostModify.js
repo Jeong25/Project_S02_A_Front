@@ -6,9 +6,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { eventCostReq, patchEventCostReq, deleteEventCostReq } from '../store/store';
-// import { eventListReq } from '../../s0221a2000/store/store';
-// import client from '../../common/api/client';
-// import TempoModal from '../../common/modal/s0221a2000/modal';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AlertAsync from 'react-native-alert-async';
@@ -24,7 +21,6 @@ const CostModify = (props) => {
     confirmVal: '',
     confirmDate: new Date()
   })
-  // const [eventOption, setEventOption] = useState([])
   const [inputData, setInputData] = useState({
     "eventId": "",
     "eventNm": "",
@@ -37,11 +33,9 @@ const CostModify = (props) => {
   })
   const [headerData, setHeaderData] = useState({})
   const [detailData, setDetailData] = useState([])
-  // const [openModal, setOpenmodal] = useState(false)
 
   useEffect(() => {
     getData()
-    // callModalData()
   }, [props])
 
   const getData = async () => {
@@ -63,25 +57,12 @@ const CostModify = (props) => {
       console.log('CostModify_Log1: ' + JSON.stringify(headerData))
       console.log('CostModify_Log2: ' + JSON.stringify(detailData))
     }
-    // if (!eventUseId) {
-    //   alert('error')
-    //   props.navigation.goBack()
-    // }
-    // const res = await client.get(`rest/v1/s0221a0060/event-cost?eventUseId=${eventUseId}`).catch((e) => {
-    //   console.log(JSON.stringify(e, null, 4))
-    // })
-    // console.log(JSON.stringify(res, null, 4))
   }
 
   const openDateModal = () => {
     Keyboard.dismiss()
     setDateState({ ...dateState, viewModal: true })
   }
-
-  // const openEventModal = () => {
-  //   Keyboard.dismiss()
-  //   setOpenmodal(true)
-  // }
 
   const confirmDateChange = (val) => {
     const year = val.getFullYear()
@@ -93,11 +74,6 @@ const CostModify = (props) => {
 
   const modifyEvent = async () => {
     const body = { ...inputData, usedDate: dateState.confirmVal, }
-    // const response = await client.post(`rest/v1/s0221a0060/patch-event-cost`, body).catch((e) => {
-    //   console.log('error')
-    //   console.log(JSON.stringify(e, null, 4))
-    // })
-    // console.log(JSON.stringify(response, null, 4))
     const response = await patchEventCostReq(body)
 
     if (response.status === 200) {
@@ -107,20 +83,16 @@ const CostModify = (props) => {
 
   const deleteEvent = async () => {
     await AlertAsync(
-      "등록 내역을 삭제합니다.",
-      "정말 삭제하시겠습니까?",
+      "비용 요청건을 취소하시겠습니까?",
+      "",
       [
         {
           text: '예',
           onPress: async () => {
             const { eventUseId } = inputData
-            // const response = await client.post(`/rest/v1/s0221a0060/delete-event-cost`, [eventUseId]).catch((e) => {
-            //   console.log(e)
-            // })
-            // console.log(response)
             const response = await deleteEventCostReq(eventUseId)
             if (response.status === 200) {
-              await AlertAsync('삭제되었습니다.')
+              await AlertAsync('요청 취소 되었습니다.')
               await goback()
             }
           }
@@ -142,21 +114,6 @@ const CostModify = (props) => {
     props.navigation.goBack()
   }
 
-  // const callModalData = async () => {
-  //   // const res = await client.get(`/rest/v1/s0221a2000/event-list?&orgId=39`).catch(e => {
-  //   //   console.log(JSON.stringify(e, null, 4))
-  //   // })
-  //   const res = await eventListReq(39)
-  //   if (res.status === 200) {
-  //     const option = res.data?.data?.map(i => {
-  //       return {
-  //         text: i.eventNm, value: i.eventId
-  //       }
-  //     })
-  //     setEventOption(option)
-  //   }
-  // }
-
   const ShowPicker = () => {
     //launchImageLibrary : 사용자 앨범 접근
     console.log('res');
@@ -168,11 +125,6 @@ const CostModify = (props) => {
       console.log(res);
     }).catch(e => { console.log(e) })
   }
-
-  // const onClick = (e, text) => {
-  //   setInputData({ ...inputData, eventId: e, eventNm: text })
-  //   setOpenmodal(false)
-  // }
 
   return (
     <View style={styles.wrap}>
@@ -304,16 +256,20 @@ const CostModify = (props) => {
                 </View>
                 <View style={styles.sepLine}></View>
               </View>}
+          </View>
 
-          </View>
-          <View style={styles.modifyBtnWrap}>
-            <TouchableOpacity onPress={modifyEvent}>
-              <Text style={styles.requestBtn}>저장</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={deleteEvent}>
-              <Text style={styles.delBtn}>취소</Text>
-            </TouchableOpacity>
-          </View>
+          {headerData.useProStatus === 'A' || headerData.useProStatus === 'E' ?
+            <View style={styles.modifyBtnWrap}>
+              <TouchableOpacity onPress={modifyEvent}>
+                <Text style={styles.requestBtn}>저장</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={deleteEvent}>
+                <Text style={styles.delBtn}>취소</Text>
+              </TouchableOpacity>
+            </View> :
+            <View style={styles.modifyBtnWrap}></View>
+          }
+
         </View>
         <DateTimePickerModal
           isVisible={dateState.viewModal}
@@ -324,12 +280,6 @@ const CostModify = (props) => {
           }
           date={dateState.confirmDate}
         />
-        {/* <TempoModal
-          openModal={openModal}
-          onClick={onClick}
-          onClose={() => setOpenmodal(false)}
-          option={eventOption}
-        /> */}
       </KeyboardAwareScrollView>
       <Footer
         navigation={props.navigation}
