@@ -10,6 +10,7 @@ import numberToCost from '../../common/util/numberToCost';
 
 const Payment = (props) => {
   const height = Dimensions.get('window').height
+  const [headerData, setHeaderData] = useState({})
   const [detailData, setDetailData] = useState({})
   const [inputData, setInputData] = useState({})
   const styles = styleSheet()

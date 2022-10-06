@@ -3,14 +3,34 @@ import { Text, View, BackHandler, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { useState, useEffect } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import QRCode from "react-native-qrcode-svg";
 import { QrModalStyleSheet } from './QrModalStylesheet';
 
 const QrModal = (props) => {
     const { onClose, openModal } = props
     const [display, setDisplay] = useState(false)
+    const [memberName, setMemberName] = useState('')
+    const [eventNm, setEventNm] = useState('')
+    const [eventRole, setEventRole] = useState('')
+    const [info, setInfo] = useState([])
     const styles = QrModalStyleSheet()
 
+    const getInfo = async () => {
+        const memberName = await AsyncStorage.getItem('memberName')
+        const eventNm = await AsyncStorage.getItem('eventNm')
+        const eventRole = await AsyncStorage.getItem('eventRole')
+        const mobileId = await AsyncStorage.setItem('mobileId', '')
+        const memberId = await AsyncStorage.setItem('memberId', '')
+        const info = [{mobileId: mobileId, memberId: memberId}]
+        setMemberName(memberName)
+        setEventNm(eventNm)
+        setEventRole(eventRole)
+        setInfo(info)        
+    }
+
     useEffect(() => {
+        getInfo()
         setDisplay(openModal)
         BackHandler.addEventListener('hardwareBackPress', close)
         return () => {
@@ -48,9 +68,9 @@ const QrModal = (props) => {
                 </View>
 
                 <View style={styles.qrcodeWrap}>
-                    <View style={styles.qrcode}></View>
-                    <Text style={styles.memberName}>userName</Text>
-                    <Text style={styles.memberPosition}>소속부서 / 직책</Text>
+                    <QRCode value={info} size={250}/>
+                    <Text style={styles.memberName}>{memberName}</Text>
+                    <Text style={styles.memberPosition}>{eventNm} / {eventRole}</Text>
                 </View>
 
             </View>
