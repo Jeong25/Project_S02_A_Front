@@ -227,7 +227,10 @@ const CostModify = (props) => {
                 value={inputData.useComment}
               />
             </View>
-            <View style={styles.sepLine}></View>
+          </View>
+        </View>
+            <View style={styles.divider}></View>
+      
 
             {detailData.length > 0 ?
               detailData.map((v, i) => (
@@ -270,7 +273,6 @@ const CostModify = (props) => {
                 </View>
                 <View style={styles.divider}></View>
               </View>}
-          </View>
 
           {headerData.useProStatus === 'A' || headerData.useProStatus === 'E' ?
             <View style={styles.modifyBtnWrap}>
@@ -284,7 +286,6 @@ const CostModify = (props) => {
             <View style={styles.modifyBtnWrap}></View>
           }
 
-        </View>
         <DateTimePickerModal
           isVisible={dateState.viewModal}
           mode="date"

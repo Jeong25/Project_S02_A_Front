@@ -14,7 +14,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
 
         "inner": {
             'width': '100%',
-            'height': windowHeight < 800 ? '120%' : '100%',
+            'height': '100%',
             'position': 'relative',
         },
 

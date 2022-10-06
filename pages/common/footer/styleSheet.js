@@ -17,6 +17,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'paddingHorizontal': 30,
             'borderTopWidth': 2,
             'borderTopColor': "#e9e9e9",
+            'zIndex' : 9,
         },
         'scanBtnIcon': {
             'width': 30,

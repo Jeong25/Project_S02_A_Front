@@ -68,7 +68,11 @@ const QrModal = (props) => {
                 </View>
 
                 <View style={styles.qrcodeWrap}>
-                    <QRCode value={info} size={250}/>
+                    <QRCode value={info} size={210}/>
+                </View>
+
+                <View style={styles.divider}></View>
+                <View style={styles.textWrap}>
                     <Text style={styles.memberName}>{memberName}</Text>
                     <Text style={styles.memberPosition}>{eventNm} / {eventRole}</Text>
                 </View>

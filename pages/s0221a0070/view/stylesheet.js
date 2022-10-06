@@ -9,7 +9,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "height": "100%",
       "backgroundColor": "#ffffff",
       'overflow': 'hidden',
-      'zIndex': 1
+      'zIndex': 1,
     },
 
     "inner": {
@@ -200,18 +200,14 @@ export const styleSheet = (windowHeight, windowWidth) => {
     "regBtnWrap": {
       'position' : 'absolute',
       'right': 16,
-      'top': 13,
-      "width": 40,
-      "height": 40,
+      'top': 18,
+      "width": 25,
+      "height": 25,
     },
 
-    "regBtnText": {
-      'fontSize': 16,
-      'lineHeight' : 40,
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '700',
-      'color': 'white',
-      'textAlign' : 'center',
+    "registIcon": {
+      'width' : '100%',
+      'height' : '100%',
     },
     'bottomMenu': {
       'width': '100%',

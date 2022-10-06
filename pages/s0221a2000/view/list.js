@@ -7,6 +7,7 @@ import { Dimensions } from 'react-native';
 import { eventListReq } from '../store/store'
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Footer from '../../common/footer/Footer';
 
 const EventList = (props) => {
 
@@ -31,47 +32,53 @@ const EventList = (props) => {
   }, [])
 
   return (
-    <View style={styles.wrap}>
-      <View style={styles.topMenu}>
-        <View style={styles.backBtn}>
-          <TouchableOpacity onPress={() => props.navigation.goBack()}>
-            <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
-          </TouchableOpacity>
-        </View>
-        <Text style={styles.title}>행사현황</Text>
-      </View>
-      <View style={styles.inner}>
-        <View style={styles.layer1}>
-          <TextInput
-            style={styles.input}
-            placeholder="행사명으로 검색"
-          ></TextInput>
-          <View style={styles.searchBtn}>
-            <TouchableOpacity>
-              <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
+    <View>
+      <View style={styles.wrap}>
+        <View style={styles.topMenu}>
+          <View style={styles.backBtn}>
+            <TouchableOpacity onPress={() => props.navigation.goBack()}>
+              <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
             </TouchableOpacity>
           </View>
+          <Text style={styles.title}>행사현황</Text>
         </View>
-        <View style={styles.divider}></View>
-      </View>
-      <View style={styles.cellWrap}>
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
-          {eventInfo.map((v, i) => (
-            <View key={i}>
-              <View style={styles.cellWrap}>
-                <TouchableOpacity onPress={() => onClick(v.eventId, v.eventNm)}>
-                  <View style={styles.cell}>
-                    <Text style={styles.cellName}>{v.eventNm}</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.divider}></View>
+          <View style={styles.layer1}>
+            <TextInput
+              style={styles.input}
+              placeholder="행사명으로 검색"
+            ></TextInput>
+            <View style={styles.searchBtn}>
+              <TouchableOpacity>
+                <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
+              </TouchableOpacity>
             </View>
-          ))}
-        </ScrollView>
-      </View>
-    </View >
+          </View>
+          <View style={styles.divider}></View>
+        <View style={styles.cellWrap}>
+          <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
+            {eventInfo.map((v, i) => (
+              <View>
+              <View key={i}>
+                  <TouchableOpacity onPress={() => onClick(v.eventId, v.eventNm)}>
+                    <View style={styles.cell}>
+                      <Text style={styles.cellName}>{v.eventNm}</Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.cellDivider}></View>
+                </View>
+          
+            ))}
+          </ScrollView>
+        </View>
+       
+      </View >
+      <Footer
+          navigation={props.navigation}
+        />
+    </View>
   )
 }
 
 export default EventList
+

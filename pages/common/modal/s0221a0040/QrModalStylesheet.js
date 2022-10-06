@@ -15,11 +15,12 @@ export const QrModalStyleSheet = (windowHeight = Dimensions.get('window').height
     },
     "box": {
       "width": '90%',
-      "height": '70%',
+      "height": '65%',
+      'position' : 'relative',
       'backgroundColor': 'white',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop':'20%',
+      'marginTop':'30%',
     },
 
     'modalInner': {
@@ -47,11 +48,21 @@ export const QrModalStyleSheet = (windowHeight = Dimensions.get('window').height
       'lineHeight': 50,
 
     },
+
+    'textWrap' : {
+      'position' :'absolute',
+      'bottom' : 30,
+      'left' : 0,
+      'right' : 0,
+      'marginLeft' : 'auto',
+      'marginRight' : 'auto',
+    },
+
     'memberName': {
 
       'fontFamily': "Apple SD Gothic Neo",
       'color': '#383838',
-      'fontSize': 28,
+      'fontSize': 36,
       'textAlign' : 'center',
       'fontWeight': '700',
       'marginTop': 10,
@@ -62,26 +73,26 @@ export const QrModalStyleSheet = (windowHeight = Dimensions.get('window').height
 
       'fontFamily': "Apple SD Gothic Neo",
       'color': '#707070',
-      'fontSize': 12,
+      'fontSize': 22,
       'fontWeight': '700',
       'textAlign' : 'center',
   },
     'qrcodeWrap': {
-   
+  
       'marginLeft' : 'auto',
       'marginRight' : 'auto',
-      'marginTop' : 'auto',
-      'marginBottom' : 'auto',
-
+      'marginTop' : '20%',
+      
+  
     },
-    'qrcode': {
-      'width' : 250,
-      'height' : 250,
-      'marginLeft' : 'auto',
-      'marginRight' : 'auto',
-      'marginTop' : 'auto',
-      'marginBottom' : 'auto',
-      'backgroundColor' : '#888'
+
+    'divider':{
+      'width': '100%',
+      'height': 10,
+      'backgroundColor': '#e9e9e9',
+      'marginLeft': 'auto',
+      'marginRight': 'auto',
+      'marginTop': 50,
     },
     'closeBtn':{
       'width' :25,
@@ -90,7 +101,6 @@ export const QrModalStyleSheet = (windowHeight = Dimensions.get('window').height
       'left' : 12,
       'top' : 13,
       'zIndex' : 9
-
 
     },
 

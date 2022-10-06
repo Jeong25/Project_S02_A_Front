@@ -93,7 +93,7 @@ const CostList = (props) => {
             <TouchableOpacity onPress={() => {
               props.navigation.navigate('Cost', { refresh: callList })
             }}>
-              <Text style={styles.regBtnText}>등록</Text>
+              <ReactImage source={require('./assets/registIcon.png')} style={styles.registIcon} />
             </TouchableOpacity>
           </View>
         </View>
