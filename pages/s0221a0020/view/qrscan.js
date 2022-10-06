@@ -13,6 +13,7 @@ import { qrInfoReq, qrScanReq } from '../store/store';
 const Qrscan = (props) => {
   const [qrInfo, setQrInfo] = useState({})
   const [dateData, setDateData] = useState('')
+
   const camera = useRef(null)
   const [controlCamera, setControlCamera] = useState(false)
   const CAM_VIEW_HEIGHT = Dimensions.get('screen').height;
@@ -24,7 +25,7 @@ const Qrscan = (props) => {
     const res = await qrInfoReq(defaultEventId)
     setQrInfo(res.data.data)
     const val1 = res.data.data.eventStartDate.split(' ')
-    const val2 = res.data.data.eventStartDate.split(' ')
+    const val2 = res.data.data.eventEndDate.split(' ')
     setDateData(`${val1[0]} ~ ${val2[0]}`)
   }
 
@@ -46,6 +47,14 @@ const Qrscan = (props) => {
       setControlCamera(false)
       camera.current.resumePreview()
     }, 1500)
+  }
+
+  const getEventInfo = async (params) => {
+    const res = await qrInfoReq(params.eventId)
+    setQrInfo(res.data.data)
+    const val1 = res.data.data.eventStartDate.split(' ')
+    const val2 = res.data.data.eventEndDate.split(' ')
+    setDateData(`${val1[0]} ~ ${val2[0]}`)
   }
 
   useEffect(() => {
@@ -81,7 +90,7 @@ const Qrscan = (props) => {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.eventSelectBtn} onPress={() => {
-              props.navigation.navigate('EventList')
+              props.navigation.navigate('EventList', { getEventInfo })
             }}>
               <ReactImage source={require('./assets/magnifier.png')} style={styles.searchIcon} />
               <Text style={styles.eventSelect}>행사선택</Text>

@@ -5,10 +5,10 @@ import { Image as ReactImage } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { registerEventCostReq } from '../store/store';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AlertAsync from 'react-native-alert-async';
+import { registerEventCostReq } from '../store/store';
 import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
 
@@ -179,6 +179,11 @@ const Cost = (props) => {
     }
   }
 
+  const getEventInfo = (params) => {
+    setInputData({ ...inputData, eventId: params.eventId })
+    setInputData({ ...inputData, eventNm: params.eventNm })
+  }
+
   return (
     <View style={styles.wrap}>
 
@@ -210,8 +215,7 @@ const Cost = (props) => {
             <View style={styles.inputWrap}>
               <Text style={styles.label}>행사명</Text>
               <View style={styles.searchBtn} >
-                {/* <TouchableOpacity onPressIn={() => openEventModal()} > */}
-                <TouchableOpacity onPressIn={() => props.navigation.navigate('EventList')} >
+                <TouchableOpacity onPressIn={() => props.navigation.navigate('EventList', { getEventInfo })} >
                   <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
                 </TouchableOpacity>
               </View>

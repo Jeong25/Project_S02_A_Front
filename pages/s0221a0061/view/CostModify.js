@@ -35,6 +35,7 @@ const CostModify = (props) => {
   })
   const [headerData, setHeaderData] = useState({})
   const [detailData, setDetailData] = useState([])
+  const [eventInfo, setEventInfo] = useState({})
 
   useEffect(() => {
     getData()
@@ -130,6 +131,11 @@ const CostModify = (props) => {
     }).catch(e => { console.log(e) })
   }
 
+  const getEventInfo = (params) => {
+    setEventName(params.eventNm)
+    setInputData({ ...inputData, eventId: params.eventId })
+  }
+
   return (
     <View style={styles.wrap}>
       <KeyboardAwareScrollView
@@ -174,7 +180,7 @@ const CostModify = (props) => {
                 editable={false}
                 value={eventName}></TextInput>
               <View style={styles.modifySearchBtn} >
-                <TouchableOpacity onPressIn={() => props.navigation.navigate('EventList')}>
+                <TouchableOpacity onPressIn={() => props.navigation.navigate('EventList', { getEventInfo })}>
                   <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
                 </TouchableOpacity>
               </View>

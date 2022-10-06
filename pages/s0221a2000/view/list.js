@@ -11,7 +11,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const EventList = (props) => {
 
   const [eventInfo, setEventInfo] = useState([])
-
   const styles = styleSheet()
 
   const getData = async () => {
@@ -22,7 +21,9 @@ const EventList = (props) => {
   }
 
   const onClick = (eventId, eventNm) => {
-
+    const data = { "eventId": eventId, 'eventNm': eventNm }
+    props.route.params.getEventInfo(data)
+    props.navigation.goBack()
   }
 
   useEffect(() => {
