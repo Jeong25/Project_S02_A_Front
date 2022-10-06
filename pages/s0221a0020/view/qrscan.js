@@ -1,20 +1,32 @@
-import React, { Component, useRef, useState, useMemo } from 'react';
+import React, { Component, useRef, useState, useMemo, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import Svg from 'react-native-svg';
 import { Path as SvgPath } from 'react-native-svg';
 import { RNCamera } from 'react-native-camera';
 import { Dimensions } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styleSheet } from './stylesheet';
-import { qrScanReq } from '../store/store';
+import { qrInfoReq, qrScanReq } from '../store/store';
 // import client from '../../common/api/client';
 
 const Qrscan = (props) => {
+  const [qrInfo, setQrInfo] = useState({})
+  const [dateData, setDateData] = useState('')
   const camera = useRef(null)
   const [controlCamera, setControlCamera] = useState(false)
   const CAM_VIEW_HEIGHT = Dimensions.get('screen').height;
   const CAM_VIEW_WIDTH = Dimensions.get('screen').width;
   const styles = useMemo(() => styleSheet(CAM_VIEW_HEIGHT, CAM_VIEW_WIDTH), [CAM_VIEW_HEIGHT, CAM_VIEW_WIDTH])
+
+  const getQrInfo = async () => {
+    const defaultEventId = await AsyncStorage.getItem('defaultEventId')
+    const res = await qrInfoReq(defaultEventId)
+    setQrInfo(res.data.data)
+    const val1 = res.data.data.eventStartDate.split(' ')
+    const val2 = res.data.data.eventStartDate.split(' ')
+    setDateData(`${val1[0]} ~ ${val2[0]}`)
+  }
 
   const onBarCodeRead = async (e) => {
     if (controlCamera) {
@@ -34,8 +46,11 @@ const Qrscan = (props) => {
       setControlCamera(false)
       camera.current.resumePreview()
     }, 1500)
-
   }
+
+  useEffect(() => {
+    getQrInfo()
+  }, [])
 
   return (
     <RNCamera
@@ -74,9 +89,9 @@ const Qrscan = (props) => {
           </View>
           <View style={styles.camArea} />
           <View style={styles.textGroup}>
-            <Text style={styles.compName}>에스원테크</Text>
-            <Text style={styles.eventName}>SampleEventName</Text>
-            <Text style={styles.eventDate}>2022.00.00 ~ 2022.00.00</Text>
+            <Text style={styles.compName}>{qrInfo.namePathPriortiy}</Text>
+            <Text style={styles.eventName}>{qrInfo.eventNm}</Text>
+            <Text style={styles.eventDate}>{dateData}</Text>
           </View>
         </View>
 

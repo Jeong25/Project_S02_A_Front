@@ -229,7 +229,6 @@ const CostModify = (props) => {
                 <Text style={styles.modifyLabel}>사용일자</Text>
                 <View style={styles.modifyInputWrap}>
                   <TextInput style={styles.modifyDateText} editable={false} value={headerData.usedDate}>
-                    {/* <TextInput style={styles.modifyDateText} editable={false} value={dateState.confirmVal}> */}
                   </TextInput>
                   <View style={styles.modifyDateSearchBtn} >
                     <TouchableOpacity onPressIn={() => openDateModal()} >
@@ -241,7 +240,7 @@ const CostModify = (props) => {
               <View style={styles.contentsInner}>
                 <View style={styles.modifyInputWrap}>
                   <Text style={styles.modifyLabel}>사용금액</Text>
-                  <TextInput style={styles.rightAlignText} onChange={(e) => setInputData({ ...inputData, useAmount: e.nativeEvent.text })} value={`${numberToCost(Number(headerData.useAmount))}`} />
+                  <TextInput style={styles.rightAlignText} onChange={(e) => setInputData({ ...inputData, useAmount: e.nativeEvent.text })} value={`${numberToCost(headerData.useAmount)}`} />
                   <Text style={styles.modifyWon}>원</Text>
                 </View>
               </View>

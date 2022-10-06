@@ -1,4 +1,9 @@
-import { qrScan } from '../repository/repository'
+import { qrInfo, qrScan } from '../repository/repository'
+
+const qrInfoReq = async (eventId) => {
+    const res = await qrInfo(Number(eventId));
+    return res;
+}
 
 const qrScanReq = async (qrData, orgId, eventId) => {
     const res = await qrScan(qrData, orgId, eventId);
@@ -6,4 +11,4 @@ const qrScanReq = async (qrData, orgId, eventId) => {
     return res;
 }
 
-export { qrScanReq }
+export { qrInfoReq, qrScanReq }
