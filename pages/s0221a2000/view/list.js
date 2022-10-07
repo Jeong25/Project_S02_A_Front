@@ -12,6 +12,7 @@ import Footer from '../../common/footer/Footer';
 const EventList = (props) => {
 
   const [eventInfo, setEventInfo] = useState([])
+  const [userName, setUserName] = useState('')
   const styles = styleSheet()
 
   const getData = async () => {
@@ -21,6 +22,14 @@ const EventList = (props) => {
     setEventInfo(res.data.data)
   }
 
+  const showDate = (v) => {
+    const val1 = JSON.stringify(v.eventStartDate).split(' ')[0].substring(1)
+    const val2 = JSON.stringify(v.eventEndDate).split(' ')[0].substring(1)
+    const res = `${val1} ~ ${val2}`
+    console.log('Log확인 '+res)
+    return res
+  }
+
   const onClick = (eventId, eventNm) => {
     const data = { "eventId": eventId, 'eventNm': eventNm }
     props.route.params.getEventInfo(data)
@@ -28,7 +37,13 @@ const EventList = (props) => {
   }
 
   useEffect(() => {
-    getData()
+    let isCompMounted = true
+    if (isCompMounted) {
+      getData()
+    }
+    return () => {
+      isCompMounted = false
+    }
   }, [])
 
   return (
@@ -42,43 +57,42 @@ const EventList = (props) => {
           </View>
           <Text style={styles.title}>행사현황</Text>
         </View>
-          <View style={styles.layer1}>
-            <TextInput
-              style={styles.input}
-              placeholder="행사명으로 검색"
-            ></TextInput>
-            <View style={styles.searchBtn}>
-              <TouchableOpacity>
-                <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
-              </TouchableOpacity>
-            </View>
+        <View style={styles.layer1}>
+          <TextInput
+            style={styles.input}
+            placeholder="행사명으로 검색"
+          ></TextInput>
+          <View style={styles.searchBtn}>
+            <TouchableOpacity>
+              <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
+            </TouchableOpacity>
           </View>
-          <View style={styles.divider}></View>
+        </View>
+        <View style={styles.divider}></View>
         <View style={styles.cellWrap}>
           <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
             {eventInfo.map((v, i) => (
-              <View>
               <View key={i}>
+                <View>
                   <TouchableOpacity onPress={() => onClick(v.eventId, v.eventNm)}>
                     <View style={styles.cell}>
                       <View style={styles.cellInner}>
                         <Text style={styles.eventName}>{v.eventNm}</Text>
-                        <Text style={styles.eventDate}>운영자 / 2022-01-01 ~ 2022-01-02</Text>
+                        <Text style={styles.eventDate}>운영자 / {showDate(v)}</Text>
                       </View>
                     </View>
                   </TouchableOpacity>
                 </View>
                 <View style={styles.cellDivider}></View>
-                </View>
-          
+              </View>
             ))}
           </ScrollView>
         </View>
-       
+
       </View >
       <Footer
-          navigation={props.navigation}
-        />
+        navigation={props.navigation}
+      />
     </View>
   )
 }

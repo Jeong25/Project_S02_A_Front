@@ -26,7 +26,7 @@ const QrModal = (props) => {
         setMemberName(memberName)
         setEventNm(eventNm)
         setEventRole(eventRole)
-        setInfo(info)        
+        setInfo(info)
     }
 
     useEffect(() => {
@@ -66,15 +66,20 @@ const QrModal = (props) => {
                         </TouchableOpacity>
                     </View>
                 </View>
+                
+                <View style={styles.modalInner}>
+                    <View style={styles.qrcodeWrap}>
+                        <View style={styles.qrImg}>
+                            <QRCode value={info} size={210} quietZone ={20} backgroundColor ='transparent'/>
+                        </View>
+                    </View>
+                    
 
-                <View style={styles.qrcodeWrap}>
-                    <QRCode value={info} size={210}/>
-                </View>
-
-                <View style={styles.divider}></View>
-                <View style={styles.textWrap}>
-                    <Text style={styles.memberName}>{memberName}</Text>
-                    <Text style={styles.memberPosition}>{eventNm} / {eventRole}</Text>
+                    <View style={styles.divider}></View>
+                    <View style={styles.textWrap}>
+                        <Text style={styles.memberName}>{memberName}</Text>
+                        <Text style={styles.memberPosition}>{eventNm} / {eventRole}</Text>
+                    </View>
                 </View>
 
             </View>

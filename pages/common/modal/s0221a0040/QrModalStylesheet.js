@@ -20,15 +20,12 @@ export const QrModalStyleSheet = (windowHeight = Dimensions.get('window').height
       'backgroundColor': 'white',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop':'30%',
+      'marginTop':'20%',
     },
 
     'modalInner': {
-      "position": "relative",
-      "width": "100%",
-      "marginLeft": 'auto',
-      "marginRight": 'auto',
-    },
+     'height' : '100%',
+      },
 
     'titleSection': {
       "width": '100%',
@@ -50,12 +47,10 @@ export const QrModalStyleSheet = (windowHeight = Dimensions.get('window').height
     },
 
     'textWrap' : {
-      'position' :'absolute',
-      'bottom' : 30,
-      'left' : 0,
-      'right' : 0,
+     
       'marginLeft' : 'auto',
       'marginRight' : 'auto',
+      'marginTop' : '5%',
     },
 
     'memberName': {
@@ -65,7 +60,6 @@ export const QrModalStyleSheet = (windowHeight = Dimensions.get('window').height
       'fontSize': 36,
       'textAlign' : 'center',
       'fontWeight': '700',
-      'marginTop': 10,
       'marginBottom': 5
   },
 
@@ -79,20 +73,28 @@ export const QrModalStyleSheet = (windowHeight = Dimensions.get('window').height
   },
     'qrcodeWrap': {
   
+      'width' : '100%',
+      'height' : '62%',
+      
+    },
+
+    'qrImg': { 
+
       'marginLeft' : 'auto',
       'marginRight' : 'auto',
-      'marginTop' : '20%',
-      
-  
+      'marginBottom' : 'auto',
+      'marginTop' : 'auto',
+      'borderColor' : '#333',
+      'borderWidth' : 4,
+      'borderRadius' : 20,
     },
 
     'divider':{
-      'width': '100%',
-      'height': 10,
+      'width': '90%',
+      'height': 2,
       'backgroundColor': '#e9e9e9',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop': 50,
     },
     'closeBtn':{
       'width' :25,
