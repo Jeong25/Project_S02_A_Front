@@ -91,9 +91,7 @@ const QrCode = (props) => {
       <View style={styles.wrap} contentContainerStyle={{ flex: 1, height: 500 }}>
         <View style={styles.circle}></View>
         <View style={styles.topMenu}>
-          <View style={styles.topLogoWrap}>
             <Text style={styles.topLogo}>삐용</Text>
-          </View>
           <View style={styles.logoutBtn}>
             <TouchableOpacity onPress={() => logOut()}>
               <ReactImage source={require('./assets/power-off-w.png')} style={styles.logout} />

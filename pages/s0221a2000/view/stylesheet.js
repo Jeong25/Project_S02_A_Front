@@ -28,7 +28,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
     "topMenu": {
 
       "width": "100%",
-      "height": 66,
+      "height": 60,
       "position": "relative",
       "marginLeft": 'auto',
       "marginRight": 'auto',
@@ -37,7 +37,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'center',
-
 
     },
 
@@ -57,8 +56,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "height": 30
     },
 
-
-
     "title": {
       "color": "white",
       "fontFamily": "Apple SD Gothic Neo",
@@ -67,7 +64,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     "layer1": {
-      'marginTop': 20,
+      'marginTop': 15,
       "width": "90%",
       'flexDirection': 'row',
       'alignItems': 'center',
@@ -124,10 +121,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "cellWrap": {
       "width": "100%",
-      "height": "65%",
+      "height": "70%",
       "position": "absolute",
-      "top": 165,      
-      
+      "top": 140,       
     },
 
     'divider':{
@@ -136,7 +132,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'backgroundColor': '#e9e9e9',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop': 20,
+      'marginTop': 15,
     },
     'cellDivider':{
       'width' : '90%',
@@ -150,43 +146,33 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "cell": {
       "width": "90%",
-      "height": 65,
+      "height": 50,
       "marginLeft": 'auto',
-      "marginRight": 'auto',
-      'paddingLeft': 20,
-      'flexDirection' : 'row',
-      'alignItems': 'center',
-      
+      "marginRight": 'auto',      
     },
 
-    'cellName': {
-
-      'fontSize': 18,
-      'fontWeight': '800',
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#1d1d1d',
-      'marginLeft': 30,
-
+    "cellInner": {
+      "width": "90%",
+      "marginLeft": "auto",
+      "marginRight": "auto",
+      "position": "relative",
+    },
+    'eventName': {
+      "color": "#1d1d1d",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontSize": 18,
+      "fontWeight": "700",
+      "marginTop": 5,
     },
 
-
-    "cellDate": {
+    "eventDate": {
 
       "fontSize": 11,
       "lineHeight": 13.2,
       "fontWeight": "500",
       "color": "#707070",
       "marginTop": 5,
-
     },
 
-    "name": {
-      "fontSize": 14,
-      "fontWeight": "700",
-      'lineHeight': 20,
-    },
-
-  
-  
   })
 }

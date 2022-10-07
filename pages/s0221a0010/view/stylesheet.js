@@ -24,7 +24,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'flexDirection': 'row',
             'justifyContent': 'space-between',
             'alignItems': 'center',
-            'paddingVertical': 5,
             'paddingHorizontal': 10,
             'marginTop': 10,
         },
@@ -133,7 +132,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
         'processNumber': {
 
             'color': 'white',
-            'fontSize': 24,
+            'fontSize': 22,
             'fontWeight': '700',
             'marginTop': '8%',
 
@@ -152,7 +151,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
             'fontFamily': "Apple SD Gothic Neo",
             'color': '#383838',
-            'fontSize': 40,
+            'fontSize': 36,
             'textAlign': 'center',
             'fontWeight': '700',
             'marginBottom': 5
@@ -162,15 +161,16 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
             'fontFamily': "Apple SD Gothic Neo",
             'color': '#707070',
-            'fontSize': 22,
+            'fontSize': 18,
             'fontWeight': '700',
             'textAlign': 'center',
             'marginBottom': 5
         },
-
         'logoutBtn': {
             'width': 30,
             'height': 30,
+            'marginBottom': 5
+
         },
         'logout': {
             'width': 30,

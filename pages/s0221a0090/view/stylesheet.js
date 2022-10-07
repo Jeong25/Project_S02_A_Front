@@ -20,19 +20,16 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     "topMenu": {
-
       "width": "100%",
-      "height": 66,
+      "height": 60,
       "position": "relative",
       "marginLeft": 'auto',
       "marginRight": 'auto',
       'paddingHorizontal': 20,
-      'backgroundColor': '#f15a24',
+      'backgroundColor' :'#f15a24',
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'center',
-
-
     },
 
 
@@ -69,13 +66,13 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     "layer1": {
-      "marginLeft": 'auto',
-      "marginRight": 'auto',
-      'marginTop': 20,
+      'marginTop': 15,
       "width": "90%",
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
+      'marginLeft' : 'auto',
+      'marginRight' : 'auto',
     },
 
 
@@ -137,10 +134,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "cellWrap": {
       "width": "100%",
-      "height": "65%",
+      "height": "70%",
       "position": "absolute",
-      "top": 165,
-      'zIndex': 3,
+      "top": 140,   
     },
     'divider': {
       'width': '100%',
@@ -148,7 +144,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'backgroundColor': '#e9e9e9',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop': 20,
+      'marginTop': 15,
     },
     'cellDivider': {
       'width': '85%',
@@ -162,10 +158,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "cell": {
       "width": "90%",
-      "height": 65,
+      "height": 50,
       "marginLeft": 'auto',
-      "marginRight": 'auto',
-      'zIndex': 9
+      "marginRight": 'auto', 
     },
 
     "cellInner": {
@@ -178,9 +173,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
     "cellTitle": {
       "color": "#1d1d1d",
       "fontFamily": "Apple SD Gothic Neo",
-      "fontSize": 21,
+      "fontSize": 18,
       "fontWeight": "700",
-      "paddingTop": 8,
+      "marginTop": 5,
     },
 
     "cellDate": {
@@ -202,11 +197,10 @@ export const styleSheet = (windowHeight, windowWidth) => {
     "cellAmount": {
       "position": "absolute",
       "right": 0,
-      "top": 22.5,
+      "top": 14,
       "color": "#F15A24",
       "fontSize": 21,
       "fontWeight": "800",
-      "lineHeight": 25.2,
     },
 
     "regBtnWrap": {
@@ -239,87 +233,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'lineHeight': 80,
 
     },
-    'bottomMenu': {
-      'width': '100%',
-      'height': 80,
-      'backgroundColor': 'white',
-      'position': 'absolute',
-      'bottom': 0,
-      'flexDirection': 'row',
-      'alignItems': 'center',
-      'justifyContent': 'space-around',
-      'paddingHorizontal': 30,
-      'borderTopWidth': 2,
-      'borderTopColor': "rgba(112, 112, 112 , 0.3)",
-
-
-    },
-    'scanBtnIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-    },
-
-    'homeBtn': {
-
-      'alignItems': 'center',
-    },
-
-    'homeIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-    },
-    'costIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-
-    },
-    'paymentIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-    },
-
-    'homeText': {
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5,
-      'textAlign': 'center'
-
-    },
-    'costText': {
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5
-
-    },
-    'paymentText': {
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5
-    },
-    'qrscanText': {
-      'width': 50,
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5,
-      'textAlign': 'center'
-    },
-
+   
   })
 }
 

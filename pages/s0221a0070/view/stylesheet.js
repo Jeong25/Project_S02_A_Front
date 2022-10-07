@@ -22,9 +22,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     "topMenu": {
-
       "width": "100%",
-      "height": 66,
+      "height": 60,
       "position": "relative",
       "marginLeft": 'auto',
       "marginRight": 'auto',
@@ -57,13 +56,13 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     "layer1": {
-      "marginLeft": 'auto',
-      "marginRight": 'auto',
-      'marginTop': 20,
+      'marginTop': 15,
       "width": "90%",
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
+      'marginLeft' : 'auto',
+      'marginRight' : 'auto',
     },
 
     "searchInput": {
@@ -123,11 +122,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "cellWrap": {
       "width": "100%",
-      "height": "65%",
+      "height": "70%",
       "position": "absolute",
-      "top": 165,
-      'zIndex': 3,
-      
+      "top": 140,   
     },
 
     'divider': {
@@ -136,7 +133,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'backgroundColor': '#e9e9e9',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop': 20,
+      'marginTop': 15,
     },
     'cellDivider': {
       'width': '90%',
@@ -150,10 +147,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "cell": {
       "width": "90%",
-      "height": 65,
+      "height": 50,
       "marginLeft": 'auto',
-      "marginRight": 'auto',
-      'zIndex': 9,
+      "marginRight": 'auto', 
     },
 
     "cellInner": {
@@ -166,9 +162,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
     "cellTitle": {
       "color": "#1d1d1d",
       "fontFamily": "Apple SD Gothic Neo",
-      "fontSize": 21,
+      "fontSize": 18,
       "fontWeight": "700",
-      "paddingTop": 8,
+      "marginTop": 5
     },
 
     "cellDate": {
@@ -190,11 +186,10 @@ export const styleSheet = (windowHeight, windowWidth) => {
     "cellAmount": {
       "position": "absolute",
       "right": 0,
-      "top": 22.5,
+      "top": 14,
       "color": "#F15A24",
       "fontSize": 21,
       "fontWeight": "800",
-      "lineHeight": 25.2,
     },
 
     "regBtnWrap": {

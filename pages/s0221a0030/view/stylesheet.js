@@ -183,11 +183,11 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
         "textBox": {
             'marginTop': 10,
             'width': '100%',
-            'height': 120,
+            'height': 130,
             'borderWidth': 2,
             'borderColor': '#707070',
             'borderRadius': 10,
-            'paddingVertical': 10,
+            'paddingVertical': 15,
             'paddingHorizontal': 10
         },
 
@@ -210,8 +210,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'height': 80,
             'marginLeft': 'auto',
             'marginRight': 'auto',
-            'marginTop': '20%'
-
+            'marginTop': '20%',
         },
 
         "loginBtn": {

@@ -61,7 +61,10 @@ const EventList = (props) => {
               <View key={i}>
                   <TouchableOpacity onPress={() => onClick(v.eventId, v.eventNm)}>
                     <View style={styles.cell}>
-                      <Text style={styles.cellName}>{v.eventNm}</Text>
+                      <View style={styles.cellInner}>
+                        <Text style={styles.eventName}>{v.eventNm}</Text>
+                        <Text style={styles.eventDate}>운영자 / 2022-01-01 ~ 2022-01-02</Text>
+                      </View>
                     </View>
                   </TouchableOpacity>
                 </View>

@@ -250,7 +250,7 @@ const Signup = (props) => {
               <View style={styles.textBox}>
                 <View>
                   <Text style={styles.textBoxTitle}>[ 개인정보수집 및 사용 ]</Text>
-                  <Text style={styles.text}>목적 : 토브 앱 이용</Text>
+                  <Text style={styles.text}>목적 : 삐용 앱 이용</Text>
                   <Text style={styles.text}>수집 : 이름, 전화번호</Text>
                   <Text style={styles.text}>보유기간 : 목적 달성 시 지체없이 폐기</Text>
                 </View>

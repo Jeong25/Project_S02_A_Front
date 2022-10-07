@@ -21,12 +21,12 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
     "topMenu": {
       "width": "100%",
-      "height": 66,
+      "height": 60,
       "position": "relative",
       "marginLeft": 'auto',
       "marginRight": 'auto',
       'paddingHorizontal': 20,
-      'backgroundColor': '#f15a24',
+      'backgroundColor' :'#f15a24',
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'center',
@@ -156,15 +156,17 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
     
     "textLongAlignCenter": {
-      'width' : '85%',
+      'width' : '80%',
+      'height' :40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
-      'lineHeight': 30,
       'textAlign': 'center',
       'color': '#383838',
       "fontSize": 13,
-      'marginTop' : 5,
+      'marginTop' : -5,
+      'marginLeft' : 11,
       'paddingHorizontal' : 10,
+      'paddingBottom': -10,
     },
     
     "fileInput": {

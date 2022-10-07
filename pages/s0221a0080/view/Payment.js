@@ -75,51 +75,51 @@ const Payment = (props) => {
         <View style={styles.inner}>
           <View style={styles.contentsWrap}>
 
-            <View style={styles.contents}>
-              <View style={styles.contentsInner}>
-                <Text style={styles.label}>작성자</Text>
-                <TextInput style={styles.centerAlignText} value={headerData?.userName} />
-              </View>
-              <View style={styles.contentsInner}>
-                <Text style={styles.label}>진행상태</Text>
-                <TextInput style={styles.centerAlignText} value={headerData?.useProStatusNm} />
-              </View>
-            </View>
-            <View style={styles.contents}>
-              <Text style={styles.label}>사용제목</Text>
-              <TextInput style={styles.inputTextLong} value={headerData?.useSubject} />
-            </View>
-            <View style={styles.contents}>
-              <Text style={styles.label}>행사명</Text>
-              <View style={styles.inputWrap}>
-                <TextInput
-                  style={styles.inputTextLong}
-                  editable={false}
-                  value={headerData.eventNm}></TextInput>
-              </View>
-            </View>
-            <View style={styles.contents}>
-              <View style={styles.contentsInner}>
-                <Text style={styles.label}>사용일자</Text>
-                <View style={styles.inputWrap}>
-                  <TextInput style={styles.dateText} editable={false} value={headerData.usedDate}></TextInput>
+              <View style={styles.contents}>
+                <View style={styles.contentsInner}>
+                  <Text style={styles.label}>작성자</Text>
+                  <TextInput style={styles.centerAlignText} value={headerData?.userName} />
+                </View>
+                <View style={styles.contentsInner}>
+                  <Text style={styles.label}>진행상태</Text>
+                  <TextInput style={styles.centerAlignText} value={headerData?.useProStatusNm} />
                 </View>
               </View>
-              <View style={styles.contentsInner}>
+              <View style={styles.contents}>
+                <Text style={styles.label}>사용제목</Text>
+                <TextInput style={styles.inputTextLong} value={headerData?.useSubject} />
+              </View>
+              <View style={styles.contents}>
+                <Text style={styles.label}>행사명</Text>
                 <View style={styles.inputWrap}>
-                  <Text style={styles.label}>사용금액</Text>
-                  <TextInput style={styles.rightAlignText} value={`${numberToCost(headerData.useAmount)}`} />
-                  <Text style={styles.won}>원</Text>
+                  <TextInput
+                    style={styles.inputTextLong}
+                    editable={false}
+                    value={headerData.eventNm}></TextInput>
                 </View>
               </View>
+              <View style={styles.contents}>
+                <View style={styles.contentsInner}>
+                  <Text style={styles.label}>사용일자</Text>
+                  <View style={styles.inputWrap}>
+                    <TextInput style={styles.dateText} editable={false} value={headerData.usedDate}></TextInput>
+                  </View>
+                </View>
+                <View style={styles.contentsInner}>
+                  <View style={styles.inputWrap}>
+                    <Text style={styles.label}>사용금액</Text>
+                    <TextInput style={styles.rightAlignText} value={`${numberToCost(headerData.useAmount)}`} />
+                    <Text style={styles.won}>원</Text>
+                  </View>
+                </View>
 
             </View>
 
-            <View style={styles.contents}>
-              <Text style={styles.label}>첨부파일</Text>
-              <View style={styles.inputWrap}>
-                <TextInput style={styles.modifyFileInput} value={headerData.useReceiptName}></TextInput>
-              </View>
+              <View style={styles.contents}>
+                <Text style={styles.label}>첨부파일</Text>
+                <View style={styles.inputWrap}>
+                  <TextInput style={styles.fileInput} value={headerData.useReceiptName}></TextInput>
+                </View>
 
             </View>
             <View style={styles.contents}>
