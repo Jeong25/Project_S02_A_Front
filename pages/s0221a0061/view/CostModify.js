@@ -255,23 +255,6 @@ const CostModify = (props) => {
                 </View>
               )) :
               <View>
-                <View style={styles.renderInner}>
-                  <View style={styles.contents}>
-                    <Text style={styles.modifyLabel}>결제자명</Text>
-                    <TextInput style={styles.RcenterAlignText}></TextInput>
-                    <Text style={styles.modifyLabel}>결제여부</Text>
-                    <TextInput style={styles.RcenterAlignText}></TextInput>
-                  </View>
-                  <View style={styles.contents}>
-                    <Text style={styles.modifyLabel}>결제일자</Text>
-                    <TextInput style={styles.modifyTextLongAlignCenter}></TextInput>
-                  </View>
-                  <View style={styles.contents}>
-                    <Text style={styles.modifyLabel}>결제의견</Text>
-                    <TextInput style={styles.RhistoryInput}></TextInput>
-                  </View>
-                </View>
-                <View style={styles.divider}></View>
               </View>}
 
           {headerData.useProStatus === 'A' || headerData.useProStatus === 'E' ?

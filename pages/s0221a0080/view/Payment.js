@@ -51,154 +51,134 @@ const Payment = (props) => {
   }
 
   return (
-      <View style={styles.wrap}>
-        <KeyboardAwareScrollView
-          resetScrollToCoords={{ x: 0, y: 0 }}
-          enableOnAndroid={true}
-          scrollEnabled={true}
-          scrollToOverflowEnabled={true}
-          enableAutomaticScroll={true}
-          keyboardShouldPersistTaps='always'
-          nestedScrollEnabled={true}
-          contentContainerStyle={{ height: height + 80 }}
+    <View style={styles.wrap}>
+      <KeyboardAwareScrollView
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        enableOnAndroid={true}
+        scrollEnabled={true}
+        scrollToOverflowEnabled={true}
+        enableAutomaticScroll={true}
+        keyboardShouldPersistTaps='always'
+        nestedScrollEnabled={true}
+        contentContainerStyle={{ height: height + 80 }}
 
-        >
+      >
 
-          <View style={styles.topMenu}>
-            <View style={styles.backBtn}>
-              <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
-              </TouchableOpacity>
-            </View>
-            <Text style={styles.topTitle}>승인처리</Text>
+        <View style={styles.topMenu}>
+          <View style={styles.backBtn}>
+            <TouchableOpacity onPress={() => props.navigation.goBack()}>
+              <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+            </TouchableOpacity>
           </View>
-          <View style={styles.inner}>
-            <View style={styles.contentsWrap}>
+          <Text style={styles.topTitle}>승인처리</Text>
+        </View>
+        <View style={styles.inner}>
+          <View style={styles.contentsWrap}>
 
-              <View style={styles.contents}>
-                <View style={styles.contentsInner}>
-                  <Text style={styles.label}>작성자</Text>
-                  <TextInput style={styles.centerAlignText} value={headerData?.userName} />
-                </View>
-                <View style={styles.contentsInner}>
-                  <Text style={styles.label}>진행상태</Text>
-                  <TextInput style={styles.centerAlignText} value={headerData?.useProStatusNm} />
-                </View>
+            <View style={styles.contents}>
+              <View style={styles.contentsInner}>
+                <Text style={styles.label}>작성자</Text>
+                <TextInput style={styles.centerAlignText} value={headerData?.userName} />
               </View>
-              <View style={styles.contents}>
-                <Text style={styles.label}>사용제목</Text>
-                <TextInput style={styles.inputTextLong} value={headerData?.useSubject} />
+              <View style={styles.contentsInner}>
+                <Text style={styles.label}>진행상태</Text>
+                <TextInput style={styles.centerAlignText} value={headerData?.useProStatusNm} />
               </View>
-              <View style={styles.contents}>
-                <Text style={styles.label}>행사명</Text>
-                <View style={styles.inputWrap}>
-                  <TextInput
-                    style={styles.inputTextLong}
-                    editable={false}
-                    value={headerData.eventNm}></TextInput>
-                </View>
-              </View>
-              <View style={styles.contents}>
-                <View style={styles.contentsInner}>
-                  <Text style={styles.label}>사용일자</Text>
-                  <View style={styles.inputWrap}>
-                    <TextInput style={styles.dateText} editable={false} value={headerData.usedDate}></TextInput>
-                  </View>
-                </View>
-                <View style={styles.contentsInner}>
-                  <View style={styles.inputWrap}>
-                    <Text style={styles.label}>사용금액</Text>
-                    <TextInput style={styles.rightAlignText} value={`${numberToCost(headerData.useAmount)}`} />
-                    <Text style={styles.won}>원</Text>
-                  </View>
-                </View>
-
-              </View>
-
-              <View style={styles.contents}>
-                <Text style={styles.label}>첨부파일</Text>
-                <View style={styles.inputWrap}>
-                  <TextInput style={styles.modifyFileInput} value={headerData.useReceiptName}></TextInput>
-                </View>
-
-              </View>
-              <View style={styles.contents}>
-                <Text style={styles.label}>사용내역</Text>
+            </View>
+            <View style={styles.contents}>
+              <Text style={styles.label}>사용제목</Text>
+              <TextInput style={styles.inputTextLong} value={headerData?.useSubject} />
+            </View>
+            <View style={styles.contents}>
+              <Text style={styles.label}>행사명</Text>
+              <View style={styles.inputWrap}>
                 <TextInput
-                  style={styles.historyInput}
-                  multiline={true}
-                  value={headerData.useComment}
-                />
+                  style={styles.inputTextLong}
+                  editable={false}
+                  value={headerData.eventNm}></TextInput>
               </View>
+            </View>
+            <View style={styles.contents}>
+              <View style={styles.contentsInner}>
+                <Text style={styles.label}>사용일자</Text>
+                <View style={styles.inputWrap}>
+                  <TextInput style={styles.dateText} editable={false} value={headerData.usedDate}></TextInput>
+                </View>
+              </View>
+              <View style={styles.contentsInner}>
+                <View style={styles.inputWrap}>
+                  <Text style={styles.label}>사용금액</Text>
+                  <TextInput style={styles.rightAlignText} value={`${numberToCost(headerData.useAmount)}`} />
+                  <Text style={styles.won}>원</Text>
+                </View>
+              </View>
+
+            </View>
+
+            <View style={styles.contents}>
+              <Text style={styles.label}>첨부파일</Text>
+              <View style={styles.inputWrap}>
+                <TextInput style={styles.modifyFileInput} value={headerData.useReceiptName}></TextInput>
+              </View>
+
+            </View>
+            <View style={styles.contents}>
+              <Text style={styles.label}>사용내역</Text>
+              <TextInput
+                style={styles.historyInput}
+                multiline={true}
+                value={headerData.useComment}
+              />
             </View>
           </View>
-            <View style={styles.divider}></View>
+        </View>
+        <View style={styles.divider}></View>
 
-      
-              {detailData.length > 0 ?
-                detailData.map((v, k) => (
-                
-                    <View key={k}>
-                      <View style={styles.renderInner}>
-                      <View style={styles.contents}>
-                        <Text style={styles.label}>결제자명</Text>
-                        <TextInput style={styles.centerAlignText} value={v.paiedName}></TextInput>
-                        <Text style={styles.label}>결제여부</Text>
-                        <TextInput style={styles.centerAlignText} value={v.payResultNm}></TextInput>
-                      </View>
-                      <View style={styles.contents}>
-                        <Text style={styles.label}>결제일자</Text>
-                        <TextInput style={styles.textLongAlignCenter} value={v.payDate}></TextInput>
-                      </View>
-                      <View style={styles.contents}>
-                        <Text style={styles.label}>결제의견</Text>
-                        <TextInput style={styles.RhistoryInput} value={v.payComment}></TextInput>
-                      </View>
-                    </View>
-                    <View style={styles.divider}></View>
-                    </View>
-                )) :
-                <View>
-                  <View style={styles.renderInner}>
-                    <View style={styles.contents}>
-                      <Text style={styles.label}>결제자명</Text>
-                      <TextInput style={styles.centerAlignText}></TextInput>
-                      <Text style={styles.label}>결제여부</Text>
-                      <TextInput style={styles.centerAlignText}></TextInput>
-                    </View>
-                    <View style={styles.contents}>
-                      <Text style={styles.label}>결제일자</Text>
-                      <TextInput style={styles.textLongAlignCenter}></TextInput>
-                    </View>
-                    <View style={styles.contents}>
-                      <Text style={styles.label}>결제의견</Text>
-                      <TextInput style={styles.RhistoryInput}></TextInput>
-                    </View>
-                  </View>
-                  <View style={styles.divider}></View>
+
+        {detailData.length > 0 ?
+          detailData.map((v, k) => (
+
+            <View key={k}>
+              <View style={styles.renderInner}>
+                <View style={styles.contents}>
+                  <Text style={styles.label}>결제자명</Text>
+                  <TextInput style={styles.centerAlignText} value={v.paiedName}></TextInput>
+                  <Text style={styles.label}>결제여부</Text>
+                  <TextInput style={styles.centerAlignText} value={v.payResultNm}></TextInput>
                 </View>
-              }
-              <View style={styles.inner}>
-              <View style={styles.contentsTextarea}>
-                <Text style={styles.label}>결제의견</Text>
-                <TextInput style={styles.opinion} onChange={(e) => setInputData({ ...inputData, payComment: e.nativeEvent.text })} />
+                <View style={styles.contents}>
+                  <Text style={styles.label}>결제일자</Text>
+                  <TextInput style={styles.textLongAlignCenter} value={v.payDate}></TextInput>
+                </View>
+                <View style={styles.contents}>
+                  <Text style={styles.label}>결제의견</Text>
+                  <TextInput style={styles.RhistoryInput} value={v.payComment}></TextInput>
+                </View>
               </View>
-
-              </View>
-             
-
-          
-            <View style={styles.btnWrap}>
-              <TouchableOpacity onPress={() => requestPay("Y")}>
-                <Text style={styles.confBtn}>승인</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => requestPay("N")}>
-                <Text style={styles.rejBtn}>반려</Text>
-              </TouchableOpacity>
+              <View style={styles.divider}></View>
             </View>
+          )) :
+          <View>
+          </View>
+        }
+        <View style={styles.inner}>
+          <View style={styles.contentsTextarea}>
+            <Text style={styles.label}>결제의견</Text>
+            <TextInput style={styles.opinion} onChange={(e) => setInputData({ ...inputData, payComment: e.nativeEvent.text })} />
+          </View>
+        </View>
 
-        </KeyboardAwareScrollView>
-      
+        <View style={styles.btnWrap}>
+          <TouchableOpacity onPress={() => requestPay("Y")}>
+            <Text style={styles.confBtn}>승인</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => requestPay("N")}>
+            <Text style={styles.rejBtn}>반려</Text>
+          </TouchableOpacity>
+        </View>
+
+      </KeyboardAwareScrollView>
+
       <Footer
         navigation={props.navigation}
       />
