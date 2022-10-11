@@ -17,6 +17,7 @@ const Qrscan = (props) => {
 
   const camera = useRef(null)
   const [controlCamera, setControlCamera] = useState(false)
+  const [cameraFront, setCameraFront] = useState(true)
   const CAM_VIEW_HEIGHT = Dimensions.get('screen').height;
   const CAM_VIEW_WIDTH = Dimensions.get('screen').width;
   const styles = useMemo(() => styleSheet(CAM_VIEW_HEIGHT, CAM_VIEW_WIDTH), [CAM_VIEW_HEIGHT, CAM_VIEW_WIDTH])
@@ -24,9 +25,10 @@ const Qrscan = (props) => {
   const getQrInfo = async () => {
     const defaultEventId = await AsyncStorage.getItem('defaultEventId')
     const orgId = await AsyncStorage.getItem('orgId')
-    setOrgId(orgId)
     const res = await qrInfoReq(defaultEventId)
+    setOrgId(orgId)
     setQrInfo(res.data.data)
+    setEventId(defaultEventId)
     const val1 = res.data.data.eventStartDate.split(' ')
     const val2 = res.data.data.eventEndDate.split(' ')
     setDateData(`${val1[0]} ~ ${val2[0]}`)
@@ -39,11 +41,15 @@ const Qrscan = (props) => {
     camera.current.pausePreview()
     setControlCamera(true)
 
-    const qrData = JSON.parse(e.data)
-    console.log(JSON.stringify(qrData, null, 4))
+    try {
+      const qrData = JSON.parse(e.data)
+      console.log(JSON.stringify(qrData, null, 4))
 
-    const response = await qrScanReq(...qrData, orgId, eventId);
-    console.log(JSON.stringify(response, null, 4))
+      const response = await qrScanReq(...qrData, orgId, eventId);
+      console.log(JSON.stringify(response, null, 4))
+    } catch (error) {
+      console.log(error)
+    }
 
     setTimeout(() => {
       setControlCamera(false)
@@ -68,15 +74,15 @@ const Qrscan = (props) => {
     <RNCamera
       ref={camera}
       style={{ width: CAM_VIEW_WIDTH, height: CAM_VIEW_HEIGHT, }}
-      type={RNCamera.Constants.Type.front}
-      captureAudio={false}
+      type={cameraFront ? RNCamera.Constants.Type.front : RNCamera.Constants.Type.back}
+      captureAudio={true}
       barCodeTypes={[RNCamera.Constants.BarCodeType.qr]}
       cameraViewDimensions={{
         width: CAM_VIEW_WIDTH,
         height: CAM_VIEW_HEIGHT,
       }}
       rectOfInterest={{
-        x: 0.5,
+        x: cameraFront ? 0.5 : 0.1,
         y: 0,
         width: 0.35,
         height: 0.85,
@@ -92,6 +98,12 @@ const Qrscan = (props) => {
               <ReactImage source={require('./assets/closeIcon.png')} style={styles.closeIcon} />
             </TouchableOpacity>
 
+            <TouchableOpacity style={styles.closeBtn} onPress={() => {
+              setCameraFront(!cameraFront)
+            }}>
+              <ReactImage source={require('./assets/change.png')} style={styles.closeIcon} />
+            </TouchableOpacity>
+            
             <TouchableOpacity style={styles.eventSelectBtn} onPress={() => {
               props.navigation.navigate('EventList', { getEventInfo })
             }}>

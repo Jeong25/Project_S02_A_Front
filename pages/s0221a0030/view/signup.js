@@ -4,7 +4,6 @@ import { Text, View, TextInput, TouchableOpacity, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import client from '../../common/api/client';
 import { signUpReq } from '../store/store';
 import { styleSheet } from './stylesheet';
 import { setUserTp } from '../../common/lib/getuserinfo';
@@ -93,12 +92,6 @@ const Signup = (props) => {
     keyboardSub?.remove()
 
     try {
-      // const result = await client
-      //   .get(`/rest/v1/s0221a0030/sign-up?memberName=${paramName}&hpNo=${paramHpNo}&eventCode=${paramEventCode}`).catch((error) => {
-      //     console.log('error!!')
-      //     console.log(JSON.stringify(error.response, null, 4))
-      //   })
-      // console.log(JSON.stringify(result, null, 4))
       const result = await signUpReq(paramName, paramHpNo, paramEventCode)
       if (result?.status === 500) {
         alert(result.massage)
