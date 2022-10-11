@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Text, View, ScrollView, TouchableOpacity, Keyboard } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
@@ -87,7 +87,7 @@ const QrCode = (props) => {
   }
 
   return (
-    <View>
+    <SafeAreaView style={{backgroundColor:'white'}}>
       <View style={styles.wrap} contentContainerStyle={{ flex: 1, height: 500 }}>
         <View style={styles.circle}></View>
         <View style={styles.topMenu}>
@@ -210,7 +210,7 @@ const QrCode = (props) => {
       <Footer
         navigation={props.navigation}
       />
-    </View>
+    </SafeAreaView>
 
   );
 }
