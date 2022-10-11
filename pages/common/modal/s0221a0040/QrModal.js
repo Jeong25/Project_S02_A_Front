@@ -20,13 +20,14 @@ const QrModal = (props) => {
         const memberName = await AsyncStorage.getItem('memberName')
         const eventNm = await AsyncStorage.getItem('eventNm')
         const eventRole = await AsyncStorage.getItem('eventRole')
-        const mobileId = await AsyncStorage.setItem('mobileId', '')
-        const memberId = await AsyncStorage.setItem('memberId', '')
-        const info = [{mobileId: mobileId, memberId: memberId}]
+        const mobileId = await AsyncStorage.getItem('mobileId')
+        const memberId = await AsyncStorage.getItem('memberId')
+        const info = {mobileId: mobileId, memberId: memberId}
         setMemberName(memberName)
         setEventNm(eventNm)
         setEventRole(eventRole)
         setInfo(info)
+        console.log(JSON.stringify({...info}))
     }
 
     useEffect(() => {
@@ -70,7 +71,7 @@ const QrModal = (props) => {
                 <View style={styles.modalInner}>
                     <View style={styles.qrcodeWrap}>
                         <View style={styles.qrImg}>
-                            <QRCode value={info} size={210} quietZone ={20} backgroundColor ='transparent'/>
+                            <QRCode value={JSON.stringify({...info})} size={210} quietZone ={20} backgroundColor ='transparent'/>
                         </View>
                     </View>
                     
