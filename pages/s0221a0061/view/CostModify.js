@@ -1,4 +1,4 @@
-import { Text, View, TextInput, Image, Keyboard, Dimensions } from 'react-native';
+import { Text, View, TextInput, Image, Keyboard, Dimensions, SafeAreaView } from 'react-native';
 import { styleSheet } from './stylesheet';
 import React, { useState, useEffect } from 'react';
 import { Image as ReactImage } from 'react-native';
@@ -137,8 +137,8 @@ const CostModify = (props) => {
   }
 
   return (
-    
-    <View style={styles.wrap}>
+    <SafeAreaView style={{backgroundColor:'white'}}>
+      <View style={styles.wrap}>
       <KeyboardAwareScrollView
         resetScrollToCoords={{ x: 0, y: 0 }}
         enableOnAndroid={true}
@@ -282,7 +282,9 @@ const CostModify = (props) => {
       <Footer
         navigation={props.navigation}
       />
-    </View>
+      </View>
+    </SafeAreaView>
+   
   )
 }
 

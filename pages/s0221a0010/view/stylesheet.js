@@ -67,7 +67,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
         'leftProcessBox': {
 
             'width': '77%',
-            'height': 70,
+            'height': 75,
             'backgroundColor': 'rgba(255,255,255,0.3)',
             'borderRadius': 10,
 
@@ -76,50 +76,48 @@ export const styleSheet = (windowHeight, windowWidth) => {
         'rightProcessBox': {
 
             'width': '20%',
-            'height': 70,
+            'height': 75,
             'backgroundColor': 'rgba(255,255,255,0.3)',
             'borderRadius': 10,
-
         },
 
         'processTitle': {
             'color': 'white',
             'fontSize': 8,
-            'lineHeight': 18,
             'fontWeight': '700',
             'textAlign': 'center',
             'marginLeft': 'auto',
             'marginRight': 'auto',
-            'width': '90%',
-            'borderBottomWidth': 1,
-            'borderBottomColor': 'white'
+            'marginTop': 5,
+            'marginBottom': 5,
+            'width': '90%',            
 
         },
         'processInner': {
             'width': '95%',
             'marginLeft': 'auto',
             'marginRight': 'auto',
-            'marginTop': 5,
             'flexDirection': 'row',
             'alignItems': 'center',
             'justifyContents': 'space-around',
+            'borderTopWidth': 1,
+            'borderTopColor': 'white'
 
         },
 
         'process': {
             'width': '25%',
-            'height': 40,
             'display': 'flex',
             'alignItems': 'center',
             'justifyContents': 'space-around',
-
+            'marginTop' : 5,
         },
         'processRight': {
             'width': '100%',
-            'height': 40,
             'display': 'flex',
             'alignItems': 'center',
             'justifyContents': 'space-around',
+            'marginTop' : 5,
 
         },
 
@@ -127,7 +125,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'fontSize': 10,
             'color': 'white',
             'fontWeight': '900',
-            'marginBottom': -8,
 
         },
         'processNumber': {

@@ -215,6 +215,10 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
 
         "loginBtn": {
             'backgroundColor': "#F15A24",
+            'borderRadius': 50,
+            'elevation': 6, //안드로이드에서만 작동
+        },
+        "loginText": {
             'lineHeight': 80,
             'fontSize': 36,
             "fontFamily": "Apple SD Gothic Neo",
@@ -222,8 +226,6 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'color': 'white',
             'textAlign': 'center',
             'textAlignVertical': 'center',
-            'borderRadius': 50,
-            'elevation': 6,
 
         },
     })

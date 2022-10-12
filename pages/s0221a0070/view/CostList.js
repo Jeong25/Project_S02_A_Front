@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useMemo, useState } from 'react';
-import { Text, View, TextInput, ScrollView, } from 'react-native';
+import { Text, View, SafeAreaView, TextInput, ScrollView, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import { retrieveCostReq } from '../store/store';
@@ -80,7 +80,7 @@ const CostList = (props) => {
   }
 
   return (
-    <View>
+    <SafeAreaView style={{backgroundColor:'white'}}>
       <View style={styles.wrap} contentContainerStyle={{ flex: 1 }}>
         <View style={styles.topMenu}>
           <View style={styles.backBtn}>
@@ -128,7 +128,7 @@ const CostList = (props) => {
           {listData.map((t, i) => listItem(t, i))}
           </ScrollView>
         </View>
-
+        
         <DateTimePickerModal
           isVisible={dateState.viewModal}
           mode="date"
@@ -138,11 +138,12 @@ const CostList = (props) => {
           }
           date={dateState.fromToFlag === 'from' ? dateState.confirmFromDate : dateState.confirmToDate}
         />
+      
       </View >
       <Footer
         navigation={props.navigation}
       />
-    </View>
+    </SafeAreaView>
 
   )
 }
