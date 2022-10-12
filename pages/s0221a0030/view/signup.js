@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Dimensions, Keyboard } from 'react-native';
-import { Text, View, TextInput, TouchableOpacity, } from 'react-native';
+import { Text, View,SafeAreaView, TextInput, TouchableOpacity, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -142,7 +142,7 @@ const Signup = (props) => {
         keyboardShouldPersistTaps='always'
         contentContainerStyle={{ height: windowHeight * checkHeight() }}
       >
-        <View
+        <SafeAreaView
           style={styles.wrap}
         >
           <View style={styles.titleWrap}>
@@ -254,7 +254,7 @@ const Signup = (props) => {
               </TouchableOpacity>
             </View>
           </View>
-        </View>
+        </SafeAreaView>
       </KeyboardAwareScrollView >}
     </>
   );
