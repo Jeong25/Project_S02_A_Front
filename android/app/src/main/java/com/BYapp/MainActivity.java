@@ -1,8 +1,10 @@
-package com.sampleapps;
+package com.BYapp;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
+import com.BYapp.BuildConfig;
+
 import org.devio.rn.splashscreen.SplashScreen;
 import android.os.Bundle;
 
