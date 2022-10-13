@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { color } from 'react-native-reanimated';
+import { ifIphoneX } from 'react-native-iphone-x-helper'
 
 export const styleSheet = (windowHeight = Dimensions.get('window').height, windowWidth = Dimensions.get('window').width) => {
     const wp = windowWidth / 360
@@ -18,6 +18,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'borderTopWidth': 2,
             'borderTopColor': "#e9e9e9",
             'zIndex' : 9,
+            
         },
         'scanBtnIcon': {
             'width': 30,

@@ -9,9 +9,8 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
     "wrap": {
       'position': 'relative',
       "width": '100%',
-      "height": windowHeight,
+      "height": '100%',
       'backgroundColor': 'white',
-      'flex': 1,
     },
     "inner": {
       "width": "90%",

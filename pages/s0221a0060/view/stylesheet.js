@@ -9,9 +9,8 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
     "wrap": {
       'position': 'relative',
       "width": '100%',
-      "height": windowHeight,
+      "height": '100%',
       'backgroundColor': 'white',
-      'flex': 1,
     },
     "inner": {
       "width": "85%",
@@ -95,161 +94,8 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'marginTop': 10,
       'marginBottom': 5,
     },
-    "modifyLabel": {
-      "fontFamily": "Apple SD Gothic Neo",
-      "color": "#f15a24",
-      "fontWeight": '700',
-      "fontSize": 13,
-    },
-
-    "modifyText": {
-      'width': 80,
-      'lineHeight': 23,
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'color': '#383838',
-      'textAlign': 'center',
-      "fontSize": 13,     
-    },
-    "modifyDateText": {
-      'width': '80%',
-      'height' : 40,
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'color': '#383838',
-      'textAlign': 'left',
-      "fontSize": 13,
-      'marginTop' : -8,
-      'paddingLeft': 10,
-      'paddingBottom': -10,
-      'borderBottomWidth' :1,
-      'borderBottomColor' :'#888',
-      'backgroundColor' : 'red'
-    },
-
-    "centerAlignText": {
-      'width': 80,
-      'height' :40,
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'color': '#383838',
-      'textAlign': 'center',
-      "fontSize": 13,
-      'marginTop': -5,
-      'paddingBottom': -10,
-      'borderBottomWidth' :1,
-      'borderBottomColor' :'#888',
-    },
-    "RcenterAlignText": {
-      'width': 80,
-      'height' :40,
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'color': '#383838',
-      'textAlign': 'center',
-      "fontSize": 13,
-      'marginTop': -5,
-      'paddingBottom': -10,
-      
-    },
-    "rightAlignText": {
-      'width': 75,
-      'height' :40,
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'color': '#383838',
-      'textAlign': 'right',
-      "fontSize": 13,
-      'marginTop' : -8,
-      'marginLeft' : 5,
-      'paddingBottom': -10,
-      'borderBottomWidth' :1,
-      'borderBottomColor' :'#888',
-    },
     
-    "centerAlignDate": {
-      'height' :40,
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'lineHeight': 30,
-      'textAlign': 'center',
-      'color': '#383838',
-      "fontSize": 13,
-    },
-
-    "modifyTextLong": {
-      'width' : '80%',
-      'height' :40,
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'textAlign': 'left',
-      'color': '#383838',
-      "fontSize": 13,
-      'marginTop' : -8,
-      'marginLeft' : 11,
-      'paddingHorizontal' : 10,
-      'paddingBottom': -10,
-      'borderBottomWidth' :1,
-      'borderBottomColor' :'#888',
-    },
-    
-    "modifyTextLongAlignCenter": {
-      'width' : '85%',
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'lineHeight': 30,
-      'textAlign': 'center',
-      'color': '#383838',
-      "fontSize": 13,
-      'paddingHorizontal' : 10,
-    },
-    "modifyFileInput": {
-      'width' : '80%',
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'textAlign': 'left',
-      'color': '#383838',
-      "fontSize": 13,
-      'marginTop' : -5,
-      'marginLeft' : 11,
-      'paddingLeft' : 10,
-      'paddingRight' : 25,
-      'paddingBottom': -10,
-      'borderBottomWidth' :1,
-      'borderBottomColor' :'#888',
-    },
-    "historyInput": {
-      'width' : '80%',
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'textAlign': 'left',
-      'color': '#383838',
-      "fontSize": 13,
-      'marginTop' : -5,
-      'paddingBottom': -10,
-      'borderBottomWidth' :1,
-      'borderBottomColor' :'#888',
-    },
-    "RhistoryInput": {
-      'width' : '80%',
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'textAlign': 'left',
-      'color': '#383838',
-      "fontSize": 13,
-      'marginTop' : -5,
-      'paddingBottom': -10,  
-    },
-    
-    "modifyWon": {
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'color': '#1d1d1d',
-      "fontSize": 13,
-      'marginTop': 10,
-      'marginBottom': 5,
-
-    },
+  
     "searchBtn": {
       "width": 22,
       "height": 22,
@@ -259,19 +105,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "bottom": 10,
       'zIndex': 1
     },
-    "modifySearchBtn": {
-      "position": "absolute",
-      "right": 0,
-      "width": 22,
-      "height": 22,
-    },
-    "modifyDateSearchBtn": {
-      "position": "absolute",
-      "right": 10,
-      "width": 22,
-      "height": 22,
-      'zIndex': 1
-    },
+ 
     "searchIcon": {
       "width": "100%",
       "height": "100%",
@@ -291,11 +125,6 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "paddingTop": 0,
       "paddingBottom": 10,
       'textAlign' : 'center'
-    },
-    "modifyInputWrap": {
-      'flexDirection': 'row',
-      'alignItems': 'center',
-      'justifyContent' : 'space-between'
     },
 
     "amountInput": {
@@ -326,15 +155,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "borderRadius": 50,
       'zIndex': 1
     },
-    "modifyAddBtn": {
-      "position": "absolute",
-      "right": 0,
-      "width": 20,
-      "height": 20,
-      "backgroundColor": "#f15a24",
-      "borderRadius": 50,
-      'zIndex': 1
-    },
+
 
     "addIcon": {
       "width": 13,
@@ -343,12 +164,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'marginRight': 'auto',
       'marginTop': 3,
     },
-    'sepLine': {
-      'width': '100%',
-      'height': 3,
-      'backgroundColor': '#bcbcbc',
-      'marginTop': 10,
-    },
+  
 
     "textfield": {
       "height": windowHeight * 0.10,
@@ -361,30 +177,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "fontSize": 14,
       "textAlignVertical": "top",
     },
-    'contentsTextarea': {
-      'marginTop': 10,
-      'height': '20%'
-    },
-
-    'opinion': {
-      'height': '50%',
-      'width': '100%',
-      'borderRadius': 10,
-      'borderWidth': 2,
-      'borderColor': '#707070',
-      'marginTop': 10,
-      'fontFamily': 'Apple SD Gothic Neo',
-      'fontSize': 12,
-      'textAlignVertical': 'top'
-    },
-
-    "selectBox": {
-      "width": "70%",
-      // "border": "none",
-      // "borderBottomWidth": 3,
-      // "borderBottomColor": "#707070",
-    },
-
+   
     "btnWrap": {
       "width": "100%",
       "height": 50,
@@ -395,33 +188,16 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "justifyContent": "center",
       "alignItems": "center",
     },
-    "modifyBtnWrap": {
-      "width": "100%",
-      "height": 50,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-      'marginTop': 40,
-      'marginBottom': 40,
-      "flexDirection": "row",
-      "justifyContent": "space-between",
-      "alignItems": "center",
-    },
-    "btnWrap2": {
-      "width": "100%",
-      "height": 50,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-      'marginBottom': 40,
-      "flexDirection": "row",
-      "justifyContent": "space-between",
-      "alignItems": "center",
-    },
-   
+ 
+  
     "requestBtn": {
       "width": 140,
       "height": 50,
       "backgroundColor": "#F15A24",
       "borderRadius": 50,
+    },
+    "buttonText": {
+     
       "textAlign": "center",
       "color": "white",
       "fontSize": 21,
@@ -430,97 +206,5 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "fontFamily": "Apple SD Gothic Neo"
     },
 
-    "delBtn": {
-      "width": 140,
-      "height": 50,
-      "backgroundColor": "#707070",
-      "borderRadius": 50,
-      "color": "white",
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      "fontSize": 21,
-      "textAlign": "center",
-      "lineHeight": 50,
-    },
-    'bottomMenu': {
-      'width': '100%',
-      'height': 80,
-      'backgroundColor': 'white',
-      'position': 'absolute',
-      'bottom': 0,
-      'flexDirection': 'row',
-      'alignItems': 'center',
-      'justifyContent': 'space-around',
-      'paddingHorizontal': 30,
-      'borderTopWidth': 2,
-      'borderTopColor': "rgba(112, 112, 112 , 0.3)",
-
-
-    },
-    'scanBtnIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-    },
-
-    'homeBtn': {
-
-      'alignItems': 'center',
-    },
-
-    'homeIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-    },
-    'costIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-
-    },
-    'paymentIcon': {
-      'width': 30,
-      'height': 30,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-    },
-
-    'homeText': {
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5,
-      'textAlign': 'center'
-
-    },
-    'costText': {
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5
-
-    },
-    'paymentText': {
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5
-    },
-    'qrscanText': {
-      'width': 50,
-      'fontFamily': "Apple SD Gothic Neo",
-      'color': '#707070',
-      'fontSize': 12,
-      'fontWeight': '700',
-      'marginTop': 5,
-      'textAlign': 'center',
-    },
   })
 }
