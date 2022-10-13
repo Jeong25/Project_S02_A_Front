@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useMemo, useState } from 'react';
-import { StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, View, TextInput, FlatList, Picker, ScrollView, TouchableOpacity } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import Svg, { Defs, Pattern } from 'react-native-svg';
 import { Path as SvgPath } from 'react-native-svg';
@@ -47,7 +47,7 @@ const EventList = (props) => {
   }, [])
 
   return (
-    <View>
+    <SafeAreaView style={{backgroundColor:'white'}}>
       <View style={styles.wrap}>
         <View style={styles.topMenu}>
           <View style={styles.backBtn}>
@@ -58,10 +58,12 @@ const EventList = (props) => {
           <Text style={styles.title}>행사현황</Text>
         </View>
         <View style={styles.layer1}>
-          <TextInput
-            style={styles.input}
+          <View style={styles.inputWrap}>
+          <TextInput style={styles.input}
             placeholder="행사명으로 검색"
           ></TextInput>
+          </View>
+          
           <View style={styles.searchBtn}>
             <TouchableOpacity>
               <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
@@ -93,7 +95,7 @@ const EventList = (props) => {
       <Footer
         navigation={props.navigation}
       />
-    </View>
+    </SafeAreaView>
   )
 }
 

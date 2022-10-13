@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet,Platform } from 'react-native';
 import { color } from 'react-native-reanimated';
 
 export const styleSheet = (windowHeight = Dimensions.get('window').height, windowWidth = Dimensions.get('window').width) => {
@@ -48,6 +48,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '800',
       "fontSize": 22,
+      'backgroundColor': Platform.OS === 'ios' ? 'red' : 'blue'
     },
     "won": {
       "position": "absolute",
