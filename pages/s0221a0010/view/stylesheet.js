@@ -20,12 +20,14 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'top': -350,
         },
         'topMenu': {
-            'width': '100%',
+            'width': '95%',
             'height': 50,
             'flexDirection': 'row',
             'justifyContent': 'space-between',
             'alignItems': 'center',
             'paddingHorizontal': 10,
+            'marginRight' : 'auto',
+            'marginLeft' : 'auto',
             'marginTop': 10,
         },
         'topLogo': {
@@ -366,7 +368,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'textAlign': 'center',
             'fontSize': 30,
             'lineHeight': 100,
-
         }
 
     });

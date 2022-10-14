@@ -85,6 +85,7 @@ const QrCode = (props) => {
     Keyboard.dismiss()
     setFaqModalBool(true)
   }
+  
 
   return (
     <SafeAreaView style={{backgroundColor:'white'}}>
