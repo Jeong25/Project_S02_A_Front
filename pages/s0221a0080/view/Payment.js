@@ -76,60 +76,49 @@ const Payment = (props) => {
           <View style={styles.inner}>
             <View style={styles.contentsWrap}>
 
-                <View style={styles.contents}>
+                <View style={styles.contentsLayer}>
                   <View style={styles.contentsInner}>
                     <Text style={styles.label}>작성자</Text>
-                    <TextInput style={styles.centerAlignText} value={headerData?.userName} />
+                    <Text style={styles.centerAlignText}>{headerData?.userName}</Text>
                   </View>
                   <View style={styles.contentsInner}>
                     <Text style={styles.label}>진행상태</Text>
-                    <TextInput style={styles.centerAlignText} value={headerData?.useProStatusNm} />
+                    <Text style={styles.centerAlignText}>{headerData?.useProStatusNm}</Text>
                   </View>
                 </View>
                 <View style={styles.contents}>
                   <Text style={styles.label}>사용제목</Text>
-                  <TextInput style={styles.inputTextLong} value={headerData?.useSubject} />
+                  <Text style={styles.inputTextLong}>{headerData?.useSubject}</Text>
                 </View>
                 <View style={styles.contents}>
                   <Text style={styles.label}>행사명</Text>
-                  <View style={styles.inputWrap}>
-                    <TextInput
-                      style={styles.inputTextLong}
-                      editable={false}
-                      value={headerData.eventNm}></TextInput>
-                  </View>
+                    <Text style={styles.inputTextLong}>{headerData.eventNm}</Text>
                 </View>
-                <View style={styles.contents}>
+                <View style={styles.contentsLayer}>
                   <View style={styles.contentsInner}>
                     <Text style={styles.label}>사용일자</Text>
-                    <View style={styles.inputWrap}>
-                      <TextInput style={styles.dateText} editable={false} value={headerData.usedDate}></TextInput>
-                    </View>
+                    <Text style={styles.dateText}>{headerData.usedDate}</Text>
                   </View>
                   <View style={styles.contentsInner}>
-                    <View style={styles.inputWrap}>
                       <Text style={styles.label}>사용금액</Text>
-                      <TextInput style={styles.rightAlignText} value={`${numberToCost(headerData.useAmount)}`} />
+                      <Text style={styles.rightAlignText}>{`${numberToCost(headerData.useAmount)}`}</Text>
                       <Text style={styles.won}>원</Text>
-                    </View>
                   </View>
 
               </View>
 
                 <View style={styles.contents}>
                   <Text style={styles.label}>첨부파일</Text>
-                  <View style={styles.inputWrap}>
-                    <TextInput style={styles.fileInput} value={headerData.useReceiptName}></TextInput>
-                  </View>
-
+                    <Text style={styles.fileInput}>{headerData.useReceiptName}</Text>
               </View>
               <View style={styles.contents}>
                 <Text style={styles.label}>사용내역</Text>
-                <TextInput
+                <Text
                   style={styles.historyInput}
                   multiline={true}
-                  value={headerData.useComment}
-                />
+                >
+                {headerData.useComment}
+                </Text>
               </View>
             </View>
           </View>
