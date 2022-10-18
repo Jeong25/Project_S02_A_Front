@@ -113,11 +113,10 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     "input": {
-    
-      "color": "#ababab",
+      'height' : 40,
+      "color": "#888",
       "fontSize": 16,
       "textAlign": "center",
-      "alignItems": "center",
     },
 
     "cellWrap": {

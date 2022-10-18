@@ -10,4 +10,8 @@ const payCnt = async (hpNo, eventCode) => {
     return res;
 }
 
-export { useStateCnt, payCnt };
+const deletMem = async (memId) => {
+    const res = await client.post('/rest/v1/s021100030/delete-member', {memberId: memId});
+    return res
+}
+export { useStateCnt, payCnt, deletMem };

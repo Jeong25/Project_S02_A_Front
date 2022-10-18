@@ -11,6 +11,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "width": '100%',
       "height": '100%',
       'backgroundColor': 'white',
+      
     },
     "inner": {
       "width": "90%",

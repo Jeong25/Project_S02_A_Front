@@ -147,7 +147,7 @@ const CostModify = (props) => {
         enableAutomaticScroll={true}
         keyboardShouldPersistTaps='always'
         nestedScrollEnabled={true}
-        contentContainerStyle={{ height: height + 80 }}
+        contentContainerStyle={{ height: height + 1200 }}
       >
         <View style={styles.topMenu}>
           <View style={styles.backBtn}>

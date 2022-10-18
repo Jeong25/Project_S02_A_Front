@@ -187,6 +187,7 @@ const Cost = (props) => {
   }
 
   return (
+
     <SafeAreaView style={{backgroundColor:'white'}}>
       <View style={styles.wrap}>
 
@@ -285,6 +286,7 @@ const Cost = (props) => {
             }
             date={dateState.confirmDate}
           />
+
         </KeyboardAwareScrollView>
         <Footer
           navigation={props.navigation}
@@ -292,8 +294,7 @@ const Cost = (props) => {
       </View>
     </SafeAreaView>
 
-
-
+  
   )
 }
 

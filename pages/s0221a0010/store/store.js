@@ -1,4 +1,4 @@
-import { useStateCnt, payCnt } from '../repository/repository';
+import { useStateCnt, payCnt, deletMem } from '../repository/repository';
 
 const useStateCntReq = async (hpNo, eventCode) => {
     const res = await useStateCnt(hpNo, eventCode);
@@ -10,4 +10,9 @@ const payCntReq = async (hpNo, eventCode) => {
     return res;
 }
 
-export { useStateCntReq, payCntReq }
+const deletMemReq = async (memId) => {
+    const res = await deletMem(memId);
+    return res;
+}
+
+export { useStateCntReq, payCntReq, deletMemReq }

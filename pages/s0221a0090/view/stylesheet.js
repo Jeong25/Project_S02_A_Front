@@ -115,7 +115,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "borderRadius": 50,
       "color": "#707070",
       "textAlign": "center",
-      "lineHeight": 38,
       "flexDirection": "row",
       "justifyContent": "space-evenly",
       "alignItems": "center",

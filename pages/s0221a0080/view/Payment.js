@@ -61,7 +61,7 @@ const Payment = (props) => {
           enableAutomaticScroll={true}
           keyboardShouldPersistTaps='always'
           nestedScrollEnabled={true}
-          contentContainerStyle={{ height: height + 80 }}
+          contentContainerStyle={{ height: height + 1200 }}
 
         >
 

@@ -89,7 +89,7 @@ const Qrscan = (props) => {
       }}
       onBarCodeRead={(e) => onBarCodeRead(e)}
     >
-      <SafeAreaView/>
+      <SafeAreaView style={{backgroundColor: 'rgba(0, 0, 0, 0.7)'}}/>
       <View style={styles.wrap}>
         <View style={styles.inner}>
           <View style={styles.topBtnWrap}>

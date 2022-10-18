@@ -61,6 +61,7 @@ const EventList = (props) => {
           <View style={styles.inputWrap}>
           <TextInput style={styles.input}
             placeholder="행사명으로 검색"
+            placeholderTextColor="#888" 
           ></TextInput>
           </View>
           

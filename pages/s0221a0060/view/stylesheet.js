@@ -180,7 +180,6 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
    
     "btnWrap": {
       "width": "100%",
-      "height": 50,
       'marginLeft': 'auto',
       'marginRight': 'auto',
       'marginTop': 40,
@@ -192,12 +191,11 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
   
     "requestBtn": {
       "width": 140,
-      "height": 50,
       "backgroundColor": "#F15A24",
       "borderRadius": 50,
     },
     "buttonText": {
-     
+    
       "textAlign": "center",
       "color": "white",
       "fontSize": 21,

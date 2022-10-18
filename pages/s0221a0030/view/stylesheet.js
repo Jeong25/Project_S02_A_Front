@@ -45,7 +45,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'backgroundColor': 'white',
             'borderTopLeftRadius': 30,
             'borderTopRightRadius': 30,
-            'marginTop': 10,
+            'marginTop': Platform.OS === 'ios' ? 35 : 20 ,
             'elevation': 30,
         },
 
@@ -183,7 +183,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
         "textBox": {
             'marginTop': 10,
             'width': '100%',
-            'height': 130,
+            'height': 125,
             'borderWidth': 2,
             'borderColor': '#707070',
             'borderRadius': 10,
@@ -207,7 +207,6 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
 
         "loginBtnWrap": {
             "width": '100%',
-            'height': 80,
             'marginLeft': 'auto',
             'marginRight': 'auto',
             'marginTop': '20%',
@@ -219,8 +218,8 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'elevation': 6, //안드로이드에서만 작동
         },
         "loginText": {
-            'lineHeight': 80,
             'fontSize': 36,
+            'lineHeight' : 80,
             "fontFamily": "Apple SD Gothic Neo",
             "fontWeight": '700',
             'color': 'white',
