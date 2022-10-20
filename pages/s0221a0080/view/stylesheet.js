@@ -8,9 +8,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
     "wrap": {
       'position': 'relative',
       "width": '100%',
-      "height": windowHeight,
-      'backgroundColor': 'white',
-      'flex': 1,
     },
 
     "inner": {
@@ -61,14 +58,14 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
-      'marginBottom' : '2%',
+      'marginBottom' : '1%',
     },
     "renderContents": {
       'display': 'flex',
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
-      'marginBottom' : '2%',
+      'marginBottom' : '1%',
     },
 
     "inputWrap": {
@@ -225,6 +222,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'backgroundColor': '#e9e9e9',
       'marginTop': 5,
     },
+   
     'renderInner' : {
       'width' : '90%',
       'marginTop' : 10,

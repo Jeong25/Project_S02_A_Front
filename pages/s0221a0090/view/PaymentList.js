@@ -8,9 +8,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import numberToCost from '../../common/util/numberToCost';
+import { useIsFocused } from '@react-navigation/native';
 
 const PaymentList = (props) => {
   const styles = styleSheet()
+  const isFocused = useIsFocused();
   const [listData, setListData] = useState([])
   const [dateState, setDateState] = useState({
     viewModal: false,
@@ -21,7 +23,7 @@ const PaymentList = (props) => {
 
   useEffect(() => {
     callList()
-  }, [])
+  }, [isFocused])
 
   const callList = async () => {
     const { confirmFromDate, confirmToDate } = dateState

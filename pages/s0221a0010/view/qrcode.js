@@ -7,7 +7,7 @@ import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
 // import client from '../../common/api/client';
-import { useStateCntReq, payCntReq } from '../store/store';
+import { useStateCntReq, payCntReq, deletMemReq } from '../store/store';
 import { setUserTp } from '../../common/lib/getuserinfo';
 import QrModal from '../../common/modal/s0221a0040/QrModal';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
@@ -60,6 +60,14 @@ const QrCode = (props) => {
     props.navigation.reset({ routes: [{ name: 'Signup' }] })
   }
 
+  const deletMem = async () => {
+    const memId = await AsyncStorage.getItem('memberId')
+    const res = await deletMemReq(Number(memId))
+    console.log(JSON.stringify(res, null, 4))
+    alert('회원 탈퇴가 완료되었습니다.')
+    logOut();
+  }
+
   const getUserInfo = async (hpNo, eventCode) => {
     // const statCountResult = await client.get(`/rest/v1/s0221a0010/use-state-cnt?eventCode=${eventCode}&hpNo=${hpNo}`)
     const statCountResult = await useStateCntReq(hpNo, eventCode);
@@ -92,6 +100,11 @@ const QrCode = (props) => {
         <View style={styles.circle}></View>
         <View style={styles.topMenu}>
             <Text style={styles.topLogo}>삐용</Text>
+          <View style={styles.logoutBtn}>
+            <TouchableOpacity onPress={() => deletMem()}>
+              <ReactImage source={require('./assets/block-user.png')} style={styles.logout} />
+            </TouchableOpacity>
+          </View>
           <View style={styles.logoutBtn}>
             <TouchableOpacity onPress={() => logOut()}>
               <ReactImage source={require('./assets/power-off-w.png')} style={styles.logout} />
