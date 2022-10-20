@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useMemo, useState } from 'react';
-import { Text, View, TextInput, ScrollView,SafeAreaView } from 'react-native';
+import React, { Component, Fragment, useEffect, useMemo, useState } from 'react';
+import { Text, View, TextInput, ScrollView, SafeAreaView } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import { costPayListReq } from '../store/store';
@@ -86,16 +86,17 @@ const PaymentList = (props) => {
   }
 
   return (
-    <SafeAreaView style={{backgroundColor:'white'}}>
-      <View style={styles.wrap}>
-        <View style={styles.topMenu}>
-          <View style={styles.backBtn}>
-            <TouchableOpacity onPress={() => props.navigation.goBack()}>
-              <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
-            </TouchableOpacity>
+    <Fragment>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#f15a24' }}>
+        <View style={styles.wrap}>
+          <View style={styles.topMenu}>
+            <View style={styles.backBtn}>
+              <TouchableOpacity onPress={() => props.navigation.goBack()}>
+                <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.title}>결제요청현황</Text>
           </View>
-          <Text style={styles.title}>결제요청현황</Text>
-        </View>
 
           <View style={styles.layer1}>
             <View style={styles.searchDate}>
@@ -120,25 +121,27 @@ const PaymentList = (props) => {
             </View>
           </View>
           <View style={styles.divider}></View>
-        <View style={styles.cellWrap}>
-          <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
-            {listData.map((t, i) => listItem(t, i))}
-          </ScrollView>
-        </View>
-      </View >
-      <DateTimePickerModal
-        isVisible={dateState.viewModal}
-        mode="date"
-        onConfirm={(a) => confirmDateChange(a, dateState.fromToFlag)}
-        onCancel={() =>
-          setDateState({ ...dateState, viewModal: false })
-        }
-        date={dateState.fromToFlag === 'from' ? dateState.confirmFromDate : dateState.confirmToDate}
-      />
+          <View style={styles.cellWrap}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
+              {listData.map((t, i) => listItem(t, i))}
+            </ScrollView>
+          </View>
+        </View >
+        <DateTimePickerModal
+          isVisible={dateState.viewModal}
+          mode="date"
+          onConfirm={(a) => confirmDateChange(a, dateState.fromToFlag)}
+          onCancel={() =>
+            setDateState({ ...dateState, viewModal: false })
+          }
+          date={dateState.fromToFlag === 'from' ? dateState.confirmFromDate : dateState.confirmToDate}
+        />
+      </SafeAreaView>
       <Footer
         navigation={props.navigation}
       />
-    </SafeAreaView>
+      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }}/>
+    </Fragment>
   )
 }
 

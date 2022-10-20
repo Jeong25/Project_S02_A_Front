@@ -16,7 +16,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "width": "90%",
       "marginLeft": 'auto',
       "marginRight": 'auto',
-      'position': 'relative',
     },
     "topMenu": {
       "width": "100%",
@@ -25,7 +24,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "marginLeft": 'auto',
       "marginRight": 'auto',
       'paddingHorizontal': 20,
-      'backgroundColor' :'#f15a24',
+      'backgroundColor': '#f15a24',
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'center',
@@ -40,9 +39,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "backBtn": {
       "overflow": "hidden",
-      'position' : 'absolute',
-      'left' : 16,
-      'top' : 15,
+      'position': 'absolute',
+      'left': 16,
+      'top': 15,
       "width": 40,
       "height": 40,
     },
@@ -59,34 +58,26 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'display': 'flex',
       'flexDirection': 'row',
       'alignItems': 'center',
-      'marginBottom' : '2%',
     },
+
     "contentsLayer": {
       'display': 'flex',
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
-      'marginBottom' : '2%',
-    },
-    "contentsLayer": {
-      'display': 'flex',
-      'flexDirection': 'row',
-      'alignItems': 'center',
-      'justifyContent': 'space-between',
-      'marginBottom' : '1%',
     },
     "renderContents": {
       'display': 'flex',
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
-      'marginBottom' : '1%',
+      'marginBottom': '1%',
     },
 
     "inputWrap": {
       'flexDirection': 'row',
       'alignItems': 'center',
-      'justifyContent' : 'flex-start'
+      'justifyContent': 'flex-start'
     },
     "contentsInner": {
       'width': '47%',
@@ -96,14 +87,14 @@ export const styleSheet = (windowHeight, windowWidth) => {
       // 'justifyContent': 'space-between',
     },
     "label": {
-      'width' : 50,
+      'width': 50,
       "fontFamily": "Apple SD Gothic Neo",
       "color": "#f15a24",
       "fontWeight": '700',
       "fontSize": 13,
       'marginTop': 10,
       'marginBottom': 5,
-      'marginRight' : 5,
+      'marginRight': 5,
     },
     "inputText": {
       'width': 80,
@@ -115,84 +106,94 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontSize": 12,
     },
     "inputTextLong": {
-      'height' :40,
-      'lineHeight' : 40,
+      'height': 40,
+      'lineHeight': 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'textAlign': 'left',
       'color': '#383838',
       "fontSize": 12,
-      'margin' : 0,
-      'marginTop' : 5,
-      'padding' : 0,
+      'margin': 0,
+      'marginTop': 5,
+      'padding': 0,
     },
-  
+    "dateInputTextLong": {
+      'width': '80%',
+      'height': 40,
+      'lineHeight': 40,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'textAlign': 'center',
+      'color': '#383838',
+      "fontSize": 12,
+      'margin': 0,
+      'marginTop': 5,
+      'padding': 0,
+    },
+
     "dateText": {
-      'height' : 40,
-      'lineHeight' : 40,
+      'height': 40,
+      'lineHeight': 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'color': '#383838',
       'textAlign': 'left',
       "fontSize": 12,
-      'margin' : 0,
-      'marginTop' : 5,
-      'padding' : 0,
-     
+      'margin': 0,
+      'marginTop': 5,
+      'padding': 0,
+
     },
     "centerAlignText": {
       'width': 80,
-      'height' :40,
-      'lineHeight' : 40,
+      'height': 40,
+      'lineHeight': 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'color': '#383838',
       'textAlign': 'center',
       "fontSize": 12,
-      'margin' : 0,
-      'marginTop' : 5,
-      'padding' : 0,
+      'margin': 0,
+      'marginTop': 5,
+      'padding': 0,
     },
     "rightAlignText": {
       'width': 75,
-      'height' :40,
-      'lineHeight' : 40,
+      'height': 40,
+      'lineHeight': 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'color': '#383838',
       'textAlign': 'right',
       "fontSize": 12,
-      'margin' : 0,
-      'marginTop' : 5,
-      'padding' : 0,
+      'margin': 0,
+      'marginTop': 5,
+      'padding': 0,
       'paddingRight': 5,
     },
-    
+
     "textLongAlignCenter": {
-      'width' : '80%',
-      'height' :40,
+      'width': '80%',
+      'height': 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'textAlign': 'center',
       'color': '#383838',
       "fontSize": 12,
-      'marginTop' : -5,
-      'marginLeft' : 11,
-      'paddingHorizontal' : 10,
+      'marginTop': -5,
+      'marginLeft': 11,
+      'paddingHorizontal': 10,
       'paddingBottom': -10,
     },
-    
-    "fileInput": {
-      'width' : '88%',
-      'lineHeight' : 40,
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'textAlign': 'left',
-      'color': '#383838',
-      "fontSize": 12,
-      'margin' : 0,
-      'marginTop' : 5,
-      'padding' : 0,
+
+    "fileBox": {
+      'width': '80%',
+      'height': 60,
+      'flexDirection': 'row',
+      'alignItems': 'center',
+      'padding': 10,
+      'backgroundColor': '#e9e9e9',
+
 
     },
     "won": {
@@ -200,48 +201,47 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontWeight": '500',
       'color': '#1d1d1d',
       "fontSize": 12,
-      'marginTop' : 5,
+      'marginTop': 5,
     },
- 
+
 
     "historyInput": {
-      'lineHeight' : 40,
+      'lineHeight': 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'textAlign': 'left',
       'color': '#383838',
       "fontSize": 12,
-      'margin' : 0,
-      'marginTop' : 5,
-      'padding' : 0,
+      'margin': 0,
+      'marginTop': 5,
+      'padding': 0,
     },
     "RhistoryInput": {
-      'width' : '80%',
+      'width': '80%',
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
       'textAlign': 'left',
       'color': '#383838',
       "fontSize": 12,
-      'marginTop' : -5,
+      'marginTop': -5,
       'paddingBottom': -10,
 
     },
 
-  
+
     'divider': {
       'width': '100%',
       'height': 10,
       'backgroundColor': '#e9e9e9',
       'marginTop': 5,
     },
-   
-    'renderInner' : {
-      'width' : '90%',
-      'marginTop' : 10,
+
+    'renderInner': {
+      'width': '90%',
       'marginLeft': 'auto',
       'marginRight': 'auto',
     },
-  
+
 
     "textfield": {
       "height": 30,
@@ -273,6 +273,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'marginLeft': 'auto',
       'marginRight': 'auto',
       'marginTop': 20,
+      'marginBottom': '30%',
       "flexDirection": "row",
       "justifyContent": "space-between",
       "alignItems": "center",
@@ -281,18 +282,16 @@ export const styleSheet = (windowHeight, windowWidth) => {
     'confBtn': {
 
       "width": 140,
-      "height": 50,
       "backgroundColor": "#F15A24",
       "borderRadius": 50,
       "textAlign": "center",
- 
+
     },
     'rejBtn': {
       "width": 140,
-      "height": 50,
       "backgroundColor": "#707070",
       "borderRadius": 50,
-    
+
     },
     'btnText': {
       "color": "white",

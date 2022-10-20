@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useMemo, useState } from 'react';
-import { Text, View, SafeAreaView, TextInput, ScrollView, } from 'react-native';
+import React, { Component, Fragment, useEffect, useMemo, useState } from 'react';
+import { Text, View, SafeAreaView, TextInput, ScrollView } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import { retrieveCostReq } from '../store/store';
@@ -22,7 +22,7 @@ const CostList = (props) => {
   useEffect(() => {
     callList()
   }, [])
-  
+
   const callList = async () => {
     const { confirmFromDate, confirmToDate } = dateState
     const confirmFromVal = convertDateToVal(confirmFromDate)
@@ -32,7 +32,7 @@ const CostList = (props) => {
     const response = await retrieveCostReq(memberId, confirmFromVal, confirmToVal, eventCode)
     setListData(response?.data?.data || [])
   }
-  
+
   const convertDateToVal = (val) => {
     console.log(val)
     const year = val.getFullYear()
@@ -80,23 +80,26 @@ const CostList = (props) => {
   }
 
   return (
-    <SafeAreaView style={{backgroundColor:'white'}}>
-      <View style={styles.wrap} contentContainerStyle={{ flex: 1 }}>
-        <View style={styles.topMenu}>
-          <View style={styles.backBtn}>
-            <TouchableOpacity onPress={() => props.navigation.goBack()}>
-              <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
-            </TouchableOpacity>
-          </View>
-          <Text style={styles.title}>비용요청현황</Text>
+    <Fragment>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#f15a24' }}>
+        <View style={styles.wrap}
+          scrollEnabled={true}
+          contentContainerStyle={{ flex: 1 }}>
+          <View style={styles.topMenu}>
+            <View style={styles.backBtn}>
+              <TouchableOpacity onPress={() => props.navigation.goBack()}>
+                <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.title}>비용요청현황</Text>
             <View style={styles.regBtnWrap}>
-            <TouchableOpacity onPress={() => {
-              props.navigation.navigate('Cost', { refresh: callList })
-            }}>
-              <ReactImage source={require('./assets/registIcon.png')} style={styles.registIcon} />
-            </TouchableOpacity>
+              <TouchableOpacity onPress={() => {
+                props.navigation.navigate('Cost', { refresh: callList })
+              }}>
+                <ReactImage source={require('./assets/registIcon.png')} style={styles.registIcon} />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
           <View style={styles.layer1}>
             <View style={styles.searchDate}>
               <Text style={styles.inputDate}
@@ -119,31 +122,34 @@ const CostList = (props) => {
                 <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
               </TouchableOpacity>
             </View>
-        </View>
+          </View>
           <View style={styles.divider}></View>
 
-        <View style={styles.cellWrap}>
-          <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }} >
-          {listData.map((t, i) => listItem(t, i))}
-          </ScrollView>
-        </View>
-        
-        <DateTimePickerModal
-          isVisible={dateState.viewModal}
-          mode="date"
-          onConfirm={(a) => confirmDateChange(a, dateState.fromToFlag)}
-          onCancel={() =>
-            setDateState({ ...dateState, viewModal: false })
-          }
-          date={dateState.fromToFlag === 'from' ? dateState.confirmFromDate : dateState.confirmToDate}
+          <View style={styles.cellWrap}>
+            <ScrollView
+              contentContainerStyle={{ flexGrow: 1 }} >
+              {listData.map((t, i) => listItem(t, i))}
+            </ScrollView>
+          </View>
+
+          <DateTimePickerModal
+            isVisible={dateState.viewModal}
+            mode="date"
+            onConfirm={(a) => confirmDateChange(a, dateState.fromToFlag)}
+            onCancel={() =>
+              setDateState({ ...dateState, viewModal: false })
+            }
+            date={dateState.fromToFlag === 'from' ? dateState.confirmFromDate : dateState.confirmToDate}
+          />
+
+        </View >
+      </SafeAreaView>
+        <Footer
+          navigation={props.navigation}
         />
-      
-      </View >
-      <Footer
-        navigation={props.navigation}
-      />
-    </SafeAreaView>
+      <SafeAreaView style={{ flex: 0, backgroundColor: 'white'}}>
+      </SafeAreaView>
+    </Fragment>
 
   )
 }

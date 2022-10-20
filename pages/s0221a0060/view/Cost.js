@@ -1,6 +1,6 @@
 import { Text, View, TextInput, Image, Keyboard, PermissionsAndroid, Linking, Platform, SafeAreaView } from 'react-native';
 import { styleSheet } from './stylesheet';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,Fragment } from 'react';
 import { Image as ReactImage } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
@@ -181,28 +181,28 @@ const Cost = (props) => {
   }
 
   return (
+    <Fragment>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#f15a24' }}>
+        <View style={styles.wrap}>
 
-    <SafeAreaView style={{ backgroundColor: 'white' }}>
-      <View style={styles.wrap}>
+          <KeyboardAwareScrollView
+            resetScrollToCoords={{ x: 0, y: 0 }}
+            enableOnAndroid={true}
+            scrollEnabled={true}
+            scrollToOverflowEnabled={true}
+            enableAutomaticScroll={true}
+            keyboardShouldPersistTaps='always'
+            nestedScrollEnabled={true}
+          >
 
-        <KeyboardAwareScrollView
-          resetScrollToCoords={{ x: 0, y: 0 }}
-          enableOnAndroid={true}
-          scrollEnabled={true}
-          scrollToOverflowEnabled={true}
-          enableAutomaticScroll={true}
-          keyboardShouldPersistTaps='always'
-          nestedScrollEnabled={true}
-        >
-
-          <View style={styles.topMenu}>
-            <View style={styles.backBtn}>
-              <TouchableOpacity onPress={goback} >
-                <Image source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
-              </TouchableOpacity>
+            <View style={styles.topMenu}>
+              <View style={styles.backBtn}>
+                <TouchableOpacity onPress={goback} >
+                  <Image source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+                </TouchableOpacity>
+              </View>
+              <Text style={styles.topTitle}>비용작성</Text>
             </View>
-            <Text style={styles.topTitle}>비용작성</Text>
-          </View>
 
           <View style={styles.inner}>
             <View style={styles.form}>
@@ -280,14 +280,17 @@ const Cost = (props) => {
             date={dateState.confirmDate}
           />
 
-        </KeyboardAwareScrollView>
-        <Footer
-          navigation={props.navigation}
-        />
-      </View>
-    </SafeAreaView>
+          </KeyboardAwareScrollView>
+        </View>
+      </SafeAreaView>
 
+      <Footer
+        navigation={props.navigation}
+      />
+      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }}/>
+    </Fragment>
 
+  
   )
 }
 
