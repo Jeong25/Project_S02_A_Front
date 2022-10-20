@@ -36,7 +36,6 @@ const PaymentList = (props) => {
   }
 
   const convertDateToVal = (val) => {
-    console.log(val)
     const year = val.getFullYear()
     const month = val.getMonth() + 1
     const date = val.getDate()
@@ -60,7 +59,6 @@ const PaymentList = (props) => {
       const eventUseId = item?.eventUseId
       const title = item?.useSubject
       const cutTitle = title ? `${title?.substring(0, 11)}...` : ""
-      console.log(item)
       return (
         <View key={index}>
           <TouchableOpacity onPress={() => {

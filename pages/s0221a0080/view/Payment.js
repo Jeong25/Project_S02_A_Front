@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Text, View, TextInput, SafeAreaView, TouchableOpacity, ScrollView, Dimensions,Image } from 'react-native';
+import { Text, View, TextInput, SafeAreaView, TouchableOpacity, ScrollView, Dimensions, Image } from 'react-native';
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { costReqDetailReq, processingCostReq } from '../store/store';
@@ -24,12 +24,13 @@ const Payment = (props) => {
     if (res.status === 200) {
       setHeaderData(res.data.data.header)
       setDetailData(res.data.data.detail)
-      console.log('CostModify_Log1: ' + JSON.stringify(headerData))
-      console.log('CostModify_Log2: ' + JSON.stringify(detailData))
     }
   }
 
   const requestPay = async (flag) => {
+    console.log('Payment_Log1: ' + JSON.stringify(headerData))
+    console.log('Payment_Log1: ' + JSON.stringify(detailData))
+    
     const { eventUseId } = props.route.params
     const memberId = await AsyncStorage.getItem('memberId')
 
@@ -112,9 +113,9 @@ const Payment = (props) => {
               <Text style={styles.label}>첨부파일</Text>
               {/* <Text style={styles.fileInput}>{headerData.useReceiptName}</Text> */}
               <View style={styles.fileBox}>
-                <Image 
-                source={require('./assets/sampleImage.jpeg')}
-                style={{width: 45, height: 45}}
+                <Image
+                  source={{ uri: `https://s3.ap-northeast-2.amazonaws.com/s02-bucket/storage/img/s02/${headerData?.useReceiptId}` }}
+                  style={{ width: 45, height: 45 }}
                 />
               </View>
             </View>
