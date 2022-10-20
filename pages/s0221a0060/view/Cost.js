@@ -85,9 +85,6 @@ const Cost = (props) => {
     //   alert('첨부파일을 입력해 주세요.')
     //   return
     // }
-
-    console.log(JSON.stringify(inputData))
-
     const body = { ...inputData, usedDate: dateState.confirmVal, "eventUserId": memberId, }
     console.log(JSON.stringify(body, null, 4))
     const headers = {
@@ -121,11 +118,9 @@ const Cost = (props) => {
       },
       includeBase64: true
     };
-
     const cameraGranted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA
     )
-
     if (cameraGranted === PermissionsAndroid.RESULTS.GRANTED) {
       await AlertAsync(
         "사진을 선택해주세요.",
@@ -161,7 +156,6 @@ const Cost = (props) => {
           },
         ],
         { cancelable: true })
-
     } else {
       await AlertAsync(
         "카메라 권한이없습니다.",
@@ -188,7 +182,7 @@ const Cost = (props) => {
 
   return (
 
-    <SafeAreaView style={{backgroundColor:'white'}}>
+    <SafeAreaView style={{ backgroundColor: 'white' }}>
       <View style={styles.wrap}>
 
         <KeyboardAwareScrollView
@@ -255,10 +249,9 @@ const Cost = (props) => {
                 <View style={styles.addBtn}>
                   <TouchableOpacity onPressIn={() => ShowPicker()}>
                     <ReactImage source={require('./assets/plus.png')} style={styles.addIcon} ></ReactImage>
-
                   </TouchableOpacity>
                 </View>
-                <TextInput style={styles.input} editable={false}>{inputData.fileName}</TextInput>
+                <TextInput style={styles.input} editable={false}>{inputData.useReceiptName}</TextInput>
               </View>
               <View>
                 <Text style={styles.label}>사용내역</Text>
@@ -294,7 +287,7 @@ const Cost = (props) => {
       </View>
     </SafeAreaView>
 
-  
+
   )
 }
 
