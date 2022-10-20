@@ -125,12 +125,13 @@ const CostList = (props) => {
           </View>
           <View style={styles.divider}></View>
 
-          <View style={styles.cellWrap}>
-            <ScrollView
-              contentContainerStyle={{ flexGrow: 1 }} >
+          <ScrollView 
+          style={styles.cellWrap}
+          
+          >
+              
               {listData.map((t, i) => listItem(t, i))}
-            </ScrollView>
-          </View>
+          </ScrollView>
 
           <DateTimePickerModal
             isVisible={dateState.viewModal}
