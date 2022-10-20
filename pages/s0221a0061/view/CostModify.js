@@ -28,7 +28,7 @@ const CostModify = (props) => {
     "eventUserId": "",
     "useAmount": "",
     "useComment": "",
-    "useReceiptId": "",
+    "base64String": "",
     "useReceiptName": "",
     "useSubject": "",
     "usedDate": ""
@@ -58,7 +58,6 @@ const CostModify = (props) => {
       setHeaderData(res.data.data.header)
       setDetailData(res.data.data.detail)
       setEventName(res.data.data.header.eventNm)
-      console.log('CostModify_Log1: ' + JSON.stringify(headerData))
       console.log('CostModify_Log1: ' + JSON.stringify(inputData))
       console.log('CostModify_Log2: ' + JSON.stringify(detailData))
     }

@@ -28,7 +28,7 @@ const Cost = (props) => {
     "useAmount": "",
     "useComment": "",
     "useProStatus": "A",
-    "useReceiptId": "",
+    "base64String": "",
     "useReceiptName": "",
     "useSubject": "",
     "usedDate": ""
@@ -132,7 +132,7 @@ const Cost = (props) => {
               launchCamera({ saveToPhotos: true, includeBase64: true }, async (res) => {
                 setInputData({
                   ...inputData,
-                  useReceiptId: res.assets[0].base64,
+                  base64String: res.assets[0].base64,
                   useReceiptName: res.assets[0].fileName
                 })
               }).catch((e) => {
@@ -144,10 +144,11 @@ const Cost = (props) => {
             text: '파일',
             onPress: async () => {
               launchImageLibrary(options, async (res) => {
+                let fileNm = res.assets[0].fileName.split('-')
                 setInputData({
                   ...inputData,
-                  useReceiptId: res.assets[0].base64,
-                  useReceiptName: res.assets[0].fileName
+                  base64String: res.assets[0].base64,
+                  useReceiptName: fileNm[fileNm.length-1]
                 })
               }).catch((e) => {
                 console.log(e)
