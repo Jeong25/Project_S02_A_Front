@@ -186,16 +186,16 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'paddingBottom': -10,
     },
 
-    "fileBox": {
-      'width': '80%',
-      'height': 60,
-      'flexDirection': 'row',
-      'alignItems': 'center',
-      'padding': 10,
-      'backgroundColor': '#e9e9e9',
+    // "fileBox": {
+    //   'width': '80%',
+    //   'height': 60,
+    //   'flexDirection': 'row',
+    //   'alignItems': 'center',
+    //   'padding': 10,
+    //   'backgroundColor': '#e9e9e9',
 
 
-    },
+    // },
     "won": {
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',
@@ -204,6 +204,17 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'marginTop': 5,
     },
 
+    "fileInput": {
+      'lineHeight': 40,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'textAlign': 'left',
+      'color': '#383838',
+      "fontSize": 12,
+      'margin': 0,
+      'marginTop': 5,
+      'padding': 0,
+    },
 
     "historyInput": {
       'lineHeight': 40,
