@@ -20,12 +20,14 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'top': -350,
         },
         'topMenu': {
-            'width': '100%',
+            'width': '95%',
             'height': 50,
             'flexDirection': 'row',
-            'justifyContent': 'space-between',
+            'justifyContent' : 'space-between',
             'alignItems': 'center',
             'paddingHorizontal': 10,
+            'marginRight' : 'auto',
+            'marginLeft' : 'auto',
             'marginTop': 10,
         },
         'topLogo': {
@@ -132,8 +134,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'color': 'white',
             'fontSize': 22,
             'fontWeight': '700',
-            'marginTop': '8%',
-
+            'marginTop': Platform.OS === 'ios' ? '8%' : '5%' ,
 
         },
 
@@ -164,6 +165,13 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'textAlign': 'center',
             'marginBottom': 5
         },
+
+        'topBtnWrap' : {
+            
+            'flexDirection' : 'row',
+            'alignContent' : 'center',
+
+        },
         'logoutBtn': {
             'width': 30,
             'height': 30,
@@ -171,6 +179,17 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
         },
         'logout': {
+            'width': 30,
+            'height': 30,
+        },
+        'accountDelBtn': {
+            'width': 30,
+            'height': 30,
+            'marginBottom': 5,
+            'marginRight': 20,
+
+        },
+        'accountDel': {
             'width': 30,
             'height': 30,
         },
@@ -366,7 +385,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'textAlign': 'center',
             'fontSize': 30,
             'lineHeight': 100,
-
         }
 
     });

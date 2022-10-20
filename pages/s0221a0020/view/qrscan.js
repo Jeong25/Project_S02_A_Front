@@ -1,5 +1,5 @@
 import React, { Component, useRef, useState, useMemo, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import Svg from 'react-native-svg';
 import { Path as SvgPath } from 'react-native-svg';
@@ -89,6 +89,7 @@ const Qrscan = (props) => {
       }}
       onBarCodeRead={(e) => onBarCodeRead(e)}
     >
+      <SafeAreaView style={{backgroundColor: 'rgba(0, 0, 0, 0.7)'}}/>
       <View style={styles.wrap}>
         <View style={styles.inner}>
           <View style={styles.topBtnWrap}>

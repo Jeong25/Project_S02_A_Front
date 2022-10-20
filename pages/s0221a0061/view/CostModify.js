@@ -159,40 +159,42 @@ const CostModify = (props) => {
         </View>
         <View style={styles.inner}>
           <View style={styles.contentsWrap}>
-            <View style={styles.contents}>
+            <View style={styles.contentsLayer}>
               <View style={styles.contentsInner}>
-                <Text style={styles.modifyLabel}>작성자</Text>
-                <TextInput style={styles.RcenterAlignText} value={headerData?.userName} />
+                <Text style={styles.label}>작성자</Text>
+                <Text style={styles.centerAlignText}>
+                {headerData?.userName}
+                </Text>
               </View>
               <View style={styles.contentsInner}>
-                <Text style={styles.modifyLabel}>진행상태</Text>
-                <TextInput style={styles.RcenterAlignText} value={headerData?.useProStatusNm} />
+                <Text style={styles.label}>진행상태</Text>
+                <Text style={styles.centerAlignText}>{headerData?.useProStatusNm}</Text>
               </View>
             </View>
             <View style={styles.contents}>
-              <Text style={styles.modifyLabel}>사용제목</Text>
-              <TextInput style={styles.modifyTextLong}
+              <Text style={styles.label}>사용제목</Text>
+              <TextInput style={styles.longInput}
                 onChange={(e) => setInputData({ ...inputData, useSubject: e.nativeEvent.text })} value={inputData?.useSubject} />
             </View>
             <View style={styles.contents}>
-              <Text style={styles.modifyLabel}>행사명</Text>
+              <Text style={styles.label}>행사명</Text>
               <TextInput
-                style={styles.modifyTextLong}
+                style={styles.longInput}
                 editable={false}
                 value={eventName}></TextInput>
-              <View style={styles.modifySearchBtn} >
+              <View style={styles.searchBtn} >
                 <TouchableOpacity onPressIn={() => props.navigation.navigate('EventList', { getEventInfo })}>
                   <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
                 </TouchableOpacity>
               </View>
             </View>
 
-            <View style={styles.contents}>
+            <View style={styles.contentsLayer}>
               <View style={styles.contentsInner}>
-                <Text style={styles.modifyLabel}>사용일자</Text>
-                <View style={styles.modifyInputWrap}>
+                <Text style={styles.label}>사용일자</Text>
+                <View style={styles.inputWrap}>
                   <TextInput style={styles.modifyDateText} editable={false} value={inputData.usedDate}></TextInput>
-                  <View style={styles.modifyDateSearchBtn} >
+                  <View style={styles.dateSearchBtn} >
                     <TouchableOpacity onPressIn={() => openDateModal()} >
                       <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
                     </TouchableOpacity>
@@ -200,18 +202,18 @@ const CostModify = (props) => {
                 </View>
               </View>
               <View style={styles.contentsInner}>
-                <View style={styles.modifyInputWrap}>
-                  <Text style={styles.modifyLabel}>사용금액</Text>
+                <View style={styles.inputWrap}>
+                  <Text style={styles.label}>사용금액</Text>
                   <TextInput style={styles.rightAlignText} onChange={(e) => setInputData({ ...inputData, useAmount: e.nativeEvent.text })} value={`${numberToCost(inputData.useAmount)}`} />
-                  <Text style={styles.modifyWon}>원</Text>
+                  <Text style={styles.won}>원</Text>
                 </View>
               </View>
             </View>
 
             <View style={styles.contents}>
-              <Text style={styles.modifyLabel}>첨부파일</Text>
-              <TextInput style={styles.modifyFileInput} value={inputData.useReceiptName}></TextInput>
-              <View style={styles.modifyAddBtn}>
+              <Text style={styles.label}>첨부파일</Text>
+              <TextInput style={styles.fileInput} value={inputData.useReceiptName}></TextInput>
+              <View style={styles.addBtn}>
                 <TouchableOpacity onPressIn={() => ShowPicker()}>
                   <ReactImage source={require('./assets/plus.png')} style={styles.addIcon} ></ReactImage>
                 </TouchableOpacity>
@@ -219,7 +221,7 @@ const CostModify = (props) => {
 
             </View>
             <View style={styles.contents}>
-              <Text style={styles.modifyLabel}>사용내역</Text>
+              <Text style={styles.label}>사용내역</Text>
               <TextInput
                 style={styles.historyInput}
                 multiline={true}
@@ -236,19 +238,19 @@ const CostModify = (props) => {
               detailData.map((v, i) => (
                 <View key={i}>
                   <View style={styles.renderInner}>
-                    <View style={styles.contents}>
-                      <Text style={styles.modifyLabel}>결제자명</Text>
-                      <TextInput style={styles.RcenterAlignText} value={v.paiedName}></TextInput>
-                      <Text style={styles.modifyLabel}>결제여부</Text>
-                      <TextInput style={styles.RcenterAlignText} value={v.payResultNm}></TextInput>
+                    <View style={styles.contentsLayer}>
+                      <Text style={styles.label}>결제자명</Text>
+                      <Text  style={styles.centerAlignText}>{v.paiedName}</Text>
+                      <Text style={styles.label}>결제여부</Text>
+                      <Text style={styles.centerAlignText}>{v.payResultNm}</Text>
                     </View>
                     <View style={styles.contents}>
-                      <Text style={styles.modifyLabel}>결제일자</Text>
-                      <TextInput style={styles.modifyTextLongAlignCenter} value={v.payDate}></TextInput>
+                      <Text style={styles.label}>결제일자</Text>
+                      <Text style={styles.longInputAlignCenter}>{v.payDate}</Text>
                     </View>
                     <View style={styles.contents}>
-                      <Text style={styles.modifyLabel}>결제의견</Text>
-                      <TextInput style={styles.RhistoryInput} value={v.payComment}></TextInput>
+                      <Text style={styles.label}>결제의견</Text>
+                      <Text style={styles.RhistoryInput}>{v.payComment}</Text>
                     </View>
                   </View>
                 <View style={styles.divider}></View>
@@ -260,10 +262,14 @@ const CostModify = (props) => {
           {headerData.useProStatus === 'A' || headerData.useProStatus === 'E' ?
             <View style={styles.modifyBtnWrap}>
               <TouchableOpacity onPress={modifyEvent}>
-                <Text style={styles.requestBtn}>저장</Text>
+                <View style={styles.requestBtn}>
+                  <Text style={styles.btnText}>저장</Text>
+                </View>
               </TouchableOpacity>
               <TouchableOpacity onPress={deleteEvent}>
-                <Text style={styles.delBtn}>취소</Text>
+              <View style={styles.delBtn}>
+                <Text style={styles.btnText}>취소</Text>
+              </View>
               </TouchableOpacity>
             </View> :
             <View style={styles.modifyBtnWrap}></View>

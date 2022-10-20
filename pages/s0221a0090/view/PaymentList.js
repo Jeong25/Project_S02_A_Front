@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useMemo, useState } from 'react';
-import { Text, View, TextInput, ScrollView, } from 'react-native';
+import { Text, View, TextInput, ScrollView,SafeAreaView } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import { costPayListReq } from '../store/store';
@@ -86,7 +86,7 @@ const PaymentList = (props) => {
   }
 
   return (
-    <View>
+    <SafeAreaView style={{backgroundColor:'white'}}>
       <View style={styles.wrap}>
         <View style={styles.topMenu}>
           <View style={styles.backBtn}>
@@ -138,7 +138,7 @@ const PaymentList = (props) => {
       <Footer
         navigation={props.navigation}
       />
-    </View>
+    </SafeAreaView>
   )
 }
 

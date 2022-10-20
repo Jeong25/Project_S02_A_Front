@@ -7,15 +7,14 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
     return StyleSheet.create({
         "wrap": {
             'width': '100%',
-            'height': '100%',
-            'backgroundColor': 'white',
-            'overflow': 'hidden',
+            'height': windowHeight,
+            'backgroundColor' : 'white',
         },
 
         "inner": {
             'width': '100%',
-            'height': '100%',
-            'position': 'relative',
+            'height' : '100%',
+ 
         },
 
 
@@ -92,10 +91,9 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
         },
 
         'BtnWrap': {
-            'position': 'absolute',
-            'bottom': 0,
+           'marginTop' : 'auto',
+           'marginBottom' : 'auto',
             'width': '100%',
-            'height': 72,
             'backgroundColor': '#f15a24'
         },
         'confirmBtn': {

@@ -12,7 +12,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'backgroundColor' : 'white',
       "position": "relative",
       'overflow': 'hidden',
-      'zIndex': 1
     },
 
     "inner": {
@@ -21,8 +20,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "position": "relative",
       "marginLeft": 'auto',
       "marginRight": 'auto',
-      'zIndex': 2,
-      'backgroundColor' : 'blue'
 
     },
     "topMenu": {
@@ -105,18 +102,21 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "marginRight": "auto",
     },
 
-    "input": {
+    "inputWrap": {
       "width": '85%',
       "height": 40,
-      "color": "#ababab",
       "borderWidth": 2,
       "borderColor": "#707070",
       "borderRadius": 50,
+      'justifyContent' : 'center',
+
+    },
+
+    "input": {
+      'height' : 40,
+      "color": "#888",
       "fontSize": 16,
       "textAlign": "center",
-      "backgroundColor": "transparent",
-      "alignItems": "center",
-      "lineHeight": 40
     },
 
     "cellWrap": {

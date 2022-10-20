@@ -156,6 +156,7 @@ const Signup = (props) => {
               <TextInput
                 style={styles.inputName}
                 placeholder={"이름"}
+                placeholderTextColor="#888" 
                 onChange={(e) => setName(e.nativeEvent.text)}
                 onFocus={() => {
                   setheightMagnifi(1.5)
@@ -171,6 +172,7 @@ const Signup = (props) => {
                   }}
                   onBlur={() => { setheightMagnifi(1.2) }}
                   placeholder={"010"}
+                  placeholderTextColor="#888" 
                   onChange={(e) => {
                     setInputHpNo({ ...inputhpNo, first: e.nativeEvent.text })
                     if (e.nativeEvent.text.length === 3) {
@@ -186,6 +188,7 @@ const Signup = (props) => {
                 <TextInput
                   style={styles.phoneInput2}
                   placeholder={"0000"}
+                  placeholderTextColor="#888" 
                   onChange={(e) => {
                     setInputHpNo({ ...inputhpNo, middle: e.nativeEvent.text })
                     if (e.nativeEvent.text.length === 4) {
@@ -206,6 +209,8 @@ const Signup = (props) => {
                 <TextInput
                   style={styles.phoneInput3}
                   placeholder={"0000"}
+                  placeholderTextColor="#888" 
+
                   onChange={(e) => {
                     setInputHpNo({ ...inputhpNo, last: e.nativeEvent.text })
                     if (e.nativeEvent.text.length === 4) {
@@ -226,6 +231,7 @@ const Signup = (props) => {
               <TextInput
                 style={styles.inputCode}
                 placeholder={'코드번호'}
+                placeholderTextColor="#888" 
                 ref={ref_input[4]}
                 onChange={(e) => setEventCode(e.nativeEvent.text)}
                 autoCapitalize={'characters'}
