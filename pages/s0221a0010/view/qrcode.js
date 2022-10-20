@@ -7,7 +7,7 @@ import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
 // import client from '../../common/api/client';
-import { useStateCntReq, payCntReq, deletMemReq,deletMemReq } from '../store/store';
+import { useStateCntReq, payCntReq, deletMemReq } from '../store/store';
 import { setUserTp } from '../../common/lib/getuserinfo';
 import QrModal from '../../common/modal/s0221a0040/QrModal';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
