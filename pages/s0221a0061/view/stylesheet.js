@@ -363,14 +363,12 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
    
     "requestBtn": {
       "width": 140,
-      "height": 50,
       "backgroundColor": "#F15A24",
       "borderRadius": 50,
     },
 
     "delBtn": {
       "width": 140,
-      "height": 50,
       "backgroundColor": "#707070",
       "borderRadius": 50,
     },
