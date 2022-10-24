@@ -222,7 +222,6 @@ const CostModify = (props) => {
             enableAutomaticScroll={true}
             keyboardShouldPersistTaps='always'
             nestedScrollEnabled={true}
-            contentContainerStyle={{ flex: 1 }}
           >
             <View style={styles.topMenu}>
               <View style={styles.backBtn}>
@@ -333,7 +332,7 @@ const CostModify = (props) => {
               )) :
               <View>
               </View>}
-
+             
             {headerData?.useProStatus === 'A' || headerData?.useProStatus === 'E' ?
               <View style={styles.modifyBtnWrap}>
                 <TouchableOpacity onPress={modifyEvent}>

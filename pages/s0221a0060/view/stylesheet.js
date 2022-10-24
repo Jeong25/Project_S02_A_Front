@@ -54,7 +54,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "position": "absolute",
       "right": 0,
       "bottom": 10,
-      "fontSize": 14,
+      "fontSize": 18,
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": "700",
       "color": "#1d1d1d",
@@ -97,12 +97,12 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
     
   
     "searchBtn": {
-      "width": 22,
-      "height": 22,
+      "width": 30,
+      "height": 30,
       "marginTop": -5,
       "position": "absolute",
       "right": 0,
-      "bottom": 10,
+      "bottom": 5,
       'zIndex': 1
     },
  
@@ -119,11 +119,26 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "borderBottomWidth": 2,
       "borderBottomColor": "#707070",
       "fontFamily": "Apple SD Gothic Neo",
-      "fontSize": 20,
+      "fontSize": 18,
       "fontWeight": '700',
       "color": "#383838",
       "paddingTop": 0,
-      "paddingBottom": 10,
+      "paddingBottom": 5,
+      'textAlign' : 'center'
+    },
+    "fileInput": {
+      "width": "100%",
+      "height": 35,
+      "overflow": "hidden",
+      "borderBottomWidth": 2,
+      "borderBottomColor": "#707070",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontSize": 18,
+      "fontWeight": '700',
+      "color": "#383838",
+      "paddingTop": 0,
+      "paddingBottom": 5,
+      'paddingRight' : 30,
       'textAlign' : 'center'
     },
 
@@ -139,7 +154,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "fontWeight": '700',
       "color": "#383838",
       "paddingTop": 0,
-      "paddingBottom": 10,
+      "paddingBottom": 5,
       'paddingRight' : 25,
       'textAlign' : 'right'
     },
@@ -149,20 +164,22 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "position": "absolute",
       "right": 0,
       "bottom": 10,
-      "width": 20,
-      "height": 20,
+      "width": 30,
+      "height": 30,
       "backgroundColor": "#f15a24",
       "borderRadius": 50,
-      'zIndex': 1
+      'zIndex': 1,
+      'display':'flex',
+      'alignItems' :'center',
+      'paddingVertical' :5
     },
 
 
     "addIcon": {
-      "width": 13,
-      "height": 13,
+      "width": 20,
+      "height": 20,
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop': 3,
     },
   
 

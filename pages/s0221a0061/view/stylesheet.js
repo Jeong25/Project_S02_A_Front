@@ -349,6 +349,8 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "flexDirection": "row",
       "justifyContent": "space-between",
       "alignItems": "center",
+      'marginBottom': '30%',
+
     },
     "btnWrap2": {
       "width": "100%",

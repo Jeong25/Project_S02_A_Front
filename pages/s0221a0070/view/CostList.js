@@ -128,7 +128,6 @@ const CostList = (props) => {
           <ScrollView
             style={styles.cellWrap}
           >
-
             {listData.map((t, i) => listItem(t, i))}
           </ScrollView>
 

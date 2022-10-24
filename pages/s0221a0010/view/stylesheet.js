@@ -39,7 +39,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
         "profileCard": {
             'backgroundColor': 'white',
             'width': '90%',
-            'height': 240,
             'borderRadius': 20,
             'marginLeft': 'auto',
             'marginRight': 'auto',
@@ -55,29 +54,26 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
         'processInfoWrap': {
             'width': '100%',
-            'height': 100,
+            'height': 150,
             'borderBottomRightRadius': 20,
             'borderBottomLeftRadius': 20,
             'backgroundColor': '#f15a24',
             'marginTop': 'auto',
-            'flexDirection': 'row',
-            'alignItems': 'center',
-            'justifyContent': 'space-between',
             'paddingHorizontal': 10,
 
         },
-        'leftProcessBox': {
+        'upperProcessBox': {
 
-            'width': '77%',
-            'height': 75,
+            'width': '100%',
+            'height': 70,
             'backgroundColor': 'rgba(255,255,255,0.3)',
             'borderRadius': 10,
-
+            'marginBottom' : 10,
 
         },
-        'rightProcessBox': {
+        'underProcessBox': {
 
-            'width': '20%',
+            'width': '100%',
             'height': 75,
             'backgroundColor': 'rgba(255,255,255,0.3)',
             'borderRadius': 10,
@@ -108,7 +104,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
         },
 
         'process': {
-            'width': '25%',
+            'width': '17%',
             'display': 'flex',
             'alignItems': 'center',
             'justifyContents': 'space-around',
@@ -150,7 +146,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
             'fontFamily': "Apple SD Gothic Neo",
             'color': '#383838',
-            'fontSize': 36,
+            'fontSize': 24,
             'textAlign': 'center',
             'fontWeight': '700',
             'marginBottom': 5
@@ -160,7 +156,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
             'fontFamily': "Apple SD Gothic Neo",
             'color': '#707070',
-            'fontSize': 18,
+            'fontSize': 12,
             'fontWeight': '700',
             'textAlign': 'center',
             'marginBottom': 5
@@ -283,54 +279,41 @@ export const styleSheet = (windowHeight, windowWidth) => {
         },
 
         'centerBtnWrap': {
-            'width': '70%',
-            'marginLeft': 'auto',
-            'marginRight': 'auto',
-            'marginTop': '12%',
-            'marginBottom': '30%',
-            'display': 'flex',
-            'flexDirection': 'column',
-            'justifyContent': 'space-around',
-
-        },
-
-        'layer1': {
-            'width': '100%',
+            'width': '90%',
             'flexDirection': 'row',
-            'justifyContent': 'space-around',
+            'justifyContent': 'space-between',
+            'marginLeft' : 'auto',
+            'marginRight' : 'auto',
+            'marginTop': '5%',
             'marginBottom': '8%',
-        },
-        'layer2': {
-            'width': '100%',
-            'flexDirection': 'row',
-            'justifyContent': 'space-around'
+
         },
 
         'centerCostBtn': {
-            'width': 100,
-            'height': 100,
-            'borderRadius': 20,
+            'width': 70,
+            'height': 70,
+            'borderRadius': 10,
             'backgroundColor': '#f15a24'
 
         },
         'centerpaymentBtn': {
-            'width': 100,
-            'height': 100,
-            'borderRadius': 20,
+            'width': 70,
+            'height': 70,
+            'borderRadius': 10,
             'backgroundColor': '#f15a24'
 
         },
         'centerQrBtn': {
-            'width': 100,
-            'height': 100,
-            'borderRadius': 20,
+            'width': 70,
+            'height': 70,
+            'borderRadius': 10,
             'backgroundColor': '#f29433'
 
         },
         'centerGuideBtn': {
-            'width': 100,
-            'height': 100,
-            'borderRadius': 20,
+            'width': 70,
+            'height': 70,
+            'borderRadius': 10,
             'backgroundColor': '#ff6262'
 
         },
@@ -356,8 +339,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
         },
         'centerIcon': {
 
-            'width': 65,
-            'height': 65,
+            'width': 50,
+            'height': 50,
             'marginLeft': 'auto',
             'marginRight': 'auto',
             'marginTop': 'auto',
@@ -366,7 +349,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
         },
         'centerText': {
-            'fontSize': 18,
+            'fontSize': 16,
+            'fontFamily' : 'Apple SD Gothic Neo',
             'fontWeight': '700',
             'textAlign': 'center',
             'marginTop': 5,

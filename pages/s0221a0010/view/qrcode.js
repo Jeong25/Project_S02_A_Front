@@ -65,8 +65,8 @@ const QrCode = (props) => {
     console.log(JSON.stringify(res, null, 4))
     Alert.alert('알림', '회원 탈퇴가 완료되었습니다.')
     logOut();
-  } 
-   const getUserInfo = async (hpNo, eventCode) => {
+  }
+  const getUserInfo = async (hpNo, eventCode) => {
     // const statCountResult = await client.get(`/rest/v1/s0221a0010/use-state-cnt?eventCode=${eventCode}&hpNo=${hpNo}`)
     const statCountResult = await useStateCntReq(hpNo, eventCode);
     const reduceStatCnt = statCountResult?.data?.data?.reduce((a, b) => {
@@ -91,18 +91,18 @@ const QrCode = (props) => {
     Keyboard.dismiss()
     setFaqModalBool(true)
   }
-  
+
 
   return (
-    <SafeAreaView style={{backgroundColor:'white'}}>
-      <View style={styles.wrap} contentContainerStyle={{ flex: 1, height: 500 }}>
+    <SafeAreaView style={{ backgroundColor: 'white' }}>
+      <View style={styles.wrap}>
         <View style={styles.circle}></View>
         <View style={styles.topMenu}>
-            <Text style={styles.topLogo}>삐용</Text>
+          <Text style={styles.topLogo}>삐용</Text>
           <View style={styles.topBtnWrap}>
             <View style={styles.accountDelBtn}>
-              <TouchableOpacity onPress={() =>deletMem()}>
-                  <ReactImage source={require('./assets/block-user.png')} style={styles.accountDel} />
+              <TouchableOpacity onPress={() => deletMem()}>
+                <ReactImage source={require('./assets/block-user.png')} style={styles.accountDel} />
               </TouchableOpacity>
             </View>
             <View style={styles.logoutBtn}>
@@ -119,7 +119,7 @@ const QrCode = (props) => {
               <Text style={styles.memberPosition}>{eventNm} / {eventRole}</Text>
             </View>
             <View style={styles.processInfoWrap}>
-              <View style={styles.leftProcessBox}>
+              <View style={styles.upperProcessBox}>
                 <Text style={styles.processTitle}>비용요청 진행현황</Text>
                 <View style={styles.processInner}>
                   <View style={styles.process}>
@@ -133,7 +133,27 @@ const QrCode = (props) => {
                   <View style={styles.divider}></View>
                   <View style={styles.process}>
                     <Text style={styles.processText}>
-                      진행 / 완료
+                      반려
+                    </Text>
+                    <Text style={styles.processNumber}>
+                      {statusCnt?.E || 0}
+                    </Text>
+                  </View>
+                  <View style={styles.divider}></View>
+
+                  <View style={styles.process}>
+                    <Text style={styles.processText}>
+                      진행
+                    </Text>
+                    <Text style={styles.processNumber}>
+                      {(statusCnt?.B || 0) + (statusCnt?.C || 0)}
+                    </Text>
+                  </View>
+
+                  <View style={styles.divider}></View>
+                  <View style={styles.process}>
+                    <Text style={styles.processText}>
+                      완료
                     </Text>
                     <Text style={styles.processNumber}>
                       {(statusCnt?.B || 0) + (statusCnt?.C || 0)}
@@ -151,66 +171,118 @@ const QrCode = (props) => {
                   <View style={styles.divider}></View>
                   <View style={styles.process}>
                     <Text style={styles.processText}>
-                      반려
+                      취소
                     </Text>
                     <Text style={styles.processNumber}>
-                      {statusCnt?.E || 0}
+                      {statusCnt?.D || 0}
                     </Text>
                   </View>
+
                 </View>
               </View>
-              <View style={styles.rightProcessBox}>
+              <View style={styles.underProcessBox}>
                 <Text style={styles.processTitle}>결제진행</Text>
                 <View style={styles.processInner}>
-                  <View style={styles.processRight}>
+                  <View style={styles.process}>
                     <Text style={styles.processText}>
                       요청
                     </Text>
                     <Text style={styles.processNumber}>
                       {payCnt}
                     </Text>
+                  </View>
+                  <View style={styles.divider}></View>
 
+                  <View style={styles.process}>
+                    <Text style={styles.processText}>
+                      반려
+                    </Text>
+                    <Text style={styles.processNumber}>
+                      {payCnt}
+                    </Text>
+                  </View>
+                  <View style={styles.divider}></View>
+
+                  <View style={styles.process}>
+                    <Text style={styles.processText}>
+                      진행
+                    </Text>
+                    <Text style={styles.processNumber}>
+                      {payCnt}
+                    </Text>
+                  </View>
+                  <View style={styles.divider}></View>
+
+                  <View style={styles.process}>
+                    <Text style={styles.processText}>
+                      완료
+                    </Text>
+                    <Text style={styles.processNumber}>
+                      {payCnt}
+                    </Text>
+                  </View>
+                  <View style={styles.divider}></View>
+
+                  <View style={styles.process}>
+                    <Text style={styles.processText}>
+                      지급
+                    </Text>
+                    <Text style={styles.processNumber}>
+                      {payCnt}
+                    </Text>
+                  </View>
+                  <View style={styles.divider}></View>
+
+                  <View style={styles.process}>
+                    <Text style={styles.processText}>
+                      취소
+                    </Text>
+                    <Text style={styles.processNumber}>
+                      {payCnt}
+                    </Text>
                   </View>
                 </View>
               </View>
 
-          </View>
 
-        </View>
+            </View>
+
+          </View>
           <View style={styles.centerBtnWrap}>
-            <View style={styles.layer1}>
 
-              <TouchableOpacity style={styles.centerCostBtnWrap} onPress={() => props.navigation.navigate('CostList')}>
-                <View style={styles.centerCostBtn}>
-                  <ReactImage source={require('./assets/receipt-w.png')} style={styles.centerIcon} />
-                </View>
-                <Text style={styles.centerText}>비용등록</Text>
-              </TouchableOpacity>
+            <TouchableOpacity style={styles.centerCostBtnWrap} onPress={() => props.navigation.navigate('CostList')}>
+              <View style={styles.centerCostBtn}>
+                <ReactImage source={require('./assets/receipt-w.png')} style={styles.centerIcon} />
+              </View>
+              <Text style={styles.centerText}>비용조회</Text>
+            </TouchableOpacity>
 
-              <TouchableOpacity style={styles.centerpaymentBtnWrap} onPress={() => props.navigation.navigate('PaymentList')}>
-                <View style={styles.centerpaymentBtn}>
-                  <ReactImage source={require('./assets/stamp-w.png')} style={styles.centerIcon} />
-                </View>
-                <Text style={styles.centerText}>비용결제</Text>
-              </TouchableOpacity>
+            <TouchableOpacity style={styles.centerpaymentBtnWrap} onPress={() => props.navigation.navigate('PaymentList')}>
+              <View style={styles.centerpaymentBtn}>
+                <ReactImage source={require('./assets/stamp-w.png')} style={styles.centerIcon} />
+              </View>
+              <Text style={styles.centerText}>비용결제</Text>
+            </TouchableOpacity>
 
-            </View>
-            <View style={styles.layer2}>
-              <TouchableOpacity style={styles.centerQrBtnWrap} onPress={() => openQrModal()}>
-                <View style={styles.centerQrBtn}>
-                  <ReactImage source={require('./assets/sampleQr-w.png')} style={styles.centerIcon} />
-                </View>
-                <Text style={styles.centerText}>QR보기</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.centerGuideBtnWrap} onPress={() => openFaqModal()}>
-                <View style={styles.centerGuideBtn}>
-                  <ReactImage source={require('./assets/guide-w.png')} style={styles.centerIcon} />
-                </View>
-                <Text style={styles.centerText}>FAQ</Text>
-              </TouchableOpacity>
-            </View>
-
+            <TouchableOpacity style={styles.centerQrBtnWrap} onPress={() => openQrModal()}>
+              <View style={styles.centerQrBtn}>
+                <ReactImage source={require('./assets/sampleQr-w.png')} style={styles.centerIcon} />
+              </View>
+              <Text style={styles.centerText}>QR보기</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.centerGuideBtnWrap} onPress={() => openFaqModal()}>
+              <View style={styles.centerGuideBtn}>
+                <ReactImage source={require('./assets/guide-w.png')} style={styles.centerIcon} />
+              </View>
+              <Text style={styles.centerText}>FAQ</Text>
+            </TouchableOpacity>
           </View>
+
+          <View>
+            
+          </View>
+
+
         </ScrollView>
         <QrModal
           openModal={qrModalBool}
