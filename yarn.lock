@@ -7032,6 +7032,11 @@ react-native-gradle-plugin@^0.0.7:
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.7.tgz#96602f909745239deab7b589443f14fce5da2056"
   integrity sha512-+4JpbIx42zGTONhBTIXSyfyHICHC29VTvhkkoUOJAh/XHPEixpuBduYgf6Y4y9wsN1ARlQhBBoptTvXvAFQf5g==
 
+react-native-image-modal@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-image-modal/-/react-native-image-modal-2.0.4.tgz#c3cbfad43d0dd33a2f106b1f5688d96c4900b82c"
+  integrity sha512-BTHOUAznjAHStrxg2D3k6R/3YPXMos2w6jZv5LdOR6xY2vHVHgMnSbjeszq882brbge51ZjS06FCi8sM6WNwxg==
+
 react-native-image-picker@^4.10.0:
   version "4.10.0"
   resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-4.10.0.tgz#471ca942bd1189134eff63e25903147f54aeb8c2"

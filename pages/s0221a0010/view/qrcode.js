@@ -151,7 +151,13 @@ const QrCode = (props) => {
                   </View>
 
                   <View style={styles.divider}></View>
-                  <View style={styles.process}>
+
+                </View>
+              </View>
+              <View style={styles.underProcessBox}>
+              <View style={styles.processInner}>
+
+              <View style={styles.process}>
                     <Text style={styles.processText}>
                       완료
                     </Text>
@@ -177,74 +183,18 @@ const QrCode = (props) => {
                       {statusCnt?.D || 0}
                     </Text>
                   </View>
-
-                </View>
-              </View>
-              <View style={styles.underProcessBox}>
-                <Text style={styles.processTitle}>결제진행</Text>
-                <View style={styles.processInner}>
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      요청
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {payCnt}
-                    </Text>
-                  </View>
                   <View style={styles.divider}></View>
-
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      반려
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {payCnt}
-                    </Text>
-                  </View>
-                  <View style={styles.divider}></View>
-
                   <View style={styles.process}>
                     <Text style={styles.processText}>
                       진행
                     </Text>
                     <Text style={styles.processNumber}>
-                      {payCnt}
+                      {statusCnt?.D || 0}
                     </Text>
+                    </View>
                   </View>
-                  <View style={styles.divider}></View>
-
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      완료
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {payCnt}
-                    </Text>
-                  </View>
-                  <View style={styles.divider}></View>
-
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      지급
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {payCnt}
-                    </Text>
-                  </View>
-                  <View style={styles.divider}></View>
-
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      취소
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {payCnt}
-                    </Text>
-                  </View>
-                </View>
               </View>
-
-
+          
             </View>
 
           </View>
@@ -278,8 +228,18 @@ const QrCode = (props) => {
             </TouchableOpacity>
           </View>
 
-          <View>
-            
+          <View style={styles.recentListWrap}>
+            <Text style={styles.listTitle}>최근 등록된 행사</Text>
+            <ScrollView style={styles.list}>
+              <View style={styles.cell}>
+                <Text style={styles.cellTitle}>Test</Text>
+                <Text style={styles.cellDate}>2022-01-01 / 황어진</Text>
+                
+              </View>
+
+
+            </ScrollView>
+
           </View>
 
 

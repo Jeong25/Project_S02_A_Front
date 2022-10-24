@@ -185,22 +185,31 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'marginTop' : 5,
       'padding' : 0,
     },
-    "fileInput": {
-      'width' : '80%',
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'textAlign': 'left',
-      'color': '#383838',
-      "fontSize": 12,
-      'margin' : 0,
-      'marginTop' : 5,
-      'padding' : 0,
-      'paddingRight' : 15,
-      'borderBottomWidth' :1,
-      'borderBottomColor' :'#888',
-      'paddingBottom': Platform.OS === 'ios' ? 5 : 0 ,
-      'paddingTop': Platform.OS === 'ios' ? 5 : 0 ,
+    // "fileInput": {
+    //   'width' : '80%',
+    //   "fontFamily": "Apple SD Gothic Neo",
+    //   "fontWeight": '500',
+    //   'textAlign': 'left',
+    //   'color': '#383838',
+    //   "fontSize": 12,
+    //   'margin' : 0,
+    //   'marginTop' : 5,
+    //   'padding' : 0,
+    //   'paddingRight' : 15,
+    //   'borderBottomWidth' :1,
+    //   'borderBottomColor' :'#888',
+    //   'paddingBottom': Platform.OS === 'ios' ? 5 : 0 ,
+    //   'paddingTop': Platform.OS === 'ios' ? 5 : 0 ,
 
+    // },
+    "fileBox": {
+      'width': '80%',
+      'height': 60,
+      'flexDirection': 'row',
+      'alignItems': 'center',
+      'padding': 10,
+      'backgroundColor': '#e9e9e9',
+      'marginTop' : 10,
     },
     "historyInput": {
       'width' : '80%',
@@ -272,12 +281,13 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
   
     "addBtn": {
       "position": "absolute",
-      'right': Platform.OS === 'ios' ? 15 : 10 ,
+      'right': Platform.OS === 'ios' ? 25 : 20 ,
+      'bottom' : 20,
       "width": 20,
       "height": 20,
       "backgroundColor": "#f15a24",
       "borderRadius": 50,
-      'zIndex': 1
+
     },
 
     "addIcon": {

@@ -186,16 +186,16 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'paddingBottom': -10,
     },
 
-    // "fileBox": {
-    //   'width': '80%',
-    //   'height': 60,
-    //   'flexDirection': 'row',
-    //   'alignItems': 'center',
-    //   'padding': 10,
-    //   'backgroundColor': '#e9e9e9',
+    "fileBox": {
+      'width': '80%',
+      'height': 60,
+      'flexDirection': 'row',
+      'alignItems': 'center',
+      'padding': 10,
+      'backgroundColor': '#e9e9e9',
 
 
-    // },
+    },
     "won": {
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '500',

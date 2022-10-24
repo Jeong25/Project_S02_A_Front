@@ -36,6 +36,8 @@ const CostModify = (props) => {
   const [headerData, setHeaderData] = useState({})
   const [detailData, setDetailData] = useState([])
   const [SC, setSC] = useState(0)
+  const preFix = 'https://s3.ap-northeast-2.amazonaws.com/s02-bucket/storage/img/s02/'
+
 
   useEffect(() => {
     getData()
@@ -162,7 +164,7 @@ const CostModify = (props) => {
                 setInputData({
                   ...inputData,
                   base64String: res.assets[0].base64,
-                  useReceiptName: fileNm[fileNm.length-1]
+                  useReceiptName: fileNm[fileNm.length - 1]
                 })
               }).catch((e) => {
                 console.log(e)
@@ -177,7 +179,7 @@ const CostModify = (props) => {
                 setInputData({
                   ...inputData,
                   base64String: res.assets[0].base64,
-                  useReceiptName: fileNm[fileNm.length-1]
+                  useReceiptName: fileNm[fileNm.length - 1]
                 })
               }).catch((e) => {
                 console.log(e)
@@ -286,7 +288,13 @@ const CostModify = (props) => {
 
                 <View style={styles.contents}>
                   <Text style={styles.label}>첨부파일</Text>
-                  <TextInput style={styles.fileInput} value={inputData.useReceiptName}></TextInput>
+                  {/* <TextInput style={styles.fileInput} value={inputData.useReceiptName}></TextInput> */}
+                  <View style={styles.fileBox}>
+                    <Image
+                      source={{ uri: `${preFix}${headerData?.useReceiptId}` }}
+                      style={{ width: 45, height: 45 }}
+                    />
+                  </View>
                   <View style={styles.addBtn}>
                     <TouchableOpacity onPressIn={() => ShowPicker()}>
                       <ReactImage source={require('./assets/plus.png')} style={styles.addIcon} ></ReactImage>
@@ -332,7 +340,7 @@ const CostModify = (props) => {
               )) :
               <View>
               </View>}
-             
+
             {headerData?.useProStatus === 'A' || headerData?.useProStatus === 'E' ?
               <View style={styles.modifyBtnWrap}>
                 <TouchableOpacity onPress={modifyEvent}>
