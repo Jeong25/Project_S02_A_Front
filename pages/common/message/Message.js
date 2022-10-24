@@ -1,5 +1,8 @@
+import { Alert } from "react-native";
+
 const s02_M_000001 = () => {
-    alert('단체명을 확인해주세요.');
+    Alert.alert("알림", '단체명을 확인해주세요.');
+    // alert('단체명을 확인해주세요.');
 }
 const s02_M_000002 = () => {
     alert('주소를 확인해주세요.');

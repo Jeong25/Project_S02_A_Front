@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Dimensions, Keyboard } from 'react-native';
+import { Dimensions, Keyboard, Alert } from 'react-native';
 import { Text, View,SafeAreaView, TextInput, TouchableOpacity, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -71,19 +71,19 @@ const Signup = (props) => {
 
   const doLogin = async (paramName, paramHpNo, paramEventCode, privacy) => {
     if (!privacy) {
-      alert('개인정보 수집에 동의해주세요')
+      Alert.alert('알림', '개인정보 수집에 동의해주세요.')
       return
     }
     if (paramName === '') {
-      alert('성명을 입력해주세요')
+      Alert.alert('알림', '성명을 입력해주세요.')
       return
     }
     if (paramHpNo === '' || paramHpNo.length < 11) {
-      alert('핸드폰 번호를 확인해주세요')
+      Alert.alert('알림', '핸드폰 번호를 확인해주세요.')
       return
     }
     if (paramEventCode === '') {
-      alert('부서코드를 확인해주세요.')
+      Alert.alert('알림', '부서코드를 확인해주세요.')
       return
     }
     if (!paramName || !paramHpNo) {
@@ -94,12 +94,12 @@ const Signup = (props) => {
     try {
       const result = await signUpReq(paramName, paramHpNo, paramEventCode)
       if (result?.status === 500) {
-        alert(result.massage)
+        Alert.alert('알림', result.massage)
         return
       } else if (result?.status === 200) {
         const { data } = result
         if (data.massage === '등록되지 않은 부서코드입니다.') {
-          alert(data.massage)
+          Alert.alert('알림', data.massage)
           return
         }
 

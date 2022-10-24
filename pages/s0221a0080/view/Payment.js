@@ -13,6 +13,7 @@ const Payment = (props) => {
   const [detailData, setDetailData] = useState({})
   const [inputData, setInputData] = useState({})
   const styles = styleSheet()
+  const preFix = 'https://s3.ap-northeast-2.amazonaws.com/s02-bucket/storage/img/s02/'
 
   useEffect(() => {
     getData()
@@ -29,8 +30,9 @@ const Payment = (props) => {
 
   const requestPay = async (flag) => {
     console.log('Payment_Log1: ' + JSON.stringify(headerData))
-    console.log('Payment_Log1: ' + JSON.stringify(detailData))
-    
+    console.log('Payment_Log2: ' + JSON.stringify(detailData))
+    console.log('Payment_Log3: ' + JSON.stringify(`${preFix}${headerData?.useReceiptId}`))
+
     const { eventUseId } = props.route.params
     const memberId = await AsyncStorage.getItem('memberId')
 
@@ -114,7 +116,7 @@ const Payment = (props) => {
               {/* <Text style={styles.fileInput}>{headerData.useReceiptName}</Text> */}
               <View style={styles.fileBox}>
                 <Image
-                  source={{ uri: `https://s3.ap-northeast-2.amazonaws.com/s02-bucket/storage/img/s02/${headerData?.useReceiptId}` }}
+                  source={{ uri: `${preFix}${headerData?.useReceiptId}` }}
                   style={{ width: 45, height: 45 }}
                 />
               </View>

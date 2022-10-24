@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard, Alert } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
@@ -63,7 +63,7 @@ const QrCode = (props) => {
     const memId = await AsyncStorage.getItem('memberId')
     const res = await deletMemReq(Number(memId))
     console.log(JSON.stringify(res, null, 4))
-    alert('회원 탈퇴가 완료되었습니다.')
+    Alert.alert('알림', '회원 탈퇴가 완료되었습니다.')
     logOut();
   } 
    const getUserInfo = async (hpNo, eventCode) => {

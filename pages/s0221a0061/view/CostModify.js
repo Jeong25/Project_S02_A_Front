@@ -1,4 +1,4 @@
-import { Text, View, TextInput, Image, Keyboard, Dimensions, SafeAreaView, ScrollView } from 'react-native';
+import { Text, View, TextInput, Image, Keyboard, Dimensions, SafeAreaView, ScrollView, PermissionsAndroid, Alert } from 'react-native';
 import { styleSheet } from './stylesheet';
 import React, { useState, useEffect, Fragment } from 'react';
 import { Image as ReactImage } from 'react-native';
@@ -35,7 +35,7 @@ const CostModify = (props) => {
   })
   const [headerData, setHeaderData] = useState({})
   const [detailData, setDetailData] = useState([])
-  const [eventInfo, setEventInfo] = useState({})
+  const [SC, setSC] = useState(0)
 
   useEffect(() => {
     getData()
@@ -51,15 +51,13 @@ const CostModify = (props) => {
     setInputData({ ...data })
     setDateState({ ...dateState, confirmDate: new Date(data.usedDate), confirmVal: data.usedDate })
     if (!data.eventUseId) {
-      alert('Error')
+      Alert.alert('Error', 'Error')
       props.navigation.goBack()
     } else {
       const res = await eventCostReq(data.eventUseId)
       setHeaderData(res.data.data.header)
       setDetailData(res.data.data.detail)
       setEventName(res.data.data.header.eventNm)
-      console.log('CostModify_Log1: ' + JSON.stringify(inputData))
-      console.log('CostModify_Log2: ' + JSON.stringify(detailData))
     }
   }
 
@@ -77,11 +75,20 @@ const CostModify = (props) => {
   }
 
   const modifyEvent = async () => {
-    const body = { ...inputData, usedDate: dateState.confirmVal, }
-    const response = await patchEventCostReq(body)
+    console.log('CostModify_Log1: ' + JSON.stringify(inputData))
+    console.log('CostModify_Log2: ' + JSON.stringify(detailData))
 
-    if (response.status === 200) {
-      goback()
+    const body = { ...inputData, usedDate: dateState.confirmVal, }
+
+    if (SC === 0) {
+      setSC(1)
+      const response = await patchEventCostReq(body)
+      if (response.status === 200) {
+        goback()
+        setSC(0)
+      }
+    } else {
+      return
     }
   }
 
@@ -118,16 +125,84 @@ const CostModify = (props) => {
     props.navigation.goBack()
   }
 
-  const ShowPicker = () => {
-    //launchImageLibrary : 사용자 앨범 접근
-    console.log('res');
+  // const ShowPicker = () => {
+  //   //launchImageLibrary : 사용자 앨범 접근
+  //   launchImageLibrary({}, (res) => {
+  //     alert(res.assets[0].uri)
+  //     const formdata = new FormData()
+  //     formdata.append('file', res.assets[0].uri);
+  //     console.log(res);
+  //   }).catch(e => { console.log(e) })
+  // }
 
-    launchImageLibrary({}, (res) => {
-      alert(res.assets[0].uri)
-      const formdata = new FormData()
-      formdata.append('file', res.assets[0].uri);
-      console.log(res);
-    }).catch(e => { console.log(e) })
+  const ShowPicker = async () => {
+    let options = {
+      title: "Upload Prescription",
+      takePhotoButtonTitle: "Take a Photo",
+      chooseFromLibraryButtonTitle: "Select From Gallery",
+      storageOptions: {
+        skipBackup: true,
+        path: "images",
+      },
+      includeBase64: true
+    };
+    const cameraGranted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.CAMERA
+    )
+    if (cameraGranted === PermissionsAndroid.RESULTS.GRANTED) {
+      await AlertAsync(
+        "사진을 선택해주세요.",
+        "카메라로 촬영 혹은 파일을 선택해주세요.",
+        [
+          {
+            text: '카메라',
+            onPress: async () => {
+              launchCamera({ saveToPhotos: true, includeBase64: true }, async (res) => {
+                let fileNm = res.assets[0].fileName.split('-')
+                setInputData({
+                  ...inputData,
+                  base64String: res.assets[0].base64,
+                  useReceiptName: fileNm[fileNm.length-1]
+                })
+              }).catch((e) => {
+                console.log(e)
+              })
+            }
+          },
+          {
+            text: '파일',
+            onPress: async () => {
+              launchImageLibrary(options, async (res) => {
+                let fileNm = res.assets[0].fileName.split('-')
+                setInputData({
+                  ...inputData,
+                  base64String: res.assets[0].base64,
+                  useReceiptName: fileNm[fileNm.length-1]
+                })
+              }).catch((e) => {
+                console.log(e)
+              })
+            }
+          },
+        ],
+        { cancelable: true })
+    } else {
+      await AlertAsync(
+        "카메라 권한이없습니다.",
+        "권한을 직접 설정해주세요",
+        [
+          {
+            text: '예',
+            onPress: async () => {
+              Linking.openSettings()
+            }
+          },
+          {
+            text: '아니오',
+          },
+        ],
+        { cancelable: false })
+    }
   }
 
   const getEventInfo = (params) => {
