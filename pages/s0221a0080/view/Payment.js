@@ -113,13 +113,13 @@ const Payment = (props) => {
 
             <View style={styles.contents}>
               <Text style={styles.label}>첨부파일</Text>
-              {/* <Text style={styles.fileInput}>{headerData.useReceiptName}</Text> */}
-              <View style={styles.fileBox}>
+              <Text style={styles.fileInput}>{headerData.useReceiptName}</Text>
+              {/* <View style={styles.fileBox}>
                 <Image
                   source={{ uri: `${preFix}${headerData?.useReceiptId}` }}
                   style={{ width: 45, height: 45 }}
                 />
-              </View>
+              </View> */}
             </View>
             <View style={styles.contents}>
               <Text style={styles.label}>사용내역</Text>
