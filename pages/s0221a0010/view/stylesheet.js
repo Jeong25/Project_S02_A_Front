@@ -38,7 +38,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
         "profileCard": {
             'backgroundColor': 'white',
-            'height' : 230,
+            'height' : 190,
             'width': '90%',
             'borderRadius': 20,
             'marginLeft': 'auto',
@@ -55,39 +55,41 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
         'processInfoWrap': {
             'width': '100%',
-            'height': 175,
+            'height': 135,
             'borderBottomRightRadius': 20,
             'borderBottomLeftRadius': 20,
             'backgroundColor': '#f15a24',
             'marginTop': 'auto',
             'paddingHorizontal': 10,
+            'display' : 'flex',
+            'alignItems' : 'center',
+            'justifyContent' : 'center'
 
         },
         'upperProcessBox': {
-
-            'width': '100%',
-            'height': 70,
+            'height': 60,
             'borderRadius': 10,
-            'marginTop' : 10,
-            'marginBottom' : 10,
-
-
+            'marginBottom' : 5,
+       
         },
         'underProcessBox': {
 
             'width': '100%',
-            'height': 75,
+            'height': 60,
             'borderRadius': 10,
+            'borderTopWidth' : 1,
+            'borderTopColor' : 'white',
+            'paddingTop' : 5
+
         },
 
         'processTitle': {
             'color': 'white',
-            'fontSize': 8,
+            'fontSize': 12,
             'fontWeight': '700',
             'textAlign': 'center',
             'marginLeft': 'auto',
             'marginRight': 'auto',
-            'marginTop': 5,
             'marginBottom': 5,
             'width': '90%',            
 
@@ -104,23 +106,16 @@ export const styleSheet = (windowHeight, windowWidth) => {
         },
 
         'process': {
-            'width': '17%',
+            'width': '25%',
             'display': 'flex',
             'alignItems': 'center',
             'justifyContents': 'space-around',
             'marginTop' : 5,
         },
-        'processRight': {
-            'width': '100%',
-            'display': 'flex',
-            'alignItems': 'center',
-            'justifyContents': 'space-around',
-            'marginTop' : 5,
-
-        },
+    
 
         'processText': {
-            'fontSize': 10,
+            'fontSize': 12,
             'color': 'white',
             'fontWeight': '900',
 
@@ -130,7 +125,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'color': 'white',
             'fontSize': 22,
             'fontWeight': '700',
-            // 'marginTop': Platform.OS === 'ios' ? '8%' : '5%' ,
+            'marginTop': Platform.OS === 'ios' ? '8%' : '5%' ,
 
         },
 
@@ -198,34 +193,34 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'marginLeft' : 'auto',
             'marginRight' : 'auto',
             'marginTop': '5%',
-            'marginBottom': '8%',
+            'marginBottom': '4%',
 
         },
 
         'centerCostBtn': {
-            'width': 70,
-            'height': 70,
+            'width': 60,
+            'height': 60,
             'borderRadius': 10,
             'backgroundColor': '#f15a24'
 
         },
         'centerpaymentBtn': {
-            'width': 70,
-            'height': 70,
+            'width': 60,
+            'height': 60,
             'borderRadius': 10,
             'backgroundColor': '#f15a24'
 
         },
         'centerQrBtn': {
-            'width': 70,
-            'height': 70,
+            'width': 60,
+            'height': 60,
             'borderRadius': 10,
             'backgroundColor': '#f29433'
 
         },
         'centerGuideBtn': {
-            'width': 70,
-            'height': 70,
+            'width': 60,
+            'height': 60,
             'borderRadius': 10,
             'backgroundColor': '#ff6262'
 
@@ -252,8 +247,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
         },
         'centerIcon': {
 
-            'width': 50,
-            'height': 50,
+            'width': 40,
+            'height': 40,
             'marginLeft': 'auto',
             'marginRight': 'auto',
             'marginTop': 'auto',
@@ -262,7 +257,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
         },
         'centerText': {
-            'fontSize': 16,
+            'fontSize': 14,
             'fontFamily' : 'Apple SD Gothic Neo',
             'fontWeight': '700',
             'textAlign': 'center',
@@ -284,15 +279,38 @@ export const styleSheet = (windowHeight, windowWidth) => {
            
         },
         'list':{
+            'height' : 260,
             'borderTopWidth' : 2,
             'borderTopColor' : '#333',
             'marginTop' : 10,
         },
-        'cell' : {
-        
-            'height' : 50,
-            'borderBottomWidth' :1,
-            'borderBottomColor' : '#888'
+        "cell": {
+            "width": "90%",
+            "height": 50,
+            "marginLeft": 'auto',
+            "marginRight": 'auto', 
+          },
+        "cellTitle": {
+            "color": "#1d1d1d",
+            "fontFamily": "Apple SD Gothic Neo",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "marginTop": 5
+          },
+      
+          "cellDate": {
+      
+            "fontSize": 11,
+            "lineHeight": 13.2,
+            "fontWeight": "500",
+            "color": "#707070",
+            "marginTop": 5,
+      
+          },
+        'cellDivider':{
+            'width': '100%',
+            'height': 2,
+            'backgroundColor': '#e9e9e9',
 
         },
 

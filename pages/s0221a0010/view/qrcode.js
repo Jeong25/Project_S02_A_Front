@@ -120,11 +120,10 @@ const QrCode = (props) => {
             </View>
             <View style={styles.processInfoWrap}>
               <View style={styles.upperProcessBox}>
-                <Text style={styles.processTitle}>비용요청 진행현황</Text>
                 <View style={styles.processInner}>
                   <View style={styles.process}>
                     <Text style={styles.processText}>
-                      요청
+                      비용요청
                     </Text>
                     <Text style={styles.processNumber}>
                       {statusCnt?.A || 0}
@@ -133,7 +132,7 @@ const QrCode = (props) => {
                   <View style={styles.divider}></View>
                   <View style={styles.process}>
                     <Text style={styles.processText}>
-                      반려
+                      결제반려
                     </Text>
                     <Text style={styles.processNumber}>
                       {statusCnt?.E || 0}
@@ -143,23 +142,32 @@ const QrCode = (props) => {
 
                   <View style={styles.process}>
                     <Text style={styles.processText}>
-                      진행
+                      승인요청
                     </Text>
                     <Text style={styles.processNumber}>
                       {(statusCnt?.B || 0) + (statusCnt?.C || 0)}
                     </Text>
                   </View>
-
-                  <View style={styles.divider}></View>
 
                 </View>
               </View>
               <View style={styles.underProcessBox}>
-              <View style={styles.processInner}>
+                <View style={styles.processInner}>
 
-              <View style={styles.process}>
+
+                  <View style={styles.process}>
                     <Text style={styles.processText}>
-                      완료
+                      결제진행
+                    </Text>
+                    <Text style={styles.processNumber}>
+                      {statusCnt?.D || 0}
+                    </Text>
+                  </View>
+                  <View style={styles.divider}></View>
+
+                  <View style={styles.process}>
+                    <Text style={styles.processText}>
+                      결제완료
                     </Text>
                     <Text style={styles.processNumber}>
                       {(statusCnt?.B || 0) + (statusCnt?.C || 0)}
@@ -168,7 +176,7 @@ const QrCode = (props) => {
                   <View style={styles.divider}></View>
                   <View style={styles.process}>
                     <Text style={styles.processText}>
-                      지급
+                      비용지급
                     </Text>
                     <Text style={styles.processNumber}>
                       {statusCnt?.D || 0}
@@ -177,24 +185,16 @@ const QrCode = (props) => {
                   <View style={styles.divider}></View>
                   <View style={styles.process}>
                     <Text style={styles.processText}>
-                      취소
+                      요청취소
                     </Text>
                     <Text style={styles.processNumber}>
                       {statusCnt?.D || 0}
                     </Text>
                   </View>
-                  <View style={styles.divider}></View>
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      진행
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {statusCnt?.D || 0}
-                    </Text>
-                    </View>
-                  </View>
+
+                </View>
               </View>
-          
+
             </View>
 
           </View>
@@ -233,9 +233,30 @@ const QrCode = (props) => {
             <ScrollView style={styles.list}>
               <View style={styles.cell}>
                 <Text style={styles.cellTitle}>Test</Text>
-                <Text style={styles.cellDate}>2022-01-01 / 황어진</Text>
-                
+                <Text style={styles.cellDate}>운영자 / 2022-01-01</Text>
               </View>
+              <View style={styles.cellDivider}></View>
+
+              <View style={styles.cell}>
+                <Text style={styles.cellTitle}>Test</Text>
+                <Text style={styles.cellDate}>운영자 / 2022-01-01</Text>
+              </View>
+              <View style={styles.cellDivider}></View>
+              <View style={styles.cell}>
+                <Text style={styles.cellTitle}>Test</Text>
+                <Text style={styles.cellDate}>운영자 / 2022-01-01</Text>
+              </View>
+              <View style={styles.cellDivider}></View>
+              <View style={styles.cell}>
+                <Text style={styles.cellTitle}>Test</Text>
+                <Text style={styles.cellDate}>운영자 / 2022-01-01</Text>
+              </View>
+              <View style={styles.cellDivider}></View>
+              <View style={styles.cell}>
+                <Text style={styles.cellTitle}>Test</Text>
+                <Text style={styles.cellDate}>운영자 / 2022-01-01</Text>
+              </View>
+              <View style={styles.cellDivider}></View>
 
 
             </ScrollView>

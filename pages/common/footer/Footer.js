@@ -33,7 +33,7 @@ const Footer = (props) => {
                 <TouchableOpacity style={styles.costListBtn} onPress={() => props.navigation.navigate('CostList')}>
                     <View>
                         <ReactImage source={require('./assets/receipt.png')} style={styles.costIcon} />
-                        <Text style={styles.costText} >비용등록</Text>
+                        <Text style={styles.costText} >비용조회</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.paymentListBtn} onPress={() => props.navigation.navigate('PaymentList')}>
