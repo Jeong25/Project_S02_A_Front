@@ -267,8 +267,10 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
         'recentListWrap' :{
             'width' : '90%',
+            'height' : '50%',
             'marginLeft' : 'auto',
             'marginRight' : 'auto',
+            'overflow' : 'hidden'
         },
 
         'listTitle' :{

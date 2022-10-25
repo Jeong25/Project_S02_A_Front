@@ -11,7 +11,6 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'height': '100%',
             'position': 'relative',
             'backgroundColor': '#F15A24',
-            'overflow': 'hidden',
         },
 
         "titleWrap": {
@@ -47,6 +46,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'borderTopRightRadius': 30,
             'marginTop': Platform.OS === 'ios' ? 35 : 20 ,
             'elevation': 30,
+            
         },
 
         "contentsInner": {
@@ -210,12 +210,14 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'marginLeft': 'auto',
             'marginRight': 'auto',
             'marginTop': '20%',
+            'marginBottom' : '10%',
         },
 
         "loginBtn": {
             'backgroundColor': "#F15A24",
             'borderRadius': 50,
             'elevation': 6, //안드로이드에서만 작동
+            
         },
         "loginText": {
             'fontSize': 36,

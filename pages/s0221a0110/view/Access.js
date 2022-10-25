@@ -14,11 +14,10 @@ const Signup = (props) => {
   }
 
   return (
-    <>
+    
     <SafeAreaView style={{backgroundColor: 'white'}}>
 
-      <View style={styles.wrap}>
-        <View style={styles.inner}>
+      <ScrollView style={styles.wrap}>
           <View style={styles.topLogoWrap}>
             <ReactImage source={require('./assets/orangeLogo.png')} style={styles.topLogo} />
             <View style={styles.titleText}>
@@ -93,10 +92,9 @@ const Signup = (props) => {
               <Text style={styles.confirmBtn}>확인</Text>
             </TouchableOpacity>
           </View>
-        </View>
-      </View>
+      </ScrollView>
       </SafeAreaView>
-      </>
+      
   );
 }
 

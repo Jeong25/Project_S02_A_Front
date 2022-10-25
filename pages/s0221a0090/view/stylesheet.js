@@ -133,9 +133,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "cellWrap": {
       "width": "100%",
-      "height": "70%",
-      "position": "absolute",
-      "top": 140,   
+      'marginBottom' :'25%'
     },
     'divider': {
       'width': '100%',

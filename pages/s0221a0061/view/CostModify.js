@@ -11,6 +11,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import AlertAsync from 'react-native-alert-async';
 import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
+import ImageModal from 'react-native-image-modal';
+
 
 const CostModify = (props) => {
   const height = Dimensions.get('window').height
@@ -290,9 +292,13 @@ const CostModify = (props) => {
                   <Text style={styles.label}>첨부파일</Text>
                   {/* <TextInput style={styles.fileInput} value={inputData.useReceiptName}></TextInput> */}
                   <View style={styles.fileBox}>
-                    <Image
+                    <ImageModal
+                      resizeMode='contain'
+                      style={{
+                        width: 40,
+                        height: 40,
+                      }}
                       source={{ uri: `${preFix}${headerData?.useReceiptId}` }}
-                      style={{ width: 45, height: 45 }}
                     />
                   </View>
                   <View style={styles.addBtn}>
@@ -320,16 +326,24 @@ const CostModify = (props) => {
               detailData.map((v, i) => (
                 <View key={i}>
                   <View style={styles.renderInner}>
+                    <View style={styles.renderTitleWrap}>
+                      <Text style={styles.renderTitle}>1차 결제</Text>
+                    </View>
                     <View style={styles.contentsLayer}>
-                      <Text style={styles.label}>결제자명</Text>
-                      <Text style={styles.centerAlignText}>{v.paiedName}</Text>
-                      <Text style={styles.label}>결제여부</Text>
-                      <Text style={styles.centerAlignText}>{v.payResultNm}</Text>
+                      <View style={styles.RcontentsInner}>
+                        <Text style={styles.label}>이름</Text>
+                        <Text style={styles.shortInput}>{v.paiedName}</Text>
+                      </View>
+                      <View style={styles.RcontentsInner}>
+                        <Text style={styles.label}>상태</Text>
+                        <Text style={styles.shortInput}>{v.payResultNm}</Text>
+                      </View>
+                      <View style={styles.RcontentsInner}>
+                        <Text style={styles.label}>결제일자</Text>
+                        <Text style={styles.centerAlignText}>{v.payDate}</Text>
+                      </View>
                     </View>
-                    <View style={styles.contents}>
-                      <Text style={styles.label}>결제일자</Text>
-                      <Text style={styles.longInputAlignCenter}>{v.payDate}</Text>
-                    </View>
+
                     <View style={styles.contents}>
                       <Text style={styles.label}>결제의견</Text>
                       <Text style={styles.RhistoryInput}>{v.payComment}</Text>

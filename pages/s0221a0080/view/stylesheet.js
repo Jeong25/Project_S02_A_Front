@@ -66,6 +66,12 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'alignItems': 'center',
       'justifyContent': 'space-between',
     },
+    "RcontentsInner": {
+      'height': '100%',
+      'flexDirection': 'row',
+      'alignItems': 'center',
+    },
+
     "renderContents": {
       'display': 'flex',
       'flexDirection': 'row',
@@ -157,6 +163,20 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'marginTop': 5,
       'padding': 0,
     },
+    "shortInput": {
+      'width': 50,
+      'height': 40,
+      'lineHeight': 40,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      'color': '#383838',
+      'textAlign': 'center',
+      "fontSize": 12,
+      'margin': 0,
+      'marginLeft': Platform.OS === 'ios' ? -15 : -20,
+      'marginTop': 5,
+      'padding': 0,
+    },
     "rightAlignText": {
       'width': 75,
       'height': 40,
@@ -188,13 +208,12 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "fileBox": {
       'width': '80%',
-      'height': 60,
+      'height': 50,
       'flexDirection': 'row',
       'alignItems': 'center',
-      'padding': 10,
+      'padding': 5,
       'backgroundColor': '#e9e9e9',
-
-
+      'marginTop': 10,
     },
     "won": {
       "fontFamily": "Apple SD Gothic Neo",
@@ -252,6 +271,22 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'marginLeft': 'auto',
       'marginRight': 'auto',
     },
+    "renderTitleWrap": {
+
+      'width': 80,
+      'borderRadius': 50,
+      'backgroundColor': '#f15a24',
+    },
+
+    "renderTitle": {
+      'fontFamily': 'Apple SD Gothic Neo',
+      'fontSize': 12,
+      'color': 'white',
+      'lineHeight': 25,
+      'textAlign': 'center',
+    
+    },
+
 
 
     "textfield": {

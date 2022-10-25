@@ -1,8 +1,10 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
+
 platform :ios, '11.0'
 install! 'cocoapods', :deterministic_uuids => false
+pod 'RNFastImage', :path => '../node_modules/react-native-fast-image'
 
 target 'BYapp' do
   config = use_native_modules!
@@ -31,6 +33,7 @@ target 'BYapp' do
   use_flipper!()
 
   permissions_path = '../node_modules/react-native-permissions/ios'
+  pod 'RNFastImage', :path => '../node_modules/react-native-fast-image'
 
   # pod 'Permission-AppTrackingTransparency', :path => "#{permissions_path}/AppTrackingTransparency"
   # pod 'Permission-BluetoothPeripheral', :path => "#{permissions_path}/BluetoothPeripheral"
