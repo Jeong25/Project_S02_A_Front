@@ -13,7 +13,7 @@ const Signup = (props) => {
   const [name, setName] = useState('')
   const [eventCode, setEventCode] = useState('')
   const [inputhpNo, setInputHpNo] = useState({
-    first: '',
+    first: '010',
     middle: '',
     last: '',
   })
@@ -173,6 +173,7 @@ const Signup = (props) => {
                       ref_input[2].current.focus()
                     }
                   }}
+                  value={inputhpNo.first}
                   keyboardType="number-pad"
                   maxLength={3}
                   returnKeyType="done"
@@ -249,7 +250,8 @@ const Signup = (props) => {
                 </View>
               </View>
 
-              <TouchableOpacity style={styles.loginBtnWrap} onPress={() => doLogin(name, `${inputhpNo.first}-${inputhpNo.middle}-${inputhpNo.last}`, eventCode, privacyAgree)}>
+              <TouchableOpacity style={styles.loginBtnWrap} onPress={() => doLogin(name, `${inputhpNo.first}${inputhpNo.middle}${inputhpNo.last}`, eventCode, privacyAgree)}>
+              {/* <TouchableOpacity style={styles.loginBtnWrap} onPress={() => doLogin(name, `${inputhpNo.first}-${inputhpNo.middle}-${inputhpNo.last}`, eventCode, privacyAgree)}> */}
                 <View style={styles.loginBtn}>
                   <Text style={styles.loginText}>로그인</Text>
                 </View>

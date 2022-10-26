@@ -60,9 +60,7 @@ const CostList = (props) => {
       return (
         <View key={index}>
           <TouchableOpacity onPress={() => { props.navigation.navigate('CostModify', { data: { ...item }, refresh: callList }) }}>
-            {console.log(item?.useProStatus)}
-            {item?.useProStatus ? '' : ''}
-            <View style={styles.cellGreen} >
+            <View style={item?.useProStatus === 'B' || item?.useProStatus === 'C' || item?.useProStatus === 'D' ? styles.cellGreen : item?.useProStatus === 'E' || item?.useProStatus === 'F' ? styles.cellRed : styles.cellGray} >
               <View style={styles.cellInner}>
                 <Text style={styles.cellTitle}>{cutTitle}</Text>
                 <Text style={styles.cellDate}>
