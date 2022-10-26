@@ -11,7 +11,6 @@ import AlertAsync from 'react-native-alert-async';
 import { registerEventCostReq } from '../store/store';
 import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
-import { PERMISSIONS } from 'react-native-permissions';
 
 const Cost = (props) => {
   const styles = styleSheet()
@@ -81,7 +80,7 @@ const Cost = (props) => {
       Alert.alert('알림', '사용 금액을 입력해 주세요.')
       return
     }
-    if (inputData.useReceiptId === '') {
+    if (inputData.useReceiptName === '') {
       Alert.alert('알림', '첨부파일을 입력해 주세요.')
       return
     }
@@ -104,11 +103,11 @@ const Cost = (props) => {
   }
 
   const goback = async () => {
-    try {
-      props.route.params.refresh()
-    } catch (error) {
-      console.log(error)
-    }
+    // try {
+    //   props.route.params.refresh()
+    // } catch (error) {
+    //   console.log(error)
+    // }
     props.navigation.goBack()
   }
 

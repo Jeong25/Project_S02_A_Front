@@ -8,9 +8,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
+import { useIsFocused } from '@react-navigation/native';
 
 const CostList = (props) => {
   const styles = styleSheet()
+  const isFocused = useIsFocused();
   const [listData, setListData] = useState([])
   const [dateState, setDateState] = useState({
     viewModal: false,
@@ -21,7 +23,7 @@ const CostList = (props) => {
 
   useEffect(() => {
     callList()
-  }, [])
+  }, [isFocused])
 
   const callList = async () => {
     const { confirmFromDate, confirmToDate } = dateState
@@ -59,7 +61,7 @@ const CostList = (props) => {
       const cutTitle = title ? `${title?.substring(0, 11)}...` : ""
       return (
         <View key={index}>
-          <TouchableOpacity onPress={() => { props.navigation.navigate('CostModify', { data: { ...item }, refresh: callList }) }}>
+          <TouchableOpacity onPress={() => { props.navigation.navigate('CostModify', { data: { ...item } }) }}>
             <View style={item?.useProStatus === 'B' || item?.useProStatus === 'C' || item?.useProStatus === 'D' ? styles.cellGreen : item?.useProStatus === 'E' || item?.useProStatus === 'F' ? styles.cellRed : styles.cellGray} >
               <View style={styles.cellInner}>
                 <Text style={styles.cellTitle}>{cutTitle}</Text>

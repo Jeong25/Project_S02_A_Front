@@ -123,11 +123,11 @@ const CostModify = (props) => {
   }
 
   const goback = async () => {
-    try {
-      props.route.params.refresh()
-    } catch (error) {
-      console.log(error)
-    }
+    // try {
+    //   props.route.params.refresh()
+    // } catch (error) {
+    //   console.log(error)
+    // }
     props.navigation.goBack()
   }
 
@@ -322,7 +322,7 @@ const CostModify = (props) => {
               </View>
             </View>
 
-          
+
             <View style={styles.renderTitleWrap}>
               <Text style={styles.renderTitle}>결제 내역</Text>
             </View>
@@ -357,7 +357,9 @@ const CostModify = (props) => {
               <View>
               </View>}
 
-            {headerData?.useProStatus === 'A' || headerData?.useProStatus === 'E' ?
+            {headerData?.useProStatus === 'B' || headerData?.useProStatus === 'C' || headerData?.useProStatus === 'D' ?
+              <View style={styles.modifyBtnWrap}></View>
+              :
               <View style={styles.modifyBtnWrap}>
                 <TouchableOpacity onPress={modifyEvent}>
                   <View style={styles.requestBtn}>
@@ -369,8 +371,7 @@ const CostModify = (props) => {
                     <Text style={styles.btnText}>취소</Text>
                   </View>
                 </TouchableOpacity>
-              </View> :
-              <View style={styles.modifyBtnWrap}></View>
+              </View>
             }
 
             <DateTimePickerModal
