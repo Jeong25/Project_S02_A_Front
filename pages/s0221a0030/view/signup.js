@@ -255,7 +255,7 @@ const Signup = (props) => {
                 </View>
               </View>
 
-              <TouchableOpacity style={styles.loginBtnWrap} onPress={() => doLogin(name, `${inputhpNo.first}${inputhpNo.middle}${inputhpNo.last}`, eventCode, privacyAgree)}>
+              <TouchableOpacity style={styles.loginBtnWrap} onPress={() => doLogin(name, `${inputhpNo.first}-${inputhpNo.middle}-${inputhpNo.last}`, eventCode, privacyAgree)}>
                 <View style={styles.loginBtn}>
                   <Text style={styles.loginText}>로그인</Text>
                 </View>
