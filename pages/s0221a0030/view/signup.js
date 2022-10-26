@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Dimensions, Keyboard, Alert } from 'react-native';
-import { Text, View,SafeAreaView, TextInput, TouchableOpacity, } from 'react-native';
+import { Text, View, SafeAreaView, TextInput, TouchableOpacity, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -118,14 +118,6 @@ const Signup = (props) => {
     await props.navigation.reset({ routes: [{ name: 'QrCode' }] })
   }
 
-  const checkHeight = () => {
-    if (windowHeight < 800) {
-      return heightMagnifi
-    } else {
-      return 1
-    }
-  }
-
   const test = (e) => {
     // console.log(e.nativeEvent.text)
     // const a = e.nativeEvent.text.toUpperCase()
@@ -133,18 +125,20 @@ const Signup = (props) => {
   }
 
   return (
-    <>
-      {show && <KeyboardAwareScrollView
-        resetScrollToCoords={{ x: 0, y: 0 }}
-        scrollToOverflowEnabled={false}
-        enableAutomaticScroll
-        enableOnAndroid
-        keyboardShouldPersistTaps='always'
-        contentContainerStyle={{ height: windowHeight * checkHeight() }}
+    <KeyboardAwareScrollView
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      enableOnAndroid={true}
+      scrollEnabled={true}
+      scrollToOverflowEnabled={true}
+      enableAutomaticScroll={true}
+      keyboardShouldPersistTaps='always'
+      nestedScrollEnabled={true}
+    >
+      <SafeAreaView
+        style={{ flex: 1, backgroundColor: '#f15a25' }}
       >
-        <SafeAreaView
-          style={styles.wrap}
-        >
+
+        <View style={styles.wrap}>
           <View style={styles.titleWrap}>
             <Text style={styles.subTitle}>
               <Text style={styles.subTitleBold}>쉽고 편리한</Text> 영수증처리
@@ -172,7 +166,7 @@ const Signup = (props) => {
                   }}
                   onBlur={() => { setheightMagnifi(1.2) }}
                   placeholder={"010"}
-                  placeholderTextColor="rgba(0,0,0,0.2)" 
+                  placeholderTextColor="rgba(0,0,0,0.2)"
                   onChange={(e) => {
                     setInputHpNo({ ...inputhpNo, first: e.nativeEvent.text })
                     if (e.nativeEvent.text.length === 3) {
@@ -188,7 +182,7 @@ const Signup = (props) => {
                 <TextInput
                   style={styles.phoneInput2}
                   placeholder={"0000"}
-                  placeholderTextColor="rgba(0,0,0,0.2)" 
+                  placeholderTextColor="rgba(0,0,0,0.2)"
                   onChange={(e) => {
                     setInputHpNo({ ...inputhpNo, middle: e.nativeEvent.text })
                     if (e.nativeEvent.text.length === 4) {
@@ -209,7 +203,7 @@ const Signup = (props) => {
                 <TextInput
                   style={styles.phoneInput3}
                   placeholder={"0000"}
-                  placeholderTextColor="rgba(0,0,0,0.2)" 
+                  placeholderTextColor="rgba(0,0,0,0.2)"
 
                   onChange={(e) => {
                     setInputHpNo({ ...inputhpNo, last: e.nativeEvent.text })
@@ -231,7 +225,7 @@ const Signup = (props) => {
               <TextInput
                 style={styles.inputCode}
                 placeholder={'코드번호'}
-                placeholderTextColor="#rgba(0,0,0,0.2)" 
+                placeholderTextColor="#rgba(0,0,0,0.2)"
                 ref={ref_input[4]}
                 onChange={(e) => setEventCode(e.nativeEvent.text)}
                 autoCapitalize={'characters'}
@@ -262,9 +256,10 @@ const Signup = (props) => {
               </TouchableOpacity>
             </View>
           </View>
-        </SafeAreaView>
-      </KeyboardAwareScrollView >}
-    </>
+        </View>
+      </SafeAreaView>
+    </KeyboardAwareScrollView >
+
   );
 }
 

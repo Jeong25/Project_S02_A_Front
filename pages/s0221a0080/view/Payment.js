@@ -1,11 +1,14 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Text, View, TextInput, SafeAreaView, TouchableOpacity, ScrollView, Dimensions, Image } from 'react-native';
+import {
+  Text, View, TextInput, SafeAreaView, TouchableOpacity, ScrollView, Dimensions, Image
+} from 'react-native';
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { costReqDetailReq, processingCostReq } from '../store/store';
 import Footer from '../../common/footer/Footer';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import numberToCost from '../../common/util/numberToCost';
+import ImageModal from 'react-native-image-modal';
 
 const Payment = (props) => {
   const height = Dimensions.get('window').height
@@ -113,12 +116,17 @@ const Payment = (props) => {
 
             <View style={styles.contents}>
               <Text style={styles.label}>첨부파일</Text>
-              {/* <Text style={styles.fileInput}>{headerData.useReceiptName}</Text> */}
               <View style={styles.fileBox}>
-                <Image
+              
+                <ImageModal
+                  resizeMode='contain'
+                  style={{
+                    width: 40,
+                    height: 40,
+                  }}
                   source={{ uri: `${preFix}${headerData?.useReceiptId}` }}
-                  style={{ width: 45, height: 45 }}
                 />
+
               </View>
             </View>
             <View style={styles.contents}>
@@ -140,24 +148,27 @@ const Payment = (props) => {
 
             <View key={k}>
               <View style={styles.renderInner}>
+                <View style={styles.renderTitleWrap}>
+                  <Text style={styles.renderTitle}>1차 결제</Text>
+                </View>
                 <View style={styles.contentsLayer}>
-                  <View style={styles.contentsInner}>
+                  <View style={styles.RcontentsInner}>
+                    <Text style={styles.label}>이름</Text>
+                    <Text style={styles.shortInput}>{v.paiedName}</Text>
+                  </View>
+                  <View style={styles.RcontentsInner}>
+                    <Text style={styles.label}>상태</Text>
+                    <Text style={styles.shortInput}>{v.payResultNm}</Text>
+                  </View>
+                  <View style={styles.RcontentsInner}>
+                    <Text style={styles.label}>결제일자</Text>
+                    <Text style={styles.centerAlignText}>{v.payDate}</Text>
+                  </View>
+                </View>
 
-                    <Text style={styles.label}>결제자명</Text>
-                    <Text style={styles.centerAlignText}>{v.paiedName}</Text>
-                  </View>
-                  <View style={styles.contentsInner}>
-                    <Text style={styles.label}>결제여부</Text>
-                    <Text style={styles.centerAlignText}>{v.payResultNm}</Text>
-                  </View>
-                </View>
-                <View style={styles.contents}>
-                  <Text style={styles.label}>결제일자</Text>
-                  <Text style={styles.dateInputTextLong}>{v.payDate}</Text>
-                </View>
                 <View style={styles.contents}>
                   <Text style={styles.label}>결제의견</Text>
-                  <Text style={styles.historyInput}>{v.payComment}</Text>
+                  <Text style={styles.RhistoryInput}>{v.payComment}</Text>
                 </View>
               </View>
               <View style={styles.divider}></View>
@@ -186,7 +197,8 @@ const Payment = (props) => {
           </TouchableOpacity>
         </View>
       </KeyboardAwareScrollView>
-  
+
+
 
       <Footer
         style={{ flex: 1 }}

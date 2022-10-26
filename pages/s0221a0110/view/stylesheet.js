@@ -11,13 +11,6 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'backgroundColor' : 'white',
         },
 
-        "inner": {
-            'width': '100%',
-            'height' : '100%',
- 
-        },
-
-
         "topLogoWrap": {
             'width': '100%',
             'display': 'flex',
@@ -91,8 +84,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
         },
 
         'BtnWrap': {
-           'marginTop' : 'auto',
-           'marginBottom' : 'auto',
+            'marginTop' : 'auto',
             'width': '100%',
             'backgroundColor': '#f15a24'
         },

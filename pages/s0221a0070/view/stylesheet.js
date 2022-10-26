@@ -119,7 +119,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "cellWrap": {
       "width": "100%",
-      'marginBottom' :'30%'
+      'marginBottom' :'25%'
     },
 
     'divider': {

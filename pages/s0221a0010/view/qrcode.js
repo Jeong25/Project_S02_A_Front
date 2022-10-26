@@ -112,7 +112,7 @@ const QrCode = (props) => {
             </View>
           </View>
         </View>
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <ScrollView>
           <View style={styles.profileCard} >
             <View style={styles.profileTextGroup}>
               <Text style={styles.memberName}>{memberName}</Text>
