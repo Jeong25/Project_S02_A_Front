@@ -209,7 +209,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             "width": '100%',
             'marginLeft': 'auto',
             'marginRight': 'auto',
-            'marginTop': '20%',
+            'marginTop': '10%',
             'marginBottom' : '10%',
         },
 
