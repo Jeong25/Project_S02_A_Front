@@ -88,10 +88,12 @@ const CostModify = (props) => {
       setSC(1)
       const response = await patchEventCostReq(body)
       if (response.status === 200) {
+        Alert.alert('알림', '비용 청구 영수증 수정 되었습니다.')
         goback()
         setSC(0)
       }
     } else {
+      Alert.alert('알림', '이미 작업을 요청하였으니, 잠시만 기다려주세요.')
       return
     }
   }

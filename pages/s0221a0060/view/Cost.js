@@ -97,6 +97,7 @@ const Cost = (props) => {
         setSC(0)
       }
     } else {
+      Alert.alert('알림', '이미 작업을 요청하였으니, 잠시만 기다려주세요.')
       return
     }
 
