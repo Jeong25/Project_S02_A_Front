@@ -300,11 +300,11 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'marginRight': 'auto',
       'marginTop': 3,
     },
-    'divider': {
+    'cellDivider': {
       'width': '100%',
-      'height': 10,
+      'height': 2,
       'backgroundColor': '#e9e9e9',
-      'marginTop': 5,
+      'marginTop' : 10,
     },
 
     "textfield": {
@@ -335,24 +335,17 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'textAlignVertical': 'top'
     },
 
-    "selectBox": {
-      "width": "70%",
-      // "border": "none",
-      // "borderBottomWidth": 3,
-      // "borderBottomColor": "#707070",
-    },
+   
     "renderTitleWrap": {
-
-      'width': 80,
-      'borderRadius': 50,
-      'backgroundColor': '#f15a24',
+      'marginTop' : 10,
+      'backgroundColor' : '#f15a24'
     },
 
     "renderTitle": {
       'fontFamily': 'Apple SD Gothic Neo',
-      'fontSize': 12,
+      'fontSize': 18,
       'color': 'white',
-      'lineHeight': 25,
+      'lineHeight': 30,
       'textAlign': 'center',
     
     },
@@ -414,7 +407,6 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
 
     'renderInner': {
       'width': '90%',
-      'marginTop': 10,
       'marginLeft': 'auto',
       'marginRight': 'auto',
     }

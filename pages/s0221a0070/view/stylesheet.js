@@ -136,7 +136,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'backgroundColor': '#e9e9e9',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop': 5,
+      'marginTop': 2,
+      'marginBottom': 2,
 
     },
 
@@ -145,12 +146,16 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "height": 50,
       "marginLeft": 'auto',
       "marginRight": 'auto', 
+      'borderLeftWidth' : 7,
+      'borderLeftColor' : 'green'
     },
 
     "cellInner": {
       "width": "90%",
       "marginLeft": "auto",
       "marginRight": "auto",
+      "marginTop": "auto",
+      "marginBottom": "auto",
       "position": "relative",
     },
 
@@ -159,7 +164,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
       "fontWeight": "700",
-      "marginTop": 5
     },
 
     "cellDate": {
@@ -181,7 +185,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
     "cellAmount": {
       "position": "absolute",
       "right": 0,
-      "top": 14,
+      "top": 10,
       "color": "#F15A24",
       "fontSize": 21,
       "fontWeight": "800",

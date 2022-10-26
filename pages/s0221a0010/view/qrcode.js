@@ -228,36 +228,31 @@ const QrCode = (props) => {
               <Text style={styles.centerText}>FAQ</Text>
             </TouchableOpacity>
           </View>
-
+          <View style={styles.contentsDivider}/>
           <View style={styles.recentListWrap}>
             <Text style={styles.listTitle}>최근 등록된 행사</Text>
             <ScrollView style={styles.list}>
               <View style={styles.cell}>
-                <Text style={styles.cellTitle}>Test</Text>
-                <Text style={styles.cellDate}>운영자 / 2022-01-01</Text>
+                <Text style={styles.cellTitle}>Event1</Text>
+                <Text style={styles.cellDate}>최현수 / 2022-01-02</Text>
               </View>
               <View style={styles.cellDivider}></View>
 
               <View style={styles.cell}>
-                <Text style={styles.cellTitle}>Test</Text>
-                <Text style={styles.cellDate}>운영자 / 2022-01-01</Text>
+                <Text style={styles.cellTitle}>Event2</Text>
+                <Text style={styles.cellDate}>황어진 / 2022-02-14</Text>
               </View>
               <View style={styles.cellDivider}></View>
               <View style={styles.cell}>
-                <Text style={styles.cellTitle}>Test</Text>
-                <Text style={styles.cellDate}>운영자 / 2022-01-01</Text>
+                <Text style={styles.cellTitle}>Event3</Text>
+                <Text style={styles.cellDate}>정영빈 / 2022-03-01</Text>
               </View>
               <View style={styles.cellDivider}></View>
               <View style={styles.cell}>
-                <Text style={styles.cellTitle}>Test</Text>
-                <Text style={styles.cellDate}>운영자 / 2022-01-01</Text>
+                <Text style={styles.cellTitle}>Event4</Text>
+                <Text style={styles.cellDate}>정운상 / 2022-05-01</Text>
               </View>
-              <View style={styles.cellDivider}></View>
-              <View style={styles.cell}>
-                <Text style={styles.cellTitle}>Test</Text>
-                <Text style={styles.cellDate}>운영자 / 2022-01-01</Text>
-              </View>
-              <View style={styles.cellDivider}></View>
+              
 
 
             </ScrollView>

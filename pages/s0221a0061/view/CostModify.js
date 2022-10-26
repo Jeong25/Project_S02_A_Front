@@ -320,15 +320,15 @@ const CostModify = (props) => {
               </View>
             </View>
 
-            <View style={styles.divider}></View>
+          
+            <View style={styles.renderTitleWrap}>
+              <Text style={styles.renderTitle}>결제 내역</Text>
+            </View>
 
             {detailData.length > 0 ?
               detailData.map((v, i) => (
                 <View key={i}>
                   <View style={styles.renderInner}>
-                    <View style={styles.renderTitleWrap}>
-                      <Text style={styles.renderTitle}>1차 결제</Text>
-                    </View>
                     <View style={styles.contentsLayer}>
                       <View style={styles.RcontentsInner}>
                         <Text style={styles.label}>이름</Text>
@@ -349,7 +349,7 @@ const CostModify = (props) => {
                       <Text style={styles.RhistoryInput}>{v.payComment}</Text>
                     </View>
                   </View>
-                  <View style={styles.divider}></View>
+                  <View style={styles.cellDivider}></View>
                 </View>
               )) :
               <View>
