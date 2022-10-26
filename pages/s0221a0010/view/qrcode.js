@@ -145,7 +145,8 @@ const QrCode = (props) => {
                       승인요청
                     </Text>
                     <Text style={styles.processNumber}>
-                      {(statusCnt?.B || 0) + (statusCnt?.C || 0)}
+                      {payCnt || 0}
+                      {/* {(statusCnt?.B || 0) + (statusCnt?.C || 0)} */}
                     </Text>
                   </View>
 
@@ -160,7 +161,7 @@ const QrCode = (props) => {
                       결제진행
                     </Text>
                     <Text style={styles.processNumber}>
-                      {statusCnt?.D || 0}
+                      {statusCnt?.B || 0}
                     </Text>
                   </View>
                   <View style={styles.divider}></View>
@@ -170,7 +171,7 @@ const QrCode = (props) => {
                       결제완료
                     </Text>
                     <Text style={styles.processNumber}>
-                      {(statusCnt?.B || 0) + (statusCnt?.C || 0)}
+                      {statusCnt?.C || 0}
                     </Text>
                   </View>
                   <View style={styles.divider}></View>
@@ -188,7 +189,7 @@ const QrCode = (props) => {
                       요청취소
                     </Text>
                     <Text style={styles.processNumber}>
-                      {statusCnt?.D || 0}
+                      {statusCnt?.F || 0}
                     </Text>
                   </View>
 
