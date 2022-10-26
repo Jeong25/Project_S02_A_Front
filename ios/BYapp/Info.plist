@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4</string>
+	<string>1.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.4</string>
+	<string>1.3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -50,7 +50,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>위치 정보 접근 권한을 허용해 주십시오.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>microphone 접근 권한을 허용해 주십시오.</string>
+	<string>QR코드 인식 기능 및 영수증 촬영 기능을 위해 카메라 접근 권한을 허용해주십시오.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Motion 접근 권한을 허용해 주십시오.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

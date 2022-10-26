@@ -140,8 +140,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'backgroundColor' : '#e9e9e9',
       'marginLeft' : 'auto',
       'marginRight' : 'auto',
-      'marginTop' : 5,
-
+      'marginTop': 2,
+      'marginBottom': 2,
     },
 
     "cell": {
@@ -155,6 +155,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "width": "90%",
       "marginLeft": "auto",
       "marginRight": "auto",
+      "marginTop": "auto",
+      "marginBottom": "auto",
       "position": "relative",
     },
     'eventName': {
@@ -162,7 +164,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
       "fontWeight": "700",
-      "marginTop": 5,
     },
 
     "eventDate": {

@@ -193,8 +193,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'marginLeft' : 'auto',
             'marginRight' : 'auto',
             'marginTop': '5%',
-            'marginBottom': '4%',
-
         },
 
         'centerCostBtn': {
@@ -264,26 +262,27 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'marginTop': 5,
             'color': '#616161'
         },
+        'contentsDivider' : {
+            'marginVertical' : 10,
+            'backgroundColor': '#e9e9e9',
+            'height': 5,
+        },
 
         'recentListWrap' :{
             'width' : '90%',
             'height' : '50%',
             'marginLeft' : 'auto',
             'marginRight' : 'auto',
-            'overflow' : 'hidden'
         },
 
         'listTitle' :{
             'fontSize' : 18,
             'fontFamily' : 'Apple SD Gothic Neo',
-            'fontWeight' : '700',
+            'fontWeight' : '800',
+            'fontWeight': Platform.OS === 'ios' ? '800' : 'bold' ,
             'color' : '#333',
-           
         },
         'list':{
-            'height' : 260,
-            'borderTopWidth' : 2,
-            'borderTopColor' : '#333',
             'marginTop' : 10,
         },
         "cell": {
