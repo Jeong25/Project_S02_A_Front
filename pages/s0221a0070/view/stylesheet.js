@@ -141,13 +141,29 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     },
 
-    "cell": {
+    "cellGreen": {
       "width": "90%",
       "height": 50,
       "marginLeft": 'auto',
       "marginRight": 'auto', 
       'borderLeftWidth' : 7,
       'borderLeftColor' : 'green'
+    },
+    "cellRed": {
+      "width": "90%",
+      "height": 50,
+      "marginLeft": 'auto',
+      "marginRight": 'auto', 
+      'borderLeftWidth' : 7,
+      'borderLeftColor' : 'red'
+    },
+    "cellGray": {
+      "width": "90%",
+      "height": 50,
+      "marginLeft": 'auto',
+      "marginRight": 'auto', 
+      'borderLeftWidth' : 7,
+      'borderLeftColor' : 'gray'
     },
 
     "cellInner": {
