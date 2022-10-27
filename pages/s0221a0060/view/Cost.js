@@ -11,6 +11,8 @@ import AlertAsync from 'react-native-alert-async';
 import { registerEventCostReq } from '../store/store';
 import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
+import ImageModal from 'react-native-image-modal';
+
 
 const Cost = (props) => {
   const styles = styleSheet()
@@ -257,7 +259,15 @@ const Cost = (props) => {
                     <ReactImage source={require('./assets/plus.png')} style={styles.addIcon} ></ReactImage>
                   </TouchableOpacity>
                 </View>
-                <TextInput style={styles.fileInput} editable={false}>{inputData.useReceiptName}</TextInput>
+                <View style={styles.fileBox}>
+                    <ImageModal
+                      resizeMode='contain'
+                      style={{
+                        width: 40,
+                        height: 40,
+                      }}
+                    />
+                  </View>
               </View>
               <View>
                 <Text style={styles.label}>사용내역</Text>

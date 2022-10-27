@@ -112,7 +112,15 @@ const QrCode = (props) => {
             </View>
           </View>
         </View>
-        <ScrollView>
+        <ScrollView
+          resetScrollToCoords={{ x: 0, y: 0 }}
+          enableOnAndroid={true}
+          scrollEnabled={true}
+          scrollToOverflowEnabled={true}
+          enableAutomaticScroll={true}
+          keyboardShouldPersistTaps='always'
+          nestedScrollEnabled={true}
+        >
           <View style={styles.profileCard} >
             <View style={styles.profileTextGroup}>
               <Text style={styles.memberName}>{memberName}</Text>

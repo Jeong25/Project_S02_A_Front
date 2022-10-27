@@ -17,7 +17,15 @@ const Signup = (props) => {
     
     <SafeAreaView style={{backgroundColor: 'white'}}>
 
-      <ScrollView style={styles.wrap}>
+      <ScrollView 
+      style={styles.wrap}
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      enableOnAndroid={true}
+      scrollEnabled={true}
+      scrollToOverflowEnabled={true}
+      enableAutomaticScroll={true}
+      keyboardShouldPersistTaps='always'
+      nestedScrollEnabled={true}>
           <View style={styles.topLogoWrap}>
             <ReactImage source={require('./assets/orangeLogo.png')} style={styles.topLogo} />
             <View style={styles.titleText}>

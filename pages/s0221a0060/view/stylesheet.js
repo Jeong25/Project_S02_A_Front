@@ -126,12 +126,13 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "paddingBottom": 5,
       'textAlign' : 'center'
     },
-    "fileInput": {
+    "fileBox": {
       "width": "100%",
-      "height": 35,
+      "height": 50,
       "overflow": "hidden",
-      "borderBottomWidth": 2,
-      "borderBottomColor": "#707070",
+      "borderWidth": 2,
+      "borderColor": "#707070",
+      "borderRadius": 10,
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
       "fontWeight": '700',
@@ -162,7 +163,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
 
     "addBtn": {
       "position": "absolute",
-      "right": 0,
+      "right": 10,
       "bottom": 10,
       "width": 30,
       "height": 30,
