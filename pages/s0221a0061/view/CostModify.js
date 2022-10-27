@@ -37,6 +37,7 @@ const CostModify = (props) => {
   })
   const [headerData, setHeaderData] = useState({})
   const [detailData, setDetailData] = useState([])
+  const [imgUri, setImgUri] = useState('')
   const [SC, setSC] = useState(0)
   const preFix = 'https://s3.ap-northeast-2.amazonaws.com/s02-bucket/storage/img/s02/'
 
@@ -62,6 +63,7 @@ const CostModify = (props) => {
       setHeaderData(res.data.data.header)
       setDetailData(res.data.data.detail)
       setEventName(res.data.data.header.eventNm)
+      setImgUri(`${preFix}${res.data.data.header?.useReceiptId}`)
     }
   }
 
@@ -170,6 +172,7 @@ const CostModify = (props) => {
                   base64String: res.assets[0].base64,
                   useReceiptName: fileNm[fileNm.length - 1]
                 })
+                setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
               }).catch((e) => {
                 console.log(e)
               })
@@ -185,6 +188,7 @@ const CostModify = (props) => {
                   base64String: res.assets[0].base64,
                   useReceiptName: fileNm[fileNm.length - 1]
                 })
+                setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
               }).catch((e) => {
                 console.log(e)
               })
@@ -300,7 +304,7 @@ const CostModify = (props) => {
                         width: 40,
                         height: 40,
                       }}
-                      source={{ uri: `${preFix}${headerData?.useReceiptId}` }}
+                      source={{ uri: imgUri }}
                     />
                   </View>
                   <View style={styles.addBtn}>
