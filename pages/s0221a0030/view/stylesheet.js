@@ -210,7 +210,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'marginLeft': 'auto',
             'marginRight': 'auto',
             'marginTop': '10%',
-            'marginBottom' : '30%',
+            'marginBottom' : '25%',
         },
 
         "loginBtn": {

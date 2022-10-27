@@ -10,20 +10,11 @@ export const styleSheet = (windowHeight, windowWidth) => {
             "width": '100%',
             "height": '100%',
         },
-        "circle": {
-            "backgroundColor": "#f15a24",
-            "width": 600,
-            "height": 600,
-            'borderRadius': 500,
-            'position': 'absolute',
-            'left': -180,
-            'top': -350,
-        },
+       
         'topMenu': {
             'width': '95%',
             'height': 50,
             'flexDirection': 'row',
-            'justifyContent' : 'space-between',
             'alignItems': 'center',
             'paddingHorizontal': 10,
             'marginRight' : 'auto',
@@ -32,55 +23,50 @@ export const styleSheet = (windowHeight, windowWidth) => {
         },
         'topLogo': {
             'fontFamily': 'Jalnan',
-            'color': 'white',
+            'color': '#f15a24',
             'fontSize': 32,
         },
+        'profileTextGroup' : {
+            'flexDirection' : 'row',
+            'marginLeft' : 10,
+        },
 
-        "profileCard": {
-            'backgroundColor': 'white',
-            'height' : 190,
+
+
+        "infoCard": {
             'width': '90%',
-            'borderRadius': 20,
             'marginLeft': 'auto',
             'marginRight': 'auto',
             'marginTop': '5%',
             'justifyContent': 'center',
-            'position': 'relative',
-            'elevation': 10,
+          
         },
 
-        'profileTextGroup': {
-            'marginTop': 'auto',
-        },
 
         'processInfoWrap': {
             'width': '100%',
             'height': 135,
-            'borderBottomRightRadius': 20,
-            'borderBottomLeftRadius': 20,
-            'backgroundColor': '#f15a24',
+            'backgroundColor': 'orange',
             'marginTop': 'auto',
             'paddingHorizontal': 10,
             'display' : 'flex',
             'alignItems' : 'center',
             'justifyContent' : 'center'
-
         },
         'upperProcessBox': {
             'height': 60,
-            'borderRadius': 10,
             'marginBottom' : 5,
+            'borderRadius': 15,
+            'backgroundColor' : '#F25430'
+        
        
         },
         'underProcessBox': {
 
             'width': '100%',
             'height': 60,
-            'borderRadius': 10,
-            'borderTopWidth' : 1,
-            'borderTopColor' : 'white',
-            'paddingTop' : 5
-
+            'borderRadius': 15,
+            'backgroundColor' : '#F56F01'
         },
 
         'processTitle': {
@@ -98,11 +84,12 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'width': '95%',
             'marginLeft': 'auto',
             'marginRight': 'auto',
+            'marginTop' : 'auto',
+            'marginBottom' : 'auto',
             'flexDirection': 'row',
             'alignItems': 'center',
             'justifyContents': 'space-around',
             
-
         },
 
         'process': {
@@ -139,29 +126,29 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
         'memberName': {
 
-            'fontFamily': "Apple SD Gothic Neo",
-            'color': '#383838',
+            'fontFamily': "Jalnan",
+            'color': '#f15a24',
             'fontSize': 24,
             'textAlign': 'center',
             'fontWeight': '700',
-            'marginBottom': 2
         },
 
         'memberPosition': {
 
             'fontFamily': "Apple SD Gothic Neo",
-            'color': '#707070',
+            'color': '#616161',
             'fontSize': 12,
             'fontWeight': '700',
             'textAlign': 'center',
-            'marginBottom': 2
+            'marginTop' : 10,
+
         },
 
-        'topBtnWrap' : {
+        'accountBtnWrap' : {
             
             'flexDirection' : 'row',
             'alignContent' : 'center',
-
+            'marginLeft' : 'auto'
         },
         'logoutBtn': {
             'width': 30,
@@ -192,36 +179,32 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'justifyContent': 'space-between',
             'marginLeft' : 'auto',
             'marginRight' : 'auto',
-            'marginTop': '5%',
+            'marginTop': '8%',
         },
 
-        'centerCostBtn': {
+        'centerBtn': {
             'width': 60,
             'height': 60,
+            'backgroundColor' : 'white',
             'borderRadius': 10,
-            'backgroundColor': '#f15a24'
-
+            'borderWidth' :2,
+            'borderColor' : '#f15a25',
+            
         },
         'centerpaymentBtn': {
             'width': 60,
             'height': 60,
             'borderRadius': 10,
-            'backgroundColor': '#f15a24'
-
         },
         'centerQrBtn': {
             'width': 60,
             'height': 60,
             'borderRadius': 10,
-            'backgroundColor': '#f29433'
-
         },
         'centerGuideBtn': {
             'width': 60,
             'height': 60,
             'borderRadius': 10,
-            'backgroundColor': '#ff6262'
-
         },
 
         'centerCostBtnWrap': {
@@ -263,7 +246,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'color': '#616161'
         },
         'contentsDivider' : {
-            'marginVertical' : 10,
+            'marginTop' : 30,
+            'marginBottom' : 10,
             'backgroundColor': '#e9e9e9',
             'height': 5,
         },
@@ -273,6 +257,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'height' : '50%',
             'marginLeft' : 'auto',
             'marginRight' : 'auto',
+            
         },
 
         'listTitle' :{
@@ -282,17 +267,21 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'fontWeight': Platform.OS === 'ios' ? '800' : 'bold' ,
             'color' : '#333',
         },
-        'list':{
+        'cellWrap':{
+            'flexDirection' : 'row',
             'marginTop' : 10,
+            'justifyContent' : 'space-between',
         },
         "cell": {
-            "width": "90%",
-            "height": 50,
-            "marginLeft": 'auto',
-            "marginRight": 'auto', 
+            "width": 100,
+            "height": 120,
+            'borderColor' : '#707070',
+            'borderWidth': 2,
+            'borderRadius' : 10,
+            'padding'  :8
           },
         "cellTitle": {
-            "color": "#1d1d1d",
+            "color": "#333",
             "fontFamily": "Apple SD Gothic Neo",
             "fontSize": 18,
             "fontWeight": "700",
@@ -305,7 +294,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
             "lineHeight": 13.2,
             "fontWeight": "500",
             "color": "#707070",
-            "marginTop": 5,
+            "marginTop": 'auto',
       
           },
         'cellDivider':{

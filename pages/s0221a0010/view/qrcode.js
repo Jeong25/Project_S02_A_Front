@@ -96,10 +96,14 @@ const QrCode = (props) => {
   return (
     <SafeAreaView style={{ backgroundColor: 'white' }}>
       <View style={styles.wrap}>
-        <View style={styles.circle}></View>
         <View style={styles.topMenu}>
           <Text style={styles.topLogo}>삐용</Text>
-          <View style={styles.topBtnWrap}>
+          <View style={styles.profileTextGroup}>
+            {/* <Text style={styles.memberName}>{memberName}</Text> */}
+            <Text style={styles.memberPosition}>{eventNm} / {eventRole}</Text>
+          </View>
+
+          <View style={styles.accountBtnWrap}>
             <View style={styles.accountDelBtn}>
               <TouchableOpacity onPress={() => deletMem()}>
                 <ReactImage source={require('./assets/block-user.png')} style={styles.accountDel} />
@@ -107,10 +111,11 @@ const QrCode = (props) => {
             </View>
             <View style={styles.logoutBtn}>
               <TouchableOpacity onPress={() => logOut()}>
-                <ReactImage source={require('./assets/power-off-w.png')} style={styles.logout} />
+                <ReactImage source={require('./assets/power-off.png')} style={styles.logout} />
               </TouchableOpacity>
             </View>
           </View>
+
         </View>
         <ScrollView
           resetScrollToCoords={{ x: 0, y: 0 }}
@@ -121,149 +126,135 @@ const QrCode = (props) => {
           keyboardShouldPersistTaps='always'
           nestedScrollEnabled={true}
         >
-          <View style={styles.profileCard} >
-            <View style={styles.profileTextGroup}>
-              <Text style={styles.memberName}>{memberName}</Text>
-              <Text style={styles.memberPosition}>{eventNm} / {eventRole}</Text>
-            </View>
-            <View style={styles.processInfoWrap}>
-              <View style={styles.upperProcessBox}>
-                <View style={styles.processInner}>
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      비용요청
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {statusCnt?.A || 0}
-                    </Text>
-                  </View>
-                  <View style={styles.divider}></View>
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      결제반려
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {statusCnt?.E || 0}
-                    </Text>
-                  </View>
-                  <View style={styles.divider}></View>
 
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      승인요청
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {payCnt || 0}
-                      {/* {(statusCnt?.B || 0) + (statusCnt?.C || 0)} */}
-                    </Text>
-                  </View>
 
+          <View style={styles.infoCard} >
+            <View style={styles.upperProcessBox}>
+              <View style={styles.processInner}>
+                <View style={styles.process}>
+                  <Text style={styles.processText}>
+                    비용요청
+                  </Text>
+                  <Text style={styles.processNumber}>
+                    {statusCnt?.A || 0}
+                  </Text>
                 </View>
-              </View>
-              <View style={styles.underProcessBox}>
-                <View style={styles.processInner}>
-
-
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      결제진행
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {statusCnt?.B || 0}
-                    </Text>
-                  </View>
-                  <View style={styles.divider}></View>
-
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      결제완료
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {statusCnt?.C || 0}
-                    </Text>
-                  </View>
-                  <View style={styles.divider}></View>
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      비용지급
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {statusCnt?.D || 0}
-                    </Text>
-                  </View>
-                  <View style={styles.divider}></View>
-                  <View style={styles.process}>
-                    <Text style={styles.processText}>
-                      요청취소
-                    </Text>
-                    <Text style={styles.processNumber}>
-                      {statusCnt?.F || 0}
-                    </Text>
-                  </View>
-
+                <View style={styles.divider}></View>
+                <View style={styles.process}>
+                  <Text style={styles.processText}>
+                    결제반려
+                  </Text>
+                  <Text style={styles.processNumber}>
+                    {statusCnt?.E || 0}
+                  </Text>
                 </View>
+                <View style={styles.divider}></View>
+
+                <View style={styles.process}>
+                  <Text style={styles.processText}>
+                    승인요청
+                  </Text>
+                  <Text style={styles.processNumber}>
+                    {payCnt || 0}
+                    {/* {(statusCnt?.B || 0) + (statusCnt?.C || 0)} */}
+                  </Text>
+                </View>
+                <View style={styles.divider}></View>
+
+
               </View>
-
             </View>
+            <View style={styles.underProcessBox}>
+              <View style={styles.processInner}>
 
+
+                <View style={styles.process}>
+                  <Text style={styles.processText}>
+                    결제진행
+                  </Text>
+                  <Text style={styles.processNumber}>
+                    {statusCnt?.B || 0}
+                  </Text>
+                </View>
+                <View style={styles.divider}></View>
+
+                <View style={styles.process}>
+                  <Text style={styles.processText}>
+                    결제완료
+                  </Text>
+                  <Text style={styles.processNumber}>
+                    {statusCnt?.C || 0}
+                  </Text>
+                </View>
+                <View style={styles.divider}></View>
+                <View style={styles.process}>
+                  <Text style={styles.processText}>
+                    비용지급
+                  </Text>
+                  <Text style={styles.processNumber}>
+                    {statusCnt?.D || 0}
+                  </Text>
+                </View>
+                <View style={styles.divider}></View>
+                <View style={styles.process}>
+                  <Text style={styles.processText}>
+                    요청취소
+                  </Text>
+                  <Text style={styles.processNumber}>
+                    {statusCnt?.F || 0}
+                  </Text>
+                </View>
+
+              </View>
+            </View>
           </View>
           <View style={styles.centerBtnWrap}>
 
             <TouchableOpacity style={styles.centerCostBtnWrap} onPress={() => props.navigation.navigate('CostList')}>
-              <View style={styles.centerCostBtn}>
-                <ReactImage source={require('./assets/receipt-w.png')} style={styles.centerIcon} />
+              <View style={styles.centerBtn}>
+                <ReactImage source={require('./assets/receipt.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>비용조회</Text>
             </TouchableOpacity>
-
             <TouchableOpacity style={styles.centerpaymentBtnWrap} onPress={() => props.navigation.navigate('PaymentList')}>
-              <View style={styles.centerpaymentBtn}>
-                <ReactImage source={require('./assets/stamp-w.png')} style={styles.centerIcon} />
+              <View style={styles.centerBtn}>
+                <ReactImage source={require('./assets/stamp.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>비용결제</Text>
             </TouchableOpacity>
-
             <TouchableOpacity style={styles.centerQrBtnWrap} onPress={() => openQrModal()}>
-              <View style={styles.centerQrBtn}>
-                <ReactImage source={require('./assets/sampleQr-w.png')} style={styles.centerIcon} />
+              <View style={styles.centerBtn}>
+                <ReactImage source={require('./assets/sampleQr.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>QR보기</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.centerGuideBtnWrap} onPress={() => openFaqModal()}>
-              <View style={styles.centerGuideBtn}>
-                <ReactImage source={require('./assets/guide-w.png')} style={styles.centerIcon} />
+              <View style={styles.centerBtn}>
+                <ReactImage source={require('./assets/guide.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>FAQ</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.contentsDivider}/>
+          <View style={styles.contentsDivider} />
           <View style={styles.recentListWrap}>
             <Text style={styles.listTitle}>최근 등록된 행사</Text>
-            <ScrollView style={styles.list}>
+            <View style={styles.cellWrap}>
               <View style={styles.cell}>
                 <Text style={styles.cellTitle}>Event1</Text>
                 <Text style={styles.cellDate}>최현수 / 2022-01-02</Text>
               </View>
-              <View style={styles.cellDivider}></View>
 
               <View style={styles.cell}>
                 <Text style={styles.cellTitle}>Event2</Text>
                 <Text style={styles.cellDate}>황어진 / 2022-02-14</Text>
               </View>
-              <View style={styles.cellDivider}></View>
               <View style={styles.cell}>
                 <Text style={styles.cellTitle}>Event3</Text>
                 <Text style={styles.cellDate}>정영빈 / 2022-03-01</Text>
               </View>
-              <View style={styles.cellDivider}></View>
-              <View style={styles.cell}>
-                <Text style={styles.cellTitle}>Event4</Text>
-                <Text style={styles.cellDate}>정운상 / 2022-05-01</Text>
-              </View>
-              
+      
 
-
-            </ScrollView>
+            </View>
 
           </View>
 
