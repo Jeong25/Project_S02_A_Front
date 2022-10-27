@@ -145,9 +145,9 @@ const CostModify = (props) => {
 
   const ShowPicker = async () => {
     let options = {
-      title: "Upload Prescription",
-      takePhotoButtonTitle: "Take a Photo",
-      chooseFromLibraryButtonTitle: "Select From Gallery",
+      title: "업로드 방식 선택",
+      takePhotoButtonTitle: "사진 촬영",
+      chooseFromLibraryButtonTitle: "갤러리에서 선택",
       storageOptions: {
         skipBackup: true,
         path: "images",
