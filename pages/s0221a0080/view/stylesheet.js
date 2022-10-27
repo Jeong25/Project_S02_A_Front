@@ -210,10 +210,11 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'width': '80%',
       'height': 50,
       'flexDirection': 'row',
+      "borderWidth": 2,
+      "borderColor": "#707070",
+      "borderRadius": 10,
       'alignItems': 'center',
       'padding': 5,
-      'backgroundColor': '#e9e9e9',
-      'marginTop': 10,
     },
     "won": {
       "fontFamily": "Apple SD Gothic Neo",
@@ -223,17 +224,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'marginTop': 5,
     },
 
-    "fileInput": {
-      'lineHeight': 40,
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontWeight": '500',
-      'textAlign': 'left',
-      'color': '#383838',
-      "fontSize": 12,
-      'margin': 0,
-      'marginTop': 5,
-      'padding': 0,
-    },
 
     "historyInput": {
       'lineHeight': 40,

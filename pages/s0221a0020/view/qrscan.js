@@ -75,7 +75,7 @@ const Qrscan = (props) => {
       ref={camera}
       style={{ width: CAM_VIEW_WIDTH, height: CAM_VIEW_HEIGHT, }}
       type={cameraFront ? RNCamera.Constants.Type.front : RNCamera.Constants.Type.back}
-      captureAudio={true}
+      captureAudio={false}
       barCodeTypes={[RNCamera.Constants.BarCodeType.qr]}
       cameraViewDimensions={{
         width: CAM_VIEW_WIDTH,
@@ -119,7 +119,6 @@ const Qrscan = (props) => {
             <Text style={styles.eventDate}>{dateData}</Text>
           </View>
         </View>
-
       </View>
     </RNCamera >
   );

@@ -7,7 +7,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     return StyleSheet.create({
         "wrap": {
-            "backgroundColor": "rgba(0, 0, 0, 0.7)",
             "width": '100%',
             "height": '100%',
         },
@@ -55,14 +54,14 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'fontWeight': '900',
             'fontSize': 10,
             'color': 'white',
-
         },
 
         "camArea": {
             "width": 250,
             "height": 250,
             'borderRadius': 40,
-            "backgroundColor": "rgba(255, 255, 255, 0.3)",
+            'borderWidth' : 2,
+            'borderColor' : 'white',
             'marginLeft': 'auto',
             'marginRight': 'auto',
             'marginTop': 100
