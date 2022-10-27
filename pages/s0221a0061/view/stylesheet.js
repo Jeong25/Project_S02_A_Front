@@ -209,10 +209,11 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'width': '80%',
       'height': 50,
       'flexDirection': 'row',
+      "borderWidth": 2,
+      "borderColor": "#707070",
+      "borderRadius": 10,
       'alignItems': 'center',
       'padding': 5,
-      'backgroundColor': '#e9e9e9',
-      'marginTop': 10,
     },
     "historyInput": {
       'width': '80%',

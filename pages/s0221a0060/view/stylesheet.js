@@ -133,14 +133,9 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "borderWidth": 2,
       "borderColor": "#707070",
       "borderRadius": 10,
-      "fontFamily": "Apple SD Gothic Neo",
-      "fontSize": 18,
-      "fontWeight": '700',
-      "color": "#383838",
-      "paddingTop": 0,
-      "paddingBottom": 5,
-      'paddingRight' : 30,
-      'textAlign' : 'center'
+      'flexDirection': 'row',
+      'alignItems': 'center',
+      'padding': 5,
     },
 
     "amountInput": {
