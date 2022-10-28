@@ -1,4 +1,4 @@
-import { Text, View, TextInput, Image, Keyboard, Dimensions, SafeAreaView, ScrollView, PermissionsAndroid, Alert } from 'react-native';
+import { Text, View, TextInput, Image, Keyboard, Dimensions, SafeAreaView, PermissionsAndroid, Alert } from 'react-native';
 import { styleSheet } from './stylesheet';
 import React, { useState, useEffect, Fragment } from 'react';
 import { Image as ReactImage } from 'react-native';
@@ -12,6 +12,7 @@ import AlertAsync from 'react-native-alert-async';
 import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
 import ImageModal from 'react-native-image-modal';
+import FastImage from 'react-native-fast-image';
 
 
 const CostModify = (props) => {
@@ -40,6 +41,10 @@ const CostModify = (props) => {
   const [imgUri, setImgUri] = useState('')
   const [SC, setSC] = useState(0)
   const preFix = 'https://s3.ap-northeast-2.amazonaws.com/s02-bucket/storage/img/s02/'
+  const size = {
+    windowWidth: Dimensions.get('window').width,
+    windowHeight: Dimensions.get('window').height
+  }
 
 
   useEffect(() => {
@@ -298,14 +303,22 @@ const CostModify = (props) => {
                   <Text style={styles.label}>첨부파일</Text>
                   {/* <TextInput style={styles.fileInput} value={inputData.useReceiptName}></TextInput> */}
                   <View style={styles.fileBox}>
-                    <ImageModal
-                      resizeMode='contain'
+                  <FastImage
                       style={{
                         width: 40,
                         height: 40,
                       }}
                       source={{ uri: imgUri }}
-                    />
+                      resizeMethod="resize">
+                      <ImageModal
+                        resizeMode='contain'
+                        style={{
+                          width: size.windowWidth,
+                          height: size.windowHeight
+                        }}
+                        source={{ uri: imgUri }}
+                      />
+                    </FastImage>
                   </View>
                   <View style={styles.addBtn}>
                     <TouchableOpacity onPressIn={() => ShowPicker()}>

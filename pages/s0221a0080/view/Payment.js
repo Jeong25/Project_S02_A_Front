@@ -9,6 +9,7 @@ import Footer from '../../common/footer/Footer';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import numberToCost from '../../common/util/numberToCost';
 import ImageModal from 'react-native-image-modal';
+import FastImage from 'react-native-fast-image';
 
 const Payment = (props) => {
   const height = Dimensions.get('window').height
@@ -17,6 +18,10 @@ const Payment = (props) => {
   const [inputData, setInputData] = useState({})
   const styles = styleSheet()
   const preFix = 'https://s3.ap-northeast-2.amazonaws.com/s02-bucket/storage/img/s02/'
+  const size = {
+    windowWidth: Dimensions.get('window').width,
+    windowHeight: Dimensions.get('window').height
+  }
 
   useEffect(() => {
     getData()
@@ -117,15 +122,23 @@ const Payment = (props) => {
             <View style={styles.contents}>
               <Text style={styles.label}>첨부파일</Text>
               <View style={styles.fileBox}>
-              
-                <ImageModal
-                  resizeMode='contain'
+
+                <FastImage
                   style={{
                     width: 40,
                     height: 40,
                   }}
                   source={{ uri: `${preFix}${headerData?.useReceiptId}` }}
-                />
+                  resizeMethod="resize">
+                  <ImageModal
+                    resizeMode='contain'
+                    style={{
+                      width: size.windowWidth,
+                      height: size.windowHeight
+                    }}
+                    source={{ uri: `${preFix}${headerData?.useReceiptId}` }}
+                  />
+                </FastImage>
 
               </View>
             </View>
@@ -197,8 +210,6 @@ const Payment = (props) => {
           </TouchableOpacity>
         </View>
       </KeyboardAwareScrollView>
-
-
 
       <Footer
         style={{ flex: 1 }}

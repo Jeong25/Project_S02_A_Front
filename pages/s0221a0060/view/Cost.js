@@ -1,4 +1,4 @@
-import { Text, View, TextInput, Image, Keyboard, PermissionsAndroid, Linking, Platform, SafeAreaView, Alert } from 'react-native';
+import { Text, View, TextInput, Image, Keyboard, PermissionsAndroid, Linking, Dimensions, SafeAreaView, Alert } from 'react-native';
 import { styleSheet } from './stylesheet';
 import React, { useState, useEffect, Fragment } from 'react';
 import { Image as ReactImage } from 'react-native';
@@ -12,6 +12,7 @@ import { registerEventCostReq } from '../store/store';
 import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
 import ImageModal from 'react-native-image-modal';
+import FastImage from 'react-native-fast-image';
 
 
 const Cost = (props) => {
@@ -37,6 +38,10 @@ const Cost = (props) => {
   })
   const [imgUri, setImgUri] = useState('')
   const [SC, setSC] = useState(0)
+  const size = {
+    windowWidth: Dimensions.get('window').width,
+    windowHeight: Dimensions.get('window').height
+  }
 
   useEffect(() => {
     getData()
@@ -262,14 +267,22 @@ const Cost = (props) => {
                     </TouchableOpacity>
                   </View>
                   <View style={styles.fileBox}>
-                    <ImageModal
-                      resizeMode='contain'
+                    <FastImage
                       style={{
                         width: 40,
                         height: 40,
                       }}
                       source={{ uri: imgUri }}
-                    />
+                      resizeMethod="resize">
+                      <ImageModal
+                        resizeMode='contain'
+                        style={{
+                          width: size.windowWidth,
+                          height: size.windowHeight
+                        }}
+                        source={{ uri: imgUri }}
+                      />
+                    </FastImage>
                   </View>
                 </View>
                 <View>
