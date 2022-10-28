@@ -194,9 +194,8 @@ const Cost = (props) => {
   return (
     <Fragment>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#f15a24' }}>
-        <View style={styles.wrap}>
-
           <KeyboardAwareScrollView
+            style={styles.wrap}
             resetScrollToCoords={{ x: 0, y: 0 }}
             enableOnAndroid={true}
             scrollEnabled={true}
@@ -301,7 +300,6 @@ const Cost = (props) => {
             />
 
           </KeyboardAwareScrollView>
-        </View>
       </SafeAreaView>
 
       <Footer
