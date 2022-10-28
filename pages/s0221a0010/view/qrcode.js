@@ -258,7 +258,6 @@ const QrCode = (props) => {
 
           </View>
 
-
         </ScrollView>
         <QrModal
           openModal={qrModalBool}

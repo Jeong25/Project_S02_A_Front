@@ -345,9 +345,10 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
 
     "renderTitle": {
       'fontFamily': 'Apple SD Gothic Neo',
+      'fontWeight' : '800',
       'fontSize': 18,
       'color': 'white',
-      'lineHeight': 30,
+      'lineHeight': 40,
       'textAlign': 'center',
     
     },

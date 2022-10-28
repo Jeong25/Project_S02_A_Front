@@ -269,7 +269,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
         },
         'cellWrap':{
             'flexDirection' : 'row',
-            'marginTop' : 10,
+            'marginTop' : 30,
             'justifyContent' : 'space-between',
         },
         "cell": {
