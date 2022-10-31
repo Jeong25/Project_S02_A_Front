@@ -235,7 +235,7 @@ const QrCode = (props) => {
               <Text style={styles.centerText}>FAQ</Text>
             </TouchableOpacity>
           </View>
-          {/* <View style={styles.contentsDivider} />
+          <View style={styles.contentsDivider} />
           <View style={styles.recentListWrap}>
             <Text style={styles.listTitle}>최근 등록된 행사</Text>
             <View style={styles.cellWrap}>
@@ -243,7 +243,6 @@ const QrCode = (props) => {
                 <Text style={styles.cellTitle}>Event1</Text>
                 <Text style={styles.cellDate}>최현수 / 2022-01-02</Text>
               </View>
-
               <View style={styles.cell}>
                 <Text style={styles.cellTitle}>Event2</Text>
                 <Text style={styles.cellDate}>황어진 / 2022-02-14</Text>
@@ -252,12 +251,12 @@ const QrCode = (props) => {
                 <Text style={styles.cellTitle}>Event3</Text>
                 <Text style={styles.cellDate}>정영빈 / 2022-03-01</Text>
               </View>
-      
-
+              <View style={styles.cell}>
+                <Text style={styles.cellTitle}>Event4</Text>
+                <Text style={styles.cellDate}>민성현 / 2022-03-01</Text>
+              </View>
             </View>
-
-          </View> */}
-
+          </View>
         </ScrollView>
         <QrModal
           openModal={qrModalBool}

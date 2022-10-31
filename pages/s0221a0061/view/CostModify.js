@@ -293,7 +293,7 @@ const CostModify = (props) => {
                   <View style={styles.contentsInner}>
                     <View style={styles.inputWrap}>
                       <Text style={styles.label}>사용금액</Text>
-                      <TextInput style={styles.rightAlignText} onChange={(e) => setInputData({ ...inputData, useAmount: e.nativeEvent.text })} value={`${numberToCost(inputData.useAmount)}`} />
+                      <TextInput style={styles.rightAlignText} onChange={(e) => setInputData({ ...inputData, useAmount: e.nativeEvent.text.replace(/,/g, '') })} value={`${numberToCost(inputData.useAmount)}`} />
                       <Text style={styles.won}>원</Text>
                     </View>
                   </View>

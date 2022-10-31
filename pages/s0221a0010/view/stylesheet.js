@@ -268,40 +268,32 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'color' : '#333',
         },
         'cellWrap':{
-            'flexDirection' : 'row',
-            'marginTop' : 30,
-            'justifyContent' : 'space-between',
         },
         "cell": {
-            "width": 100,
-            "height": 120,
-            'borderColor' : '#707070',
-            'borderWidth': 2,
-            'borderRadius' : 10,
-            'padding'  :8
+            "width":"100%",
+            "height": 50,
+            'borderBottomColor' : '#e9e9e9',
+            'borderBottomWidth': 2,
+            'padding':5,
+            'marginTop' : 10,
           },
         "cellTitle": {
             "color": "#333",
             "fontFamily": "Apple SD Gothic Neo",
             "fontSize": 18,
             "fontWeight": "700",
-            "marginTop": 5
           },
       
           "cellDate": {
-      
             "fontSize": 11,
             "lineHeight": 13.2,
             "fontWeight": "500",
             "color": "#707070",
-            "marginTop": 'auto',
-      
           },
         'cellDivider':{
             'width': '100%',
             'height': 2,
             'backgroundColor': '#e9e9e9',
-
         },
 
         'adWrap': {
