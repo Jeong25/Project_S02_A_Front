@@ -12,6 +12,11 @@ const payCnt = async (hpNo, eventCode) => {
 
 const deletMem = async (memId) => {
     const res = await client.post('/rest/v1/s021100030/delete-member', {memberId: memId});
-    return res
+    return res;
 }
-export { useStateCnt, payCnt, deletMem };
+
+const recentEvent = async (orgId, eventCode) => {
+    const res = await client.get(`/rest/v1/s0221a0010/mobile-init-recent-event?orgId=${orgId}&eventCode=${eventCode}`);
+    return res;
+}
+export { useStateCnt, payCnt, deletMem, recentEvent };

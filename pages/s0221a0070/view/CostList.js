@@ -14,6 +14,7 @@ const CostList = (props) => {
   const styles = styleSheet()
   const isFocused = useIsFocused();
   const [listData, setListData] = useState([])
+  const [writeAuth, setWriteAuth] = useState('N')
   const [dateState, setDateState] = useState({
     viewModal: false,
     fromToFlag: '',
@@ -31,8 +32,10 @@ const CostList = (props) => {
     const confirmToVal = convertDateToVal(confirmToDate)
     const memberId = await AsyncStorage.getItem('memberId')
     const eventCode = await AsyncStorage.getItem('eventCode')
+    const useRegFlag = await AsyncStorage.getItem('useRegFlag')
     const response = await retrieveCostReq(memberId, confirmFromVal, confirmToVal, eventCode)
     setListData(response?.data?.data || [])
+    setWriteAuth(useRegFlag)
   }
 
   const convertDateToVal = (val) => {
@@ -94,6 +97,7 @@ const CostList = (props) => {
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>비용요청현황</Text>
+            {writeAuth === 'Y' ? <View/> :
             <View style={styles.regBtnWrap}>
               <TouchableOpacity onPress={() => {
                 props.navigation.navigate('Cost', { refresh: callList })
@@ -101,6 +105,7 @@ const CostList = (props) => {
                 <ReactImage source={require('./assets/registIcon.png')} style={styles.registIcon} />
               </TouchableOpacity>
             </View>
+            }
           </View>
           <View style={styles.layer1}>
             <View style={styles.searchDate}>

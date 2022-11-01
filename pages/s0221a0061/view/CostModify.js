@@ -86,23 +86,45 @@ const CostModify = (props) => {
   }
 
   const modifyEvent = async () => {
-    console.log('CostModify_Log1: ' + JSON.stringify(inputData))
-    console.log('CostModify_Log2: ' + JSON.stringify(detailData))
-
-    const body = { ...inputData, usedDate: dateState.confirmVal, }
-
-    if (SC === 0) {
-      setSC(1)
-      const response = await patchEventCostReq(body)
-      if (response.status === 200) {
-        Alert.alert('알림', '비용 청구 영수증 수정 되었습니다.')
-        goback()
-        setSC(0)
+    console.log('CostModify_Log1: ' + JSON.stringify(inputData, null, 4))
+    if (inputData?.base64String) {
+      const body = { ...inputData, usedDate: dateState.confirmVal, }
+      delete body.payName
+      delete body.useProStatus
+      delete body.useProStatusNm
+      console.log('CostModify_Log2: ' + JSON.stringify(body, null, 4))
+      if (SC === 0) {
+        setSC(1)
+        const response = await patchEventCostReq(body)
+        if (response.status === 200) {
+          Alert.alert('알림', '비용 청구 영수증 수정 되었습니다.')
+          goback()
+          setSC(0)
+        }
+      } else {
+        Alert.alert('알림', '이미 작업을 요청하였으니, 잠시만 기다려주세요.')
+        return
       }
     } else {
-      Alert.alert('알림', '이미 작업을 요청하였으니, 잠시만 기다려주세요.')
-      return
+      const body = { ...inputData, usedDate: dateState.confirmVal, base64String: '' }
+      delete body.payName
+      delete body.useProStatus
+      delete body.useProStatusNm
+      console.log('CostModify_Log3: ' + JSON.stringify(body, null, 4))
+      if (SC === 0) {
+        setSC(1)
+        const response = await patchEventCostReq(body)
+        if (response.status === 200) {
+          Alert.alert('알림', '비용 청구 영수증 수정 되었습니다.')
+          goback()
+          setSC(0)
+        }
+      } else {
+        Alert.alert('알림', '이미 작업을 요청하였으니, 잠시만 기다려주세요.')
+        return
+      }
     }
+
   }
 
   const deleteEvent = async () => {
@@ -303,7 +325,7 @@ const CostModify = (props) => {
                   <Text style={styles.label}>첨부파일</Text>
                   {/* <TextInput style={styles.fileInput} value={inputData.useReceiptName}></TextInput> */}
                   <View style={styles.fileBox}>
-                  <FastImage
+                    <FastImage
                       style={{
                         width: 40,
                         height: 40,

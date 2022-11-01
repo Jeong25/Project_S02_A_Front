@@ -7,7 +7,7 @@ import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
 // import client from '../../common/api/client';
-import { useStateCntReq, payCntReq, deletMemReq } from '../store/store';
+import { useStateCntReq, payCntReq, deletMemReq, recentEventReq } from '../store/store';
 import { setUserTp } from '../../common/lib/getuserinfo';
 import QrModal from '../../common/modal/s0221a0040/QrModal';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
@@ -22,6 +22,7 @@ const QrCode = (props) => {
   // const [eventCode, setEventCode] = useState('')
   const [qrModalBool, setQrModalBool] = useState(false)
   const [faqModalBool, setFaqModalBool] = useState(false)
+  const [recentEvent, setRecentEvent] = useState([]);
   const { windowHeight, windowWidth } = props
   const styles = useMemo(() => styleSheet(windowHeight, windowWidth), [windowHeight, windowWidth])
   const isFocused = useIsFocused();
@@ -30,6 +31,7 @@ const QrCode = (props) => {
     const getData = async () => {
       const localName = await AsyncStorage.getItem('memberName')
       const localHpNo = await AsyncStorage.getItem('hpNo')
+      const localOrgId = await AsyncStorage.getItem('orgId')
       const localEventCode = await AsyncStorage.getItem('eventCode')
       if (localName) {
         setMemberName(localName)
@@ -40,6 +42,7 @@ const QrCode = (props) => {
       setEventNm(localEventNm)
       setEventRole(localEventRole)
       await getUserInfo(localHpNo, localEventCode)
+      await getRecentEvent(localOrgId, localEventCode)
     }
     getData()
   }, [isFocused])
@@ -68,7 +71,7 @@ const QrCode = (props) => {
   }
   const getUserInfo = async (hpNo, eventCode) => {
     // const statCountResult = await client.get(`/rest/v1/s0221a0010/use-state-cnt?eventCode=${eventCode}&hpNo=${hpNo}`)
-    const statCountResult = await useStateCntReq(hpNo, eventCode);
+    const statCountResult = await useStateCntReq(hpNo, eventCode)
     const reduceStatCnt = statCountResult?.data?.data?.reduce((a, b) => {
       return {
         ...a,
@@ -80,6 +83,12 @@ const QrCode = (props) => {
     const payCountResult = await payCntReq(hpNo, eventCode)
     const reducePayCnt = payCountResult?.data?.data[0]?.payCnt || 0
     setPayCnt(reducePayCnt)
+  }
+
+  const getRecentEvent = async (orgId, eventCode) => {
+    const res = await recentEventReq(orgId, eventCode)
+    setRecentEvent(res.data.data)
+    console.log(JSON.stringify(res, null, 4))
   }
 
   const openQrModal = () => {
@@ -239,22 +248,12 @@ const QrCode = (props) => {
           <View style={styles.recentListWrap}>
             <Text style={styles.listTitle}>최근 등록된 행사</Text>
             <View style={styles.cellWrap}>
-              <View style={styles.cell}>
-                <Text style={styles.cellTitle}>Event1</Text>
-                <Text style={styles.cellDate}>최현수 / 2022-01-02</Text>
-              </View>
-              <View style={styles.cell}>
-                <Text style={styles.cellTitle}>Event2</Text>
-                <Text style={styles.cellDate}>황어진 / 2022-02-14</Text>
-              </View>
-              <View style={styles.cell}>
-                <Text style={styles.cellTitle}>Event3</Text>
-                <Text style={styles.cellDate}>정영빈 / 2022-03-01</Text>
-              </View>
-              <View style={styles.cell}>
-                <Text style={styles.cellTitle}>Event4</Text>
-                <Text style={styles.cellDate}>민성현 / 2022-03-01</Text>
-              </View>
+              {recentEvent?.map((v) => (
+                <View style={styles.cell}>
+                  <Text style={styles.cellTitle}>{v.eventNm}</Text>
+                  <Text style={styles.cellDate}>{v.eventHostName} / {v.eventStartDate.split(' ')[0]} ~ {v.eventEndDate.split(' ')[0]}</Text>
+                </View>
+              ))}
             </View>
           </View>
         </ScrollView>
