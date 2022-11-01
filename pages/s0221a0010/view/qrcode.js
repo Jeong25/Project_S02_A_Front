@@ -248,8 +248,8 @@ const QrCode = (props) => {
           <View style={styles.recentListWrap}>
             <Text style={styles.listTitle}>최근 등록된 행사</Text>
             <View style={styles.cellWrap}>
-              {recentEvent?.map((v) => (
-                <View style={styles.cell}>
+              {recentEvent?.map((v, i) => (
+                <View style={styles.cell} key={i}>
                   <Text style={styles.cellTitle}>{v.eventNm}</Text>
                   <Text style={styles.cellDate}>{v.eventHostName} / {v.eventStartDate.split(' ')[0]} ~ {v.eventEndDate.split(' ')[0]}</Text>
                 </View>
