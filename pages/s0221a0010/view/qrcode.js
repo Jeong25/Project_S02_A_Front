@@ -135,8 +135,6 @@ const QrCode = (props) => {
           keyboardShouldPersistTaps='always'
           nestedScrollEnabled={true}
         >
-
-
           <View style={styles.infoCard} >
             <View style={styles.upperProcessBox}>
               <View style={styles.leftBox}>

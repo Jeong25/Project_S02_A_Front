@@ -275,10 +275,10 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'color': '#616161'
         },
         'contentsDivider' : {
-            'marginTop' : 30,
-            'marginBottom' : 10,
+            'marginTop' : 20,
+            'marginBottom' : 15,
             'backgroundColor': '#e9e9e9',
-            'height': 5,
+            'height': 10,
         },
 
         'recentListWrap' :{
@@ -290,7 +290,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
         },
 
         'listTitle' :{
-            'fontSize' : 18,
+            'fontSize' : 20,
             'fontFamily' : 'Apple SD Gothic Neo',
             'fontWeight' : '800',
             'fontWeight': Platform.OS === 'ios' ? '800' : 'bold' ,
@@ -309,7 +309,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
         "cellTitle": {
             "color": "#333",
             "fontFamily": "Apple SD Gothic Neo",
-            "fontSize": 18,
+            "fontSize": 16,
             "fontWeight": "700",
           },
       
