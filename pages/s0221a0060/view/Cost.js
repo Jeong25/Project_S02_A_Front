@@ -1,4 +1,5 @@
 import { Text, View, TextInput, Image, Keyboard, PermissionsAndroid, Linking, Dimensions, SafeAreaView, Alert } from 'react-native';
+import { PERMISSIONS, RESULTS, request } from "react-native-permissions";
 import { styleSheet } from './stylesheet';
 import React, { useState, useEffect, Fragment } from 'react';
 import { Image as ReactImage } from 'react-native';
@@ -133,7 +134,8 @@ const Cost = (props) => {
     const cameraGranted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA
     )
-    if (cameraGranted === PermissionsAndroid.RESULTS.GRANTED) {
+    const cameraIosGranted = request(PERMISSIONS.IOS.CAMERA)
+    if (cameraGranted === PermissionsAndroid.RESULTS.GRANTED || cameraIosGranted === RESULTS.GRANTED) {
       await AlertAsync(
         "사진을 선택해주세요.",
         "카메라로 촬영 혹은 파일을 선택해주세요.",
