@@ -32,7 +32,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
         },
 
 
-
         "infoCard": {
             'width': '90%',
             'marginLeft': 'auto',
@@ -41,25 +40,27 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'justifyContent': 'center',
           
         },
-
-
-        'processInfoWrap': {
-            'width': '100%',
-            'height': 135,
-            'backgroundColor': 'orange',
-            'marginTop': 'auto',
-            'paddingHorizontal': 10,
-            'display' : 'flex',
-            'alignItems' : 'center',
-            'justifyContent' : 'center'
-        },
         'upperProcessBox': {
+            'width' : '100%',
             'height': 60,
             'marginBottom' : 5,
-            'borderRadius': 15,
-            'backgroundColor' : '#F25430'
+            'flexDirection' : 'row',            
+            'alignItems':'center',
+            'justifyContent': 'space-between',
+ 
+        },
         
-       
+        'leftBox': {
+            'width' : '52%',
+            'height': 60,
+            'borderRadius': 15,
+            'backgroundColor' : '#f15a24'
+        },
+        'rightBox': {
+            'width' : '25%',
+            'height': 60,
+            'borderRadius': 15,
+            'backgroundColor' : '#f15a24'
         },
         'underProcessBox': {
 
@@ -91,7 +92,35 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'justifyContents': 'space-around',
             
         },
+        'upperProcessInner': {
+            'width': '95%',
+            'marginLeft': 'auto',
+            'marginRight': 'auto',
+            'marginTop' : 'auto',
+            'marginBottom' : 'auto',
+            'flexDirection': 'row',
+            'alignItems': 'center',
+            'justifyContents': 'space-around',
+        
+        },
 
+        'upperProcess': {
+            'width' : '51%',
+            'display': 'flex',
+            'alignItems': 'center',
+            'justifyContents': 'space-around',
+            'marginTop' : 5,
+        },
+    
+        'rightUpperProcess': {
+            'marginLeft':'auto',
+            'marginRight':'auto',
+            'display': 'flex',
+            'alignItems': 'center',
+            'justifyContents': 'center',
+            'marginTop' : 5,
+        },
+    
         'process': {
             'width': '25%',
             'display': 'flex',

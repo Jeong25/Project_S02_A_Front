@@ -139,44 +139,47 @@ const QrCode = (props) => {
 
           <View style={styles.infoCard} >
             <View style={styles.upperProcessBox}>
-              <View style={styles.processInner}>
-                <View style={styles.process}>
-                  <Text style={styles.processText}>
-                    비용요청
-                  </Text>
-                  <Text style={styles.processNumber}>
-                    {statusCnt?.A || 0}
-                  </Text>
+              <View style={styles.leftBox}>
+                <View style={styles.upperProcessInner}>
+                  <View style={styles.upperProcess}>
+                    <Text style={styles.processText}>
+                      비용요청
+                    </Text>
+                    <Text style={styles.processNumber}>
+                      {statusCnt?.A || 0}
+                    </Text>
+                  </View>
+                  <View style={styles.divider}></View>
+                  <View style={styles.upperProcess}>
+                    <Text style={styles.processText}>
+                      결제반려
+                    </Text>
+                    <Text style={styles.processNumber}>
+                      {statusCnt?.E || 0}
+                    </Text>
+                  </View>
                 </View>
-                <View style={styles.divider}></View>
-                <View style={styles.process}>
-                  <Text style={styles.processText}>
-                    결제반려
-                  </Text>
-                  <Text style={styles.processNumber}>
-                    {statusCnt?.E || 0}
-                  </Text>
+              </View>
+              <View style={styles.rightBox}>
+                <View style={styles.upperProcessInner}>
+
+                  <View style={styles.rightUpperProcess}>
+                    <Text style={styles.processText}>
+                      결제대기
+                    </Text>
+                    <Text style={styles.processNumber}>
+                      {payCnt || 0}
+                      {/* {(statusCnt?.B || 0) + (statusCnt?.C || 0)} */}
+                    </Text>
+                  </View>
                 </View>
-                <View style={styles.divider}></View>
-
-                <View style={styles.process}>
-                  <Text style={styles.processText}>
-                    승인요청
-                  </Text>
-                  <Text style={styles.processNumber}>
-                    {payCnt || 0}
-                    {/* {(statusCnt?.B || 0) + (statusCnt?.C || 0)} */}
-                  </Text>
-                </View>
-                <View style={styles.divider}></View>
-
-
               </View>
             </View>
+
+
+
             <View style={styles.underProcessBox}>
               <View style={styles.processInner}>
-
-
                 <View style={styles.process}>
                   <Text style={styles.processText}>
                     결제진행
