@@ -131,6 +131,7 @@ const Cost = (props) => {
       },
       includeBase64: true
     };
+  
     const cameraGranted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA
     )
