@@ -14,20 +14,31 @@ export const faqmodalStyleSheet = (windowHeight = Dimensions.get('window').heigh
 
     },
     "box": {
-      "width": '100%',
+      "width": '90%',
+      "height": '73%',
       'backgroundColor': 'white',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop': 'auto',
-      'marginBottom' : 100,
-      'borderTopLeftRadius' : 20,
-      'borderTopRightRadius' : 20,
+      'marginTop': 40,
+      'marginBottom': 'auto',
+    },
+
+    'modalInner': {
+      "position": "relative",
+      "width": "100%",
+      "marginLeft": 'auto',
+      "marginRight": 'auto',
+      // 'overflow': 'scroll'
     },
 
     'titleSection': {
       "width": '100%',
       'height': 50,
+      'backgroundColor' : '#f15a24',
+      'textAlignVertical': 'center',
+      'position' : 'relative',
       
+
     },
     'modalTitle': {
       'textAlign': 'center',
@@ -71,54 +82,7 @@ export const faqmodalStyleSheet = (windowHeight = Dimensions.get('window').heigh
       'height' : '100%'
       
     },
-    'contentsWrap' : {
-      'width' : '95%', 
-      'marginLeft' : 'auto',
-      'marginAuto' : 'auto',
-      'marginTop' : '5%',
-    },
-    'evtName' : {
-      'fontSize' : 26,
-      'fontWeight' : '800',
-      'fontFamily': "Apple SD Gothic Neo",
-      'marginBottom' : 10
-    },
-    'evtAdmin':{
-      'fontSize' : 16,
-      'fontWeight' : '500',
-      'fontFamily': "Apple SD Gothic Neo",
-      'marginBottom' : 5,
-      'color' : '#888'
-    },
-    'evtLocation':{
-      'fontSize' : 16,
-      'fontWeight' : '500',
-      'fontFamily': "Apple SD Gothic Neo",
-      'marginBottom' : 5,
-      'color' : '#888'
-    },
-    'evtDate':{
-      'fontSize' : 16,
-      'fontWeight' : '500',
-      'fontFamily': "Apple SD Gothic Neo",
-      'marginBottom' : 10,
-      'color' : '#888'
-    },
-    'amount':{
-      'fontSize' : 16,
-      'fontWeight' : '500',
-      'fontFamily': "Apple SD Gothic Neo",
-      'marginBottom' : 10,
-      'color' : '#888',
-    },
 
-    'confirmBtn':{
-
-
-    },
-
-    'btnText' : {
-      'backgroundColor' : 'red',
-    }
+    
   })
 }
