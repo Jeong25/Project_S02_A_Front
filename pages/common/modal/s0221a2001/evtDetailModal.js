@@ -5,7 +5,7 @@ import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { useState, useEffect } from "react";
 import { styleSheet } from './styleSheet';
 
-const evtDetailModal = (props) => {
+const EvtDetailModal = (props) => {
     const { onClose, openModal } = props
     const [display, setDisplay] = useState(false)
     const styles = styleSheet()
@@ -61,4 +61,4 @@ const evtDetailModal = (props) => {
 
 }
 
-export default evtDetailModal;
+export default EvtDetailModal;

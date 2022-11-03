@@ -6,11 +6,11 @@ import { useIsFocused } from '@react-navigation/native';
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
-// import client from '../../common/api/client';
 import { useStateCntReq, payCntReq, deletMemReq, recentEventReq } from '../store/store';
 import { setUserTp } from '../../common/lib/getuserinfo';
 import QrModal from '../../common/modal/s0221a0040/QrModal';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
+import EvtDetailModal from '../../common/modal/s0221a2001/evtDetailModal';
 
 const QrCode = (props) => {
   const [memberName, setMemberName] = useState('')
@@ -22,6 +22,7 @@ const QrCode = (props) => {
   // const [eventCode, setEventCode] = useState('')
   const [qrModalBool, setQrModalBool] = useState(false)
   const [faqModalBool, setFaqModalBool] = useState(false)
+  const [evtDetailModal, setEvtDetailModal] = useState(false)
   const [recentEvent, setRecentEvent] = useState([]);
   const { windowHeight, windowWidth } = props
   const styles = useMemo(() => styleSheet(windowHeight, windowWidth), [windowHeight, windowWidth])
@@ -109,6 +110,11 @@ const QrCode = (props) => {
   const openFaqModal = () => {
     Keyboard.dismiss()
     setFaqModalBool(true)
+  }
+
+  const openEvtDetailModal = () => {
+    Keyboard.dismiss()
+    setEvtDetailModal(true)
   }
 
 
@@ -263,15 +269,15 @@ const QrCode = (props) => {
               onPress={() => {props.navigation.navigate('EventList', { getEventInfo })
                       }}
               >
-                <Text style={styles.showMore}>더보기 ></Text>
+                <Text style={styles.showMore}>더보기 {'>'}</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.cellWrap}>
               {recentEvent?.map((v, i) => (
-                <View style={styles.cell} key={i}>
+                <TouchableOpacity style={styles.cell} key={i} onPress={() => openEvtDetailModal()}>
                   <Text style={styles.cellTitle}>{v.eventNm}</Text>
                   <Text style={styles.cellDate}>{v.eventHostName} / {v.eventStartDate.split(' ')[0]} ~ {v.eventEndDate.split(' ')[0]}</Text>
-                </View>
+                </TouchableOpacity>
               ))}
             </View>
           </View>
@@ -283,6 +289,10 @@ const QrCode = (props) => {
         <FaqModal
           openModal={faqModalBool}
           onClose={() => setFaqModalBool(false)}
+        />
+        <EvtDetailModal
+          openModal={evtDetailModal}
+          onClose={() => setEvtDetailModal(false)}
         />
       </View>
       <Footer
