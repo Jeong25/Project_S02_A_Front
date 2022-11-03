@@ -1,5 +1,5 @@
 import React, { Component, Fragment, useEffect, useMemo, useState } from 'react';
-import { Text, View, SafeAreaView, TextInput, ScrollView } from 'react-native';
+import { Text, View, SafeAreaView, TextInput, ScrollView, Alert } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import { retrieveCostReq } from '../store/store';
@@ -24,7 +24,7 @@ const CostList = (props) => {
 
   useEffect(() => {
     callList()
-  }, [isFocused])
+  }, [isFocused, writeAuth])
 
   const callList = async () => {
     const { confirmFromDate, confirmToDate } = dateState
@@ -36,6 +36,8 @@ const CostList = (props) => {
     const response = await retrieveCostReq(memberId, confirmFromVal, confirmToVal, eventCode)
     setListData(response?.data?.data || [])
     setWriteAuth(useRegFlag)
+
+    console.log('writeAuthLog:' + writeAuth)
   }
 
   const convertDateToVal = (val) => {
@@ -97,15 +99,21 @@ const CostList = (props) => {
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>비용요청현황</Text>
-            {writeAuth === 'Y' ? <View/> :
-            <View style={styles.regBtnWrap}>
-              <TouchableOpacity onPress={() => {
-                props.navigation.navigate('Cost', { refresh: callList })
-              }}>
-                <ReactImage source={require('./assets/registIcon.png')} style={styles.registIcon} />
-              </TouchableOpacity>
-            </View>
+            {
+              writeAuth === '\"Y\"' ?
+                <View /> :
+                <View style={styles.regBtnWrap}>
+                  <TouchableOpacity onPress={() => {
+                    {
+                      writeAuth === '\"Y\"' ? Alert.alert('알림', '권한이 없는 사용자입니다.') :
+                      props.navigation.navigate('Cost', { refresh: callList })
+                    }
+                  }}>
+                    <ReactImage source={require('./assets/registIcon.png')} style={styles.registIcon} />
+                  </TouchableOpacity>
+                </View>
             }
+
           </View>
           <View style={styles.layer1}>
             <View style={styles.searchDate}>
