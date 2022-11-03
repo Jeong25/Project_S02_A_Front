@@ -101,7 +101,7 @@ export const faqmodalStyleSheet = (windowHeight = Dimensions.get('window').heigh
       'fontSize' : 16,
       'fontWeight' : '500',
       'fontFamily': "Apple SD Gothic Neo",
-      'marginBottom' : 10,
+      'marginBottom' : 5,
       'color' : '#888'
     },
     'amount':{
