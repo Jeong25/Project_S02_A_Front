@@ -120,14 +120,14 @@ const Cost = (props) => {
     props.navigation.goBack()
   }
 
-  const checkIosGranted = () => {
+  const checkIosCamera = () => {
     checkMultiple([
       PERMISSIONS.IOS.CAMERA,
       PERMISSIONS.IOS.PHOTO_LIBRARY,
       PERMISSIONS.IOS.PHOTO_LIBRARY_ADD_ONLY
     ]).then(result => {
       console.log('MULTIPLE CHECK RESPONSE : ', result);
-      if (result['ios.permission.CAMERA'] === 'granted' && result['ios.permission.PHOTO_LIBRARY'] === 'granted' && result['ios.permission.PHOTO_LIBRARY_ADD_ONLY'] === 'granted') {
+      if (result === RESULTS.GRANTED) {
         return true
       } else {
         requestMultiple([
@@ -160,7 +160,7 @@ const Cost = (props) => {
     const andGranted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA
     )
-    const iosGranted = checkIosGranted()
+    const iosGranted = checkIosCamera()
     if (andGranted === PermissionsAndroid.RESULTS.GRANTED || iosGranted) {
       await AlertAsync(
         "사진을 선택해주세요.",
