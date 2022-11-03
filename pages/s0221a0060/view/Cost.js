@@ -127,7 +127,7 @@ const Cost = (props) => {
       PERMISSIONS.IOS.PHOTO_LIBRARY_ADD_ONLY
     ]).then(result => {
       console.log('MULTIPLE CHECK RESPONSE : ', result);
-      if (result['ios.permission.CAMERA'] === RESULTS.GRANTED && result['ios.permission.PHOTO_LIBRARY'] === RESULTS.GRANTED && result['ios.permission.PHOTO_LIBRARY_ADD_ONLY'] === RESULTS.GRANTED) {
+      if (result['ios.permission.CAMERA'] === 'granted' && result['ios.permission.PHOTO_LIBRARY'] === 'granted' && result['ios.permission.PHOTO_LIBRARY_ADD_ONLY'] === 'granted') {
         return true
       } else {
         requestMultiple([
