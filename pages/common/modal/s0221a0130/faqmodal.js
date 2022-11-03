@@ -38,14 +38,7 @@ const FaqModal = (props) => {
     return (
         <View style={{ ...styles.modalBox, display: display ? 'flex' : 'none' }} nestedScrollEnabled={true}>
             <View style={styles.box}>
-                <View style={styles.titleSection}>
-                   <View style={styles.closeBtn}>
-                        <TouchableOpacity onPress={() => closeModal()}>
-                            <ReactImage source={require('../assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
-                        </TouchableOpacity>
-                    </View>
-
-                </View>
+            
 
                 <View style={styles.contentsWrap}>
                     <Text style={styles.evtName}>쉐이크쉑 행사</Text>
@@ -53,9 +46,9 @@ const FaqModal = (props) => {
                     <Text style={styles.evtLocation}>행사장소 : randomaddress 1234 random 123</Text>
                     <Text style={styles.evtDate}>행사일시 : 2022-10-30 ~ 2022-11-01</Text>
                     <Text style={styles.amountWrap}>예산금액 : <Text style={styles.amount}>22 원</Text></Text>
-                    <View style={styles.confirmBtn}>
+                    <TouchableOpacity style={styles.confirmBtn} onPress={() => closeModal()}>
                         <Text style={styles.btnText}>확인</Text>
-                    </View>
+                    </TouchableOpacity>
                 </View>
                
                 
