@@ -182,11 +182,10 @@ const CostModify = (props) => {
       },
       includeBase64: true
     };
-    const cameraGranted = await PermissionsAndroid.request(
+    const andGranted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA
     )
-    const cameraIosGranted = request(PERMISSIONS.IOS.CAMERA)
-    if (cameraGranted === PermissionsAndroid.RESULTS.GRANTED || cameraIosGranted === RESULTS.GRANTED) {
+    if (andGranted === PermissionsAndroid.RESULTS.GRANTED) {
       await AlertAsync(
         "사진을 선택해주세요.",
         "카메라로 촬영 혹은 파일을 선택해주세요.",
