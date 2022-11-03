@@ -288,6 +288,11 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'marginRight' : 'auto',
             
         },
+        'listTitleWrap':{
+            'flexDirection' : 'row',
+            'alignItems' :'baseline',
+            'justifyContent' : 'space-between'
+        },
 
         'listTitle' :{
             'fontSize' : 20,
@@ -295,6 +300,13 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'fontWeight' : '800',
             'fontWeight': Platform.OS === 'ios' ? '800' : 'bold' ,
             'color' : '#333',
+        },
+        'showMore' : {
+            'fontSize' : 14,
+            'fontFamily' : 'Apple SD Gothic Neo',
+            'fontWeight' : '600',
+            'color' : '#888',
+
         },
         'cellWrap':{
         },
