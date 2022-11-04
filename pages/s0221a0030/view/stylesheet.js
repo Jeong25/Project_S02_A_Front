@@ -204,9 +204,8 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'marginBottom': 5,
         },
 
-
-        "loginBtnWrap": {
-            "width": '100%',
+        'btnWrap':{
+            'width' : '100%',
             'marginLeft': 'auto',
             'marginRight': 'auto',
             'marginTop': '10%',
@@ -215,13 +214,11 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
 
         "loginBtn": {
             'backgroundColor': "#F15A24",
-            'borderRadius': 50,
-            'elevation': 6, //안드로이드에서만 작동
-            
+            'borderRadius': 10,            
         },
         "loginText": {
-            'fontSize': 36,
-            'lineHeight' : 80,
+            'fontSize': 24,
+            'lineHeight' : 50,
             "fontFamily": "Apple SD Gothic Neo",
             "fontWeight": '700',
             'color': 'white',

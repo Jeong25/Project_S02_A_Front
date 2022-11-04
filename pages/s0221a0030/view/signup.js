@@ -250,15 +250,18 @@ const Signup = (props) => {
                 </View>
               </View>
 
-              <TouchableOpacity style={styles.loginBtnWrap} onPress={() => doLogin(name, `${inputhpNo.first}-${inputhpNo.middle}-${inputhpNo.last}`, eventCode, privacyAgree)}>
-                <View style={styles.loginBtn}>
+              <View style={styles.btnWrap}>
+                <TouchableOpacity style={styles.loginBtn} onPress={() => doLogin(name, `${inputhpNo.first}-${inputhpNo.middle}-${inputhpNo.last}`, eventCode, privacyAgree)}>
                   <Text style={styles.loginText}>로그인</Text>
-                </View>
-              </TouchableOpacity>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.loginBtn}>
+                  <Text style={styles.loginText}>회원등록</Text>
+                </TouchableOpacity>
             </View>
           </View>
         </View>
-      </SafeAreaView>
+      </View>
+    </SafeAreaView>
     </KeyboardAwareScrollView >
 
   );
