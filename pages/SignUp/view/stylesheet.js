@@ -90,6 +90,9 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
         'inputWrap': {
             'width': '45%',
         },
+        'hpInputWrap': {
+            'width': '28%',
+        },
         'infoWrap': {
             'marginBottom': '5%',
         },
