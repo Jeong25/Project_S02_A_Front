@@ -1,8 +1,8 @@
 import React from "react";
-import { Text, View, BackHandler,SafeAreaView, } from 'react-native';
+import { Text, View, BackHandler, SafeAreaView, Alert } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { TouchableOpacity, TextInput } from 'react-native-gesture-handler';
-import { useState, useEffect,Fragment } from "react";
+import { useState, useEffect, Fragment } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styleSheet } from './styleSheet';
 import { deletMemReq } from '../../s0221a0010/store/store';
@@ -21,6 +21,22 @@ const UserData = (props) => {
         console.log(JSON.stringify(res, null, 4))
         Alert.alert('알림', '회원 탈퇴가 완료되었습니다.')
         logOut();
+    }
+
+    const logOut = async () => {
+        await AsyncStorage.setItem('eventCode', '')
+        await AsyncStorage.setItem('orgEventName', '')
+        await AsyncStorage.setItem('memberTp', '')
+        await AsyncStorage.setItem('mobileId', '')
+        await AsyncStorage.setItem('orgName', '')
+        await AsyncStorage.setItem('orgId', '')
+        await AsyncStorage.setItem('memberId', '')
+        await AsyncStorage.setItem('eventNm', '')
+        await AsyncStorage.setItem('eventRole', '')
+        await AsyncStorage.setItem('eventId', '')
+        await AsyncStorage.setItem('defaultEventId', '')
+        await AsyncStorage.setItem('useRegFlag', '')
+        props.navigation.reset({ routes: [{ name: 'Signup' }] })
       }
 
     useEffect(() => {
@@ -37,7 +53,7 @@ const UserData = (props) => {
         }
         getData()
     })
-    
+
     return (
         <Fragment >
             <SafeAreaView style={{ flex: 1, backgroundColor: '#f15a24' }}>
