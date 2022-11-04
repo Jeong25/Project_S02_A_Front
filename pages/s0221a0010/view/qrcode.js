@@ -123,10 +123,9 @@ const QrCode = (props) => {
       <View style={styles.wrap}>
         <View style={styles.topMenu}>
           <Text style={styles.topLogo}>삐용</Text>
-          <View style={styles.profileTextGroup}>
-            {/* <Text style={styles.memberName}>{memberName}</Text> */}
+          <TouchableOpacity style={styles.profileTextGroup} onPress={() => props.navigation.navigate('UserData')}>
             <Text style={styles.memberPosition}>{eventNm} / {eventRole}</Text>
-          </View>
+          </TouchableOpacity>
 
           <View style={styles.accountBtnWrap}>
             <View style={styles.accountDelBtn}>

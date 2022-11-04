@@ -14,17 +14,34 @@ export const faqmodalStyleSheet = (windowHeight = Dimensions.get('window').heigh
 
     },
     "box": {
-      "width": '100%',
+      "width": '90%',
+      'height' : '60%',
       'backgroundColor': 'white',
       'marginLeft': 'auto',
       'marginRight': 'auto',
       'marginTop': 'auto',
-      'marginBottom' : 80,
+      'marginBottom' : 'auto',
       'borderTopLeftRadius' : 20,
       'borderTopRightRadius' : 20,
     },
 
+    'modalInner': {
+      "position": "relative",
+      "width": "100%",
+      "marginLeft": 'auto',
+      "marginRight": 'auto',
+      // 'overflow': 'scroll'
+    },
 
+    'titleSection': {
+      "width": '100%',
+      'height': 50,
+      'backgroundColor' : '#f15a24',
+      'textAlignVertical': 'center',
+      'position' : 'relative',
+      
+
+    },
     'modalTitle': {
       'textAlign': 'center',
       'fontSize': 18,
@@ -35,8 +52,8 @@ export const faqmodalStyleSheet = (windowHeight = Dimensions.get('window').heigh
 
     },
 
-    'contentsWrap': {
-      'width': '90%',
+    'cellWrap': {
+      'width': '100%',
       "marginLeft": 'auto',
       "marginRight": 'auto',
     },
