@@ -22,9 +22,10 @@ const EvtDetailModal = (props) => {
     }, [openModal])
 
     const getData = useCallback(async () => {
-        const res = await eventDetailReq(eventId)
-        console.log('확인LOG: ' + JSON.stringify(res, null, 4))
-        setData(res.data.data)
+        if (eventId) {
+            const res = await eventDetailReq(eventId)
+            setData(res.data.data)
+        }
     })
 
     const close = () => {
