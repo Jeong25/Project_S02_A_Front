@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Dimensions, Keyboard, Alert } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Text, View, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
@@ -8,6 +8,14 @@ import { styleSheet } from './stylesheet';
 const SignUp = (props) => {
   const { windowHeight } = props
   const styles = styleSheet()
+  const ref_input = []
+  ref_input[0] = useRef(null)
+  ref_input[1] = useRef(null)
+  ref_input[2] = useRef(null)
+  ref_input[3] = useRef(null)
+  // ref_input[4] = useRef(null)
+  const [heightMagnifi, setheightMagnifi] = useState(1.2)
+  const [isFocus, setIsFoucs] = useState(false)
   const [inputData, setInputData] = useState({
     orgName: null,
     ceoName: null,
@@ -74,15 +82,70 @@ const SignUp = (props) => {
               <View style={styles.layer}>
                 <View style={styles.hpInputWrap}>
                   <Text style={styles.label}>핸드폰 번호</Text>
-                  <TextInput style={styles.userInfo}></TextInput>
+                  <TextInput style={styles.userInfo}
+                    onFocus={() => {
+                      setheightMagnifi(1.5)
+                      setIsFoucs(true)
+                    }}
+                    onBlur={() => { setheightMagnifi(1.2) }}
+                    placeholder={"010"}
+                    placeholderTextColor="rgba(0,0,0,0.2)"
+                    onChange={(e) => {
+                      setInputData({ ...inputData, firstHpNo: e.nativeEvent.text })
+                      if (e.nativeEvent.text.length === 3) {
+                        ref_input[2].current.focus()
+                      }
+                    }}
+                    value={inputData.firstHpNo}
+                    keyboardType="number-pad"
+                    maxLength={3}
+                    returnKeyType="done"
+                    ref={ref_input[1]}
+                  ></TextInput>
                 </View>
                 <View style={styles.hpInputWrap}>
                   <Text style={styles.label}></Text>
-                  <TextInput style={styles.userInfo}></TextInput>
+                  <TextInput style={styles.userInfo}
+                    placeholder={"0000"}
+                    placeholderTextColor="rgba(0,0,0,0.2)"
+                    onChange={(e) => {
+                      setInputData({ ...inputData, middleHpNo: e.nativeEvent.text })
+                      if (e.nativeEvent.text.length === 4) {
+                        ref_input[3].current.focus()
+                      }
+                    }}
+                    keyboardType="number-pad"
+                    maxLength={4}
+                    onFocus={() => {
+                      setheightMagnifi(1.5)
+                      setIsFoucs(true)
+                    }}
+                    onBlur={() => { setheightMagnifi(1.2) }}
+                    returnKeyType="done"
+                    ref={ref_input[2]}
+                  ></TextInput>
                 </View>
                 <View style={styles.hpInputWrap}>
                   <Text style={styles.label}></Text>
-                  <TextInput style={styles.userInfo}></TextInput>
+                  <TextInput style={styles.userInfo}
+                    placeholder={"0000"}
+                    placeholderTextColor="rgba(0,0,0,0.2)"
+                    onChange={(e) => {
+                      setInputData({ ...inputData, lastHpNo: e.nativeEvent.text })
+                      // if (e.nativeEvent.text.length === 4) {
+                      //   ref_input[4].current.focus()
+                      // }
+                    }}
+                    keyboardType="number-pad"
+                    onFocus={() => {
+                      setheightMagnifi(1.5)
+                      setIsFoucs(true)
+                    }}
+                    onBlur={() => { setheightMagnifi(1.2) }}
+                    maxLength={4}
+                    returnKeyType="done"
+                    ref={ref_input[3]}
+                  ></TextInput>
                 </View>
 
               </View>
