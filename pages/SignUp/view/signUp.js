@@ -64,10 +64,22 @@ const SignUp = (props) => {
                 <Text style={styles.label}>담당자 이름</Text>
                 <TextInput style={styles.userInfo}></TextInput>
               </View>
-              <View style={styles.infoWrap}>
-                <Text style={styles.label}>핸드폰 번호</Text>
-                <TextInput style={styles.userInfo}></TextInput>
+              <View style={styles.layer}>
+                <View style={styles.hpInputWrap}>
+                  <Text style={styles.label}>핸드폰 번호</Text>
+                  <TextInput style={styles.userInfo}></TextInput>
+                </View>
+                <View style={styles.hpInputWrap}>
+                  <Text style={styles.label}></Text>
+                  <TextInput style={styles.userInfo}></TextInput>
+                </View>
+                <View style={styles.hpInputWrap}>
+                  <Text style={styles.label}></Text>
+                  <TextInput style={styles.userInfo}></TextInput>
+                </View>
+
               </View>
+
               <View style={styles.infoWrap}>
                 <Text style={styles.label}>비밀번호</Text>
                 <TextInput style={styles.userInfo}></TextInput>
