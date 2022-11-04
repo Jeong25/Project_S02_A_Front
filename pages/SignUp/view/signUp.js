@@ -7,10 +7,17 @@ import { styleSheet } from './stylesheet';
 
 const SignUp = (props) => {
   const { windowHeight } = props
-  const [heightMagnifi, setheightMagnifi] = useState(1.2)
-  const [isFocus, setIsFoucs] = useState(false)
-
   const styles = styleSheet()
+  const [inputData, setInputData] = useState({
+    orgName: null,
+    ceoName: null,
+    pwd: null,
+    memberName: null,
+    firstHpNo: null,
+    middleHpNo: null,
+    lastHpNo: null,
+    email: null
+  })
 
   const SignUpReq = () => {
   }
