@@ -114,9 +114,9 @@ const Qrscan = (props) => {
           </View>
           <View style={styles.camArea} />
           <View style={styles.textGroup}>
-            <Text style={styles.compName}>{qrInfo.namePathPriortiy}</Text>
-            <Text style={styles.eventName}>{qrInfo.eventNm}</Text>
-            <Text style={styles.eventDate}>{dateData}</Text>
+            <Text style={styles.compName}>{qrInfo?.namePathPriortiy}</Text>
+            <Text style={styles.eventName}>{qrInfo?.eventNm}</Text>
+            <Text style={styles.eventDate}>{dateData || ''}</Text>
           </View>
         </View>
       </View>
