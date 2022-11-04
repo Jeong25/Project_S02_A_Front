@@ -14,6 +14,8 @@ import EvtDetailModal from '../../common/modal/s0221a2001/evtDetailModal';
 
 const QrCode = (props) => {
   const [memberName, setMemberName] = useState('')
+  const [eventId, setEventId] = useState('')
+  const [eventIdMd, setEventIdMd] = useState('')
   const [eventNm, setEventNm] = useState('')
   const [eventRole, setEventRole] = useState('')
   const [statusCnt, setStatusCount] = useState({})
@@ -112,7 +114,8 @@ const QrCode = (props) => {
     setFaqModalBool(true)
   }
 
-  const openEvtDetailModal = () => {
+  const openEvtDetailModal = (eventId) => {
+    setEventIdMd(eventId)
     Keyboard.dismiss()
     setEvtDetailModal(true)
   }
@@ -265,16 +268,17 @@ const QrCode = (props) => {
           <View style={styles.recentListWrap}>
             <View style={styles.listTitleWrap}>
               <Text style={styles.listTitle}>최근 등록된 행사</Text>
-              <TouchableOpacity 
-              onPress={() => {props.navigation.navigate('EventList', { getEventInfo })
-                      }}
+              <TouchableOpacity
+                onPress={() => {
+                  props.navigation.navigate('EventList', { getEventInfo })
+                }}
               >
                 <Text style={styles.showMore}>더보기 {'>'}</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.cellWrap}>
               {recentEvent?.map((v, i) => (
-                <TouchableOpacity style={styles.cell} key={i} onPress={() => openEvtDetailModal()}>
+                <TouchableOpacity style={styles.cell} key={i} onPress={() => openEvtDetailModal(v.eventId)}>
                   <Text style={styles.cellTitle}>{v.eventNm}</Text>
                   <Text style={styles.cellDate}>{v.eventHostName} / {v.eventStartDate.split(' ')[0]} ~ {v.eventEndDate.split(' ')[0]}</Text>
                 </TouchableOpacity>
@@ -292,6 +296,7 @@ const QrCode = (props) => {
         />
         <EvtDetailModal
           openModal={evtDetailModal}
+          eventId={eventIdMd}
           onClose={() => setEvtDetailModal(false)}
         />
       </View>

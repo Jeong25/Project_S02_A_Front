@@ -9,4 +9,14 @@ const eventList = async (orgId, eventCode) => {
     }
 }
 
-export { eventList };
+const eventDetail = async (eventId) => {
+    try {
+        const res = await client.get(`/rest/v1/s0221a2000/event-detail?&eventId=${eventId}`);
+        return res
+    } catch(e) {
+        console.log(e)
+    }
+
+}
+
+export { eventList, eventDetail };
