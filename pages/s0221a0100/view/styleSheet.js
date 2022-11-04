@@ -96,6 +96,13 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "paddingBottom": 5,
       'textAlign' : 'center'
     },
+
+    'btnWrap':{
+
+      'marginTop' : 'auto',
+
+    },
+    
     'delAccountBtn' : { 
       'backgroundColor' : '#e9e9e9',
       'borderRadius' : 10,
@@ -109,23 +116,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'textAlign' : 'center',
       'lineHeight': 50,
     },
-    'saveBtn':{
-
-      'borderRadius' : 10,
-      'backgroundColor' : '#f15a24',
-
-    },
-
-    'saveBtnText' : {
-      'fontSize' : 24,
-      'fontWeight' : '500',
-      'color' : 'white',
-      'fontFamily': "Apple SD Gothic Neo",
-      'textAlign' : 'center',
-      'lineHeight': 50,
-    }
     
-
     
   })
 }
