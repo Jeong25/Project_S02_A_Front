@@ -5,6 +5,7 @@ import { TouchableOpacity, TextInput } from 'react-native-gesture-handler';
 import { useState, useEffect,Fragment } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styleSheet } from './styleSheet';
+import { deletMemReq } from '../../s0221a0010/store/store';
 
 const UserData = (props) => {
 
@@ -13,6 +14,14 @@ const UserData = (props) => {
     const [eventNm, setEventNm] = useState('')
     const [memberName, setMemberName] = useState('')
     const [hpNo, setHpNo] = useState('')
+
+    const deletMem = async () => {
+        const memId = await AsyncStorage.getItem('memberId')
+        const res = await deletMemReq(Number(memId))
+        console.log(JSON.stringify(res, null, 4))
+        Alert.alert('알림', '회원 탈퇴가 완료되었습니다.')
+        logOut();
+      }
 
     useEffect(() => {
         const getData = async () => {
@@ -64,7 +73,7 @@ const UserData = (props) => {
                                 <Text style={styles.saveBtnText}>저장</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.delAccountBtn}>
+                            <TouchableOpacity style={styles.delAccountBtn} onPress={() => deletMem()}>
                                 <Text style={styles.delBtnText}>회원탈퇴</Text>
                             </TouchableOpacity>
 
