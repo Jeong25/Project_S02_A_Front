@@ -68,20 +68,47 @@ const SignUp = (props) => {
 
                 <View style={styles.inputWrap}>
                   <Text style={styles.label}>단체명</Text>
-                  <TextInput style={styles.userInfo}></TextInput>
+                  <TextInput style={styles.userInfo}
+                    placeholder={"단체명"}
+                    placeholderTextColor='rgba(0,0,0,0.2)'
+                    onChange={(e) => setInputData({ ...inputData, orgName: e.nativeEvent.text })}
+                    onFocus={() => {
+                      setheightMagnifi(1.5)
+                      setIsFoucs(true)
+                    }}
+                    onBlur={() => { setheightMagnifi(1.2) }}
+                  ></TextInput>
                 </View>
                 <View style={styles.inputWrap}>
                   <Text style={styles.label}>대표자</Text>
-                  <TextInput style={styles.userInfo}></TextInput>
+                  <TextInput style={styles.userInfo}
+                    placeholder={"대표자"}
+                    placeholderTextColor='rgba(0,0,0,0.2)'
+                    onChange={(e) => setInputData({ ...inputData, ceoName: e.nativeEvent.text })}
+                    onFocus={() => {
+                      setheightMagnifi(1.5)
+                      setIsFoucs(true)
+                    }}
+                    onBlur={() => { setheightMagnifi(1.2) }}
+                  ></TextInput>
                 </View>
               </View>
               <View style={styles.infoWrap}>
                 <Text style={styles.label}>담당자 이름</Text>
-                <TextInput style={styles.userInfo}></TextInput>
+                <TextInput style={styles.userInfo}
+                  placeholder={"담당자"}
+                  placeholderTextColor='rgba(0,0,0,0.2)'
+                  onChange={(e) => setInputData({ ...inputData, memberName: e.nativeEvent.text })}
+                  onFocus={() => {
+                    setheightMagnifi(1.5)
+                    setIsFoucs(true)
+                  }}
+                  onBlur={() => { setheightMagnifi(1.2) }}
+                ></TextInput>
               </View>
               <View style={styles.layer}>
                 <View style={styles.hpInputWrap}>
-                  <Text style={styles.label}>핸드폰 번호</Text>
+                  <Text style={styles.label}>담당자 핸드폰 번호</Text>
                   <TextInput style={styles.userInfo}
                     onFocus={() => {
                       setheightMagnifi(1.5)
@@ -152,15 +179,36 @@ const SignUp = (props) => {
 
               <View style={styles.infoWrap}>
                 <Text style={styles.label}>비밀번호</Text>
-                <TextInput style={styles.userInfo}></TextInput>
+                <TextInput style={styles.userInfo}
+                  placeholder={"비밀번호"}
+                  placeholderTextColor='rgba(0,0,0,0.2)'
+                  onChange={(e) => setInputData({ ...inputData, pwd: e.nativeEvent.text })}
+                  onFocus={() => {
+                    setheightMagnifi(1.5)
+                    setIsFoucs(true)
+                  }}
+                  onBlur={() => { setheightMagnifi(1.2) }}
+                ></TextInput>
               </View>
               <View style={styles.infoWrap}>
                 <Text style={styles.label}>비밀번호 확인</Text>
-                <TextInput style={styles.userInfo}></TextInput>
+                <TextInput style={styles.userInfo}
+                  placeholder={"비밀번호 확인"}
+                  placeholderTextColor='rgba(0,0,0,0.2)'
+                ></TextInput>
               </View>
               <View style={styles.infoWrap}>
-                <Text style={styles.label}>이메일</Text>
-                <TextInput style={styles.userInfo}></TextInput>
+                <Text style={styles.label}>담당자 이메일</Text>
+                <TextInput style={styles.userInfo}
+                  placeholder={"이메일"}
+                  placeholderTextColor='rgba(0,0,0,0.2)'
+                  onChange={(e) => setInputData({ ...inputData, email: e.nativeEvent.text })}
+                  onFocus={() => {
+                    setheightMagnifi(1.5)
+                    setIsFoucs(true)
+                  }}
+                  onBlur={() => { setheightMagnifi(1.2) }}
+                ></TextInput>
               </View>
 
             </View>
