@@ -19,6 +19,7 @@ import CostList from './pages/s0221a0070/view/CostList';
 import Payment from './pages/s0221a0080/view/Payment';
 import PaymentList from './pages/s0221a0090/view/PaymentList';
 import Access from './pages/s0221a0110/view/Access'
+import UserData from './pages/s0221a0100/view/UserData'
 import SplashScreen from './pages/s0221a0120/view/SplashScreen';
 import RNSplashScreen from 'react-native-splash-screen';
 
@@ -76,6 +77,11 @@ const App = () => {
           name="PaymentList"
           options={{ title: null, headerShown: false }} // 각 화면 타이틀(헤더에 렌더링됨)
           component={PaymentList}
+        />
+        <Stack.Screen
+          name="UserData"
+          options={{ title: null, headerShown: false }} // 각 화면 타이틀(헤더에 렌더링됨)
+          component={UserData}
         />
         <Stack.Screen
           name="Access"

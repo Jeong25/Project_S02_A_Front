@@ -9,8 +9,9 @@ import { useIsFocused } from '@react-navigation/native';
 
 
 const UserData = (props) => {
-  
 
+    const styles = styleSheet()
+  
     return (
         <Fragment >
 
