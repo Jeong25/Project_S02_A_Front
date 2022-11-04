@@ -54,7 +54,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             "height": '100%',
             'marginLeft': 'auto',
             'marginRight': 'auto',
-            'paddingTop': "15%",
+            'paddingTop': "10%",
             'position': 'relative',
         },
 
@@ -83,14 +83,14 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             "color": "#383838",
             "paddingTop": 0,
             "paddingBottom": 5,
-            'marginTop': '8%',
+            'marginTop': '6%',
         },
         "phoneInputWrap": {
             'flexDirection': 'row',
             'justifyContent': 'space-between',
             'alignItems': 'center',
             "width": "100%",
-            'marginTop': '8%',
+            'marginTop': '6%',
         },
 
         "phoneInput1": {
@@ -141,7 +141,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'backgroundColor': '#a9a9a9',
         },
         "infoAggWrap": {
-            'marginTop': 30,
+            'marginTop': 20,
             'flexDirection': 'row',
             'alignItems': 'center'
         },
