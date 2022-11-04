@@ -4,11 +4,11 @@ import { Text, View, SafeAreaView, TextInput, TouchableOpacity, } from 'react-na
 import { Image as ReactImage } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { signUpReq } from '../store/store';
+import { signInReq } from '../store/store';
 import { styleSheet } from './stylesheet';
 import { setUserTp } from '../../common/lib/getuserinfo';
 
-const Signup = (props) => {
+const Signin = (props) => {
   const { windowHeight } = props
   const [name, setName] = useState('')
   const [eventCode, setEventCode] = useState('')
@@ -92,7 +92,7 @@ const Signup = (props) => {
     keyboardSub?.remove()
 
     try {
-      const result = await signUpReq(paramName, paramHpNo, paramEventCode)
+      const result = await signInReq(paramName, paramHpNo, paramEventCode)
       if (result?.status === 500) {
         Alert.alert('알림', result.massage)
         return
@@ -267,13 +267,13 @@ const Signup = (props) => {
   );
 }
 
-Signup.propTypes = {
+Signin.propTypes = {
 
 }
 
-Signup.defaultProps = {
+Signin.defaultProps = {
   windowWidth: Dimensions.get('window').width,
   windowHeight: Dimensions.get('window').height
 }
 
-export default Signup
+export default Signin

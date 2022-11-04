@@ -5,21 +5,14 @@ import { Text, View, SafeAreaView, TouchableOpacity, TextInput } from 'react-nat
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { styleSheet } from './stylesheet';
 
-const SignIn = (props) => {
+const SignUp = (props) => {
   const { windowHeight } = props
   const [heightMagnifi, setheightMagnifi] = useState(1.2)
   const [isFocus, setIsFoucs] = useState(false)
 
   const styles = styleSheet()
 
-  let keyboardSub = null;
-
-
-
-  const SignIn = (e) => {
-    // console.log(e.nativeEvent.text)
-    // const a = e.nativeEvent.text.toUpperCase()
-    setEventCode(e.nativeEvent.text)
+  const SignUpReq = () => {
   }
 
   return (
@@ -105,13 +98,13 @@ const SignIn = (props) => {
   );
 }
 
-SignIn.propTypes = {
+SignUp.propTypes = {
 
 }
 
-SignIn.defaultProps = {
+SignUp.defaultProps = {
   windowWidth: Dimensions.get('window').width,
   windowHeight: Dimensions.get('window').height
 }
 
-export default SignIn
+export default SignUp

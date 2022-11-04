@@ -5,12 +5,12 @@ import { Image as ReactImage } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styleSheet } from './stylesheet';
 
-const Signup = (props) => {
+const Access = (props) => {
   const styles = styleSheet()
 
   const onAgree = async () => {
     await AsyncStorage.setItem('permissionAgree', 'agree')
-    props.navigation.reset({ routes: [{ name: 'Signup' }] })
+    props.navigation.reset({ routes: [{ name: 'Signin' }] })
   }
 
   return (
@@ -106,13 +106,13 @@ const Signup = (props) => {
   );
 }
 
-Signup.propTypes = {
+Access.propTypes = {
 
 }
 
-Signup.defaultProps = {
+Access.defaultProps = {
   windowWidth: Dimensions.get('window').width,
   windowHeight: Dimensions.get('window').height
 }
 
-export default Signup
+export default Access

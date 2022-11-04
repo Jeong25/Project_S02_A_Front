@@ -12,7 +12,7 @@ const SplashScreen = (props) => {
       const permissionAgree = await AsyncStorage.getItem('permissionAgree')
 
       if (permissionAgree) {
-        props.navigation.reset({ routes: [{ name: 'Signup' }] })
+        props.navigation.reset({ routes: [{ name: 'Signin' }] })
       } else {
         props.navigation.reset({ routes: [{ name: 'Access' }] })
       }

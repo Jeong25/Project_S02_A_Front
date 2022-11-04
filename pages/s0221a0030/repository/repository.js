@@ -1,6 +1,6 @@
 import client from '../../common/api/client';
 
-const signUp = async (memberName, hpNo, eventCode) => {
+const signIn = async (memberName, hpNo, eventCode) => {
     try {
         const res = await client.get(`/rest/v1/s0221a0030/sign-up?memberName=${memberName}&hpNo=${hpNo}&eventCode=${eventCode}`);
         return res;
@@ -9,4 +9,4 @@ const signUp = async (memberName, hpNo, eventCode) => {
     }
 }
 
-export { signUp };
+export { signIn };

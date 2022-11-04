@@ -9,8 +9,8 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import Signup from './pages/s0221a0030/view/signup';
-import SignIn from './pages/SignIn/view/signin';
+import Signin from './pages/s0221a0030/view/signin';
+import SignUp from './pages/SignUp/view/signUp';
 import Qrscan from './pages/s0221a0020/view/qrscan';
 import Qrcode from './pages/s0221a0010/view/qrcode';
 import EventList from './pages/s0221a2000/view/list';
@@ -35,13 +35,13 @@ const App = () => {
     <NavigationContainer >
       <Stack.Navigator initialRouteName='Splash'>
         <Stack.Screen
-          name="Signup"
-          component={Signup}
+          name="Signin"
+          component={Signin}
           options={{ title: null, headerShown: false }} // 각 화면 타이틀(헤더에 렌더링됨)
         />
         <Stack.Screen
-          name="SignIn"
-          component={SignIn}
+          name="Signup"
+          component={SignUp}
           options={{ title: null, headerShown: false }} // 각 화면 타이틀(헤더에 렌더링됨)
         />
         <Stack.Screen

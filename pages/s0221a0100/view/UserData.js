@@ -36,7 +36,7 @@ const UserData = (props) => {
         await AsyncStorage.setItem('eventId', '')
         await AsyncStorage.setItem('defaultEventId', '')
         await AsyncStorage.setItem('useRegFlag', '')
-        props.navigation.reset({ routes: [{ name: 'Signup' }] })
+        props.navigation.reset({ routes: [{ name: 'Signin' }] })
       }
 
     useEffect(() => {

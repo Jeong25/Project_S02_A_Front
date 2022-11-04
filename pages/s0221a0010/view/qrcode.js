@@ -73,7 +73,7 @@ const QrCode = (props) => {
     await AsyncStorage.setItem('eventRole', '')
     await AsyncStorage.setItem('eventId', '')
     await AsyncStorage.setItem('defaultEventId', '')
-    props.navigation.reset({ routes: [{ name: 'Signup' }] })
+    props.navigation.reset({ routes: [{ name: 'Signin' }] })
   }
   const deletMem = async () => {
     const memId = await AsyncStorage.getItem('memberId')
