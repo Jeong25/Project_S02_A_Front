@@ -15,12 +15,14 @@ export const faqmodalStyleSheet = (windowHeight = Dimensions.get('window').heigh
     },
     "box": {
       "width": '90%',
-      "height": '73%',
+      'height' : '60%',
       'backgroundColor': 'white',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop': 40,
-      'marginBottom': 'auto',
+      'marginTop': 'auto',
+      'marginBottom' : 'auto',
+      'borderTopLeftRadius' : 20,
+      'borderTopRightRadius' : 20,
     },
 
     'modalInner': {
