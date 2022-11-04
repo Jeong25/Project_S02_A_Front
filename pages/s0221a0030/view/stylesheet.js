@@ -214,7 +214,9 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
 
         "loginBtn": {
             'backgroundColor': "#F15A24",
-            'borderRadius': 10,            
+            'borderRadius': 10,
+            'marginBottom' : 10,
+            
         },
         "loginText": {
             'fontSize': 24,
@@ -222,6 +224,24 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             "fontFamily": "Apple SD Gothic Neo",
             "fontWeight": '700',
             'color': 'white',
+            'textAlign': 'center',
+            'textAlignVertical': 'center',
+
+        },
+        "signInBtn": {
+            'backgroundColor': "white",
+            'borderRadius': 10,
+            'marginBottom' : 10,
+            'borderWidth' : 2,
+            'borderColor' : '#f15a24'
+            
+        },
+        "signInText": {
+            'fontSize': 24,
+            'lineHeight' : 50,
+            "fontFamily": "Apple SD Gothic Neo",
+            "fontWeight": '700',
+            'color': '#f15a24',
             'textAlign': 'center',
             'textAlignVertical': 'center',
 

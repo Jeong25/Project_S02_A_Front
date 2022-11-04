@@ -254,8 +254,8 @@ const Signup = (props) => {
                 <TouchableOpacity style={styles.loginBtn} onPress={() => doLogin(name, `${inputhpNo.first}-${inputhpNo.middle}-${inputhpNo.last}`, eventCode, privacyAgree)}>
                   <Text style={styles.loginText}>로그인</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.loginBtn}>
-                  <Text style={styles.loginText}>회원등록</Text>
+                <TouchableOpacity style={styles.signInBtn} onPress={() => props.navigation.navigate('SignIn')}>
+                  <Text style={styles.signInText}>단체등록</Text>
                 </TouchableOpacity>
             </View>
           </View>

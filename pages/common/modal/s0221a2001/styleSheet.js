@@ -29,7 +29,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'width' : '90%', 
       'marginLeft' : 'auto',
       'marginRight' : 'auto',
-      'marginTop' : '10%',
+      'marginTop' : '8%',
     },
     'evtName' : {
       'fontSize' : 26,
@@ -38,6 +38,13 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'marginBottom' : 20
     },
     'evtAdmin':{
+      'fontSize' : 16,
+      'fontWeight' : '500',
+      'fontFamily': "Apple SD Gothic Neo",
+      'marginBottom' : 10,
+      'color' : '#888'
+    },
+    'evtDep':{
       'fontSize' : 16,
       'fontWeight' : '500',
       'fontFamily': "Apple SD Gothic Neo",
@@ -57,6 +64,13 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'fontFamily': "Apple SD Gothic Neo",
       'marginBottom' : 10,
       'color' : '#888'
+    },
+    'evtPath':{
+      'fontSize' : 12,
+      'fontWeight' : '500',
+      'fontFamily': "Apple SD Gothic Neo",
+      'color' : '#888',
+      'marginBottom' : 2
     },
     'amountWrap':{
       'marginBottom' : 10,

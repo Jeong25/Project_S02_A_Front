@@ -131,11 +131,7 @@ const QrCode = (props) => {
           </TouchableOpacity>
 
           <View style={styles.accountBtnWrap}>
-            <View style={styles.accountDelBtn}>
-              <TouchableOpacity onPress={() => deletMem()}>
-                <ReactImage source={require('./assets/block-user.png')} style={styles.accountDel} />
-              </TouchableOpacity>
-            </View>
+           
             <View style={styles.logoutBtn}>
               <TouchableOpacity onPress={() => logOut()}>
                 <ReactImage source={require('./assets/power-off.png')} style={styles.logout} />
