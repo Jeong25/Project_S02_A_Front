@@ -26,7 +26,7 @@ const Footer = (props) => {
     return (
         <View>
             {memberTp ? <View style={styles.bottomMenu}>
-                <TouchableOpacity style={styles.homeBtn} onPress={() => props.navigation.navigate('QrCode')}>
+                <TouchableOpacity style={styles.homeBtn} onPress={() => props.navigation.replace('QrCode')}>
                     <View>
                         <ReactImage source={require('./assets/home.png')} style={styles.homeIcon} />
                         <Text style={styles.homeText} >홈</Text>

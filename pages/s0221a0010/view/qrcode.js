@@ -75,13 +75,7 @@ const QrCode = (props) => {
     await AsyncStorage.setItem('defaultEventId', '')
     props.navigation.reset({ routes: [{ name: 'Signin' }] })
   }
-  const deletMem = async () => {
-    const memId = await AsyncStorage.getItem('memberId')
-    const res = await deletMemReq(Number(memId))
-    console.log(JSON.stringify(res, null, 4))
-    Alert.alert('알림', '회원 탈퇴가 완료되었습니다.')
-    logOut();
-  }
+  
   const getUserInfo = async (hpNo, eventCode) => {
     // const statCountResult = await client.get(`/rest/v1/s0221a0010/use-state-cnt?eventCode=${eventCode}&hpNo=${hpNo}`)
     const statCountResult = await useStateCntReq(hpNo, eventCode)
@@ -120,14 +114,13 @@ const QrCode = (props) => {
     setEvtDetailModal(true)
   }
 
-
   return (
     <SafeAreaView style={{ backgroundColor: 'white' }}>
       <View style={styles.wrap}>
         <View style={styles.topMenu}>
           <Text style={styles.topLogo}>삐용</Text>
           <TouchableOpacity style={styles.profileTextGroup} onPress={() => props.navigation.navigate('UserData')}>
-            <Text style={styles.memberPosition}>{eventNm} / {eventRole}</Text>
+            <Text style={styles.memberPosition}>{`${eventNm} / ${eventRole ? eventRole : '일반회원'}`}</Text>
           </TouchableOpacity>
 
           <View style={styles.accountBtnWrap}>

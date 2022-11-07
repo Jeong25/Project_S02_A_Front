@@ -27,7 +27,6 @@ const QrModal = (props) => {
         setEventNm(eventNm)
         setEventRole(eventRole)
         setInfo(info)
-        console.log(JSON.stringify({...info}))
     }
 
     useEffect(() => {
@@ -67,22 +66,18 @@ const QrModal = (props) => {
                         </TouchableOpacity>
                     </View>
                 </View>
-                
                 <View style={styles.modalInner}>
                     <View style={styles.qrcodeWrap}>
                         <View style={styles.qrImg}>
                             <QRCode value={JSON.stringify({...info})} size={210} quietZone ={20} backgroundColor ='transparent'/>
                         </View>
                     </View>
-                    
-
                     <View style={styles.divider}></View>
                     <View style={styles.textWrap}>
                         <Text style={styles.memberName}>{memberName}</Text>
-                        <Text style={styles.memberPosition}>{eventNm} / {eventRole}</Text>
+                        <Text style={styles.memberPosition}>{`${eventNm} / ${eventRole ? eventRole : '일반회원'}`}</Text>
                     </View>
                 </View>
-
             </View>
         </View>
     );
