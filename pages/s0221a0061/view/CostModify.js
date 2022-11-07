@@ -1,5 +1,5 @@
 import { Text, View, TextInput, Image, Keyboard, Dimensions, SafeAreaView, PermissionsAndroid, Alert, Platform } from 'react-native';
-import { PERMISSIONS, RESULTS, request } from "react-native-permissions";
+import { PERMISSIONS, RESULTS, requestMultiple, checkMultiple } from "react-native-permissions";
 import { styleSheet } from './stylesheet';
 import React, { useState, useEffect, Fragment } from 'react';
 import { Image as ReactImage } from 'react-native';
@@ -195,22 +195,22 @@ const CostModify = (props) => {
           "앨범에서 사진을 선택해주세요.",
           "",
           [
-            // {
-            //   text: '카메라',
-            //   onPress: async () => {
-            //     launchCamera({ saveToPhotos: true, includeBase64: true }, async (res) => {
-            //       let fileNm = res.assets[0].fileName.split('-')
-            //       setInputData({
-            //         ...inputData,
-            //         base64String: res.assets[0].base64,
-            //         useReceiptName: fileNm[fileNm.length - 1]
-            //       })
-            //       setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
-            //     }).catch((e) => {
-            //       console.log(e)
-            //     })
-            //   }
-            // },
+            {
+              text: '카메라',
+              onPress: async () => {
+                launchCamera({ saveToPhotos: true, includeBase64: true }, async (res) => {
+                  let fileNm = res.assets[0].fileName.split('-')
+                  setInputData({
+                    ...inputData,
+                    base64String: res.assets[0].base64,
+                    useReceiptName: fileNm[fileNm.length - 1]
+                  })
+                  setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
+                }).catch((e) => {
+                  console.log(e)
+                })
+              }
+            },
             {
               text: '앨범',
               onPress: async () => {
