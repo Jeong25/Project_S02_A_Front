@@ -203,7 +203,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
 
         'centerBtnWrap': {
-            
             'marginTop': '5%',
         },
         'centerBtn':{
