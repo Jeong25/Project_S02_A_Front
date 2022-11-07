@@ -108,7 +108,7 @@ const SignUp = (props) => {
               </View>
               <View style={styles.layer}>
                 <View style={styles.hpInputWrap}>
-                  <Text style={styles.label}>담당자 핸드폰 번호</Text>
+                  <Text style={styles.hpLabel}>담당자 연락처</Text>
                   <TextInput style={styles.userInfo}
                     onFocus={() => {
                       setheightMagnifi(1.5)

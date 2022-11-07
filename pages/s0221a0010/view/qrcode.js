@@ -124,7 +124,7 @@ const QrCode = (props) => {
           </TouchableOpacity>
 
           <View style={styles.accountBtnWrap}>
-           
+
             <View style={styles.logoutBtn}>
               <TouchableOpacity onPress={() => logOut()}>
                 <ReactImage source={require('./assets/power-off.png')} style={styles.logout} />
@@ -225,33 +225,71 @@ const QrCode = (props) => {
               </View>
             </View>
           </View>
-          <View style={styles.centerBtnWrap}>
 
-            <TouchableOpacity style={styles.centerCostBtnWrap} onPress={() => props.navigation.navigate('CostList')}>
-              <View style={styles.centerBtn}>
+          <ScrollView
+
+            enableOnAndroid={true}
+            scrollEnabled={true}
+            horizontal={true}
+            style={{
+              width: '90%',
+              marginTop: '5%',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+
+          >
+
+            <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('CostList')}>
+              <View style={styles.btnImg}>
                 <ReactImage source={require('./assets/receipt.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>비용조회</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.centerpaymentBtnWrap} onPress={() => props.navigation.navigate('PaymentList')}>
-              <View style={styles.centerBtn}>
+            <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('PaymentList')}>
+              <View style={styles.btnImg}>
                 <ReactImage source={require('./assets/stamp.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>비용결제</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.centerQrBtnWrap} onPress={() => openQrModal()}>
-              <View style={styles.centerBtn}>
+            <TouchableOpacity style={styles.centerBtn} onPress={() => openQrModal()}>
+              <View style={styles.btnImg}>
                 <ReactImage source={require('./assets/sampleQr.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>QR보기</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.centerGuideBtnWrap} onPress={() => openFaqModal()}>
-              <View style={styles.centerBtn}>
+            <TouchableOpacity style={styles.centerBtn} onPress={() => openFaqModal()}>
+              <View style={styles.btnImg}>
                 <ReactImage source={require('./assets/guide.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>FAQ</Text>
             </TouchableOpacity>
-          </View>
+            <TouchableOpacity style={styles.centerBtn} onPress={() => openFaqModal()}>
+              <View style={styles.btnImg}>
+                <ReactImage source={require('./assets/guide.png')} style={styles.centerIcon} />
+              </View>
+              <Text style={styles.centerText}>FAQ</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.centerBtn} onPress={() => openFaqModal()}>
+              <View style={styles.btnImg}>
+                <ReactImage source={require('./assets/guide.png')} style={styles.centerIcon} />
+              </View>
+              <Text style={styles.centerText}>FAQ</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.centerBtn} onPress={() => openFaqModal()}>
+              <View style={styles.btnImg}>
+                <ReactImage source={require('./assets/guide.png')} style={styles.centerIcon} />
+              </View>
+              <Text style={styles.centerText}>FAQ</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.centerBtn} onPress={() => openFaqModal()}>
+              <View style={styles.btnImg}>
+                <ReactImage source={require('./assets/guide.png')} style={styles.centerIcon} />
+              </View>
+              <Text style={styles.centerText}>FAQ</Text>
+            </TouchableOpacity>
+          </ScrollView>
+
           <View style={styles.contentsDivider} />
           <View style={styles.recentListWrap}>
             <View style={styles.listTitleWrap}>

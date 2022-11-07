@@ -203,15 +203,14 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
 
         'centerBtnWrap': {
-            'width': '90%',
-            'flexDirection': 'row',
-            'justifyContent': 'space-between',
-            'marginLeft' : 'auto',
-            'marginRight' : 'auto',
-            'marginTop': '8%',
+            
+            'marginTop': '5%',
+        },
+        'centerBtn':{
+           'height' : 300,
         },
 
-        'centerBtn': {
+        'btnImg': {
             'width': 60,
             'height': 60,
             'backgroundColor' : 'white',
@@ -220,41 +219,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'borderColor' : '#f15a25',
             
         },
-        'centerpaymentBtn': {
-            'width': 60,
-            'height': 60,
-            'borderRadius': 10,
-        },
-        'centerQrBtn': {
-            'width': 60,
-            'height': 60,
-            'borderRadius': 10,
-        },
-        'centerGuideBtn': {
-            'width': 60,
-            'height': 60,
-            'borderRadius': 10,
-        },
-
-        'centerCostBtnWrap': {
-            'display': 'flex',
-            'alignItems': 'center'
-
-        },
-        'centerpaymentBtnWrap': {
-            'display': 'flex',
-            'alignItems': 'center'
-
-        },
-        'centerQrBtnWrap': {
-            'display': 'flex',
-            'alignItems': 'center'
-
-        },
-        'centerGuideBtnWrap': {
-            'display': 'flex',
-            'alignItems': 'center'
-        },
+  
         'centerIcon': {
 
             'width': 40,
@@ -275,7 +240,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'color': '#616161'
         },
         'contentsDivider' : {
-            'marginTop' : 20,
+            'marginTop' : 15,
             'marginBottom' : 15,
             'backgroundColor': '#e9e9e9',
             'height': 10,

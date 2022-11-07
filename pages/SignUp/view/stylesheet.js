@@ -91,7 +91,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'width': '45%',
         },
         'hpInputWrap': {
-            'width': '28%',
+            'width': '29%',
         },
         'infoWrap': {
             'marginBottom': '5%',
@@ -102,6 +102,13 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             "color": "#f15a24",
             "fontWeight": '700',
             "fontSize": 14,
+        },
+        "hpLabel": {
+            "fontFamily": "Apple SD Gothic Neo",
+            "color": "#f15a24",
+            "fontWeight": '700',
+            "fontSize": 14,
+            'backgroundColor':'white',
         },
 
         "userInfo": {
