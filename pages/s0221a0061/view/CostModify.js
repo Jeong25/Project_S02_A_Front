@@ -1,4 +1,4 @@
-import { Text, View, TextInput, Image, Keyboard, Dimensions, SafeAreaView, PermissionsAndroid, Alert } from 'react-native';
+import { Text, View, TextInput, Image, Keyboard, Dimensions, SafeAreaView, PermissionsAndroid, Alert, Platform } from 'react-native';
 import { PERMISSIONS, RESULTS, request } from "react-native-permissions";
 import { styleSheet } from './stylesheet';
 import React, { useState, useEffect, Fragment } from 'react';
@@ -171,21 +171,108 @@ const CostModify = (props) => {
   //   }).catch(e => { console.log(e) })
   // }
 
-  const ShowPicker = async () => {
+  const checkIosCamera = async () => {
     let options = {
-      title: "업로드 방식 선택",
-      takePhotoButtonTitle: "사진 촬영",
-      chooseFromLibraryButtonTitle: "갤러리에서 선택",
+      title: "Upload Prescription",
+      takePhotoButtonTitle: "Take a Photo",
+      chooseFromLibraryButtonTitle: "Select From Gallery",
       storageOptions: {
         skipBackup: true,
         path: "images",
       },
       includeBase64: true
     };
+
+    checkMultiple([
+      PERMISSIONS.IOS.CAMERA,
+      PERMISSIONS.IOS.PHOTO_LIBRARY,
+      PERMISSIONS.IOS.PHOTO_LIBRARY_ADD_ONLY
+    ]).then(result => {
+      if (result['ios.permission.CAMERA'] === "granted" && result['ios.permission.PHOTO_LIBRARY'] === "granted" && result['ios.permission.PHOTO_LIBRARY_ADD_ONLY'] === "granted") {
+        AlertAsync(
+          // "사진을 선택해주세요.",
+          // "카메라로 촬영 혹은 파일을 선택해주세요.",
+          "앨범에서 사진을 선택해주세요.",
+          "",
+          [
+            // {
+            //   text: '카메라',
+            //   onPress: async () => {
+            //     launchCamera({ saveToPhotos: true, includeBase64: true }, async (res) => {
+            //       let fileNm = res.assets[0].fileName.split('-')
+            //       setInputData({
+            //         ...inputData,
+            //         base64String: res.assets[0].base64,
+            //         useReceiptName: fileNm[fileNm.length - 1]
+            //       })
+            //       setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
+            //     }).catch((e) => {
+            //       console.log(e)
+            //     })
+            //   }
+            // },
+            {
+              text: '앨범',
+              onPress: async () => {
+                launchImageLibrary(options, async (res) => {
+                  let fileNm = res.assets[0].fileName.split('-')
+                  setInputData({
+                    ...inputData,
+                    base64String: res.assets[0].base64,
+                    useReceiptName: fileNm[fileNm.length - 1]
+                  })
+                  setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
+                }).catch((e) => {
+                  console.log(e)
+                })
+              }
+            },
+          ],
+          { cancelable: true })
+      } else {
+        AlertAsync(
+          "카메라 권한이없습니다.",
+          "권한을 직접 설정해주세요",
+          [
+            {
+              text: '예',
+              onPress: async () => {
+                requestMultiple([
+                  PERMISSIONS.IOS.CAMERA,
+                  PERMISSIONS.IOS.PHOTO_LIBRARY,
+                  PERMISSIONS.IOS.PHOTO_LIBRARY_ADD_ONLY,
+                ]).then(result => {
+                  console.log('MULTIPLE REQUEST RESPONSE2 : ', result)
+                })
+              }
+            },
+            {
+              text: '아니오',
+            },
+          ],
+          { cancelable: false })
+      }
+    }).catch(error => {
+      console.log('PERMISSION ERROR : ', error)
+    })
+  }
+  const checkAndCamera = async () => {
+    let options = {
+      title: "Upload Prescription",
+      takePhotoButtonTitle: "Take a Photo",
+      chooseFromLibraryButtonTitle: "Select From Gallery",
+      storageOptions: {
+        skipBackup: true,
+        path: "images",
+      },
+      includeBase64: true
+    };
+
     const andGranted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA
     )
-    if (andGranted === PermissionsAndroid.RESULTS.GRANTED) {
+
+    if (andGranted === PermissionsAndroid.RESULTS.GRANTED || iosGranted) {
       await AlertAsync(
         "사진을 선택해주세요.",
         "카메라로 촬영 혹은 파일을 선택해주세요.",
@@ -240,6 +327,14 @@ const CostModify = (props) => {
           },
         ],
         { cancelable: false })
+    }
+  }
+  const ShowPicker = async () => {
+    const phoneOs = Platform.OS
+    if (phoneOs === 'ios') {
+      checkIosCamera()
+    } else {
+      checkAndCamera()
     }
   }
 
