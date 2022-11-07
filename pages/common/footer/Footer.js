@@ -6,7 +6,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { setUserTp } from '../../common/lib/getuserinfo';
 
 const Footer = (props) => {
+    
     const [memberTp, setMemberTp] = useState('')
+    const styles = styleSheet()
+
     useEffect(() => {
         const getPermission = async () => {
             const d = await AsyncStorage.getItem('memberTp')
@@ -19,8 +22,7 @@ const Footer = (props) => {
         }
         getPermission()
     }, [])
-
-    const styles = styleSheet()
+    
     return (
         <View>
             {memberTp ? <View style={styles.bottomMenu}>
