@@ -190,10 +190,8 @@ const CostModify = (props) => {
     ]).then(result => {
       if (result['ios.permission.CAMERA'] === "granted" && result['ios.permission.PHOTO_LIBRARY'] === "granted" && result['ios.permission.PHOTO_LIBRARY_ADD_ONLY'] === "granted") {
         AlertAsync(
-          // "사진을 선택해주세요.",
-          // "카메라로 촬영 혹은 파일을 선택해주세요.",
-          "앨범에서 사진을 선택해주세요.",
-          "",
+          "사진을 선택해주세요.",
+          "카메라로 촬영 혹은 파일을 선택해주세요.",
           [
             {
               text: '카메라',
@@ -212,7 +210,7 @@ const CostModify = (props) => {
               }
             },
             {
-              text: '앨범',
+              text: '파일',
               onPress: async () => {
                 launchImageLibrary(options, async (res) => {
                   let fileNm = res.assets[0].fileName.split('-')
