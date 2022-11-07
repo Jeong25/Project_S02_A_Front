@@ -146,13 +146,13 @@ const Cost = (props) => {
               text: '카메라',
               onPress: async () => {
                 launchCamera({ saveToPhotos: true, includeBase64: true }, async (res) => {
-                  let fileNm = res.assets[0].fileName.split('-')
+                  let fileNm = res.assets[0]?.fileName.split('-')
                   setInputData({
                     ...inputData,
-                    base64String: res.assets[0].base64,
+                    base64String: res.assets[0]?.base64,
                     useReceiptName: fileNm[fileNm.length - 1]
                   })
-                  setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
+                  setImgUri(`file://${res.assets[0]?.uri.split('//').pop()}`)
                 }).catch((e) => {
                   console.log(e)
                 })
