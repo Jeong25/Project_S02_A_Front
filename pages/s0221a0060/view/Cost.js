@@ -120,14 +120,63 @@ const Cost = (props) => {
     props.navigation.goBack()
   }
 
-  const checkIosCamera = () => {
+  const checkIosCamera = async () => {
+    let options = {
+      title: "Upload Prescription",
+      takePhotoButtonTitle: "Take a Photo",
+      chooseFromLibraryButtonTitle: "Select From Gallery",
+      storageOptions: {
+        skipBackup: true,
+        path: "images",
+      },
+      includeBase64: true
+    };
     checkMultiple([
       PERMISSIONS.IOS.CAMERA,
       PERMISSIONS.IOS.PHOTO_LIBRARY,
       PERMISSIONS.IOS.PHOTO_LIBRARY_ADD_ONLY
     ]).then(result => {
-      console.log('MULTIPLE CHECK RESPONSE : ', result);
-      if (result === RESULTS.GRANTED) {
+      console.log('MULTIPLE CHECK RESPONSE1 : ', result);
+      console.log('MULTIPLE CHECK RESPONSE3 : ', result['ios.permission.CAMERA']);
+      if (result['ios.permission.CAMERA'] === "granted" && result['ios.permission.PHOTO_LIBRARY'] === "granted" && result['ios.permission.PHOTO_LIBRARY_ADD_ONLY'] === "granted") {
+         AlertAsync(
+          "사진을 선택해주세요.",
+          "카메라로 촬영 혹은 파일을 선택해주세요.",
+          [
+            {
+              text: '카메라',
+              onPress: async () => {
+                launchCamera({ saveToPhotos: true, includeBase64: true }, async (res) => {
+                  let fileNm = res.assets[0].fileName.split('-')
+                  setInputData({
+                    ...inputData,
+                    base64String: res.assets[0].base64,
+                    useReceiptName: fileNm[fileNm.length - 1]
+                  })
+                  setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
+                }).catch((e) => {
+                  console.log(e)
+                })
+              }
+            },
+            {
+              text: '파일',
+              onPress: async () => {
+                launchImageLibrary(options, async (res) => {
+                  let fileNm = res.assets[0].fileName.split('-')
+                  setInputData({
+                    ...inputData,
+                    base64String: res.assets[0].base64,
+                    useReceiptName: fileNm[fileNm.length - 1]
+                  })
+                  setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
+                }).catch((e) => {
+                  console.log(e)
+                })
+              }
+            },
+          ],
+          { cancelable: true })
         return true
       } else {
         requestMultiple([
@@ -135,7 +184,7 @@ const Cost = (props) => {
           PERMISSIONS.IOS.PHOTO_LIBRARY,
           PERMISSIONS.IOS.PHOTO_LIBRARY_ADD_ONLY,
         ]).then(result => {
-          console.log('MULTIPLE REQUEST RESPONSE : ', result);
+          console.log('MULTIPLE REQUEST RESPONSE2 : ', result);
         });
         return false
       }
@@ -157,66 +206,66 @@ const Cost = (props) => {
       includeBase64: true
     };
 
-    const andGranted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.CAMERA
-    )
-    const iosGranted = checkIosCamera()
-    if (andGranted === PermissionsAndroid.RESULTS.GRANTED || iosGranted) {
-      await AlertAsync(
-        "사진을 선택해주세요.",
-        "카메라로 촬영 혹은 파일을 선택해주세요.",
-        [
-          {
-            text: '카메라',
-            onPress: async () => {
-              launchCamera({ saveToPhotos: true, includeBase64: true }, async (res) => {
-                let fileNm = res.assets[0].fileName.split('-')
-                setInputData({
-                  ...inputData,
-                  base64String: res.assets[0].base64,
-                  useReceiptName: fileNm[fileNm.length - 1]
-                })
-                setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
-              }).catch((e) => {
-                console.log(e)
-              })
-            }
-          },
-          {
-            text: '파일',
-            onPress: async () => {
-              launchImageLibrary(options, async (res) => {
-                let fileNm = res.assets[0].fileName.split('-')
-                setInputData({
-                  ...inputData,
-                  base64String: res.assets[0].base64,
-                  useReceiptName: fileNm[fileNm.length - 1]
-                })
-                setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
-              }).catch((e) => {
-                console.log(e)
-              })
-            }
-          },
-        ],
-        { cancelable: true })
-    } else {
-      await AlertAsync(
-        "카메라 권한이없습니다.",
-        "권한을 직접 설정해주세요",
-        [
-          {
-            text: '예',
-            onPress: async () => {
-              Linking.openSettings()
-            }
-          },
-          {
-            text: '아니오',
-          },
-        ],
-        { cancelable: false })
-    }
+    checkIosCamera()
+    // const andGranted = await PermissionsAndroid.request(
+    //   PermissionsAndroid.PERMISSIONS.CAMERA
+    // )
+    // if (andGranted === PermissionsAndroid.RESULTS.GRANTED || iosGranted) {
+    //   await AlertAsync(
+    //     "사진을 선택해주세요.",
+    //     "카메라로 촬영 혹은 파일을 선택해주세요.",
+    //     [
+    //       {
+    //         text: '카메라',
+    //         onPress: async () => {
+    //           launchCamera({ saveToPhotos: true, includeBase64: true }, async (res) => {
+    //             let fileNm = res.assets[0].fileName.split('-')
+    //             setInputData({
+    //               ...inputData,
+    //               base64String: res.assets[0].base64,
+    //               useReceiptName: fileNm[fileNm.length - 1]
+    //             })
+    //             setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
+    //           }).catch((e) => {
+    //             console.log(e)
+    //           })
+    //         }
+    //       },
+    //       {
+    //         text: '파일',
+    //         onPress: async () => {
+    //           launchImageLibrary(options, async (res) => {
+    //             let fileNm = res.assets[0].fileName.split('-')
+    //             setInputData({
+    //               ...inputData,
+    //               base64String: res.assets[0].base64,
+    //               useReceiptName: fileNm[fileNm.length - 1]
+    //             })
+    //             setImgUri(`file://${res.assets[0].uri.split('//').pop()}`)
+    //           }).catch((e) => {
+    //             console.log(e)
+    //           })
+    //         }
+    //       },
+    //     ],
+    //     { cancelable: true })
+    // } else {
+    //   await AlertAsync(
+    //     "카메라 권한이없습니다.",
+    //     "권한을 직접 설정해주세요",
+    //     [
+    //       {
+    //         text: '예',
+    //         onPress: async () => {
+    //           Linking.openSettings()
+    //         }
+    //       },
+    //       {
+    //         text: '아니오',
+    //       },
+    //     ],
+    //     { cancelable: false })
+    // }
   }
 
   const getEventInfo = (params) => {
