@@ -206,7 +206,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'marginTop': '5%',
         },
         'centerBtn':{
-           'height' : 300,
+           'height' : 250,
         },
 
         'btnImg': {
