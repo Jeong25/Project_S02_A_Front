@@ -270,7 +270,7 @@ const CostModify = (props) => {
       PermissionsAndroid.PERMISSIONS.CAMERA
     )
 
-    if (andGranted === PermissionsAndroid.RESULTS.GRANTED || iosGranted) {
+    if (andGranted === PermissionsAndroid.RESULTS.GRANTED) {
       await AlertAsync(
         "사진을 선택해주세요.",
         "카메라로 촬영 혹은 파일을 선택해주세요.",
