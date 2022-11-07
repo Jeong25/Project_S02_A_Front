@@ -165,6 +165,7 @@ const Cost = (props) => {
           text: '카메라',
           onPress: async () => {
             launchCamera({ saveToPhotos: true, includeBase64: true }, async (res) => {
+              console.log(JSON.stringify(res, null, 4))
               let fileNm = res.assets[0].fileName.split('-')
               setInputData({
                 ...inputData,
