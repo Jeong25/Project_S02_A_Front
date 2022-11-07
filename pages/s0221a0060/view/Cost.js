@@ -146,6 +146,17 @@ const Cost = (props) => {
     })
   }
   const launchPicker = async () => {
+    let options = {
+      title: "Upload Prescription",
+      takePhotoButtonTitle: "Take a Photo",
+      chooseFromLibraryButtonTitle: "Select From Gallery",
+      storageOptions: {
+        skipBackup: true,
+        path: "images",
+      },
+      includeBase64: true
+    }
+
     await AlertAsync(
       "사진을 선택해주세요.",
       "카메라로 촬영 혹은 파일을 선택해주세요.",
