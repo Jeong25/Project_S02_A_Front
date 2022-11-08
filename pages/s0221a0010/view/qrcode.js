@@ -146,29 +146,29 @@ const QrCode = (props) => {
             <View style={styles.upperProcessBox}>
               <View style={styles.leftBox}>
                 <View style={styles.upperProcessInner}>
-                  <View style={styles.upperProcess}>
+                  <TouchableOpacity style={styles.upperProcess} onPress={() => props.navigation.navigate('CostList')}>
                     <Text style={styles.processText}>
                       비용요청
                     </Text>
                     <Text style={styles.processNumber}>
                       {statusCnt?.A || 0}
                     </Text>
-                  </View>
+                  </TouchableOpacity>
                   <View style={styles.divider}></View>
-                  <View style={styles.upperProcess}>
+                  <TouchableOpacity style={styles.upperProcess} onPress={() => props.navigation.navigate('CostList')}>
                     <Text style={styles.processText}>
                       결제반려
                     </Text>
                     <Text style={styles.processNumber}>
                       {statusCnt?.E || 0}
                     </Text>
-                  </View>
+                  </TouchableOpacity>
                 </View>
               </View>
               <View style={styles.rightBox}>
                 <View style={styles.upperProcessInner}>
 
-                  <View style={styles.rightUpperProcess}>
+                  <TouchableOpacity style={styles.rightUpperProcess} onPress={() => props.navigation.navigate('PaymentList')}>
                     <Text style={styles.processText}>
                       결제대기
                     </Text>
@@ -176,7 +176,7 @@ const QrCode = (props) => {
                       {payCnt || 0}
                       {/* {(statusCnt?.B || 0) + (statusCnt?.C || 0)} */}
                     </Text>
-                  </View>
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>
@@ -185,42 +185,42 @@ const QrCode = (props) => {
 
             <View style={styles.underProcessBox}>
               <View style={styles.processInner}>
-                <View style={styles.process}>
+                <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList')}>
                   <Text style={styles.processText}>
                     결제진행
                   </Text>
                   <Text style={styles.processNumber}>
                     {statusCnt?.B || 0}
                   </Text>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.divider}></View>
 
-                <View style={styles.process}>
+                <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList')}>
                   <Text style={styles.processText}>
                     결제완료
                   </Text>
                   <Text style={styles.processNumber}>
                     {statusCnt?.C || 0}
                   </Text>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.divider}></View>
-                <View style={styles.process}>
+                <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList')}>
                   <Text style={styles.processText}>
                     비용지급
                   </Text>
                   <Text style={styles.processNumber}>
                     {statusCnt?.D || 0}
                   </Text>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.divider}></View>
-                <View style={styles.process}>
+                <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList')}>
                   <Text style={styles.processText}>
                     요청취소
                   </Text>
                   <Text style={styles.processNumber}>
                     {statusCnt?.F || 0}
                   </Text>
-                </View>
+                </TouchableOpacity>
 
               </View>
             </View>
