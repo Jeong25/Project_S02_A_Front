@@ -4,6 +4,7 @@ import { Image as ReactImage } from 'react-native';
 import { Text, View, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { styleSheet } from './stylesheet';
+import { regOrgReq, checkEmailReq, checkOrgReq } from '../store/store'
 
 const SignUp = (props) => {
   const { windowHeight } = props
@@ -13,21 +14,53 @@ const SignUp = (props) => {
   ref_input[1] = useRef(null)
   ref_input[2] = useRef(null)
   ref_input[3] = useRef(null)
-  // ref_input[4] = useRef(null)
   const [heightMagnifi, setheightMagnifi] = useState(1.2)
   const [isFocus, setIsFoucs] = useState(false)
   const [inputData, setInputData] = useState({
     orgName: null,
     ceoName: null,
     pwd: null,
+    pwdCheck: null,
     memberName: null,
     firstHpNo: null,
     middleHpNo: null,
     lastHpNo: null,
-    email: null
+    email: null,
+    address: '',
+    detailAddress: '',
+    firstTelNo: '',
+    middleTelNo: '',
+    lastTelNo: '',
+    memberId: '',
+    zipCode: '',
   })
 
-  const SignUpReq = () => {
+  const SignUpReq = async () => {
+    if (inputData.orgName && inputData.ceoName && inputData.pwd && inputData.memberName && inputData.firstHpNo && inputData.middleHpNo && inputData.lastHpNo && inputData.email !== null) {
+      const org = await checkOrgReq(inputData.orgName, inputData.ceoName)
+      const email = await checkEmailReq(inputData.email)
+      if (org) {
+        if (email) {
+          if (inputData.pwd === inputData.pwdCheck) {
+            try {
+              delete inputData.pwdCheck
+              await regOrgReq(inputData)
+              props.navigation.navigate('Signin')
+            } catch(e) {
+              Alert.alert('알림', '오류가 발생하여 처리하지 못했습니다.')
+            }
+          } else {
+            Alert.alert('알림', '비밀번호가 일치하지 않습니다.')
+          }
+        } else {
+          Alert.alert('알림', '중복되는 이메일입니다.')
+        }
+      } else {
+        Alert.alert('알림', '중복되는 단체명입니다.')
+      }
+    } else {
+      Alert.alert('알림', '비어있는 항목을 작성해주세요.')
+    }
   }
 
   return (
@@ -159,9 +192,6 @@ const SignUp = (props) => {
                     placeholderTextColor="rgba(0,0,0,0.2)"
                     onChange={(e) => {
                       setInputData({ ...inputData, lastHpNo: e.nativeEvent.text })
-                      // if (e.nativeEvent.text.length === 4) {
-                      //   ref_input[4].current.focus()
-                      // }
                     }}
                     keyboardType="number-pad"
                     onFocus={() => {
@@ -195,6 +225,7 @@ const SignUp = (props) => {
                 <TextInput style={styles.userInfo}
                   placeholder={"비밀번호 확인"}
                   placeholderTextColor='rgba(0,0,0,0.2)'
+                  onChange={(e) => setInputData({ ...inputData, pwdCheck: e.nativeEvent.text })}
                 ></TextInput>
               </View>
               <View style={styles.infoWrap}>
@@ -216,7 +247,7 @@ const SignUp = (props) => {
           </View>
           <View style={styles.btnWrap}>
 
-            <TouchableOpacity style={styles.signInBtn}>
+            <TouchableOpacity style={styles.signInBtn} onPress={() => SignUpReq()}>
               <Text style={styles.signInBtnText}>단체등록</Text>
             </TouchableOpacity>
 
