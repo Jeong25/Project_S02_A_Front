@@ -203,12 +203,13 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
 
         'centerBtnWrap': {
+            'width' : '90%',
+            'height' : 280,
+            'marginLeft' : 'auto',
+            'marginRight' : 'auto',
             'marginTop': '5%',
+            
         },
-        'centerBtn':{
-           'height' : 250,
-        },
-
         'btnImg': {
             'width': 60,
             'height': 60,
