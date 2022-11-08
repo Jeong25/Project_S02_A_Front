@@ -231,12 +231,7 @@ const QrCode = (props) => {
             enableOnAndroid={true}
             scrollEnabled={true}
             horizontal={true}
-            style={{
-              width: '90%',
-              marginTop: '5%',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-            }}
+            style={styles.centerBtnWrap}
             contentContainerStyle={{flexGrow : 1,justifyContent: 'space-between'}}
           >
 
@@ -264,12 +259,8 @@ const QrCode = (props) => {
               </View>
               <Text style={styles.centerText}>FAQ</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.centerBtn} onPress={() => openFaqModal()}>
-              <View style={styles.btnImg}>
-                <ReactImage source={require('./assets/guide.png')} style={styles.centerIcon} />
-              </View>
-              <Text style={styles.centerText}>FAQ</Text>
-            </TouchableOpacity>
+       
+           
            
           </ScrollView>
 

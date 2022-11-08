@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, Fragment} from 'react';
 import { Dimensions, Keyboard, Alert } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Text, View, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
@@ -64,60 +64,75 @@ const SignUp = (props) => {
   }
 
   return (
-    <SafeAreaView
-      style={{ flex: 1, backgroundColor: '#f15a25' }}
-    >
-      <View style={styles.wrap}>
-        <View style={styles.topMenu}>
-          <View style={styles.backBtn}>
-            <TouchableOpacity onPress={() => props.navigation.goBack()}>
-              <ReactImage source={require('../assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
-            </TouchableOpacity>
-          </View>
-          <Text style={styles.topTitle}>단체등록</Text>
-        </View>
-        <KeyboardAwareScrollView
-          resetScrollToCoords={{ x: 0, y: 0 }}
-          enableOnAndroid={true}
-          scrollEnabled={true}
-          scrollToOverflowEnabled={true}
-          enableAutomaticScroll={true}
-          keyboardShouldPersistTaps='always'
-          nestedScrollEnabled={true}
-        >
-          <View style={styles.contentsWrap}>
-            <View style={styles.titleWrap}>
-              <View style={styles.subTitleWrap}>
-                <ReactImage source={require('../assets/wavingHand.png')} style={styles.icon} />
-                <Text style={styles.welcome}>
-                  환영합니다!
-                </Text>
-              </View>
-              {/* <Text style={styles.mainTitle}>단체 정보를 등록해주세요.</Text> */}
+    <Fragment>
+      <SafeAreaView
+        style={{ flex: 1, backgroundColor: '#f15a25' }}
+      >
+        <View style={styles.wrap}>
+          <View style={styles.topMenu}>
+            <View style={styles.backBtn}>
+              <TouchableOpacity onPress={() => props.navigation.goBack()}>
+                <ReactImage source={require('../assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+              </TouchableOpacity>
             </View>
-
-            <View style={styles.form}>
-              <View style={styles.layer}>
-
-                <View style={styles.inputWrap}>
-                  <Text style={styles.label}>단체명</Text>
-                  <TextInput style={styles.userInfo}
-                    placeholder={"단체명"}
-                    placeholderTextColor='rgba(0,0,0,0.2)'
-                    onChange={(e) => setInputData({ ...inputData, orgName: e.nativeEvent.text })}
-                    onFocus={() => {
-                      setheightMagnifi(1.5)
-                      setIsFoucs(true)
-                    }}
-                    onBlur={() => { setheightMagnifi(1.2) }}
-                  ></TextInput>
+            <Text style={styles.topTitle}>단체등록</Text>
+          </View>
+          <KeyboardAwareScrollView
+            resetScrollToCoords={{ x: 0, y: 0 }}
+            enableOnAndroid={true}
+            scrollEnabled={true}
+            scrollToOverflowEnabled={true}
+            enableAutomaticScroll={true}
+            keyboardShouldPersistTaps='always'
+            nestedScrollEnabled={true}
+          >
+            <View style={styles.contentsWrap}>
+              <View style={styles.titleWrap}>
+                <View style={styles.subTitleWrap}>
+                  <ReactImage source={require('../assets/wavingHand.png')} style={styles.icon} />
+                  <Text style={styles.welcome}>
+                    환영합니다!
+                  </Text>
                 </View>
-                <View style={styles.inputWrap}>
-                  <Text style={styles.label}>대표자</Text>
+                {/* <Text style={styles.mainTitle}>단체 정보를 등록해주세요.</Text> */}
+              </View>
+
+              <View style={styles.form}>
+                <View style={styles.layer}>
+
+                  <View style={styles.inputWrap}>
+                    <Text style={styles.label}>단체명</Text>
+                    <TextInput style={styles.userInfo}
+                      placeholder={"단체명"}
+                      placeholderTextColor='rgba(0,0,0,0.2)'
+                      onChange={(e) => setInputData({ ...inputData, orgName: e.nativeEvent.text })}
+                      onFocus={() => {
+                        setheightMagnifi(1.5)
+                        setIsFoucs(true)
+                      }}
+                      onBlur={() => { setheightMagnifi(1.2) }}
+                    ></TextInput>
+                  </View>
+                  <View style={styles.inputWrap}>
+                    <Text style={styles.label}>대표자</Text>
+                    <TextInput style={styles.userInfo}
+                      placeholder={"대표자"}
+                      placeholderTextColor='rgba(0,0,0,0.2)'
+                      onChange={(e) => setInputData({ ...inputData, ceoName: e.nativeEvent.text })}
+                      onFocus={() => {
+                        setheightMagnifi(1.5)
+                        setIsFoucs(true)
+                      }}
+                      onBlur={() => { setheightMagnifi(1.2) }}
+                    ></TextInput>
+                  </View>
+                </View>
+                <View style={styles.infoWrap}>
+                  <Text style={styles.label}>담당자 이름</Text>
                   <TextInput style={styles.userInfo}
-                    placeholder={"대표자"}
+                    placeholder={"담당자"}
                     placeholderTextColor='rgba(0,0,0,0.2)'
-                    onChange={(e) => setInputData({ ...inputData, ceoName: e.nativeEvent.text })}
+                    onChange={(e) => setInputData({ ...inputData, memberName: e.nativeEvent.text })}
                     onFocus={() => {
                       setheightMagnifi(1.5)
                       setIsFoucs(true)
@@ -199,9 +214,6 @@ const SignUp = (props) => {
                       setIsFoucs(true)
                     }}
                     onBlur={() => { setheightMagnifi(1.2) }}
-                    maxLength={4}
-                    returnKeyType="done"
-                    ref={ref_input[3]}
                   ></TextInput>
                 </View>
 
@@ -243,18 +255,19 @@ const SignUp = (props) => {
               </View>
 
             </View>
-
-          </View>
-          <View style={styles.btnWrap}>
+            <View style={styles.btnWrap}>
 
             <TouchableOpacity style={styles.signInBtn} onPress={() => SignUpReq()}>
               <Text style={styles.signInBtnText}>단체등록</Text>
             </TouchableOpacity>
 
-          </View>
-        </KeyboardAwareScrollView >
-      </View>
-    </SafeAreaView>
+            </View>
+          </KeyboardAwareScrollView >
+        </View>
+      </SafeAreaView>
+      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
+    </Fragment>
+
 
   );
 }
