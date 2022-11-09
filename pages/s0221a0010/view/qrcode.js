@@ -29,16 +29,7 @@ const QrCode = (props) => {
   const { windowHeight, windowWidth } = props
   const styles = useMemo(() => styleSheet(windowHeight, windowWidth), [windowHeight, windowWidth])
   const isFocused = useIsFocused();
-
-
-  const getEventInfo = async (params) => {
-    setEventId(params.eventId)
-    const res = await qrInfoReq(params.eventId)
-    setQrInfo(res.data.data)
-    const val1 = res.data.data.eventStartDate.split(' ')
-    const val2 = res.data.data.eventEndDate.split(' ')
-    setDateData(`${val1[0]} ~ ${val2[0]}`)
-  }
+  const nonShutDown = true;
 
   useEffect(() => {
     const getData = async () => {
@@ -270,7 +261,7 @@ const QrCode = (props) => {
               <Text style={styles.listTitle}>최근 등록된 행사</Text>
               <TouchableOpacity
                 onPress={() => {
-                  props.navigation.navigate('EventList', { getEventInfo })
+                  props.navigation.navigate('EventList', { nonShutDown: nonShutDown })
                 }}
               >
                 <Text style={styles.showMore}>더보기 {'>'}</Text>

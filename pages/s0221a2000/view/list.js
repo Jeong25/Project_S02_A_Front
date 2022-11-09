@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useMemo, useState } from 'react';
-import { StyleSheet, Text, SafeAreaView, View, TextInput, FlatList, Picker, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, View, TextInput, FlatList, Picker, ScrollView, TouchableOpacity, Keyboard } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import Svg, { Defs, Pattern } from 'react-native-svg';
 import { Path as SvgPath } from 'react-native-svg';
@@ -8,10 +8,13 @@ import { eventListReq } from '../store/store'
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
+import EvtDetailModal from '../../common/modal/s0221a2001/evtDetailModal';
 
 const EventList = (props) => {
 
   const [eventInfo, setEventInfo] = useState([])
+  const [eventIdMd, setEventIdMd] = useState('')
+  const [evtDetailModal, setEvtDetailModal] = useState(false)
   const [userName, setUserName] = useState('')
   const styles = styleSheet()
 
@@ -26,17 +29,24 @@ const EventList = (props) => {
     const val1 = JSON.stringify(v.eventStartDate).split(' ')[0].substring(1)
     const val2 = JSON.stringify(v.eventEndDate).split(' ')[0].substring(1)
     const res = `${val1} ~ ${val2}`
-    console.log('Log확인 '+res)
+    console.log('Log확인 ' + res)
     return res
   }
 
   const onClick = (eventId, eventNm) => {
     const data = { "eventId": eventId, 'eventNm': eventNm }
-    props.route.params.getEventInfo(data)
-    props.navigation.goBack()
+    if (props.route.params.nonShutDown) {
+      setEventIdMd(eventId)
+      Keyboard.dismiss()
+      setEvtDetailModal(true)
+    } else {
+      props.route.params.getEventInfo(data)
+      props.navigation.goBack()
+    }
   }
 
   useEffect(() => {
+    console.log(props.nonShutDown)
     let isCompMounted = true
     if (isCompMounted) {
       getData()
@@ -47,7 +57,7 @@ const EventList = (props) => {
   }, [])
 
   return (
-    <SafeAreaView style={{backgroundColor:'white'}}>
+    <SafeAreaView style={{ backgroundColor: 'white' }}>
       <View style={styles.wrap}>
         <View style={styles.topMenu}>
           <View style={styles.backBtn}>
@@ -59,12 +69,12 @@ const EventList = (props) => {
         </View>
         <View style={styles.layer1}>
           <View style={styles.inputWrap}>
-          <TextInput style={styles.input}
-            placeholder="행사명으로 검색"
-            placeholderTextColor="#888" 
-          ></TextInput>
+            <TextInput style={styles.input}
+              placeholder="행사명으로 검색"
+              placeholderTextColor="#888"
+            ></TextInput>
           </View>
-          
+
           <View style={styles.searchBtn}>
             <TouchableOpacity>
               <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
@@ -92,7 +102,11 @@ const EventList = (props) => {
             ))}
           </ScrollView>
         </View>
-
+        <EvtDetailModal
+          openModal={evtDetailModal}
+          eventId={eventIdMd}
+          onClose={() => setEvtDetailModal(false)}
+        />
       </View >
       <Footer
         navigation={props.navigation}
