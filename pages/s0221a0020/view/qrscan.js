@@ -38,9 +38,14 @@ const Qrscan = (props) => {
   const onBarCodeRead = (event) => {
     if (!scaned) return;
     setScaned(false);
-    console.log(event.nativeEvent.codeStringValue)
-    Alert.alert("QR Code", event.nativeEvent.codeStringValue, [
-      { text: "OK", onPress: () => setScaned(true) },
+    console.log(event)
+    Alert.alert("QR Code", event, [
+      {
+        text: "OK", onPress: () => {
+          setScaned(true)
+          props.navigation.goBack()
+        }
+      },
     ]);
   };
   // const onBarCodeRead = async (e) => {
@@ -110,7 +115,7 @@ const Qrscan = (props) => {
         laserColor="rgba(0, 0, 0, 0)"
         frameColor="rgba(0, 0, 0, 0)"
         surfaceColor="rgba(0, 0, 0, 0)"
-        onReadCode={(event) => onBarCodeRead(event)}
+        onReadCode={(event) => onBarCodeRead(event.nativeEvent.codeStringValue)}
       />
       <View style={styles.wrap}>
         <View style={styles.inner}>

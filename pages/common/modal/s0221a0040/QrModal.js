@@ -13,7 +13,7 @@ const QrModal = (props) => {
     const [memberName, setMemberName] = useState('')
     const [eventNm, setEventNm] = useState('')
     const [eventRole, setEventRole] = useState('')
-    const [info, setInfo] = useState([])
+    const [info, setInfo] = useState('')
     const styles = QrModalStyleSheet()
 
     const getInfo = async () => {
@@ -22,11 +22,12 @@ const QrModal = (props) => {
         const eventRole = await AsyncStorage.getItem('eventRole')
         const mobileId = await AsyncStorage.getItem('mobileId')
         const memberId = await AsyncStorage.getItem('memberId')
-        const info = {mobileId: mobileId, memberId: memberId}
+        const infoParams = {mobileId: mobileId, memberId: memberId}
         setMemberName(memberName)
         setEventNm(eventNm)
         setEventRole(eventRole)
-        setInfo(info)
+        setInfo(`${infoParams.memberId}/${infoParams.mobileId}`)
+        console.log(info)
     }
 
     useEffect(() => {
@@ -69,7 +70,7 @@ const QrModal = (props) => {
                 <View style={styles.modalInner}>
                     <View style={styles.qrcodeWrap}>
                         <View style={styles.qrImg}>
-                            <QRCode value={JSON.stringify({...info})} size={210} quietZone ={20} backgroundColor ='transparent'/>
+                            <QRCode value={info} size={210} quietZone ={20} backgroundColor ='transparent'/>
                         </View>
                     </View>
                     <View style={styles.divider}></View>
