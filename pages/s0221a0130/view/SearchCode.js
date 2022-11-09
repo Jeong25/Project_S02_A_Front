@@ -24,7 +24,6 @@ const SearchCode = (props) => {
               </View>
               <Text style={styles.title}>부서코드 찾기</Text>
             </View>
-
             <View style={styles.contentsWrap}>
               <View style={styles.inputWrap}>
                 <Text style={styles.label}>단체명</Text>
