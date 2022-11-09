@@ -97,7 +97,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
     'delBtnText' : { 
       'color' : '#888',
       'fontSize' : 24,
-      'fontWeight': Platform.OS === 'ios' ? 700 : 'bold' ,
+      'fontWeight': Platform.OS === 'ios' ? '700' : 'bold' ,
       'fontFamily': "Apple SD Gothic Neo",
       'textAlign' : 'center',
       'lineHeight': 50,
