@@ -20,36 +20,16 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'zIndex' : 9,
             
         },
-        'scanBtnIcon': {
-            'width': 30,
-            'height': 30,
-            'marginLeft': 'auto',
-            'marginRight': 'auto',
-        },
-        'homeBtn': {
-
-            'alignItems': 'center',
-        },
-        'homeIcon': {
-            'width': 30,
-            'height': 30,
-            'marginLeft': 'auto',
-            'marginRight': 'auto',
-        },
-        'costIcon': {
+      
+        'menuIcon': {
             'width': 30,
             'height': 30,
             'marginLeft': 'auto',
             'marginRight': 'auto',
 
         },
-        'paymentIcon': {
-            'width': 30,
-            'height': 30,
-            'marginLeft': 'auto',
-            'marginRight': 'auto',
-        },
-        'homeText': {
+      
+        'menuText': {
             'fontFamily': "Apple SD Gothic Neo",
             'color': '#707070',
             'fontSize': 12,
@@ -57,30 +37,6 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'marginTop': 5,
             'textAlign': 'center'
         },
-        'costText': {
-            'fontFamily': "Apple SD Gothic Neo",
-            'color': '#707070',
-            'fontSize': 12,
-            'fontWeight': '700',
-            'marginTop': 5
-
-        },
-        'paymentText': {
-            'fontFamily': "Apple SD Gothic Neo",
-            'color': '#707070',
-            'fontSize': 12,
-            'fontWeight': '700',
-            'marginTop': 5
-        },
-        'qrscanText': {
-            'width': 50,
-            'fontFamily': "Apple SD Gothic Neo",
-            'color': '#707070',
-            'fontSize': 12,
-            'fontWeight': '700',
-            'marginTop': 5,
-            'textAlign': 'center',
-
-        },
+      
     })
 }
