@@ -50,12 +50,12 @@ const Footer = (props) => {
                         <Text style={styles.menuText}>QR스캔</Text>
                     </View>
                 </TouchableOpacity>}
-                <TouchableOpacity>
+                {/* <TouchableOpacity>
                     <View>
                         <ReactImage source={require('./assets/menu.png')} style={styles.menuIcon} />
                         <Text style={styles.menuText}>메뉴</Text>
                     </View>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View> : <View />}
 
         </View>
