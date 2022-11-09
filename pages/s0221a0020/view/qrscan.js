@@ -108,21 +108,9 @@ const Qrscan = (props) => {
       }}
       onBarCodeRead={(e) => onBarCodeRead(e)}
     > */}
-      <SafeAreaView style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }} />
-      <Camera
-        style={{ width: CAM_VIEW_WIDTH, height: CAM_VIEW_HEIGHT, }}
-        ref={camera}
-        cameraType={cameraFront ? CameraType.Front : CameraType.Back}
-        // Barcode Scanner Props
-        scanBarcode={true}
-        showFrame={true}
-        laserColor="rgba(0, 0, 0, 0)"
-        frameColor="rgba(0, 0, 0, 0)"
-        surfaceColor="rgba(0, 0, 0, 0)"
-        onReadCode={(event) => onBarCodeRead(event.nativeEvent.codeStringValue)}
-      />
+      <SafeAreaView />
+
       <View style={styles.wrap}>
-        <View style={styles.inner}>
           <View style={styles.topBtnWrap}>
             <TouchableOpacity style={styles.closeBtn} onPress={() => {
               props.navigation.goBack()
@@ -141,13 +129,30 @@ const Qrscan = (props) => {
               <Text style={styles.eventSelect}>행사선택</Text>
             </TouchableOpacity>
           </View>
+          <Camera
+            style={styles.camera}
+            ref={camera}
+            cameraType={cameraFront ? CameraType.Front : CameraType.Back}
+            // Barcode Scanner Props
+            scanBarcode={true}
+            showFrame={true}
+            laserColor="rgba(0, 0, 0, 0)"
+            frameColor="rgba(0, 0, 0, 0)"
+            surfaceColor="rgba(0, 0, 0, 0)"
+            onReadCode={(event) => onBarCodeRead(event)}
+          />
+
           {/* <View style={styles.camArea} /> */}
           <View style={styles.textGroup}>
+            <Text style={styles.compName}>가나다</Text>
+            <Text style={styles.eventName}>123</Text>
+            <Text style={styles.eventDate}>2022-01-01 ~ 2022-01-01</Text>
+          </View>
+          {/* <View style={styles.textGroup}>
             <Text style={styles.compName}>{qrInfo?.namePathPriortiy}</Text>
             <Text style={styles.eventName}>{qrInfo?.eventNm}</Text>
             <Text style={styles.eventDate}>{dateData || ''}</Text>
-          </View>
-        </View>
+          </View> */}
       </View>
       {/* </RNCamera > */}
     </>

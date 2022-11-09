@@ -10,23 +10,26 @@ export const styleSheet = (windowHeight, windowWidth) => {
             "width": '100%',
             "height": '100%',
         },
-        "inner": {
+        // "inner": {
 
-            "width": '90%',
-            "height": '100%',
-            'marginLeft': 'auto',
-            'marginRight': 'auto',
-        },
+        //     "width": '90%',
+        //     "height": '100%',
+        //     'marginLeft': 'auto',
+        //     'marginRight': 'auto',
+        // },
 
         "topBtnWrap": {
 
-            "width": '100%',
+            "width": '90%',
+            'marginLeft' : 'auto',
+            'marginRight' : 'auto',
             'flexDirection': 'row',
             'justifyContent': 'space-between',
             'alignItems': 'center',
             'paddingVertical': 5,
             'paddingHorizontal': 10,
             'marginTop': 20,
+            'zIndex' : 9,
         },
 
         'closeBtn': {
@@ -56,20 +59,21 @@ export const styleSheet = (windowHeight, windowWidth) => {
             'color': 'white',
         },
 
-        "camArea": {
-            "width": 250,
-            "height": 250,
-            'borderRadius': 40,
-            'borderWidth' : 2,
-            'borderColor' : 'white',
-            'marginLeft': 'auto',
-            'marginRight': 'auto',
-            'marginTop': 100
+        "camera": {
+            "width": windowWidth,
+            "height": windowHeight,
+            'position' : 'absolute',
+            'top' : 0,
+            'zIndex' : 1,
         },
+     
         "textGroup": {
+            'marginTop' : 'auto',
+            'marginBottom' : '30%',
             'marginLeft': 'auto',
             'marginRight': 'auto',
-            'marginTop': 30
+            'zIndex':9,
+
         },
         "compName": {
             'fontFamily': 'Apple SD Gothic Neo',
