@@ -4,6 +4,7 @@ import { Image as ReactImage } from 'react-native';
 import Svg from 'react-native-svg';
 import { Path as SvgPath } from 'react-native-svg';
 import { RNCamera } from 'react-native-camera';
+import { Camera, CameraType } from "react-native-camera-kit";
 import { Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styleSheet } from './stylesheet';
@@ -14,8 +15,8 @@ const Qrscan = (props) => {
   const [dateData, setDateData] = useState('')
   const [orgId, setOrgId] = useState('')
   const [eventId, setEventId] = useState('')
-
   const camera = useRef(null)
+  const [scaned, setScaned] = useState(true);
   const [controlCamera, setControlCamera] = useState(false)
   const [cameraFront, setCameraFront] = useState(true)
   const CAM_VIEW_HEIGHT = Dimensions.get('screen').height;
@@ -34,28 +35,36 @@ const Qrscan = (props) => {
     setDateData(`${val1[0]} ~ ${val2[0]}`)
   }
 
-  const onBarCodeRead = async (e) => {
-    if (controlCamera) {
-      return
-    }
-    camera.current.pausePreview()
-    setControlCamera(true)
+  const onBarCodeRead = (event) => {
+    if (!scaned) return;
+    setScaned(false);
+    console.log(event.nativeEvent.codeStringValue)
+    Alert.alert("QR Code", event.nativeEvent.codeStringValue, [
+      { text: "OK", onPress: () => setScaned(true) },
+    ]);
+  };
+  // const onBarCodeRead = async (e) => {
+  //   if (controlCamera) {
+  //     return
+  //   }
+  //   camera.current.pausePreview()
+  //   setControlCamera(true)
 
-    try {
-      const qrData = JSON.parse(e.data)
-      console.log(JSON.stringify(qrData, null, 4))
+  //   try {
+  //     const qrData = JSON.parse(e.data)
+  //     console.log(JSON.stringify(qrData, null, 4))
 
-      const response = await qrScanReq(...qrData, orgId, eventId);
-      console.log(JSON.stringify(response, null, 4))
-    } catch (error) {
-      console.log(error)
-    }
+  //     const response = await qrScanReq(...qrData, orgId, eventId);
+  //     console.log(JSON.stringify(response, null, 4))
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
 
-    setTimeout(() => {
-      setControlCamera(false)
-      camera.current.resumePreview()
-    }, 1500)
-  }
+  //   setTimeout(() => {
+  //     setControlCamera(false)
+  //     camera.current.resumePreview()
+  //   }, 1500)
+  // }
 
   const getEventInfo = async (params) => {
     setEventId(params.eventId)
@@ -71,7 +80,8 @@ const Qrscan = (props) => {
   }, [])
 
   return (
-    <RNCamera
+    <>
+      {/* <RNCamera
       ref={camera}
       style={{ width: CAM_VIEW_WIDTH, height: CAM_VIEW_HEIGHT, }}
       type={cameraFront ? RNCamera.Constants.Type.front : RNCamera.Constants.Type.back}
@@ -88,31 +98,41 @@ const Qrscan = (props) => {
         height: 0.85,
       }}
       onBarCodeRead={(e) => onBarCodeRead(e)}
-    >
-      <SafeAreaView style={{backgroundColor: 'rgba(0, 0, 0, 0.7)'}}/>
+    > */}
+      <SafeAreaView style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }} />
+      <View style={styles.topBtnWrap}>
+        <TouchableOpacity style={styles.closeBtn} onPress={() => {
+          props.navigation.goBack()
+        }}>
+          <ReactImage source={require('./assets/closeIcon.png')} style={styles.closeIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.closeBtn} onPress={() => {
+          setCameraFront(!cameraFront)
+        }}>
+          <ReactImage source={require('./assets/change.png')} style={styles.closeIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.eventSelectBtn} onPress={() => {
+          props.navigation.navigate('EventList', { getEventInfo })
+        }}>
+          <ReactImage source={require('./assets/magnifier.png')} style={styles.searchIcon} />
+          <Text style={styles.eventSelect}>행사선택</Text>
+        </TouchableOpacity>
+      </View>
+      <Camera
+        style={{ width: CAM_VIEW_WIDTH, height: CAM_VIEW_HEIGHT * 0.5, }}
+        ref={camera}
+        cameraType={cameraFront ? CameraType.Front : CameraType.Back}
+        // Barcode Scanner Props
+        scanBarcode={true}
+        showFrame={true}
+        laserColor="rgba(0, 0, 0, 0)"
+        frameColor="rgba(0, 0, 0, 0)"
+        surfaceColor="rgba(0, 0, 0, 0)"
+        onReadCode={(event) => onBarCodeRead(event)}
+      />
       <View style={styles.wrap}>
         <View style={styles.inner}>
-          <View style={styles.topBtnWrap}>
-            <TouchableOpacity style={styles.closeBtn} onPress={() => {
-              props.navigation.goBack()
-            }}>
-              <ReactImage source={require('./assets/closeIcon.png')} style={styles.closeIcon} />
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.closeBtn} onPress={() => {
-              setCameraFront(!cameraFront)
-            }}>
-              <ReactImage source={require('./assets/change.png')} style={styles.closeIcon} />
-            </TouchableOpacity>
-            
-            <TouchableOpacity style={styles.eventSelectBtn} onPress={() => {
-              props.navigation.navigate('EventList', { getEventInfo })
-            }}>
-              <ReactImage source={require('./assets/magnifier.png')} style={styles.searchIcon} />
-              <Text style={styles.eventSelect}>행사선택</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.camArea} />
+          {/* <View style={styles.camArea} /> */}
           <View style={styles.textGroup}>
             <Text style={styles.compName}>{qrInfo?.namePathPriortiy}</Text>
             <Text style={styles.eventName}>{qrInfo?.eventNm}</Text>
@@ -120,7 +140,8 @@ const Qrscan = (props) => {
           </View>
         </View>
       </View>
-    </RNCamera >
+      {/* </RNCamera > */}
+    </>
   );
 }
 
