@@ -5,10 +5,15 @@ const qrInfoReq = async (eventId) => {
     return res;
 }
 
-const qrScanReq = async (qrData, orgId, eventId) => {
-    const qr = qrData[0]
-    const res = await qrScan(qr, orgId, eventId);
-    // console.log(JSON.stringify(res, null, 4));
+const qrScanReq = async (memberId, mobileId, orgId, eventId) => {
+    const params = {
+        eventId: eventId,
+        memberId: memberId,
+        mobileId: mobileId,
+        orgId: orgId
+    }
+    const res = await qrScan(params);
+    console.log('QrScan Log: Input. '+JSON.stringify(params, null, 4)+'\nresult. '+JSON.stringify(res, null, 4));
     return res;
 }
 

@@ -41,7 +41,11 @@ const Qrscan = (props) => {
     console.log(event)
     Alert.alert("QR Code", event, [
       {
-        text: "OK", onPress: () => {
+        text: "OK", onPress: async () => {
+          const memId = event.split('/')[0]
+          const mbId = event.split('/')[1]
+          console.log(memId, mbId, orgId, eventId)
+          // const res = await qrScanReq(memId, mbId, orgId, eventId)
           setScaned(true)
           props.navigation.goBack()
         }

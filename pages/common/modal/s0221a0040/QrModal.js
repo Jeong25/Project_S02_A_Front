@@ -13,7 +13,7 @@ const QrModal = (props) => {
     const [memberName, setMemberName] = useState('')
     const [eventNm, setEventNm] = useState('')
     const [eventRole, setEventRole] = useState('')
-    const [info, setInfo] = useState('')
+    const [info, setInfo] = useState('No')
     const styles = QrModalStyleSheet()
 
     const getInfo = async () => {
@@ -22,12 +22,10 @@ const QrModal = (props) => {
         const eventRole = await AsyncStorage.getItem('eventRole')
         const mobileId = await AsyncStorage.getItem('mobileId')
         const memberId = await AsyncStorage.getItem('memberId')
-        const infoParams = {mobileId: mobileId, memberId: memberId}
         setMemberName(memberName)
         setEventNm(eventNm)
         setEventRole(eventRole)
-        setInfo(`${infoParams.memberId}/${infoParams.mobileId}`)
-        console.log(info)
+        setInfo(`${memberId}/${mobileId}`)
     }
 
     useEffect(() => {

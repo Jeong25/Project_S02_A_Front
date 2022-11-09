@@ -9,9 +9,9 @@ const qrInfo = async (eventId) => {
     }
 }
 
-const qrScan = async (qrData, orgId, eventId) => {
+const qrScan = async (params) => {
     try {
-        const res = await client.post('rest/v1/s0221a0020/qr-scan', { qrData, "orgId": orgId, "eventId": eventId });
+        const res = await client.post('rest/v1/s0221a0020/qr-scan', params);
         return res;
     } catch (e) {
         console.log(e);
