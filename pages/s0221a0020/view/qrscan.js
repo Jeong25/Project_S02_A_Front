@@ -143,16 +143,16 @@ const Qrscan = (props) => {
           />
 
           {/* <View style={styles.camArea} /> */}
-          <View style={styles.textGroup}>
+          {/* <View style={styles.textGroup}>
             <Text style={styles.compName}>가나다</Text>
             <Text style={styles.eventName}>123</Text>
             <Text style={styles.eventDate}>2022-01-01 ~ 2022-01-01</Text>
-          </View>
-          {/* <View style={styles.textGroup}>
+          </View> */}
+          <View style={styles.textGroup}>
             <Text style={styles.compName}>{qrInfo?.namePathPriortiy}</Text>
             <Text style={styles.eventName}>{qrInfo?.eventNm}</Text>
             <Text style={styles.eventDate}>{dateData || ''}</Text>
-          </View> */}
+          </View>
       </View>
       {/* </RNCamera > */}
     </>
