@@ -216,6 +216,13 @@ const SignUp = (props) => {
                     onBlur={() => { setheightMagnifi(1.2) }}
                   ></TextInput>
                 </View>
+                <View style={styles.infoWrap}>
+                  <Text style={styles.label}>부서명</Text>
+                  <TextInput style={styles.userInfo}
+                    placeholder={"부서명"}
+                    placeholderTextColor='rgba(0,0,0,0.2)'
+                  ></TextInput>
+                </View>
 
               </View>
 

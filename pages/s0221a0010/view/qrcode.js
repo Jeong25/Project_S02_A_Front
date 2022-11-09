@@ -12,6 +12,7 @@ import QrModal from '../../common/modal/s0221a0040/QrModal';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
 import EvtDetailModal from '../../common/modal/s0221a2001/evtDetailModal';
 
+
 const QrCode = (props) => {
   const [memberName, setMemberName] = useState('')
   const [eventId, setEventId] = useState('')
@@ -66,7 +67,7 @@ const QrCode = (props) => {
     await AsyncStorage.setItem('defaultEventId', '')
     props.navigation.reset({ routes: [{ name: 'Signin' }] })
   }
-  
+
   const getUserInfo = async (hpNo, eventCode) => {
     // const statCountResult = await client.get(`/rest/v1/s0221a0010/use-state-cnt?eventCode=${eventCode}&hpNo=${hpNo}`)
     const statCountResult = await useStateCntReq(hpNo, eventCode)
@@ -217,15 +218,7 @@ const QrCode = (props) => {
             </View>
           </View>
 
-          <ScrollView
-
-            enableOnAndroid={true}
-            scrollEnabled={true}
-            horizontal={true}
-            style={styles.centerBtnWrap}
-            contentContainerStyle={{flexGrow : 1,justifyContent: 'space-between'}}
-          >
-
+          <View style={styles.centerBtnWrap}>
             <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('CostList')}>
               <View style={styles.btnImg}>
                 <ReactImage source={require('./assets/receipt.png')} style={styles.centerIcon} />
@@ -244,16 +237,19 @@ const QrCode = (props) => {
               </View>
               <Text style={styles.centerText}>QR보기</Text>
             </TouchableOpacity>
+            {/* <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('DepReg')}>
+              <View style={styles.btnImg}>
+                <ReactImage source={require('./assets/group.png')} style={styles.centerIcon} />
+              </View>
+              <Text style={styles.centerText}>부서등록</Text>
+            </TouchableOpacity> */}
             <TouchableOpacity style={styles.centerBtn} onPress={() => openFaqModal()}>
               <View style={styles.btnImg}>
                 <ReactImage source={require('./assets/guide.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>FAQ</Text>
             </TouchableOpacity>
-       
-           
-           
-          </ScrollView>
+          </View>
 
           <View style={styles.contentsDivider} />
           <View style={styles.recentListWrap}>

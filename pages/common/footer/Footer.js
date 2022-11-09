@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { setUserTp } from '../../common/lib/getuserinfo';
 
 const Footer = (props) => {
-    
+
     const [memberTp, setMemberTp] = useState('')
     const styles = styleSheet()
 
@@ -22,35 +22,42 @@ const Footer = (props) => {
         }
         getPermission()
     }, [])
-    
+
     return (
         <View>
             {memberTp ? <View style={styles.bottomMenu}>
                 <TouchableOpacity style={styles.homeBtn} onPress={() => props.navigation.replace('QrCode')}>
                     <View>
-                        <ReactImage source={require('./assets/home.png')} style={styles.homeIcon} />
-                        <Text style={styles.homeText} >홈</Text>
+                        <ReactImage source={require('./assets/home.png')} style={styles.menuIcon} />
+                        <Text style={styles.menuText} >홈</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.costListBtn} onPress={() => props.navigation.navigate('CostList')}>
                     <View>
-                        <ReactImage source={require('./assets/receipt.png')} style={styles.costIcon} />
-                        <Text style={styles.costText} >비용조회</Text>
+                        <ReactImage source={require('./assets/receipt.png')} style={styles.menuIcon} />
+                        <Text style={styles.menuText} >비용조회</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.paymentListBtn} onPress={() => props.navigation.navigate('PaymentList')}>
                     <View>
-                        <ReactImage source={require('./assets/stamp.png')} style={styles.paymentIcon} />
-                        <Text style={styles.paymentText}>비용결제</Text>
+                        <ReactImage source={require('./assets/stamp.png')} style={styles.menuIcon} />
+                        <Text style={styles.menuText}>비용결제</Text>
                     </View>
                 </TouchableOpacity>
+                {/* <TouchableOpacity>
+                    <View>
+                        <ReactImage source={require('./assets/menu.png')} style={styles.menuIcon} />
+                        <Text style={styles.menuText}>메뉴</Text>
+                    </View>
+                </TouchableOpacity> */}
                 {(memberTp === 'R' || memberTp === 'C') && <TouchableOpacity style={styles.scanBtn} onPress={() => props.navigation.navigate('Qrscan')}>
                     <View>
-                        <ReactImage source={require('./assets/scanIcon.png')} style={styles.scanBtnIcon} />
-                        <Text style={styles.qrscanText}>QR스캔</Text>
+                        <ReactImage source={require('./assets/scanIcon.png')} style={styles.menuIcon} />
+                        <Text style={styles.menuText}>QR스캔</Text>
                     </View>
                 </TouchableOpacity>}
             </View> : <View />}
+
         </View>
 
 

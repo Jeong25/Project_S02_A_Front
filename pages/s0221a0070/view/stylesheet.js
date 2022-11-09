@@ -55,66 +55,74 @@ export const styleSheet = (windowHeight, windowWidth) => {
     "layer1": {
       'marginTop': 15,
       "width": "90%",
+      'height' : 40,
+      'borderRadius' : 10,
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'space-between',
       'marginLeft' : 'auto',
       'marginRight' : 'auto',
+      'backgroundColor' : '#e9e9e9'
     },
 
-    "searchInput": {
-      "width": 120,
-      "height": 40,
-      "borderWidth": 2,
-      "borderColor": "#707070",
-      "borderRadius": 50,
-      "textAlign": "center",
-      "fontFamily": " Apple SD Gothic Neo",
-      "marginRight": 10,
-      "color": "#ababab",
-      "fontSize": 12,
-      "backgroundColor": "transparent",
-      'lineHeight': 40,
-    },
+  
 
     "searchBtn": {
-      "width": 37,
-      "height": 37,
-      "borderRadius": 50,
-      "backgroundColor": "#f14a24",
+      "width": 40,
+      "height": 40,
+      'alignItems' : 'center',
+      'justifyContent' : 'center'
 
     },
 
     "searchIcon": {
       "width": 25,
       "height": 25,
-      "marginTop": 5,
-      "marginLeft": "auto",
-      "marginRight": "auto",
     },
 
-    "searchDate": {
-      "width": '85%',
-      "height": 40,
-      "borderWidth": 2,
-      "borderColor": "#707070",
-      "borderRadius": 50,
-      "color": "#707070",
-      "textAlign": "center",
-      "lineHeight": 38,
+    "selectWrap": {
+      "width": '25%',
+      "textAlign": "right",
       "flexDirection": "row",
-      "justifyContent": "space-evenly",
+      "justifyContent": "center",
+      "alignItems": "center",
+      'borderRightColor' : 'white',
+      'borderRightWidth' : 2,
+      
+    },
+    'selectIOS' : {
+      'backgroundColor' : 'red',
+      'marginTop' :100,
+
+    },
+   
+    "searchDate": {
+      "width": '60%',
+      "height": 40,
+      // "borderWidth": 2,
+      // "borderColor": "#707070",
+      'backgroundColor' : '#e9e9e9',
+      "borderRadius": 10,
+      "textAlign": "center",
+      "lineHeight": 40,
+      "flexDirection": "row",
+      "justifyContent": "space-around",
       "alignItems": "center",
     },
 
     "inputDate": {
       "height": 40,
-      "color": "#ababab",
+      "color": "#333",
       "fontSize": 16,
+      'fontFamily': 'Apple SD Gothic Neo',
+      "fontWeight": "700",
       "textAlign": "center",
       "backgroundColor": "transparent",
       "alignItems": "center",
-      "lineHeight": 40
+      "lineHeight": 40,
+     },
+    'wave':{
+      'marginHorizontal' : -10,
     },
 
     "cellWrap": {
@@ -129,6 +137,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'marginLeft': 'auto',
       'marginRight': 'auto',
       'marginTop': 15,
+      'marginBottom': 5,
     },
     'cellDivider': {
       'width': '90%',

@@ -204,10 +204,11 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
         'centerBtnWrap': {
             'width' : '90%',
-            'height' : 280,
             'marginLeft' : 'auto',
             'marginRight' : 'auto',
             'marginTop': '5%',
+            'flexDirection' : 'row',
+            'justifyContent' : 'space-between'
             
         },
         'btnImg': {

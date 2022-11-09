@@ -1,11 +1,13 @@
 import React, { Component, Fragment, useEffect, useMemo, useState } from 'react';
-import { Text, View, SafeAreaView, TextInput, ScrollView, Alert } from 'react-native';
+import { Text, View, SafeAreaView, TextInput, ScrollView, Alert} from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import { retrieveCostReq } from '../store/store';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import RNPickerSelect from 'react-native-picker-select';
+
 import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
 import { useIsFocused } from '@react-navigation/native';
@@ -106,7 +108,7 @@ const CostList = (props) => {
                   <TouchableOpacity onPress={() => {
                     {
                       writeAuth === '\"Y\"' ? Alert.alert('알림', '권한이 없는 사용자입니다.') :
-                      props.navigation.navigate('Cost', { refresh: callList })
+                        props.navigation.navigate('Cost', { refresh: callList })
                     }
                   }}>
                     <ReactImage source={require('./assets/registIcon.png')} style={styles.registIcon} />
@@ -116,6 +118,22 @@ const CostList = (props) => {
 
           </View>
           <View style={styles.layer1}>
+            <View style={styles.selectWrap}>
+              <RNPickerSelect
+                useNativeAndroidPickerStyle={false}               
+                placeholder={{
+                  label: '상태선택',
+                }}
+             
+                items={[
+                  { label: '비용요청' },
+                  { label: '결제반려' },
+                  { label: '결제대기' }
+
+                ]}
+
+              />
+            </View>
             <View style={styles.searchDate}>
               <Text style={styles.inputDate}
                 type="date"

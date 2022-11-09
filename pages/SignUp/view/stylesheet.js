@@ -113,6 +113,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
 
         "userInfo": {
             "width": "100%",
+            'height' : 40,
             "fontFamily": "Apple SD Gothic Neo",
             "fontSize": 18,
             "fontWeight": '700',
@@ -137,7 +138,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
         'signInBtnText': {
             'color': 'white',
             'fontSize': 24,
-            'fontWeight': Platform.OS === 'ios' ? 700 : 'bold',
+            'fontWeight': Platform.OS === 'ios' ? '700' : 'bold',
             'fontFamily': "Apple SD Gothic Neo",
             'textAlign': 'center',
             'lineHeight': 50,
