@@ -46,7 +46,6 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'borderTopRightRadius': 30,
             'marginTop': Platform.OS === 'ios' ? 35 : 20 ,
             'elevation': 30,
-            
         },
 
         "contentsInner": {
@@ -84,6 +83,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             "paddingTop": 0,
             "paddingBottom": 5,
             'marginTop': '6%',
+
         },
         "phoneInputWrap": {
             'flexDirection': 'row',
@@ -139,6 +139,15 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'width': 23,
             'height': 3,
             'backgroundColor': '#a9a9a9',
+        },
+        "searchCode": {
+            'marginTop' : 10,
+        },
+        
+        "searchCodeText": {
+            'fontFamily': 'Apple SD Gothic Neo',
+            'color' : '#f15a24',
+            'textAlign' : 'right',
         },
         "infoAggWrap": {
             'marginTop': 20,
@@ -209,7 +218,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'marginLeft': 'auto',
             'marginRight': 'auto',
             'marginTop': '10%',
-            'marginBottom' : '25%',
+            'marginBottom' : '40%',
         },
 
         "loginBtn": {

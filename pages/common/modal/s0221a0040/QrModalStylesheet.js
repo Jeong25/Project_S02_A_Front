@@ -11,7 +11,6 @@ export const QrModalStyleSheet = (windowHeight = Dimensions.get('window').height
       'backgroundColor': 'rgba(0,0,0,0.7)',
       "position": 'absolute',
       "zIndex": 9,
-
     },
     "box": {
       "width": '90%',

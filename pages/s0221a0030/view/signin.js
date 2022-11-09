@@ -223,16 +223,21 @@ const Signin = (props) => {
                   ref={ref_input[3]}
                 />
               </View>
-              <TextInput
-                style={styles.inputCode}
-                placeholder={'코드번호'}
-                placeholderTextColor="#rgba(0,0,0,0.2)"
-                ref={ref_input[4]}
-                onChange={(e) => setEventCode(e.nativeEvent.text)}
-                autoCapitalize={'characters'}
-              >
-                {eventCode}
-              </TextInput>
+                <TextInput
+                  style={styles.inputCode}
+                  placeholder={'코드번호'}
+                  placeholderTextColor="#rgba(0,0,0,0.2)"
+                  ref={ref_input[4]}
+                  onChange={(e) => setEventCode(e.nativeEvent.text)}
+                  autoCapitalize={'characters'}
+                >
+                  {eventCode}
+                </TextInput>
+          
+                <TouchableOpacity style={styles.searchCode} onPress={() => props.navigation.navigate('SearchCode')}>
+                  <Text style={styles.searchCodeText}>부서코드를 잊어버렸다면?</Text>
+                </TouchableOpacity>
+
               <TouchableOpacity onPress={() => setPrivacyAgree(!privacyAgree)}>
                 <View style={styles.infoAggWrap}>
                   <View style={privacyAgree ? styles.checkBox : styles.unCheckBox}>
@@ -257,11 +262,11 @@ const Signin = (props) => {
                 {/* <TouchableOpacity style={styles.signInBtn} onPress={() => props.navigation.navigate('Signup')}>
                   <Text style={styles.signInText}>단체등록</Text>
                 </TouchableOpacity> */}
+              </View>
             </View>
           </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
     </KeyboardAwareScrollView >
 
   );

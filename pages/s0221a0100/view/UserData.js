@@ -37,7 +37,7 @@ const UserData = (props) => {
         await AsyncStorage.setItem('defaultEventId', '')
         await AsyncStorage.setItem('useRegFlag', '')
         props.navigation.reset({ routes: [{ name: 'Signin' }] })
-      }
+    }
 
     useEffect(() => {
         const getData = async () => {
@@ -85,13 +85,13 @@ const UserData = (props) => {
                         </View>
 
                     </View>
-                        <View style={styles.btnWrap}>
-                           
-                            <TouchableOpacity style={styles.delAccountBtn} onPress={() => deletMem()}>
-                                <Text style={styles.delBtnText}>회원탈퇴</Text>
-                            </TouchableOpacity>
+                    <View style={styles.btnWrap}>
 
-                        </View>
+                        <TouchableOpacity style={styles.delAccountBtn} onPress={() => deletMem()}>
+                            <Text style={styles.delBtnText}>회원탈퇴</Text>
+                        </TouchableOpacity>
+
+                    </View>
                 </View>
             </SafeAreaView>
             <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
