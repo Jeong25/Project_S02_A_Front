@@ -100,26 +100,8 @@ const Qrscan = (props) => {
       onBarCodeRead={(e) => onBarCodeRead(e)}
     > */}
       <SafeAreaView style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }} />
-      <View style={styles.topBtnWrap}>
-        <TouchableOpacity style={styles.closeBtn} onPress={() => {
-          props.navigation.goBack()
-        }}>
-          <ReactImage source={require('./assets/closeIcon.png')} style={styles.closeIcon} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.closeBtn} onPress={() => {
-          setCameraFront(!cameraFront)
-        }}>
-          <ReactImage source={require('./assets/change.png')} style={styles.closeIcon} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.eventSelectBtn} onPress={() => {
-          props.navigation.navigate('EventList', { getEventInfo })
-        }}>
-          <ReactImage source={require('./assets/magnifier.png')} style={styles.searchIcon} />
-          <Text style={styles.eventSelect}>행사선택</Text>
-        </TouchableOpacity>
-      </View>
       <Camera
-        style={{ width: CAM_VIEW_WIDTH, height: CAM_VIEW_HEIGHT * 0.5, }}
+        style={{ width: CAM_VIEW_WIDTH, height: CAM_VIEW_HEIGHT, }}
         ref={camera}
         cameraType={cameraFront ? CameraType.Front : CameraType.Back}
         // Barcode Scanner Props
@@ -132,6 +114,24 @@ const Qrscan = (props) => {
       />
       <View style={styles.wrap}>
         <View style={styles.inner}>
+          <View style={styles.topBtnWrap}>
+            <TouchableOpacity style={styles.closeBtn} onPress={() => {
+              props.navigation.goBack()
+            }}>
+              <ReactImage source={require('./assets/closeIcon.png')} style={styles.closeIcon} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.closeBtn} onPress={() => {
+              setCameraFront(!cameraFront)
+            }}>
+              <ReactImage source={require('./assets/change.png')} style={styles.closeIcon} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.eventSelectBtn} onPress={() => {
+              props.navigation.navigate('EventList', { getEventInfo })
+            }}>
+              <ReactImage source={require('./assets/magnifier.png')} style={styles.searchIcon} />
+              <Text style={styles.eventSelect}>행사선택</Text>
+            </TouchableOpacity>
+          </View>
           {/* <View style={styles.camArea} /> */}
           <View style={styles.textGroup}>
             <Text style={styles.compName}>{qrInfo?.namePathPriortiy}</Text>
