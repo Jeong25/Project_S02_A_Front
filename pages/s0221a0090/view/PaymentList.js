@@ -97,6 +97,7 @@ const PaymentList = (props) => {
           </View>
 
           <View style={styles.layer1}>
+            
             <View style={styles.searchDate}>
               <Text style={styles.inputDate}
                 type="date"
@@ -110,6 +111,7 @@ const PaymentList = (props) => {
                 editable={false}
                 onPress={() => openDateModal('to')}>{convertDateToVal(dateState.confirmToDate) || `날짜선택`}</Text>
             </View>
+
             <View style={styles.searchBtn}>
               <TouchableOpacity onPress={() => {
                 callList()
