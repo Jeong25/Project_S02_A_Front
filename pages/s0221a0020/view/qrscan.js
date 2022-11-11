@@ -47,7 +47,6 @@ const Qrscan = (props) => {
           console.log(memId, mbId, orgId, eventId)
           // const res = await qrScanReq(memId, mbId, orgId, eventId)
           setScaned(true)
-          props.navigation.goBack()
         }
       },
     ]);
@@ -149,8 +148,8 @@ const Qrscan = (props) => {
             <Text style={styles.eventDate}>2022-01-01 ~ 2022-01-01</Text>
           </View> */}
           <View style={styles.textGroup}>
-            <Text style={styles.compName}>{qrInfo?.namePathPriortiy}</Text>
-            <Text style={styles.eventName}>{qrInfo?.eventNm}</Text>
+            <Text style={styles.compName}>{qrInfo?.namePathPriortiy || ''}</Text>
+            <Text style={styles.eventName}>{qrInfo?.eventNm || ''}</Text>
             <Text style={styles.eventDate}>{dateData || ''}</Text>
           </View>
       </View>
