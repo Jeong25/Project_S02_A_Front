@@ -35,44 +35,44 @@ const Qrscan = (props) => {
     setDateData(`${val1[0]} ~ ${val2[0]}`)
   }
 
-  const onBarCodeRead = (event) => {
-    if (!scaned) return;
-    setScaned(false);
-    console.log(event)
-    Alert.alert("QR Code", event, [
-      {
-        text: "OK", onPress: async () => {
-          const memId = event.split('/')[0]
-          const mbId = event.split('/')[1]
-          console.log(memId, mbId, orgId, eventId)
-          // const res = await qrScanReq(memId, mbId, orgId, eventId)
-          setScaned(true)
-        }
-      },
-    ]);
-  };
-  // const onBarCodeRead = async (e) => {
-  //   if (controlCamera) {
-  //     return
-  //   }
-  //   camera.current.pausePreview()
-  //   setControlCamera(true)
-
-  //   try {
-  //     const qrData = JSON.parse(e.data)
-  //     console.log(JSON.stringify(qrData, null, 4))
-
-  //     const response = await qrScanReq(...qrData, orgId, eventId);
-  //     console.log(JSON.stringify(response, null, 4))
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-
-  //   setTimeout(() => {
-  //     setControlCamera(false)
-  //     camera.current.resumePreview()
-  //   }, 1500)
+  // const onBarCodeRead = (event) => {
+  //   if (!scaned) return;
+  //   setScaned(false);
+  //   console.log(event)
+  //   Alert.alert("QR Code", event, [
+  //     {
+  //       text: "OK", onPress: async () => {
+  //         const memId = event.split('/')[0]
+  //         const mbId = event.split('/')[1]
+  //         console.log(memId, mbId, orgId, eventId)
+  //         // const res = await qrScanReq(memId, mbId, orgId, eventId)
+  //         setScaned(true)
+  //       }
+  //     },
+  //   ]);
   // }
+  const onBarCodeRead = async (e) => {
+    if (controlCamera) {
+      return
+    }
+    camera.current.pausePreview()
+    setControlCamera(true)
+
+    try {
+      const qrData = JSON.parse(e.data)
+      console.log(JSON.stringify(qrData, null, 4))
+
+      const response = await qrScanReq(...qrData, orgId, eventId);
+      console.log(JSON.stringify(response, null, 4))
+    } catch (error) {
+      console.log(error)
+    }
+
+    setTimeout(() => {
+      setControlCamera(false)
+      camera.current.resumePreview()
+    }, 1500)
+  }
 
   const getEventInfo = async (params) => {
     setEventId(params.eventId)
@@ -89,7 +89,7 @@ const Qrscan = (props) => {
 
   return (
     <>
-      {/* <RNCamera
+      <RNCamera
       ref={camera}
       style={{ width: CAM_VIEW_WIDTH, height: CAM_VIEW_HEIGHT, }}
       type={cameraFront ? RNCamera.Constants.Type.front : RNCamera.Constants.Type.back}
@@ -106,7 +106,7 @@ const Qrscan = (props) => {
         height: 0.85,
       }}
       onBarCodeRead={(e) => onBarCodeRead(e)}
-    > */}
+    >
       <SafeAreaView />
 
       <View style={styles.wrap}>
@@ -128,7 +128,7 @@ const Qrscan = (props) => {
               <Text style={styles.eventSelect}>행사선택</Text>
             </TouchableOpacity>
           </View>
-          <Camera
+          {/* <Camera
             style={styles.camera}
             ref={camera}
             cameraType={cameraFront ? CameraType.Front : CameraType.Back}
@@ -139,7 +139,7 @@ const Qrscan = (props) => {
             frameColor="rgba(0, 0, 0, 0)"
             surfaceColor="rgba(0, 0, 0, 0)"
             onReadCode={(event) => onBarCodeRead(event)}
-          />
+          /> */}
 
           <View style={styles.textGroup}>
             <Text style={styles.compName}>{qrInfo?.namePathPriortiy || ''}</Text>
@@ -147,7 +147,7 @@ const Qrscan = (props) => {
             <Text style={styles.eventDate}>{dateData || ''}</Text>
           </View>
       </View>
-      {/* </RNCamera > */}
+      </RNCamera >
     </>
   );
 }
