@@ -116,19 +116,7 @@ const SignUp = (props) => {
                     ></TextInput>
                   </View>
                 </View>
-                <View style={styles.infoWrap}>
-                  <Text style={styles.label}>담당자 이름</Text>
-                  <TextInput style={styles.userInfo}
-                    placeholder={"담당자"}
-                    placeholderTextColor='rgba(0,0,0,0.2)'
-                    onChange={(e) => setInputData({ ...inputData, memberName: e.nativeEvent.text })}
-                    onFocus={() => {
-                      setheightMagnifi(1.5)
-                      setIsFoucs(true)
-                    }}
-                    onBlur={() => { setheightMagnifi(1.2) }}
-                  ></TextInput>
-                </View>
+            
               </View>
               <View style={styles.infoWrap}>
                 <Text style={styles.label}>담당자 이름</Text>
