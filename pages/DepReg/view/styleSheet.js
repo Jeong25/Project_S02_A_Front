@@ -73,7 +73,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'paddingLeft': 5,
       'paddingVertical': 5,
       'position': 'relative',
-      'backgroundColor' : 'red',
     },
     'level2Wrap': {
       'width': '96%',
@@ -81,6 +80,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'paddingLeft': 10,
       'borderLeftColor' : '#888',
       'borderLeftWidth' : 2,
+      
 
     },
     'level2': {

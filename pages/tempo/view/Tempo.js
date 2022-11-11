@@ -18,13 +18,13 @@ const Tempo = (props) => {
           <View style={styles.topMenu}>
             <View style={styles.backBtn}>
               <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+                <ReactImage source={require('../assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>부서등록</Text>
             <View style={styles.regBtnWrap}>
               <TouchableOpacity>
-                <ReactImage source={require('./assets/registIcon.png')} style={styles.registIcon} />
+                <ReactImage source={require('../assets/registIcon.png')} style={styles.registIcon} />
               </TouchableOpacity>
             </View>
 
@@ -38,6 +38,35 @@ const Tempo = (props) => {
             keyboardShouldPersistTaps='always'
             nestedScrollEnabled={true}
           >
+            <Text>
+              부서명
+            </Text>
+            <Text>
+              부서코드 수정불가?
+            </Text>
+            <Text>
+              책임자
+            </Text>
+            <Text>
+              예산금액
+            </Text>
+            <Text>
+              행사장소
+            </Text>
+            <Text>
+              2022.11.11
+            </Text>
+            <Text>
+              2022.11.11
+            </Text>
+            <Text>
+              결제여부 체크 박스
+              공개여부
+              qr스캔 기본 행사 여부
+            </Text>
+            <Text>
+              비고
+            </Text>
 
           </ScrollView>
         </View>

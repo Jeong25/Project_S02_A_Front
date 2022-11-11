@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, Fragment} from 'react';
+import React, { useEffect, useRef, useState, Fragment } from 'react';
 import { Dimensions, Keyboard, Alert } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Text, View, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
@@ -46,7 +46,7 @@ const SignUp = (props) => {
               delete inputData.pwdCheck
               await regOrgReq(inputData)
               props.navigation.navigate('Signin')
-            } catch(e) {
+            } catch (e) {
               Alert.alert('알림', '오류가 발생하여 처리하지 못했습니다.')
             }
           } else {
@@ -99,7 +99,6 @@ const SignUp = (props) => {
 
               <View style={styles.form}>
                 <View style={styles.layer}>
-
                   <View style={styles.inputWrap}>
                     <Text style={styles.label}>단체명</Text>
                     <TextInput style={styles.userInfo}
@@ -260,13 +259,12 @@ const SignUp = (props) => {
                   onBlur={() => { setheightMagnifi(1.2) }}
                 ></TextInput>
               </View>
-
             </View>
             <View style={styles.btnWrap}>
 
-            <TouchableOpacity style={styles.signInBtn} onPress={() => SignUpReq()}>
-              <Text style={styles.signInBtnText}>단체등록</Text>
-            </TouchableOpacity>
+              <TouchableOpacity style={styles.signInBtn} onPress={() => SignUpReq()}>
+                <Text style={styles.signInBtnText}>단체등록</Text>
+              </TouchableOpacity>
 
             </View>
           </KeyboardAwareScrollView >
