@@ -46,25 +46,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'marginLeft': 'auto',
             'marginRight': 'auto',
         },
-        'titleWrap': {
-            'marginTop': '5%',
 
-        },
-        'subTitleWrap': {
-            'flexDirection': "row",
-            'alignItems': 'center',
-        },
-        'icon': {
-            "width": 25,
-            "height": 25,
-            'marginRight': 5
-        },
-        'welcome': {
-            'color': '#888',
-            'fontSize': 18,
-            'fontWeight': '700',
-
-        },
         'mainTitle': {
             'color': '#333',
             'fontSize': 24,
@@ -94,7 +76,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'width': '29%',
         },
         'infoWrap': {
-            'marginBottom': '5%',
+            'marginBottom': '3%',
         },
 
         "label": {

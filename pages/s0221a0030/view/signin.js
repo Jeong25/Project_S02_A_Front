@@ -258,9 +258,9 @@ const Signin = (props) => {
                 <TouchableOpacity style={styles.loginBtn} onPress={() => doLogin(name, `${inputhpNo.first}-${inputhpNo.middle}-${inputhpNo.last}`, eventCode, privacyAgree)}>
                   <Text style={styles.loginText}>로그인</Text>
                 </TouchableOpacity>
-                {/* <TouchableOpacity style={styles.signInBtn} onPress={() => props.navigation.navigate('Signup')}>
+                <TouchableOpacity style={styles.signInBtn} onPress={() => props.navigation.navigate('Signup')}>
                   <Text style={styles.signInText}>단체등록</Text>
-                </TouchableOpacity> */}
+                </TouchableOpacity>
               </View>
             </View>
           </View>

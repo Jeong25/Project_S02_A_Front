@@ -87,16 +87,6 @@ const SignUp = (props) => {
             nestedScrollEnabled={true}
           >
             <View style={styles.contentsWrap}>
-              <View style={styles.titleWrap}>
-                <View style={styles.subTitleWrap}>
-                  <ReactImage source={require('../assets/wavingHand.png')} style={styles.icon} />
-                  <Text style={styles.welcome}>
-                    환영합니다!
-                  </Text>
-                </View>
-                {/* <Text style={styles.mainTitle}>단체 정보를 등록해주세요.</Text> */}
-              </View>
-
               <View style={styles.form}>
                 <View style={styles.layer}>
                   <View style={styles.inputWrap}>
@@ -215,13 +205,6 @@ const SignUp = (props) => {
                     onBlur={() => { setheightMagnifi(1.2) }}
                   ></TextInput>
                 </View>
-                <View style={styles.infoWrap}>
-                  <Text style={styles.label}>부서명</Text>
-                  <TextInput style={styles.userInfo}
-                    placeholder={"부서명"}
-                    placeholderTextColor='rgba(0,0,0,0.2)'
-                  ></TextInput>
-                </View>
 
               </View>
 
@@ -259,6 +242,13 @@ const SignUp = (props) => {
                   onBlur={() => { setheightMagnifi(1.2) }}
                 ></TextInput>
               </View>
+              <View style={styles.infoWrap}>
+                  <Text style={styles.label}>부서명</Text>
+                  <TextInput style={styles.userInfo}
+                    placeholder={"부서명"}
+                    placeholderTextColor='rgba(0,0,0,0.2)'
+                  ></TextInput>
+                </View>
             </View>
             <View style={styles.btnWrap}>
 

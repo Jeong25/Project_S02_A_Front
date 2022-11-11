@@ -67,7 +67,7 @@ const Tempo = (props) => {
 
                 <View style={styles.layer}>
 
-                  <View style={styles.infoWrap}>
+                  <View style={styles.inputWrap}>
                     <Text style={styles.label}>책임자</Text>
                     <TextInput style={styles.depInfo}
                       placeholder={"책임자"}
@@ -80,7 +80,7 @@ const Tempo = (props) => {
                     ></TextInput>
                   </View>
 
-                  <View style={styles.infoWrap}>
+                  <View style={styles.inputWrap}>
                     <Text style={styles.label}>예산금액</Text>
                     <TextInput style={styles.depInfo}
                       placeholder={"예산금액"}
@@ -104,7 +104,7 @@ const Tempo = (props) => {
 
                 <View style={styles.layer}>
 
-                  <View style={styles.infoWrap}>
+                  <View style={styles.inputWrap}>
                     <Text style={styles.label}>행사일</Text>
                     <TextInput style={styles.depInfo}
                       placeholder={"시작일"}
@@ -116,7 +116,7 @@ const Tempo = (props) => {
                       onBlur={() => { setheightMagnifi(1.2) }}
                     ></TextInput>
                   </View>
-                  <View style={styles.infoWrap}>
+                  <View style={styles.inputWrap}>
                     <Text style={styles.label}></Text>
                     <TextInput style={styles.depInfo}
                       placeholder={"종료일"}
@@ -125,10 +125,6 @@ const Tempo = (props) => {
                   </View>
                 </View>
 
-                <View style={styles.infoWrap}>
-                  <Text style={styles.label}>체크박스</Text>
-                  
-                </View>
                 <View style={styles.infoWrap}>
                   <Text style={styles.label}>비고</Text>
                   <TextInput style={styles.depInfo}
