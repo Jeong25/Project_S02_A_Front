@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useMemo, useState } from 'react';
+import React, { Component, useEffect, useMemo, useState,Fragment } from 'react';
 import { StyleSheet, Text, SafeAreaView, View, TextInput, FlatList, Picker, ScrollView, TouchableOpacity, Keyboard } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import Svg, { Defs, Pattern } from 'react-native-svg';
@@ -57,61 +57,65 @@ const EventList = (props) => {
   }, [])
 
   return (
-    <SafeAreaView style={{ backgroundColor: 'white' }}>
-      <View style={styles.wrap}>
-        <View style={styles.topMenu}>
-          <View style={styles.backBtn}>
-            <TouchableOpacity onPress={() => props.navigation.goBack()}>
-              <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
-            </TouchableOpacity>
+    <Fragment>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#f15a24' }}>
+        <View style={styles.wrap}>
+          <View style={styles.topMenu}>
+            <View style={styles.backBtn}>
+              <TouchableOpacity onPress={() => props.navigation.goBack()}>
+                <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.title}>행사현황</Text>
           </View>
-          <Text style={styles.title}>행사현황</Text>
-        </View>
-        <View style={styles.layer1}>
-          <View style={styles.inputWrap}>
-            <TextInput style={styles.input}
-              placeholder="행사명으로 검색"
-              placeholderTextColor="#888"
-            ></TextInput>
-          </View>
+          <View style={styles.layer1}>
+            <View style={styles.inputWrap}>
+              <TextInput style={styles.input}
+                placeholder="행사명으로 검색"
+                placeholderTextColor="#888"
+              ></TextInput>
+            </View>
 
-          <View style={styles.searchBtn}>
-            <TouchableOpacity>
-              <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
-            </TouchableOpacity>
+            <View style={styles.searchBtn}>
+              <TouchableOpacity>
+                <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        <View style={styles.divider}></View>
-        <View style={styles.cellWrap}>
-          <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
-            {eventInfo.map((v, i) => (
-              <View key={i}>
-                <View>
-                  <TouchableOpacity onPress={() => onClick(v.eventId, v.eventNm)}>
-                    <View style={styles.cell}>
-                      <View style={styles.cellInner}>
-                        <Text style={styles.eventName}>{v.eventPath}</Text>
-                        {/* <Text style={styles.eventName}>{v.eventNm}</Text> */}
-                        <Text style={styles.eventDate}>운영자 / {showDate(v)}</Text>
+          <View style={styles.divider}></View>
+          <View style={styles.cellWrap}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
+              {eventInfo.map((v, i) => (
+                <View key={i}>
+                  <View>
+                    <TouchableOpacity onPress={() => onClick(v.eventId, v.eventNm)}>
+                      <View style={styles.cell}>
+                        <View style={styles.cellInner}>
+                          <Text style={styles.eventName}>{v.eventPath}</Text>
+                          {/* <Text style={styles.eventName}>{v.eventNm}</Text> */}
+                          <Text style={styles.eventDate}>운영자 / {showDate(v)}</Text>
+                        </View>
                       </View>
-                    </View>
-                  </TouchableOpacity>
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.cellDivider}></View>
                 </View>
-                <View style={styles.cellDivider}></View>
-              </View>
-            ))}
-          </ScrollView>
-        </View>
-        <EvtDetailModal
-          openModal={evtDetailModal}
-          eventId={eventIdMd}
-          onClose={() => setEvtDetailModal(false)}
-        />
-      </View >
+              ))}
+            </ScrollView>
+          </View>
+          <EvtDetailModal
+            openModal={evtDetailModal}
+            eventId={eventIdMd}
+            onClose={() => setEvtDetailModal(false)}
+          />
+        </View >
+
+      </SafeAreaView>
       <Footer
         navigation={props.navigation}
       />
-    </SafeAreaView>
+      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }}/>
+    </Fragment>
   )
 }
 

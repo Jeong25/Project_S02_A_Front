@@ -63,13 +63,15 @@ export const styleSheet = (windowHeight, windowWidth) => {
     "layer1": {
       'marginTop': 15,
       "width": "90%",
+      'height' : 40,
+      'borderRadius' : 10,
       'flexDirection': 'row',
       'alignItems': 'center',
-      'justifyContent': 'space-between',
+      'justifyContent': 'space-around',
       'marginLeft' : 'auto',
       'marginRight' : 'auto',
+      'backgroundColor' : '#e9e9e9'
     },
-
 
     "searchInput": {
       "width": 120,
@@ -81,34 +83,27 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontFamily": " Apple SD Gothic Neo",
       "marginRight": 10,
       "color": "#ababab",
-      "fontSize": 12,
+      "fontSize": 14,
       "backgroundColor": "transparent",
-      'lineHeight': 40,
+      'lineHeight': 40
     },
 
     "searchBtn": {
-      "width": 37,
-      "height": 37,
-      "borderRadius": 50,
-      "backgroundColor": "#f14a24",
+      "width": 40,
+      "height": 40,
+      'alignItems' : 'center',
+      'justifyContent' : 'center'
 
     },
 
     "searchIcon": {
       "width": 25,
       "height": 25,
-      "marginTop": 5,
-      "marginLeft": "auto",
-      "marginRight": "auto",
     },
-
+      
     "inputWrap": {
-      "width": '85%',
+      "width": '90%',
       "height": 40,
-      "borderWidth": 2,
-      "borderColor": "#707070",
-      "borderRadius": 50,
-      'justifyContent' : 'center',
 
     },
 
@@ -116,7 +111,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'height' : 40,
       "color": "#888",
       "fontSize": 16,
-      "textAlign": "center",
+      "textAlign": "left",
+      'paddingLeft' : 20,
     },
 
     "cellWrap": {

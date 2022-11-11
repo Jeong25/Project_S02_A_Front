@@ -65,16 +65,19 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontSize": 33,
     },
 
+    
     "layer1": {
       'marginTop': 15,
       "width": "90%",
+      'height' : 40,
+      'borderRadius' : 10,
       'flexDirection': 'row',
       'alignItems': 'center',
-      'justifyContent': 'space-between',
+      'justifyContent': 'space-around',
       'marginLeft' : 'auto',
       'marginRight' : 'auto',
+      'backgroundColor' : '#e9e9e9'
     },
-
 
     "searchInput": {
       "width": 120,
@@ -92,42 +95,45 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     "searchBtn": {
-      "width": 37,
-      "height": 37,
-      "borderRadius": 50,
-      "backgroundColor": "#f14a24",
+      "width": 40,
+      "height": 40,
+      'alignItems' : 'center',
+      'justifyContent' : 'center'
 
     },
 
     "searchIcon": {
       "width": 25,
       "height": 25,
-      "marginTop": 5,
-      "marginLeft": "auto",
-      "marginRight": "auto",
     },
-
+      
     "searchDate": {
-      "width": '85%',
+      "width": '80%',
       "height": 40,
-      "borderWidth": 2,
-      "borderColor": "#707070",
-      "borderRadius": 50,
-      "color": "#707070",
+      // "borderWidth": 2,
+      // "borderColor": "#707070",
+      'backgroundColor' : '#e9e9e9',
+      "borderRadius": 10,
       "textAlign": "center",
+      "lineHeight": 40,
       "flexDirection": "row",
-      "justifyContent": "space-evenly",
+      "justifyContent": "space-around",
       "alignItems": "center",
     },
 
     "inputDate": {
       "height": 40,
-      "color": "#ababab",
+      "color": "#333",
       "fontSize": 16,
+      'fontFamily': 'Apple SD Gothic Neo',
+      "fontWeight": "700",
       "textAlign": "center",
       "backgroundColor": "transparent",
       "alignItems": "center",
-      "lineHeight": 40
+      "lineHeight": 40,
+     },
+    'wave':{
+      'marginHorizontal' : -10,
     },
 
 
