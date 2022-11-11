@@ -27,4 +27,4 @@ const checkOrg = async (orgName, ceoName) => {
     }
 }
 
-export { regOrg, checkEmail, checkOrg };
+export { regOrg, checkEmail, checkOrg }
