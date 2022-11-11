@@ -1,5 +1,5 @@
 import React, { Component, Fragment, useEffect, useMemo, useState } from 'react';
-import { Text, View, SafeAreaView, TextInput, ScrollView, Alert} from 'react-native';
+import { Text, View, SafeAreaView, TextInput, ScrollView, Alert } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import { retrieveCostReq } from '../store/store';
@@ -7,7 +7,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
-
 import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
 import { useIsFocused } from '@react-navigation/native';
@@ -17,6 +16,7 @@ const CostList = (props) => {
   const isFocused = useIsFocused();
   const [listData, setListData] = useState([])
   const [writeAuth, setWriteAuth] = useState('N')
+  const [useProStatus, setUseProStatus] = useState('')
   const [dateState, setDateState] = useState({
     viewModal: false,
     fromToFlag: '',
@@ -25,29 +25,43 @@ const CostList = (props) => {
   })
 
   useEffect(() => {
-    callList()
-  }, [isFocused, writeAuth])
+    const usePS = props.route.params.usePS
+    if (usePS !== '') {
+      startList(usePS)
+    } else {
+      callList()
+    }
+  }, [isFocused])
+
+  const startList = async (usePS) => {
+    const useRegFlag = await AsyncStorage.getItem('useRegFlag')
+    const memberId = await AsyncStorage.getItem('memberId')
+    const eventCode = await AsyncStorage.getItem('eventCode')
+    const confirmFromVal = ''
+    const confirmToVal = ''
+    setWriteAuth(useRegFlag)
+    setUseProStatus(usePS)
+    const response = await retrieveCostReq(memberId, confirmFromVal, confirmToVal, eventCode, usePS)
+    setListData(response?.data?.data || [])
+  }
 
   const callList = async () => {
+    const useRegFlag = await AsyncStorage.getItem('useRegFlag')
+    const memberId = await AsyncStorage.getItem('memberId')
+    const eventCode = await AsyncStorage.getItem('eventCode')
     const { confirmFromDate, confirmToDate } = dateState
     const confirmFromVal = convertDateToVal(confirmFromDate)
     const confirmToVal = convertDateToVal(confirmToDate)
-    const memberId = await AsyncStorage.getItem('memberId')
-    const eventCode = await AsyncStorage.getItem('eventCode')
-    const useRegFlag = await AsyncStorage.getItem('useRegFlag')
-    const response = await retrieveCostReq(memberId, confirmFromVal, confirmToVal, eventCode)
-    setListData(response?.data?.data || [])
     setWriteAuth(useRegFlag)
-
-    console.log('writeAuthLog:' + writeAuth)
+    const response = await retrieveCostReq(memberId, confirmFromVal, confirmToVal, eventCode, useProStatus)
+    setListData(response?.data?.data || [])
   }
 
   const convertDateToVal = (val) => {
-    console.log(val)
-    const year = val.getFullYear()
-    const month = val.getMonth() + 1
-    const date = val.getDate()
-    return `${year}-${month}-${date}`
+      const year = val.getFullYear()
+      const month = val.getMonth() + 1
+      const date = val.getDate()
+      return `${year}-${month}-${date}`
   }
 
   const confirmDateChange = (val, flag) => {
@@ -120,18 +134,21 @@ const CostList = (props) => {
           <View style={styles.layer1}>
             <View style={styles.selectWrap}>
               <RNPickerSelect
-                useNativeAndroidPickerStyle={false}               
+                useNativeAndroidPickerStyle={false}
+                fixAndroidTouchableBug={true}
                 placeholder={{
-                  label: '상태선택',
+                  label: '상태선택', value: ''
                 }}
-             
+                onValueChange={value => setUseProStatus(value)}
                 items={[
-                  { label: '비용요청' },
-                  { label: '결제반려' },
-                  { label: '결제대기' }
-
+                  { label: '비용요청', value: 'A' },
+                  { label: '결제진행', value: 'B' },
+                  { label: '결제완료', value: 'C' },
+                  { label: '지급완료', value: 'D' },
+                  { label: '결제반려', value: 'E' },
+                  { label: '요청취소', value: 'F' },
                 ]}
-
+                value={useProStatus}
               />
             </View>
             <View style={styles.searchDate}>

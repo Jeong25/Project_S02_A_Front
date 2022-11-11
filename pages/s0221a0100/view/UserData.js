@@ -18,7 +18,6 @@ const UserData = (props) => {
     const deletMem = async () => {
         const memId = await AsyncStorage.getItem('memberId')
         const res = await deletMemReq(Number(memId))
-        console.log(JSON.stringify(res, null, 4))
         Alert.alert('알림', '회원 탈퇴가 완료되었습니다.')
         logOut();
     }
@@ -45,7 +44,6 @@ const UserData = (props) => {
             const eventNm = await AsyncStorage.getItem('eventNm')
             const memberName = await AsyncStorage.getItem('memberName')
             const hpNo = await AsyncStorage.getItem('hpNo')
-            console.log(orgName)
             setOrgName(orgName)
             setEventNm(eventNm)
             setMemberName(memberName)

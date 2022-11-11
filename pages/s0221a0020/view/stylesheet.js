@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 export const styleSheet = (windowHeight, windowWidth) => {
-    console.log(windowHeight, windowWidth)
     const wp = windowWidth > 540 ? 1.5 : windowWidth / 360
     const hp = windowHeight > 960 ? 1.5 : windowHeight / 640
 

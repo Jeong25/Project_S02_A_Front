@@ -52,7 +52,6 @@ const Payment = (props) => {
       payResultFlag: flag
     }
 
-    console.log(body)
     const response = await processingCostReq(body)
 
     if (response?.data?.status === 200) {

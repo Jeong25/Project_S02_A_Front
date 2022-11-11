@@ -87,7 +87,6 @@ const QrCode = (props) => {
   const getRecentEvent = async (orgId, eventCode) => {
     const res = await recentEventReq(orgId, eventCode)
     setRecentEvent(res.data.data)
-    console.log(JSON.stringify(res, null, 4))
   }
 
   const openQrModal = () => {
@@ -138,7 +137,7 @@ const QrCode = (props) => {
             <View style={styles.upperProcessBox}>
               <View style={styles.leftBox}>
                 <View style={styles.upperProcessInner}>
-                  <TouchableOpacity style={styles.upperProcess} onPress={() => props.navigation.navigate('CostList')}>
+                  <TouchableOpacity style={styles.upperProcess} onPress={() => props.navigation.navigate('CostList', { usePS: 'A' })}>
                     <Text style={styles.processText}>
                       비용요청
                     </Text>
@@ -147,7 +146,7 @@ const QrCode = (props) => {
                     </Text>
                   </TouchableOpacity>
                   <View style={styles.divider}></View>
-                  <TouchableOpacity style={styles.upperProcess} onPress={() => props.navigation.navigate('CostList')}>
+                  <TouchableOpacity style={styles.upperProcess} onPress={() => props.navigation.navigate('CostList', { usePS: 'E' })}>
                     <Text style={styles.processText}>
                       결제반려
                     </Text>
@@ -160,7 +159,7 @@ const QrCode = (props) => {
               <View style={styles.rightBox}>
                 <View style={styles.upperProcessInner}>
 
-                  <TouchableOpacity style={styles.rightUpperProcess} onPress={() => props.navigation.navigate('PaymentList')}>
+                  <TouchableOpacity style={styles.rightUpperProcess} onPress={() => props.navigation.navigate('PaymentList', { delDate: true })}>
                     <Text style={styles.processText}>
                       결제대기
                     </Text>
@@ -177,7 +176,7 @@ const QrCode = (props) => {
 
             <View style={styles.underProcessBox}>
               <View style={styles.processInner}>
-                <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList')}>
+                <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList', { usePS: 'B' })}>
                   <Text style={styles.processText}>
                     결제진행
                   </Text>
@@ -187,7 +186,7 @@ const QrCode = (props) => {
                 </TouchableOpacity>
                 <View style={styles.divider}></View>
 
-                <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList')}>
+                <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList', { usePS: 'C' })}>
                   <Text style={styles.processText}>
                     결제완료
                   </Text>
@@ -196,7 +195,7 @@ const QrCode = (props) => {
                   </Text>
                 </TouchableOpacity>
                 <View style={styles.divider}></View>
-                <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList')}>
+                <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList', { usePS: 'D' })}>
                   <Text style={styles.processText}>
                     비용지급
                   </Text>
@@ -205,7 +204,7 @@ const QrCode = (props) => {
                   </Text>
                 </TouchableOpacity>
                 <View style={styles.divider}></View>
-                <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList')}>
+                <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList', { usePS: 'F' })}>
                   <Text style={styles.processText}>
                     요청취소
                   </Text>
@@ -219,7 +218,7 @@ const QrCode = (props) => {
           </View>
 
           <View style={styles.centerBtnWrap}>
-            <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('CostList')}>
+            <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('CostList', { usePS: '' })}>
               <View style={styles.btnImg}>
                 <ReactImage source={require('./assets/receipt.png')} style={styles.centerIcon} />
               </View>

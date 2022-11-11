@@ -39,7 +39,6 @@ const Signin = (props) => {
         const localName = await AsyncStorage.getItem('memberName')
         const hpNo = await AsyncStorage.getItem('hpNo')
         const localEventCode = await AsyncStorage.getItem('eventCode')
-        console.log(localName, hpNo, localEventCode)
         if (localName && hpNo && localEventCode) {
           doLogin(localName, hpNo, localEventCode, true)
         } else {

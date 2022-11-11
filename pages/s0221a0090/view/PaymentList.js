@@ -22,8 +22,24 @@ const PaymentList = (props) => {
   })
 
   useEffect(() => {
-    callList()
+    console.log(props.route.params?.delDate)
+    const delDate = props.route.params?.delDate
+    if (delDate) {
+      console.log('확인')
+      startList()
+    } else {
+      callList()
+    }
   }, [isFocused])
+
+  const startList = async () => {
+    const confirmFromVal = ''
+    const confirmToVal = ''
+    const memberId = await AsyncStorage.getItem('memberId')
+    const eventCode = await AsyncStorage.getItem('eventCode')
+    const response = await costPayListReq(memberId, confirmFromVal, confirmToVal, eventCode)
+    setListData(response?.data?.data || [])
+  }
 
   const callList = async () => {
     const { confirmFromDate, confirmToDate } = dateState

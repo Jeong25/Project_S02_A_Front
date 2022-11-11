@@ -97,7 +97,6 @@ const Cost = (props) => {
       setSC(1)
       const headers = { 'Content-Type': 'multipart/form-data; boundary=someArbitraryUniqueString', };
       const body = { ...inputData, usedDate: dateState.confirmVal, "eventUserId": memberId, }
-      console.log('Click Reg: ' + JSON.stringify(body, null, 4))
       const response = await registerEventCostReq(body, headers)
       if (response.status === 200) {
         Alert.alert('알림', '비용 청구 영수증 등록 되었습니다.')

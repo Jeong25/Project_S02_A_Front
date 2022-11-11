@@ -57,7 +57,6 @@ const CostModify = (props) => {
     if (localMemberId) {
       setMemberId(localMemberId)
     }
-    console.log(JSON.stringify(props.route.params.data, null, 4))
     const { data } = props.route.params
     setInputData({ ...data })
     setDateState({ ...dateState, confirmDate: new Date(data.usedDate), confirmVal: data.usedDate })

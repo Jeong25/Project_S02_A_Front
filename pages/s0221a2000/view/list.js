@@ -29,7 +29,6 @@ const EventList = (props) => {
     const val1 = JSON.stringify(v.eventStartDate).split(' ')[0].substring(1)
     const val2 = JSON.stringify(v.eventEndDate).split(' ')[0].substring(1)
     const res = `${val1} ~ ${val2}`
-    console.log('Log확인 ' + res)
     return res
   }
 
@@ -46,7 +45,6 @@ const EventList = (props) => {
   }
 
   useEffect(() => {
-    console.log(props.nonShutDown)
     let isCompMounted = true
     if (isCompMounted) {
       getData()
