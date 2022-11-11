@@ -80,7 +80,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'paddingLeft': 10,
       'borderLeftColor' : '#888',
       'borderLeftWidth' : 2,
-      
 
     },
     'level2': {
