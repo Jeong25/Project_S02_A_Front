@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState, Fragment } from 'react';
-import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard, Alert } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard, Alert, TextInput } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
@@ -22,11 +22,6 @@ const Tempo = (props) => {
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>부서등록</Text>
-            <View style={styles.regBtnWrap}>
-              <TouchableOpacity>
-                <ReactImage source={require('../assets/registIcon.png')} style={styles.registIcon} />
-              </TouchableOpacity>
-            </View>
 
           </View>
           <ScrollView
@@ -38,36 +33,124 @@ const Tempo = (props) => {
             keyboardShouldPersistTaps='always'
             nestedScrollEnabled={true}
           >
-            <Text>
-              부서명
-            </Text>
-            <Text>
-              부서코드 수정불가?
-            </Text>
-            <Text>
-              책임자
-            </Text>
-            <Text>
-              예산금액
-            </Text>
-            <Text>
-              행사장소
-            </Text>
-            <Text>
-              2022.11.11
-            </Text>
-            <Text>
-              2022.11.11
-            </Text>
-            <Text>
-              결제여부 체크 박스
-              공개여부
-              qr스캔 기본 행사 여부
-            </Text>
-            <Text>
-              비고
-            </Text>
 
+
+            <View style={styles.contentsWrap}>
+
+              <View style={styles.form}>
+                <View style={styles.layer}>
+                  <View style={styles.inputWrap}>
+                    <Text style={styles.label}>부서명</Text>
+                    <TextInput style={styles.depInfo}
+                      placeholder={"부서명"}
+                      placeholderTextColor='rgba(0,0,0,0.2)'
+                      onFocus={() => {
+                        setheightMagnifi(1.5)
+                        setIsFoucs(true)
+                      }}
+                      onBlur={() => { setheightMagnifi(1.2) }}
+                    ></TextInput>
+                  </View>
+                  <View style={styles.inputWrap}>
+                    <Text style={styles.label}>부서코드</Text>
+                    <TextInput style={styles.depInfo}
+                      placeholder={"부서코드"}
+                      placeholderTextColor='rgba(0,0,0,0.2)'
+                      onFocus={() => {
+                        setheightMagnifi(1.5)
+                        setIsFoucs(true)
+                      }}
+                      onBlur={() => { setheightMagnifi(1.2) }}
+                    ></TextInput>
+                  </View>
+                </View>
+
+                <View style={styles.layer}>
+
+                  <View style={styles.infoWrap}>
+                    <Text style={styles.label}>책임자</Text>
+                    <TextInput style={styles.depInfo}
+                      placeholder={"책임자"}
+                      placeholderTextColor='rgba(0,0,0,0.2)'
+                      onFocus={() => {
+                        setheightMagnifi(1.5)
+                        setIsFoucs(true)
+                      }}
+                      onBlur={() => { setheightMagnifi(1.2) }}
+                    ></TextInput>
+                  </View>
+
+                  <View style={styles.infoWrap}>
+                    <Text style={styles.label}>예산금액</Text>
+                    <TextInput style={styles.depInfo}
+                      placeholder={"예산금액"}
+                      placeholderTextColor='rgba(0,0,0,0.2)'
+                      onFocus={() => {
+                        setheightMagnifi(1.5)
+                        setIsFoucs(true)
+                      }}
+                      onBlur={() => { setheightMagnifi(1.2) }}
+                    ></TextInput>
+                  </View>
+                </View>
+
+                <View style={styles.infoWrap}>
+                  <Text style={styles.label}>행사장소</Text>
+                  <TextInput style={styles.depInfo}
+                    placeholder={"행사장소"}
+                    placeholderTextColor='rgba(0,0,0,0.2)'
+                  ></TextInput>
+                </View>
+
+                <View style={styles.layer}>
+
+                  <View style={styles.infoWrap}>
+                    <Text style={styles.label}>행사일</Text>
+                    <TextInput style={styles.depInfo}
+                      placeholder={"시작일"}
+                      placeholderTextColor='rgba(0,0,0,0.2)'
+                      onFocus={() => {
+                        setheightMagnifi(1.5)
+                        setIsFoucs(true)
+                      }}
+                      onBlur={() => { setheightMagnifi(1.2) }}
+                    ></TextInput>
+                  </View>
+                  <View style={styles.infoWrap}>
+                    <Text style={styles.label}></Text>
+                    <TextInput style={styles.depInfo}
+                      placeholder={"종료일"}
+                      placeholderTextColor='rgba(0,0,0,0.2)'
+                    ></TextInput>
+                  </View>
+                </View>
+
+                <View style={styles.infoWrap}>
+                  <Text style={styles.label}>체크박스</Text>
+                  
+                </View>
+                <View style={styles.infoWrap}>
+                  <Text style={styles.label}>비고</Text>
+                  <TextInput style={styles.depInfo}
+                    placeholder={"비고"}
+                    placeholderTextColor='rgba(0,0,0,0.2)'
+                    onFocus={() => {
+                      setheightMagnifi(1.5)
+                      setIsFoucs(true)
+                    }}
+                    onBlur={() => { setheightMagnifi(1.2) }}
+                  ></TextInput>
+                </View>
+              </View>
+              <View style={styles.btnWrap}>
+
+                <TouchableOpacity style={styles.signInBtn} onPress={() => SignUpReq()}>
+                  <Text style={styles.signInBtnText}>등록</Text>
+                </TouchableOpacity>
+
+              </View>
+
+            </View>
           </ScrollView>
         </View>
       </SafeAreaView>
@@ -82,7 +165,7 @@ const Tempo = (props) => {
 
 export default Tempo
 
-DepReg.defaultProps = {
+Tempo.defaultProps = {
   windowWidth: Dimensions.get('window').width,
   windowHeight: Dimensions.get('window').height
 }

@@ -38,130 +38,84 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "width": 30,
       "height": 30
     },
-    "regBtnWrap": {
-      'position' : 'absolute',
-      'right': 16,
-      'top': 18,
-      "width": 25,
-      "height": 25,
-    },
-
-    "registIcon": {
-      'width' : '100%',
-      'height' : '100%',
-    },
-
     "title": {
       "color": "white",
       "fontFamily": "Apple SD Gothic Neo",
       "fontWeight": '800',
       "fontSize": 22,
     },
-
-   
     'contentsWrap': {
       'width': '90%',
-      'marginTop': 20,
-      'marginBottom': '30%',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-    },
-    
-    'level1': {
-      'width': '100%',
-      'marginBottom': 5,
-      'paddingLeft': 5,
-      'paddingVertical': 5,
-      'position': 'relative',
-    },
-    'level2Wrap': {
-      'width': '96%',
-      'marginLeft': 'auto',
-      'paddingLeft': 10,
-      'borderLeftColor' : '#888',
-      'borderLeftWidth' : 2,
+  },
 
-    },
-    'level2': {
-      'paddingLeft': 5,
-      'position': 'relative',
-      'paddingVertical': 5,
-    },
-    'level3Wrap': {
-      'width': '96%',
+   
+    'form': {
+      'width': '100%',
+      "marginLeft": 'auto',
+      "marginRight": 'auto',
+      'marginTop': '8%',
+  },
+  'layer':{
+      'width' : '100%',
+      'flexDirection' :'row',
+      'alignItems' : 'center',
+      'justifyContent' : 'space-between',
+      'marginBottom': '5%',
+
+  },
+  
+  'inputWrap': {
+      'width': '45%',
+  },
+  'hpInputWrap': {
+      'width': '29%',
+  },
+  'infoWrap': {
+      'marginBottom': '5%',
+  },
+
+  "label": {
+      "fontFamily": "Apple SD Gothic Neo",
+      "color": "#f15a24",
+      "fontWeight": '700',
+      "fontSize": 14,
+  },
+  
+
+  "depInfo": {
+      "width": "100%",
+      'height' : 40,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontSize": 18,
+      "fontWeight": '700',
+      "color": "#383838",
+      'textAlign': 'center',
+      'borderBottomWidth': 2,
+      'borderBottomColor': '#888',
+  },
+
+  'btnWrap': {
+      'width': '90%',
       'marginLeft': 'auto',
-      'paddingLeft': 10,
-      'borderLeftColor' : '#888',
-      'borderLeftWidth' : 2,
-    },
-    'level3': {
-      'paddingLeft': 5,
-      'position': 'relative',
-      'paddingVertical': 5,
-    },
-    'cellTitle': {
-      'color': "#333",
-      'fontSize': 20,
+      'marginRight': 'auto',
+      'marginTop': '10%',
+      'marginBottom': '10%',
+  },
+
+  'signInBtn': {
+      'backgroundColor': '#f15a24',
+      'borderRadius': 10,
+  },
+  'signInBtnText': {
+      'color': 'white',
+      'fontSize': 24,
       'fontWeight': Platform.OS === 'ios' ? '700' : 'bold',
-    },
-    'numberWrap': {
-      'flexDirection': 'row',
-      'alignItems': 'baseline',
-      'marginTop' :3
-
-    },
-    'memberNumber': {
-      'width': 100,
-      'color': "#888",
-      'fontSize': 16,
-      "fontFamily": "Apple SD Gothic Neo",
-      'marginTop' :3
-
-
-    },
-    'eventDate': {
-      'color': "#888",
-      'fontSize': 16,
-      "fontFamily": "Apple SD Gothic Neo",
-
-    },
-    'memberIcon': {
-      'width': 15,
-      'height': 15,
-    },
-    'downArrowWrap': {
-      'width': 15,
-      'height': 15,
-      'position': 'absolute',
-      'right': 10,
-      'top': 20,
-    },
-    'downArrowIcon': {
-      'width': '100%',
-      'height': '100%',
-    },
-
-    'divider': {
-      "width": '100%',
-      'height': 2,
-      'marginBottom': 3,
-      'backgroundColor': '#e9e9e9',
-
-    },
-
-
-
-    'nextBtn': {
-      'width': 40,
-      'position': 'absolute',
-      'bottom': 100,
-      'right': 30,
-    },
-    'nextBtnText': {
-     
-
-    }
-
+      'fontFamily': "Apple SD Gothic Neo",
+      'textAlign': 'center',
+      'lineHeight': 50,
+  },
 
   });
 }

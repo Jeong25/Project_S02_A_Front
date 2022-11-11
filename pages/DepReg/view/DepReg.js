@@ -7,6 +7,11 @@ import Footer from '../../common/footer/Footer';
 
 
 const DepReg = (props) => {
+  
+  DepReg.defaultProps = {
+    windowWidth: Dimensions.get('window').width,
+    windowHeight: Dimensions.get('window').height
+  }
 
   const { windowHeight, windowWidth } = props
   const styles = useMemo(() => styleSheet(windowHeight, windowWidth), [windowHeight, windowWidth])
@@ -20,13 +25,13 @@ const DepReg = (props) => {
           <View style={styles.topMenu}>
             <View style={styles.backBtn}>
               <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                <ReactImage source={require('../assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+                <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>부서등록</Text>
             <View style={styles.regBtnWrap}>
               <TouchableOpacity onPress={() => props.navigation.navigate('Tempo')}>
-                <ReactImage source={require('../assets/registIcon.png')} style={styles.registIcon} />
+                <ReactImage source={require('./assets/registIcon.png')} style={styles.registIcon} />
               </TouchableOpacity>
             </View>
 
@@ -47,10 +52,10 @@ const DepReg = (props) => {
               <View style={styles.level1}>
                 <Text style={styles.cellTitle}>개발 1부</Text>
                 <Text style={styles.memberNumber}>
-                  <ReactImage source={require('../assets/member.png')} style={styles.memberIcon} /> 14명
+                  <ReactImage source={require('./assets/member.png')} style={styles.memberIcon} /> 14명
                 </Text>
                 <View style={styles.downArrowWrap}>
-                  <ReactImage source={require('../assets/down-arrow.png')} style={styles.downArrowIcon} />
+                  <ReactImage source={require('./assets/down-arrow.png')} style={styles.downArrowIcon} />
                 </View>
 
                 <View style={styles.level2Wrap}>
@@ -83,10 +88,10 @@ const DepReg = (props) => {
                   <View style={styles.level2}>
                     <Text style={styles.cellTitle}>부서1</Text>
                     <Text style={styles.memberNumber}>
-                      <ReactImage source={require('../assets/member.png')} style={styles.memberIcon} /> 14명
+                      <ReactImage source={require('./assets/member.png')} style={styles.memberIcon} /> 14명
                     </Text>
                     <View style={styles.downArrowWrap}>
-                      <ReactImage source={require('../assets/down-arrow.png')} style={styles.downArrowIcon} />
+                      <ReactImage source={require('./assets/down-arrow.png')} style={styles.downArrowIcon} />
                     </View>
                   </View>
                   <View style={styles.divider} />
@@ -147,7 +152,4 @@ const DepReg = (props) => {
 
 export default DepReg
 
-DepReg.defaultProps = {
-  windowWidth: Dimensions.get('window').width,
-  windowHeight: Dimensions.get('window').height
-}
+
