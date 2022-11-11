@@ -5,11 +5,11 @@ const qrInfoReq = async (eventId) => {
     return res;
 }
 
-const qrScanReq = async (qrData, orgId, eventId) => {
+const qrScanReq = async (memId, mbId, orgId, eventId) => {
     const params = {
         eventId: eventId,
-        memberId: qrData.memberId,
-        mobileId: qrData.mobileId,
+        memberId: memId,
+        mobileId: mbId,
         orgId: orgId
     }
     const res = await qrScan(params);

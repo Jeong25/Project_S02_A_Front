@@ -61,8 +61,9 @@ const Qrscan = (props) => {
     try {
       const qrData = JSON.parse(e.data)
       console.log(JSON.stringify(qrData, null, 4))
-
-      const response = await qrScanReq(...qrData, orgId, eventId);
+      const memId = qrData.split('/')[0]
+      const mbId = qrData.split('/')[1]
+      const response = await qrScanReq(memId, mbId, orgId, eventId);
       console.log(JSON.stringify(response, null, 4))
     } catch (error) {
       console.log(error)
@@ -90,26 +91,26 @@ const Qrscan = (props) => {
   return (
     <>
       <RNCamera
-      ref={camera}
-      style={{ width: CAM_VIEW_WIDTH, height: CAM_VIEW_HEIGHT, }}
-      type={cameraFront ? RNCamera.Constants.Type.front : RNCamera.Constants.Type.back}
-      captureAudio={false}
-      barCodeTypes={[RNCamera.Constants.BarCodeType.qr]}
-      cameraViewDimensions={{
-        width: CAM_VIEW_WIDTH,
-        height: CAM_VIEW_HEIGHT,
-      }}
-      rectOfInterest={{
-        x: cameraFront ? 0.5 : 0.1,
-        y: 0,
-        width: 0.35,
-        height: 0.85,
-      }}
-      onBarCodeRead={(e) => onBarCodeRead(e)}
-    >
-      <SafeAreaView />
+        ref={camera}
+        style={{ width: CAM_VIEW_WIDTH, height: CAM_VIEW_HEIGHT, }}
+        type={cameraFront ? RNCamera.Constants.Type.front : RNCamera.Constants.Type.back}
+        captureAudio={false}
+        barCodeTypes={[RNCamera.Constants.BarCodeType.qr]}
+        cameraViewDimensions={{
+          width: CAM_VIEW_WIDTH,
+          height: CAM_VIEW_HEIGHT,
+        }}
+        rectOfInterest={{
+          x: cameraFront ? 0.5 : 0.1,
+          y: 0,
+          width: 0.35,
+          height: 0.85,
+        }}
+        onBarCodeRead={(e) => onBarCodeRead(e)}
+      >
+        <SafeAreaView />
 
-      <View style={styles.wrap}>
+        <View style={styles.wrap}>
           <View style={styles.topBtnWrap}>
             <TouchableOpacity style={styles.closeBtn} onPress={() => {
               props.navigation.goBack()
@@ -146,7 +147,7 @@ const Qrscan = (props) => {
             <Text style={styles.eventName}>{qrInfo?.eventNm || ''}</Text>
             <Text style={styles.eventDate}>{dateData || ''}</Text>
           </View>
-      </View>
+        </View>
       </RNCamera >
     </>
   );

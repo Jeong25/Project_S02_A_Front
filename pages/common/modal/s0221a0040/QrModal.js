@@ -25,8 +25,7 @@ const QrModal = (props) => {
         setMemberName(memberName)
         setEventNm(eventNm)
         setEventRole(eventRole)
-        // setInfo(`${memberId}/${mobileId}`)
-        setInfo({memberId: memberId, mobileId: mobileId})
+        setInfo(`${memberId}/${mobileId}`)
     }
 
     useEffect(() => {
@@ -69,7 +68,7 @@ const QrModal = (props) => {
                 <View style={styles.modalInner}>
                     <View style={styles.qrcodeWrap}>
                         <View style={styles.qrImg}>
-                            <QRCode value={...info} size={210} quietZone ={20} backgroundColor ='transparent'/>
+                            <QRCode value={info} size={210} quietZone ={20} backgroundColor ='transparent'/>
                         </View>
                     </View>
                     <View style={styles.divider}></View>
