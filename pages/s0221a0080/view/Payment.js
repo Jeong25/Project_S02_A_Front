@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import {
-  Text, View, TextInput, SafeAreaView, TouchableOpacity, ScrollView, Dimensions, Image
+  Text, View, TextInput, SafeAreaView, TouchableOpacity, ScrollView, Dimensions, Image, Alert
 } from 'react-native';
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -56,6 +56,8 @@ const Payment = (props) => {
 
     if (response?.data?.status === 200) {
       props.navigation.goBack()
+    } else if (response?.data?.status === 500) {
+      Alert.alert('시스템 오류', '잠시 후 다시 시도하시거나 담당자에게 문의해 주세요.')
     }
   }
 

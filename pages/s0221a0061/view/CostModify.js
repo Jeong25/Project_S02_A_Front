@@ -118,6 +118,8 @@ const CostModify = (props) => {
           Alert.alert('알림', '비용 청구 영수증 수정 되었습니다.')
           goback()
           setSC(0)
+        } else {
+          Alert.alert('시스템 오류', '잠시 후 다시 시도하시거나 담당자에게 문의해 주세요.')
         }
       } else {
         Alert.alert('알림', '이미 작업을 요청하였으니, 잠시만 기다려주세요.')
