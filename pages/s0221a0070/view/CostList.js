@@ -29,6 +29,7 @@ const CostList = (props) => {
     const usePS = props.route.params.usePS
     if (usePS !== '') {
       startList(usePS)
+      props.route.params.usePS = ''
     } else {
       callList()
     }
