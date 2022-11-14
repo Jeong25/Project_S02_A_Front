@@ -32,7 +32,7 @@ const Footer = (props) => {
                         <Text style={styles.menuText} >홈</Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.costListBtn} onPress={() => props.navigation.navigate('CostList')}>
+                <TouchableOpacity style={styles.costListBtn} onPress={() => props.navigation.navigate('CostList', { usePS: '' })}>
                     <View>
                         <ReactImage source={require('./assets/receipt.png')} style={styles.menuIcon} />
                         <Text style={styles.menuText} >비용조회</Text>
