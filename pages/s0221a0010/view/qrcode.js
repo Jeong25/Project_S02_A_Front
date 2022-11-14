@@ -236,18 +236,18 @@ const QrCode = (props) => {
               </View>
               <Text style={styles.centerText}>QR보기</Text>
             </TouchableOpacity>
-            {/* <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('DepReg')}>
+            <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('DepReg')}>
               <View style={styles.btnImg}>
                 <ReactImage source={require('./assets/group.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>부서등록</Text>
-            </TouchableOpacity> */}
-            <TouchableOpacity style={styles.centerBtn} onPress={() => openFaqModal()}>
+            </TouchableOpacity>
+            {/* <TouchableOpacity style={styles.centerBtn} onPress={() => openFaqModal()}>
               <View style={styles.btnImg}>
                 <ReactImage source={require('./assets/guide.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>FAQ</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
 
           <View style={styles.contentsDivider} />

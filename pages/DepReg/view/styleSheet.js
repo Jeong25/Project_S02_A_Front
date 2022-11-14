@@ -19,7 +19,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "marginLeft": 'auto',
       "marginRight": 'auto',
       'paddingHorizontal': 20,
-      'backgroundColor' :'#f15a24',
+      'backgroundColor': '#f15a24',
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'center',
@@ -39,7 +39,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "height": 30
     },
     "regBtnWrap": {
-      'position' : 'absolute',
+      'position': 'absolute',
       'right': 16,
       'top': 18,
       "width": 25,
@@ -47,8 +47,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     "registIcon": {
-      'width' : '100%',
-      'height' : '100%',
+      'width': '100%',
+      'height': '100%',
     },
 
     "title": {
@@ -58,7 +58,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontSize": 22,
     },
 
-   
+
     'contentsWrap': {
       'width': '90%',
       'marginTop': 20,
@@ -66,7 +66,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'marginLeft': 'auto',
       'marginRight': 'auto',
     },
-    
+
     'level1': {
       'width': '100%',
       'marginBottom': 5,
@@ -78,9 +78,9 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'width': '96%',
       'marginLeft': 'auto',
       'paddingLeft': 10,
-      'borderLeftColor' : '#888',
-      'borderLeftWidth' : 2,
-      
+      'borderLeftColor': '#888',
+      'borderLeftWidth': 2,
+
 
     },
     'level2': {
@@ -92,8 +92,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'width': '96%',
       'marginLeft': 'auto',
       'paddingLeft': 10,
-      'borderLeftColor' : '#888',
-      'borderLeftWidth' : 2,
+      'borderLeftColor': '#888',
+      'borderLeftWidth': 2,
     },
     'level3': {
       'paddingLeft': 5,
@@ -108,7 +108,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
     'numberWrap': {
       'flexDirection': 'row',
       'alignItems': 'baseline',
-      'marginTop' :3
+      'marginTop': 3
 
     },
     'memberNumber': {
@@ -116,7 +116,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'color': "#888",
       'fontSize': 16,
       "fontFamily": "Apple SD Gothic Neo",
-      'marginTop' :3
+      'marginTop': 3
 
 
     },
@@ -130,14 +130,32 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'width': 15,
       'height': 15,
     },
-    'downArrowWrap': {
-      'width': 15,
-      'height': 15,
+
+    'iconWrap': {
+
+      'flexDirection' : 'row',
+      'alignItems' : 'center',
+      'justifyContent' : 'space-around',
       'position': 'absolute',
       'right': 10,
-      'top': 20,
+      'top': 5,
+
     },
-    'downArrowIcon': {
+    'plusIcon': {
+      'width': 15,
+      'height': 15,
+
+    },
+    'plus': {
+      'width': '100%',
+      'height': '100%',
+    },
+    'arrowIcon': {
+      'width': 15,
+      'height': 15,
+
+    },
+    'downArrow': {
       'width': '100%',
       'height': '100%',
     },
@@ -159,7 +177,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'right': 30,
     },
     'nextBtnText': {
-     
+
 
     }
 

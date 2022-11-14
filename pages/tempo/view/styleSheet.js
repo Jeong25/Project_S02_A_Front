@@ -82,6 +82,30 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "fontWeight": '700',
       "fontSize": 14,
   },
+
+ 
+  'checkBoxWrap' : {
+    'flexDirection' : 'row',
+    'alignItems' : 'center',
+  
+  },
+  "checkText": {
+    "fontFamily": "Apple SD Gothic Neo",
+    "color": "#f15a24",
+    "fontWeight": '700',
+    "fontSize": 14,
+    'marginLeft' : 10,
+},
+  'checkBox' : {
+    'backgroundColor' : '#f15a24',
+    'borderRadius': 50,
+    'width' : 30,
+    'height' : 30,
+  },
+  'checkIcon' : {
+    'width' : '100%',
+    'height' : '100%',
+  },
   
 
   "depInfo": {
