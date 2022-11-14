@@ -23,6 +23,7 @@ import Access from './pages/s0221a0110/view/Access';
 import UserData from './pages/s0221a0100/view/UserData';
 import DepReg from './pages/DepReg/view/DepReg';
 import Tempo from './pages/tempo/view/Tempo';
+import MemberList from './pages/MemberList/view/MemberList';
 import SearchCode from './pages/s0221a0130/view/SearchCode';
 import SplashScreen from './pages/s0221a0120/view/SplashScreen';
 import RNSplashScreen from 'react-native-splash-screen';
@@ -96,6 +97,11 @@ const App = () => {
           name="Tempo"
           options={{ title: null, headerShown: false }} // 각 화면 타이틀(헤더에 렌더링됨)
           component={Tempo}
+        />
+        <Stack.Screen
+          name="MemberList"
+          options={{ title: null, headerShown: false }} // 각 화면 타이틀(헤더에 렌더링됨)
+          component={MemberList}
         />
         <Stack.Screen
           name="SearchCode"

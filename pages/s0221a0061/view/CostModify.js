@@ -322,7 +322,7 @@ const CostModify = (props) => {
             <View style={styles.topMenu}>
               <View style={styles.backBtn}>
                 <TouchableOpacity onPress={goback} >
-                  <Image source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+                  <Image source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
                 </TouchableOpacity>
               </View>
               <Text style={styles.topTitle}>비용요청결과</Text>
@@ -354,7 +354,7 @@ const CostModify = (props) => {
                     value={eventName}></TextInput>
                   <View style={styles.searchBtn} >
                     <TouchableOpacity onPressIn={() => props.navigation.navigate('EventList', { getEventInfo })}>
-                      <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
+                      <ReactImage source={require('../../common/img/magnifying-glass.png')} style={styles.searchIcon} />
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -366,7 +366,7 @@ const CostModify = (props) => {
                       <TextInput style={styles.modifyDateText} editable={false} value={inputData.usedDate}></TextInput>
                       <View style={styles.dateSearchBtn} >
                         <TouchableOpacity onPressIn={() => openDateModal()} >
-                          <ReactImage source={require('./assets/magnifying-glass.png')} style={styles.searchIcon} />
+                          <ReactImage source={require('../../common/img/magnifying-glass.png')} style={styles.searchIcon} />
                         </TouchableOpacity>
                       </View>
                     </View>
@@ -403,7 +403,7 @@ const CostModify = (props) => {
                   </View>
                   <View style={styles.addBtn}>
                     <TouchableOpacity onPressIn={() => ShowPicker()}>
-                      <ReactImage source={require('./assets/plus.png')} style={styles.addIcon} ></ReactImage>
+                      <ReactImage source={require('../../common/img/plus-w.png')} style={styles.addIcon} ></ReactImage>
                     </TouchableOpacity>
                   </View>
 

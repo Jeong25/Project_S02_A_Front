@@ -81,7 +81,7 @@ const Payment = (props) => {
         <View style={styles.topMenu}>
           <View style={styles.backBtn}>
             <TouchableOpacity onPress={() => props.navigation.goBack()}>
-              <Image source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+              <Image source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
             </TouchableOpacity>
           </View>
           <Text style={styles.topTitle}>승인처리</Text>

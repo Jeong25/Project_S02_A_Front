@@ -18,7 +18,7 @@ const Tempo = (props) => {
           <View style={styles.topMenu}>
             <View style={styles.backBtn}>
               <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                <ReactImage source={require('../assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+                <ReactImage source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>부서등록</Text>
@@ -139,7 +139,7 @@ const Tempo = (props) => {
                 </View>
                 <View style={styles.checkBoxWrap}>
                   <View style={styles.checkBox}>
-                    <ReactImage source={require('../assets/check.png')} style={styles.checkIcon} />
+                    <ReactImage source={require('../../common/img/check.png')} style={styles.checkIcon} />
                   </View>
                   <Text style={styles.checkText}>공개여부</Text>
                 </View>

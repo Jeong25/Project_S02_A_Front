@@ -25,13 +25,13 @@ const DepReg = (props) => {
           <View style={styles.topMenu}>
             <View style={styles.backBtn}>
               <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+                <ReactImage source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>부서등록</Text>
             <View style={styles.regBtnWrap}>
               <TouchableOpacity onPress={() => props.navigation.navigate('Tempo')}>
-                <ReactImage source={require('./assets/registIcon.png')} style={styles.registIcon} />
+                <ReactImage source={require('../../common/img/registIcon.png')} style={styles.registIcon} />
               </TouchableOpacity>
             </View>
 
@@ -52,12 +52,17 @@ const DepReg = (props) => {
               <View style={styles.level1}>
                 <Text style={styles.cellTitle}>개발 1부</Text>
                 <Text style={styles.memberNumber}>
-                  <ReactImage source={require('./assets/member.png')} style={styles.memberIcon} /> 14명
+                  <ReactImage source={require('../../common/img/member.png')} style={styles.memberIcon} /> 14명
                 </Text>
                 <View style={styles.iconWrap}>
-                  <View style={styles.plusIcon}>
-                    <ReactImage source={require('./assets/plus.png')} style={styles.plus} />
-                  </View>
+                  {/* <View style={styles.plusIcon}>
+                    <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                  </View> */}
+                  <TouchableOpacity
+                  onPress={() => props.navigation.navigate('MemberList')}
+                   style={styles.menuIcon}>
+                    <ReactImage source={require('../../common/img/dots.png')} style={styles.menu} />
+                  </TouchableOpacity>
                  
                 </View>
 
@@ -91,11 +96,11 @@ const DepReg = (props) => {
                   <View style={styles.level2}>
                     <Text style={styles.cellTitle}>부서1</Text>
                     <Text style={styles.memberNumber}>
-                      <ReactImage source={require('./assets/member.png')} style={styles.memberIcon} /> 14명
+                      <ReactImage source={require('../../common/img/member.png')} style={styles.memberIcon} /> 14명
                     </Text>
                     <View style={styles.iconWrap}>
-                    <View style={styles.plusIcon}>
-                    <ReactImage source={require('./assets/plus.png')} style={styles.plus} />
+                    <View style={styles.menuIcon}>
+                    <ReactImage source={require('../../common/img/dots.png')} style={styles.menu} />
                   </View>
                     </View>
                   </View>
@@ -123,11 +128,11 @@ const DepReg = (props) => {
               <View style={styles.level1}>
                 <Text style={styles.cellTitle}>개발 2부</Text>
                 <Text style={styles.memberNumber}>
-                  <ReactImage source={require('./assets/member.png')} style={styles.memberIcon} /> 14명
+                  <ReactImage source={require('../../common/img/member.png')} style={styles.memberIcon} /> 14명
                 </Text>
                 <View style={styles.iconWrap}>
-                <View style={styles.plusIcon}>
-                    <ReactImage source={require('./assets/plus.png')} style={styles.plus} />
+                <View style={styles.menuIcon}>
+                    <ReactImage source={require('../../common/img/dots.png')} style={styles.menu} />
                   </View>
                 </View>
               </View>
