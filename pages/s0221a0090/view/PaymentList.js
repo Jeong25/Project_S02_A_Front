@@ -14,6 +14,7 @@ const PaymentList = (props) => {
   const styles = styleSheet()
   const isFocused = useIsFocused();
   const [listData, setListData] = useState([])
+  const [onDate, setOnDate] = useState(true)
   const [dateState, setDateState] = useState({
     viewModal: false,
     fromToFlag: '',
@@ -37,6 +38,7 @@ const PaymentList = (props) => {
     const confirmToVal = ''
     const memberId = await AsyncStorage.getItem('memberId')
     const eventCode = await AsyncStorage.getItem('eventCode')
+    setOnDate(false)
     const response = await costPayListReq(memberId, confirmFromVal, confirmToVal, eventCode)
     setListData(response?.data?.data || [])
   }
@@ -119,13 +121,13 @@ const PaymentList = (props) => {
                 type="date"
                 required aria-required="true"
                 editable={false}
-                onPress={() => openDateModal('from')}>{convertDateToVal(dateState.confirmFromDate) || `날짜선택`}</Text>
+                onPress={() => openDateModal('from')}>{onDate ? convertDateToVal(dateState.confirmFromDate) : `날짜 선택`}</Text>
               <Text style={styles.wave}>~</Text>
               <Text style={styles.inputDate}
                 type="date"
                 required aria-required="true"
                 editable={false}
-                onPress={() => openDateModal('to')}>{convertDateToVal(dateState.confirmToDate) || `날짜선택`}</Text>
+                onPress={() => openDateModal('to')}>{onDate ? convertDateToVal(dateState.confirmToDate) : `날짜 선택`}</Text>
             </View>
 
             <View style={styles.searchBtn}>
