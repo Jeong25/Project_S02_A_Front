@@ -59,7 +59,7 @@ const UserData = (props) => {
                     <View style={styles.topMenu}>
                         <View style={styles.backBtn}>
                             <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                                <ReactImage source={require('../assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+                                <ReactImage source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
                             </TouchableOpacity>
                         </View>
                         <Text style={styles.topTitle}>회원정보</Text>

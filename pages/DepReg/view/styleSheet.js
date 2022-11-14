@@ -144,18 +144,16 @@ export const styleSheet = (windowHeight, windowWidth) => {
     'plusIcon': {
       'width': 15,
       'height': 15,
-
     },
     'plus': {
       'width': '100%',
       'height': '100%',
     },
-    'arrowIcon': {
+    'menuIcon': {
       'width': 15,
       'height': 15,
-
     },
-    'downArrow': {
+    'menu': {
       'width': '100%',
       'height': '100%',
     },
@@ -165,10 +163,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'height': 2,
       'marginBottom': 3,
       'backgroundColor': '#e9e9e9',
-
     },
-
-
 
     'nextBtn': {
       'width': 40,

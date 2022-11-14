@@ -240,7 +240,7 @@ const Signin = (props) => {
               <TouchableOpacity onPress={() => setPrivacyAgree(!privacyAgree)}>
                 <View style={styles.infoAggWrap}>
                   <View style={privacyAgree ? styles.checkBox : styles.unCheckBox}>
-                    <ReactImage source={require('./assets/check.png')} style={styles.checkIcon} />
+                    <ReactImage source={require('../../common/img/check.png')} style={styles.checkIcon} />
                   </View>
                   <Text style={styles.infoAgg}>개인정보 수집 및 이용 동의</Text>
                 </View>

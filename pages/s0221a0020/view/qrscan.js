@@ -125,17 +125,17 @@ const Qrscan = (props) => {
           <TouchableOpacity style={styles.closeBtn} onPress={() => {
             props.navigation.goBack()
           }}>
-            <ReactImage source={require('./assets/closeIcon.png')} style={styles.closeIcon} />
+            <ReactImage source={require('../../common/img/closeIcon.png')} style={styles.closeIcon} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.closeBtn} onPress={() => {
             setCameraFront(!cameraFront)
           }}>
-            <ReactImage source={require('./assets/change.png')} style={styles.closeIcon} />
+            <ReactImage source={require('../../common/img/change.png')} style={styles.closeIcon} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.eventSelectBtn} onPress={() => {
             props.navigation.navigate('EventList', { getEventInfo })
           }}>
-            <ReactImage source={require('./assets/magnifier.png')} style={styles.searchIcon} />
+            <ReactImage source={require('../../common/img/magnifier.png')} style={styles.searchIcon} />
             <Text style={styles.eventSelect}>행사선택</Text>
           </TouchableOpacity>
         </View>

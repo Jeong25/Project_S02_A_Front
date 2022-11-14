@@ -114,7 +114,7 @@ const CostList = (props) => {
           <View style={styles.topMenu}>
             <View style={styles.backBtn}>
               <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                <ReactImage source={require('./assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+                <ReactImage source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>비용요청현황</Text>
@@ -128,7 +128,7 @@ const CostList = (props) => {
                         props.navigation.navigate('Cost', { refresh: callList })
                     }
                   }}>
-                    <ReactImage source={require('./assets/registIcon.png')} style={styles.registIcon} />
+                    <ReactImage source={require('../../common/img/registIcon.png')} style={styles.registIcon} />
                   </TouchableOpacity>
                 </View>
             }
@@ -172,7 +172,7 @@ const CostList = (props) => {
               <TouchableOpacity onPress={() => {
                 callList()
               }}>
-                <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
+                <ReactImage source={require('../../common/img/searchIcon.png')} style={styles.searchIcon}></ReactImage>
               </TouchableOpacity>
             </View>
           </View>

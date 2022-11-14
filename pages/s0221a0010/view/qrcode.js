@@ -118,7 +118,7 @@ const QrCode = (props) => {
 
             <View style={styles.logoutBtn}>
               <TouchableOpacity onPress={() => logOut()}>
-                <ReactImage source={require('./assets/power-off.png')} style={styles.logout} />
+                <ReactImage source={require('../../common/img/power-off.png')} style={styles.logout} />
               </TouchableOpacity>
             </View>
           </View>
@@ -220,31 +220,31 @@ const QrCode = (props) => {
           <View style={styles.centerBtnWrap}>
             <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('CostList', { usePS: '' })}>
               <View style={styles.btnImg}>
-                <ReactImage source={require('./assets/receipt.png')} style={styles.centerIcon} />
+                <ReactImage source={require('../../common/img/receipt.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>비용조회</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('PaymentList')}>
               <View style={styles.btnImg}>
-                <ReactImage source={require('./assets/stamp.png')} style={styles.centerIcon} />
+                <ReactImage source={require('../../common/img/stamp.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>비용결제</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.centerBtn} onPress={() => openQrModal()}>
               <View style={styles.btnImg}>
-                <ReactImage source={require('./assets/sampleQr.png')} style={styles.centerIcon} />
+                <ReactImage source={require('../../common/img/sampleQr.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>QR보기</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('DepReg')}>
               <View style={styles.btnImg}>
-                <ReactImage source={require('./assets/group.png')} style={styles.centerIcon} />
+                <ReactImage source={require('../../common/img/group.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>부서등록</Text>
             </TouchableOpacity>
             {/* <TouchableOpacity style={styles.centerBtn} onPress={() => openFaqModal()}>
               <View style={styles.btnImg}>
-                <ReactImage source={require('./assets/guide.png')} style={styles.centerIcon} />
+                <ReactImage source={require('../../common/img/guide.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>FAQ</Text>
             </TouchableOpacity> */}
