@@ -42,19 +42,19 @@ const Qrscan = (props) => {
   const onBarCodeRead = async (event) => {
     if (!scaned) return;
     setScaned(false);
+    const qrData = JSON.parse(event)
+    const memId = qrData.memberId
+    const mbId = qrData.mobileId
     console.log(event)
-    const memId = event.split('/')[0]
-    const mbId = event.split('/')[1]
     console.log(memId, mbId, orgId, eventId)
     try {
       const res = await qrScanReq(memId, mbId, orgId, eventId)
-      setScaned(true)
-      Alert.alert('알림', '등록되었습니다.')
+      Alert.alert('QR Code', '등록되었습니다.')
       return res
     } catch (error) {
-      setScaned(true)
-      Alert.alert('알림', '오류가 발생했습니다.')
+      Alert.alert('QR Code', '오류가 발생했습니다.')
     }
+    setScaned(true)
   }
   // const onBarCodeRead = async (e) => {
   //   if (controlCamera) {
@@ -66,9 +66,7 @@ const Qrscan = (props) => {
   //   try {
   //     const qrData = JSON.parse(e.data)
   //     console.log(JSON.stringify(qrData, null, 4))
-  //     const memId = qrData.split('/')[0]
-  //     const mbId = qrData.split('/')[1]
-  //     const response = await qrScanReq(memId, mbId, orgId, eventId);
+  //     const response = await qrScanReq(...qrData, orgId, eventId);
   //     console.log(JSON.stringify(response, null, 4))
   //   } catch (error) {
   //     console.log(error)
