@@ -7,7 +7,7 @@ import Footer from '../../common/footer/Footer';
 
 
 const DepReg = (props) => {
-  
+
   DepReg.defaultProps = {
     windowWidth: Dimensions.get('window').width,
     windowHeight: Dimensions.get('window').height
@@ -54,8 +54,11 @@ const DepReg = (props) => {
                 <Text style={styles.memberNumber}>
                   <ReactImage source={require('./assets/member.png')} style={styles.memberIcon} /> 14명
                 </Text>
-                <View style={styles.downArrowWrap}>
-                  <ReactImage source={require('./assets/down-arrow.png')} style={styles.downArrowIcon} />
+                <View style={styles.iconWrap}>
+                  <View style={styles.plusIcon}>
+                    <ReactImage source={require('./assets/plus.png')} style={styles.plus} />
+                  </View>
+                 
                 </View>
 
                 <View style={styles.level2Wrap}>
@@ -90,8 +93,10 @@ const DepReg = (props) => {
                     <Text style={styles.memberNumber}>
                       <ReactImage source={require('./assets/member.png')} style={styles.memberIcon} /> 14명
                     </Text>
-                    <View style={styles.downArrowWrap}>
-                      <ReactImage source={require('./assets/down-arrow.png')} style={styles.downArrowIcon} />
+                    <View style={styles.iconWrap}>
+                    <View style={styles.plusIcon}>
+                    <ReactImage source={require('./assets/plus.png')} style={styles.plus} />
+                  </View>
                     </View>
                   </View>
                   <View style={styles.divider} />
@@ -120,8 +125,10 @@ const DepReg = (props) => {
                 <Text style={styles.memberNumber}>
                   <ReactImage source={require('./assets/member.png')} style={styles.memberIcon} /> 14명
                 </Text>
-                <View style={styles.downArrowWrap}>
-                  <ReactImage source={require('./assets/down-arrow.png')} style={styles.downArrowIcon} />
+                <View style={styles.iconWrap}>
+                <View style={styles.plusIcon}>
+                    <ReactImage source={require('./assets/plus.png')} style={styles.plus} />
+                  </View>
                 </View>
               </View>
               <View style={styles.divider} />

@@ -137,8 +137,11 @@ const Tempo = (props) => {
                     onBlur={() => { setheightMagnifi(1.2) }}
                   ></TextInput>
                 </View>
-                <View style={styles.infoWrap}>
-                  <Text style={styles.label}>공개여부</Text>
+                <View style={styles.checkBoxWrap}>
+                  <View style={styles.checkBox}>
+                    <ReactImage source={require('../assets/check.png')} style={styles.checkIcon} />
+                  </View>
+                  <Text style={styles.checkText}>공개여부</Text>
                 </View>
               </View>
               <View style={styles.btnWrap}>
