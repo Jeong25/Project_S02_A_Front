@@ -75,6 +75,16 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "marginBottom": "auto",
       "position": "relative",
     },
+    'cellNameWrap' :{
+      'flexDirection' : 'row',
+
+    },
+  
+    'verticalSwitch': {
+      transform: [{ rotate: '-90deg'}],
+      'width' : 20,
+      'height' : 5,      
+    },
 
     "memberName": {
       "color": "#1d1d1d",
@@ -97,34 +107,31 @@ export const styleSheet = (windowHeight, windowWidth) => {
     "checkWrap": {
       "position": "absolute",
       "right": 0,
-      "top": 6,
     },
-    'unCheckBox': {
-      'width': 30,
-      'height': 30,
-      'backgroundColor': '#d9d9d9',
-      'borderRadius': 50,
-      'display' : 'flex',
-    },
-
+  
     // 체크시 체크박스 배경이 변경됨
 
-    'checkBox': {
-      'width': 30,
-      'height': 30,
-      'backgroundColor': '#f15a24',
-      'borderRadius': 50,
-      'display' : 'flex',
+    'btnWrap' : {
+     'width' : '100%',
+     'alignItems' : 'center',
+     'marginBottom' : 40,
     },
 
-    'checkIcon': {
-      'width': 25,
-      'height': 25,
-      'marginLeft': 'auto',
-      'marginRight': 'auto',
-      'marginTop': 'auto',
-      'marginBottom': 'auto',
+    "requestBtn": {
+      "width": 140,
+      "backgroundColor": "#F15A24",
+      "borderRadius": 50,
     },
+    "btnText": {
+
+      "color": "white",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": '500',
+      "fontSize": 21,
+      "textAlign": "center",
+      "lineHeight": 50,
+    },
+
 
 
 

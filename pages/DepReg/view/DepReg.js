@@ -55,9 +55,12 @@ const DepReg = (props) => {
                   <ReactImage source={require('../../common/img/member.png')} style={styles.memberIcon} /> 14명
                 </Text>
                 <View style={styles.iconWrap}>
-                  {/* <View style={styles.plusIcon}>
+                  <View style={styles.plusIcon}>
                     <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
-                  </View> */}
+                  </View>
+                  <View style={styles.plusIcon}>
+                    <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.plus} />
+                  </View>
                   <TouchableOpacity
                   onPress={() => props.navigation.navigate('MemberList')}
                    style={styles.menuIcon}>
