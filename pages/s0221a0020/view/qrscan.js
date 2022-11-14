@@ -4,7 +4,7 @@ import { Image as ReactImage } from 'react-native';
 import Svg from 'react-native-svg';
 import { Path as SvgPath } from 'react-native-svg';
 import { RNCamera } from 'react-native-camera';
-import { CameraScreen, CameraType } from "react-native-camera-kit";
+import { Camera, CameraType } from "react-native-camera-kit";
 import { Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styleSheet } from './stylesheet';
@@ -30,9 +30,13 @@ const Qrscan = (props) => {
     setOrgId(orgId)
     setQrInfo(res.data.data)
     setEventId(defaultEventId)
-    const val1 = res.data.data.eventStartDate.split(' ')
-    const val2 = res.data.data.eventEndDate.split(' ')
-    setDateData(`${val1[0]} ~ ${val2[0]}`)
+    const val1 = res.data.data?.eventStartDate.split(' ')[0] || ''
+    const val2 = res.data.data?.eventEndDate.split(' ')[0] || ''
+    if (val1 === '') {
+      setDateData(`행사를 선택해 주세요.`)
+    } else {
+      setDateData(`${val1} ~ ${val2}`)
+    }
   }
 
   const onBarCodeRead = async (event) => {
@@ -80,9 +84,13 @@ const Qrscan = (props) => {
     setEventId(params.eventId)
     const res = await qrInfoReq(params.eventId)
     setQrInfo(res.data.data)
-    const val1 = res.data.data.eventStartDate.split(' ')
-    const val2 = res.data.data.eventEndDate.split(' ')
-    setDateData(`${val1[0]} ~ ${val2[0]}`)
+    const val1 = res.data.data?.eventStartDate.split(' ')[0] || ''
+    const val2 = res.data.data?.eventEndDate.split(' ')[0] || ''
+    if (val1 === '') {
+      setDateData(`행사를 선택해 주세요.`)
+    } else {
+      setDateData(`${val1} ~ ${val2}`)
+    }
   }
 
   useEffect(() => {
@@ -132,7 +140,7 @@ const Qrscan = (props) => {
           </TouchableOpacity>
         </View>
 
-        <CameraScreen
+        <Camera
           style={styles.camera}
           ref={camera}
           cameraType={cameraFront ? CameraType.Front : CameraType.Back}
