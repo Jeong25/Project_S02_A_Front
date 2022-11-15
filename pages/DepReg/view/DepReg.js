@@ -93,10 +93,18 @@ const DepReg = (props) => {
 
 
                   <View style={styles.level2}>
+                  <View style={styles.titleWrap}>
                     <Text style={styles.cellTitle}>부서1</Text>
+                    <TouchableOpacity style={styles.plusIcon}>
+                      <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                    </TouchableOpacity>
+                  </View>
                     <Text style={styles.memberNumber}>
                       <ReactImage source={require('../../common/img/member.png')} style={styles.memberIcon} /> 14명
                     </Text>
+                    <View style={styles.dropDownBtn}>
+                      <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
+                    </View>
 
                   </View>
                   <View style={styles.divider} />
