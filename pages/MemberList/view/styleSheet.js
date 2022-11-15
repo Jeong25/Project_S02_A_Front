@@ -79,18 +79,18 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'flexDirection' : 'row',
 
     },
-  
-    'verticalSwitch': {
-      transform: [{ rotate: '-90deg'}],
-      'width' : 20,
-      'height' : 5,      
-    },
 
+
+    "memberNameWrap": {
+      'flexDirection' : 'row',
+      'alignItems' : 'center',     
+    },
     "memberName": {
       "color": "#1d1d1d",
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
       "fontWeight": "700",
+      'marginRight' : 5,
     },
 
     "memberDetail": {
@@ -103,13 +103,24 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     },
 
+    'selectBox':{
+      'position' : 'absolute',
+      'right' : 0,
+      'top' : 3,
+      'paddingHorizontal' : 10,
+      'paddingVertical' : 5,
+      'borderRadius' : 100,
+      'backgroundColor' : '#f15a24',
 
-    "checkWrap": {
-      "position": "absolute",
-      "right": 0,
+
     },
+    'selectBoxText':{
+      'color' : "white",
+      "fontWeight": "700",
+      "fontSize": 16,
+    },
+
   
-    // 체크시 체크박스 배경이 변경됨
 
     'btnWrap' : {
      'width' : '100%',

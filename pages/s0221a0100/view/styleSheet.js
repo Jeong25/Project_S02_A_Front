@@ -90,17 +90,20 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
     },
     
     'delAccountBtn' : { 
+      'width' : 100,
       'backgroundColor' : '#e9e9e9',
       'borderRadius' : 10,
+      'marginLeft' : 'auto',
+
 
     },
     'delBtnText' : { 
       'color' : '#888',
-      'fontSize' : 24,
+      'fontSize' : 12,
       'fontWeight': Platform.OS === 'ios' ? '700' : 'bold' ,
       'fontFamily': "Apple SD Gothic Neo",
       'textAlign' : 'center',
-      'lineHeight': 50,
+      'lineHeight': 40,
     },
     
     

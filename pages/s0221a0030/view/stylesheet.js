@@ -18,6 +18,15 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'marginLeft': 'auto',
             'marginRight': 'auto',
         },
+        'faqBtn':{
+            'position' : 'absolute',
+            'top' :0,
+            'right':20,
+        },
+        'icon':{
+            'width' :25,
+            'height':25,
+        },
         "title": {
             'fontFamily': 'Jalnan',
             'textAlign': 'center',

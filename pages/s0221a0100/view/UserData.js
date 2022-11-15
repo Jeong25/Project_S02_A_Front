@@ -86,7 +86,7 @@ const UserData = (props) => {
                     <View style={styles.btnWrap}>
 
                         <TouchableOpacity style={styles.delAccountBtn} onPress={() => deletMem()}>
-                            <Text style={styles.delBtnText}>회원탈퇴</Text>
+                            <Text style={styles.delBtnText}>부서 나가기</Text>
                         </TouchableOpacity>
 
                     </View>

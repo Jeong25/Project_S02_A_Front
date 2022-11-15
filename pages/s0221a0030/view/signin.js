@@ -7,6 +7,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { signInReq } from '../store/store';
 import { styleSheet } from './stylesheet';
 import { setUserTp } from '../../common/lib/getuserinfo';
+import FaqModal from '../../common/modal/s0221a0130/faqmodal';
+
 
 const Signin = (props) => {
   const { windowHeight } = props
@@ -21,6 +23,8 @@ const Signin = (props) => {
   const [heightMagnifi, setheightMagnifi] = useState(1.2)
   const [isFocus, setIsFoucs] = useState(false)
   const [privacyAgree, setPrivacyAgree] = useState(false)
+  const [faqModalBool, setFaqModalBool] = useState(false)
+
 
   const ref_input = []
   ref_input[0] = useRef(null)
@@ -122,6 +126,10 @@ const Signin = (props) => {
     // const a = e.nativeEvent.text.toUpperCase()
     setEventCode(e.nativeEvent.text)
   }
+  const openFaqModal = () => {
+    Keyboard.dismiss()
+    setFaqModalBool(true)
+  }
 
   return (
     <KeyboardAwareScrollView
@@ -144,6 +152,12 @@ const Signin = (props) => {
             </Text>
             <Text style={styles.title}>삐  용</Text>
           </View>
+          <TouchableOpacity style={styles.faqBtn} onPress={() => openFaqModal()}>
+              <View style={styles.btnImg}>
+                <ReactImage source={require('../../common/img/question.png')} style={styles.icon} />
+              </View>
+              
+          </TouchableOpacity>
           <View style={styles.contentsWrap}>
             <View style={styles.contentsInner}>
               <TextInput
@@ -265,7 +279,12 @@ const Signin = (props) => {
             </View>
           </View>
         </View>
+       
       </SafeAreaView>
+      <FaqModal
+          openModal={faqModalBool}
+          onClose={() => setFaqModalBool(false)}
+        />
     </KeyboardAwareScrollView >
 
   );

@@ -48,26 +48,22 @@ const DepReg = (props) => {
 
             <View style={styles.contentsWrap}>
 
-
               <View style={styles.level1}>
-                <Text style={styles.cellTitle}>개발 1부</Text>
-                <Text style={styles.memberNumber}>
-                  <ReactImage source={require('../../common/img/member.png')} style={styles.memberIcon} /> 14명
-                </Text>
-                <View style={styles.iconWrap}>
-                  <View style={styles.plusIcon}>
-                    <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                <TouchableOpacity onPress={() => props.navigation.navigate('MemberList')}>
+                  <View style={styles.titleWrap}>
+                    <Text style={styles.cellTitle}>개발 1부</Text>
+                    <TouchableOpacity style={styles.plusIcon}>
+                      <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                    </TouchableOpacity>
                   </View>
-                  <View style={styles.plusIcon}>
-                    <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.plus} />
+                  <Text style={styles.memberNumber}>
+                    <ReactImage source={require('../../common/img/member.png')} style={styles.memberIcon} /> 14명
+                  </Text>
+                  <View style={styles.dropDownBtn}>
+                    <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
                   </View>
-                  <TouchableOpacity
-                  onPress={() => props.navigation.navigate('MemberList')}
-                   style={styles.menuIcon}>
-                    <ReactImage source={require('../../common/img/dots.png')} style={styles.menu} />
-                  </TouchableOpacity>
-                 
-                </View>
+                </TouchableOpacity>
+
 
                 <View style={styles.level2Wrap}>
 
@@ -101,11 +97,7 @@ const DepReg = (props) => {
                     <Text style={styles.memberNumber}>
                       <ReactImage source={require('../../common/img/member.png')} style={styles.memberIcon} /> 14명
                     </Text>
-                    <View style={styles.iconWrap}>
-                    <View style={styles.menuIcon}>
-                    <ReactImage source={require('../../common/img/dots.png')} style={styles.menu} />
-                  </View>
-                    </View>
+
                   </View>
                   <View style={styles.divider} />
 
@@ -127,30 +119,42 @@ const DepReg = (props) => {
               </View>
               <View style={styles.divider} />
 
-
               <View style={styles.level1}>
-                <Text style={styles.cellTitle}>개발 2부</Text>
+                <View style={styles.titleWrap}>
+                  <Text style={styles.cellTitle}>개발 1부</Text>
+                  <View style={styles.plusIcon}>
+                    <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                  </View>
+                </View>
+
                 <Text style={styles.memberNumber}>
                   <ReactImage source={require('../../common/img/member.png')} style={styles.memberIcon} /> 14명
                 </Text>
-                <View style={styles.iconWrap}>
-                <View style={styles.menuIcon}>
-                    <ReactImage source={require('../../common/img/dots.png')} style={styles.menu} />
+                <View style={styles.dropDownBtn}>
+                  <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
+                </View>
+
+              </View>
+              <View style={styles.divider} />
+
+              <View style={styles.level1}>
+                <View style={styles.titleWrap}>
+                  <Text style={styles.cellTitle}>개발 2부</Text>
+                  <View style={styles.plusIcon}>
+                    <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
                   </View>
                 </View>
-              </View>
-              <View style={styles.divider} />
-              <View style={styles.level1}>
-                <Text style={styles.cellTitle}>행사</Text>
-                <View style={styles.numberWrap}>
-                  <Text style={styles.eventDate}>
-                    2022-01-01 ~ 2022-01-01
-                  </Text>
 
+                <Text style={styles.memberNumber}>
+                  <ReactImage source={require('../../common/img/member.png')} style={styles.memberIcon} /> 14명
+                </Text>
+                <View style={styles.dropDownBtn}>
+                  <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
                 </View>
 
               </View>
               <View style={styles.divider} />
+
             </View>
 
           </ScrollView>

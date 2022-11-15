@@ -131,31 +131,33 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'height': 15,
     },
 
-    'iconWrap': {
-
+    'titleWrap':{
       'flexDirection' : 'row',
       'alignItems' : 'center',
-      'justifyContent' : 'space-around',
-      'position': 'absolute',
-      'right': 10,
-      'top': 5,
-
     },
     'plusIcon': {
       'width': 15,
       'height': 15,
+      'marginLeft' : 10,
     },
     'plus': {
       'width': '100%',
       'height': '100%',
     },
-    'menuIcon': {
-      'width': 15,
-      'height': 15,
+  
+    "dropDownBtn": {
+      "position": "absolute",
+      "right": 10,
+      "top": 20,
+      "color": "#F15A24",
+      "fontSize": 21,
+      "fontWeight": "800",
     },
-    'menu': {
-      'width': '100%',
-      'height': '100%',
+    'dropDownIcon' : {
+      'width': 20,
+      'height': 20,
+      'marginLeft' : 10,
+
     },
 
     'divider': {
@@ -164,18 +166,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'marginBottom': 3,
       'backgroundColor': '#e9e9e9',
     },
-
-    'nextBtn': {
-      'width': 40,
-      'position': 'absolute',
-      'bottom': 100,
-      'right': 30,
-    },
-    'nextBtnText': {
-
-
-    }
-
 
   });
 }
