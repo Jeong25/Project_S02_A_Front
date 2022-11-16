@@ -40,8 +40,10 @@ const Qrscan = (props) => {
   }
 
   const onBarCodeRead = async (event) => {
-    if (!scaned) return;
-    setScaned(false);
+    if (!scaned) {
+      return
+    }
+    setScaned(false)
     const qrData = JSON.parse(event)
     const memId = qrData.memberId
     const mbId = qrData.mobileId
@@ -50,11 +52,12 @@ const Qrscan = (props) => {
     try {
       const res = await qrScanReq(memId, mbId, orgId, eventId)
       Alert.alert('QR Code', '등록되었습니다.')
+      setScaned(true)
       return res
     } catch (error) {
       Alert.alert('QR Code', '오류가 발생했습니다.')
+      setScaned(true)
     }
-    setScaned(true)
   }
   // const onBarCodeRead = async (e) => {
   //   if (controlCamera) {
