@@ -82,7 +82,16 @@ const DepReg = (props) => {
                           <View style={styles.level3}>
                             <Text style={styles.cellTitle}>{v3.eventNm}</Text>
                           </View>
+                          <TouchableOpacity style={styles.plusIcon}>
+                            <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                          </TouchableOpacity>
+                          <View style={styles.dropDownBtn}>
+                            <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
+                          </View>
                           <View style={styles.divider} />
+                          {deptLevel.filter(data => data.highEventId === v3.eventId).map((v4, i4) => (
+                            console.log(v4)
+                          ))}
                         </View>
                       ))}
                     </View>
