@@ -55,9 +55,12 @@ const Qrscan = (props) => {
     console.log(memId, mbId, orgId, eventId)
     try {
       const res = await qrScanReq(memId, mbId, orgId, eventId)
-      Alert.alert('QR Code', '등록되었습니다.')
+      if (res.data.status === 200) {
+        Alert.alert('QR Code', res.data.massage !== null ? res.data.massage : '등록되었습니다.')
+      } else {
+        Alert.alert('QR Code', '다시 시도해주세요.')
+      }
       setScaned(true)
-      return res
     } catch (error) {
       Alert.alert('QR Code', '오류가 발생했습니다.')
       setScaned(true)
