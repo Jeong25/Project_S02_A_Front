@@ -85,11 +85,13 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'borderBottomWidth': 2,
       'borderBottomColor': '#888',
 
+
     },
     'searchIcon':{
       'width' :25,
       'height' :25,
-      'marginTop': 10,
+      'marginTop': 5,
+      'marginLeft' : 'auto'
     },
     'won':{
       "fontFamily": "Apple SD Gothic Neo",
@@ -134,26 +136,30 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "flex": 1,
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
+      'paddingVertical' : Platform.OS === 'ios' ? 5 : 0 ,
       "fontWeight": '700',
       "color": "#383838",
       'textAlign': 'center',
       'borderBottomWidth': 2,
       'borderBottomColor': '#888',
+
     },
     "depManagerInfo": {
       "flex": 1,
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
+      'paddingVertical' : Platform.OS === 'ios' ? 5 : 0 ,
       "fontWeight": '700',
       "color": "#383838",
       'textAlign': 'center',
-      'marginLeft' :25,
+      'marginLeft': 25
      
     },
     "depAmountInfo": {
       "flex": 1,
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
+      'paddingVertical' : Platform.OS === 'ios' ? 5 : 0 ,
       "fontWeight": '700',
       "color": "#383838",
       'textAlign': 'right',

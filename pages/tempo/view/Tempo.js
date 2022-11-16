@@ -1,15 +1,9 @@
 import React, { useEffect, useMemo, useState, Fragment } from 'react';
-import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard, Alert, TextInput,Pressable } from 'react-native';
-import { Image as ReactImage } from 'react-native';
-import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
 import Footer from '../../common/footer/Footer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { Fragment, useEffect, useMemo, useState } from 'react';
 import { Dimensions, Image as ReactImage, Keyboard, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View, Pressable, LogBox } from 'react-native';
-import Footer from '../../common/footer/Footer';
 import { regEventReq } from '../../DepReg/store/store';
-import { styleSheet } from './styleSheet';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import numberToCost from '../../common/util/numberToCost';
 
@@ -176,28 +170,31 @@ const Tempo = (props) => {
                 <View style={styles.layer}>
                   <View style={styles.inputWrap}>
                     <Text style={styles.label}>책임자</Text>
-                    <View style={styles.depWrap} >
-                      <Pressable onPress={() => props.navigation.navigate('SearchMemList', { inputData, setInputData })}>
-                        <View pointerEvents="none">
-                          <TextInput style={styles.depManagerInfo}
-                            placeholder={"책임자"}
-                            placeholderTextColor='rgba(0,0,0,0.2)'
-                            editable={false}
-                            onFocus={() => {
-                              setheightMagnifi(1.5)
-                              setIsFoucs(true)
-                            }}
-                            onBlur={() => { setheightMagnifi(1.2) }}
-                            value={inputData.eventHostName}
-                          >
-                          </TextInput>
-                          <TouchableOpacity>
-                            <ReactImage
-                              source={require('../../common/img/magnifying-glass.png')} style={styles.searchIcon} />
-                          </TouchableOpacity>
-                        </View>
-                      </Pressable>
-                    </View>
+
+                    <TouchableOpacity
+                      
+                      onPress={() => props.navigation.navigate('SearchMemList', { inputData, setInputData })}>
+                      <View 
+                      style={styles.depWrap}
+                      pointerEvents="none">
+
+
+                        <TextInput style={styles.depManagerInfo}
+                          placeholder={"책임자"}
+                          placeholderTextColor='rgba(0,0,0,0.2)'
+                          editable={false}
+                          onFocus={() => {
+                            setheightMagnifi(1.5)
+                            setIsFoucs(true)
+                          }}
+                          onBlur={() => { setheightMagnifi(1.2) }}
+                          value={inputData.eventHostName}
+                        >
+                        </TextInput>
+                        <ReactImage
+                          source={require('../../common/img/magnifying-glass.png')} style={styles.searchIcon} />
+                      </View>
+                    </TouchableOpacity>
                   </View>
                   <View style={styles.inputWrap}>
                     <Text style={styles.label}>예산금액</Text>
