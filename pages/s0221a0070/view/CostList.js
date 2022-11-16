@@ -16,7 +16,7 @@ const CostList = (props) => {
   LogBox.ignoreLogs([
     'Non-serializable values were found in the navigation state'
   ]);
-  
+
   const styles = styleSheet()
   const isFocused = useIsFocused();
   const [listData, setListData] = useState([])
@@ -66,10 +66,10 @@ const CostList = (props) => {
   }
 
   const convertDateToVal = (val) => {
-      const year = val.getFullYear()
-      const month = val.getMonth() + 1
-      const date = val.getDate()
-      return `${year}-${month}-${date}`
+    const year = val.getFullYear()
+    const month = val.getMonth() + 1
+    const date = val.getDate()
+    return `${year}-${month}-${date}`
   }
 
   const confirmDateChange = (val, flag) => {
@@ -96,7 +96,7 @@ const CostList = (props) => {
               <View style={styles.cellInner}>
                 <Text style={styles.cellTitle}>{cutTitle}</Text>
                 <Text style={styles.cellDate}>
-                  {item?.usedDate} / {numberToCost(item?.useAmount) && `${numberToCost(item?.useAmount)} 원`}
+                  <Text style={styles.name}>{item?.payName}</Text> / {item?.usedDate} / {numberToCost(item?.useAmount) && `${numberToCost(item?.useAmount)} 원`}
                 </Text>
                 <Text style={styles.cellAmount}>{item?.useProStatusNm}</Text>
               </View>
