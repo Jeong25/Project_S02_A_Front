@@ -158,7 +158,7 @@ const Qrscan = (props) => {
           ratioOverlay='5:4'
           laserColor="rgba(0, 0, 0, 0)"
           frameColor="rgba(0, 0, 0, 0)"
-          surfaceColor="rgba(0, 0, 0, 0)"
+          surfaceColor="rgba(0 0, 0, 0)"
           onReadCode={(event) => onBarCodeRead(event.nativeEvent.codeStringValue)}
         />
 
