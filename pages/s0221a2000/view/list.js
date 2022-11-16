@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useMemo, useState,Fragment } from 'react';
+import React, { Component, useEffect, useMemo, useState, Fragment } from 'react';
 import { StyleSheet, Text, SafeAreaView, View, TextInput, FlatList, Picker, ScrollView, TouchableOpacity, Keyboard } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import Svg, { Defs, Pattern } from 'react-native-svg';
@@ -81,8 +81,9 @@ const EventList = (props) => {
             </View>
           </View>
           <View style={styles.divider}></View>
-          <View style={styles.cellWrap}>
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
+          <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
+            <View style={styles.cellWrap}>
+
               {eventInfo.map((v, i) => (
                 <View key={i}>
                   <View>
@@ -99,8 +100,8 @@ const EventList = (props) => {
                   <View style={styles.cellDivider}></View>
                 </View>
               ))}
-            </ScrollView>
-          </View>
+            </View>
+          </ScrollView>
           <EvtDetailModal
             openModal={evtDetailModal}
             eventId={eventIdMd}
@@ -112,7 +113,7 @@ const EventList = (props) => {
       <Footer
         navigation={props.navigation}
       />
-      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }}/>
+      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
     </Fragment>
   )
 }

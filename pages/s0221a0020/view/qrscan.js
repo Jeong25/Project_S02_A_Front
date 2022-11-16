@@ -147,7 +147,7 @@ const Qrscan = (props) => {
           cameraType={cameraFront ? CameraType.Front : CameraType.Back}
           // Barcode Scanner Props
           scanBarcode={true}
-          showFrame={true}
+          showFrame={false}
           laserColor="rgba(0, 0, 0, 0)"
           frameColor="rgba(0, 0, 0, 0)"
           surfaceColor="rgba(0, 0, 0, 0)"

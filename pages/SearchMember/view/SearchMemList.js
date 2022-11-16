@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useMemo, useState,Fragment } from 'react';
+import React, { Component, useEffect, useMemo, useState, Fragment } from 'react';
 import { Text, SafeAreaView, View, TextInput, ScrollView, TouchableOpacity, Keyboard } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import Svg, { Defs, Pattern } from 'react-native-svg';
@@ -11,7 +11,7 @@ import { retrieveMemReq } from '../../DepReg/store/store';
 const SearchMemList = (props) => {
 
   const styles = styleSheet()
-  const [searchProps, setSearchProps] = useState({memberName: ''})
+  const [searchProps, setSearchProps] = useState({ memberName: '' })
   const [memData, setMemData] = useState([])
 
   const getData = async () => {
@@ -26,7 +26,7 @@ const SearchMemList = (props) => {
   }
 
   const onClick = (memberId, memberName) => {
-    props.route.params.setInputData({...props.route.params.inputData, eventHostId: memberId, eventHostName: memberName})
+    props.route.params.setInputData({ ...props.route.params.inputData, eventHostId: memberId, eventHostName: memberName })
     props.navigation.goBack()
   }
 
@@ -57,7 +57,7 @@ const SearchMemList = (props) => {
               <TextInput style={styles.input}
                 placeholder="이름으로 검색"
                 placeholderTextColor="#888"
-                onChange={(e) => setSearchProps({...searchProps, memberName: e.nativeEvent.text})}
+                onChange={(e) => setSearchProps({ ...searchProps, memberName: e.nativeEvent.text })}
               ></TextInput>
             </View>
 
@@ -68,8 +68,17 @@ const SearchMemList = (props) => {
             </View>
           </View>
           <View style={styles.divider}></View>
-          <View style={styles.cellWrap}>
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
+
+          <ScrollView
+            resetScrollToCoords={{ x: 0, y: 0 }}
+            enableOnAndroid={true}
+            scrollEnabled={true}
+            scrollToOverflowEnabled={true}
+            enableAutomaticScroll={true}
+            keyboardShouldPersistTaps='always'
+            nestedScrollEnabled={true}
+          >
+            <View style={styles.cellWrap}>
               {memData.map((v, i) => (
                 <View key={i}>
                   <View>
@@ -85,12 +94,12 @@ const SearchMemList = (props) => {
                   <View style={styles.cellDivider}></View>
                 </View>
               ))}
-            </ScrollView>
-          </View>
+            </View>
+          </ScrollView>
         </View >
 
       </SafeAreaView>
-      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }}/>
+      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
     </Fragment>
   )
 }
