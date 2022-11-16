@@ -6,39 +6,28 @@ import { Path as SvgPath } from 'react-native-svg';
 import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { retrieveMemReq } from '../../DepReg/store/store';
 
 const SearchMemList = (props) => {
 
-  const [eventInfo, setEventInfo] = useState([])
-  const [eventIdMd, setEventIdMd] = useState('')
-  const [evtDetailModal, setEvtDetailModal] = useState(false)
-  const [userName, setUserName] = useState('')
   const styles = styleSheet()
+  const [searchProps, setSearchProps] = useState({memberName: ''})
+  const [memData, setMemData] = useState([])
 
   const getData = async () => {
     const orgId = await AsyncStorage.getItem('orgId')
-    const eventCode = await AsyncStorage.getItem('eventCode')
-    const res = await eventListReq(orgId, eventCode)
-    setEventInfo(res.data.data)
-  }
-
-  const showDate = (v) => {
-    const val1 = JSON.stringify(v.eventStartDate).split(' ')[0].substring(1)
-    const val2 = JSON.stringify(v.eventEndDate).split(' ')[0].substring(1)
-    const res = `${val1} ~ ${val2}`
-    return res
-  }
-
-  const onClick = (eventId, eventNm) => {
-    const data = { "eventId": eventId, 'eventNm': eventNm }
-    if (props.route.params.nonShutDown) {
-      setEventIdMd(eventId)
-      Keyboard.dismiss()
-      setEvtDetailModal(true)
-    } else {
-      props.route.params.getEventInfo(data)
-      props.navigation.goBack()
+    const params = {
+      orgId: orgId,
+      memberName: searchProps.memberName
     }
+    const res = await retrieveMemReq(params);
+    setMemData(res)
+    Keyboard.dismiss()
+  }
+
+  const onClick = (memberId, memberName) => {
+    props.route.params.setInputData({...props.route.params.inputData, eventHostId: memberId, eventHostName: memberName})
+    props.navigation.goBack()
   }
 
   useEffect(() => {
@@ -68,11 +57,12 @@ const SearchMemList = (props) => {
               <TextInput style={styles.input}
                 placeholder="이름으로 검색"
                 placeholderTextColor="#888"
+                onChange={(e) => setSearchProps({...searchProps, memberName: e.nativeEvent.text})}
               ></TextInput>
             </View>
 
             <View style={styles.searchBtn}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => getData()}>
                 <ReactImage source={require('../../common/img/searchIcon.png')} style={styles.searchIcon}></ReactImage>
               </TouchableOpacity>
             </View>
@@ -80,21 +70,21 @@ const SearchMemList = (props) => {
           <View style={styles.divider}></View>
           <View style={styles.cellWrap}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
-              {/* {eventInfo.map((v, i) => ( */}
-                <View>
+              {memData.map((v, i) => (
+                <View key={i}>
                   <View>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => onClick(v.memberId, v.memberName)}>
                       <View style={styles.cell}>
                         <View style={styles.cellInner}>
-                          <Text style={styles.name}>황어진</Text>
-                          <Text style={styles.phoneNm}>010-9151-8714</Text>
+                          <Text style={styles.name}>{v.memberName}</Text>
+                          <Text style={styles.phoneNm}>{v.hpNo}</Text>
                         </View>
                       </View>
                     </TouchableOpacity>
                   </View>
                   <View style={styles.cellDivider}></View>
                 </View>
-              {/* ))} */}
+              ))}
             </ScrollView>
           </View>
         </View >

@@ -132,7 +132,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "depInfo": {
       "flex": 1,
-      'height': 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
       "fontWeight": '700',
@@ -143,7 +142,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
     "depManagerInfo": {
       "flex": 1,
-      'height': 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
       "fontWeight": '700',
@@ -154,7 +152,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
     "depAmountInfo": {
       "flex": 1,
-      'height': 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
       "fontWeight": '700',

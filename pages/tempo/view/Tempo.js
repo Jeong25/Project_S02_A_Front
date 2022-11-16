@@ -1,12 +1,16 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { Fragment, useEffect, useMemo, useState } from 'react';
-import { Dimensions, Image as ReactImage, Keyboard, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
+import { Dimensions, Image as ReactImage, Keyboard, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View, Pressable, LogBox } from 'react-native';
 import Footer from '../../common/footer/Footer';
 import { regEventReq } from '../../DepReg/store/store';
 import { styleSheet } from './styleSheet';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 const Tempo = (props) => {
+
+  LogBox.ignoreLogs([
+    'Non-serializable values were found in the navigation state'
+  ]);
 
   const { windowHeight, windowWidth } = props
   const styles = useMemo(() => styleSheet(windowHeight, windowWidth), [windowHeight, windowWidth])
@@ -38,6 +42,7 @@ const Tempo = (props) => {
     eventPayDept: null,
     defaultEventFlag: 'N',
     eventCode: null,
+    eventHostName: '',
 
     orgId: '',
     eventRegId: '',
@@ -157,20 +162,26 @@ const Tempo = (props) => {
                   <View style={styles.inputWrap}>
                     <Text style={styles.label}>책임자</Text>
                     <View style={styles.depWrap} >
-                      <TextInput style={styles.depManagerInfo}
-                        placeholder={"책임자"}
-                        placeholderTextColor='rgba(0,0,0,0.2)'
-                        onFocus={() => {
-                          setheightMagnifi(1.5)
-                          setIsFoucs(true)
-                        }}
-                        onBlur={() => { setheightMagnifi(1.2) }}
-                      >
-                      </TextInput>
-                      <TouchableOpacity onPress={() => props.navigation.navigate('SearchMemList')}>
-                        <ReactImage
-                          source={require('../../common/img/magnifying-glass.png')} style={styles.searchIcon} />
-                      </TouchableOpacity>
+                      <Pressable onPress={() => props.navigation.navigate('SearchMemList', { inputData, setInputData })}>
+                        <View pointerEvents="none">
+                          <TextInput style={styles.depManagerInfo}
+                            placeholder={"책임자"}
+                            placeholderTextColor='rgba(0,0,0,0.2)'
+                            editable={false}
+                            onFocus={() => {
+                              setheightMagnifi(1.5)
+                              setIsFoucs(true)
+                            }}
+                            onBlur={() => { setheightMagnifi(1.2) }}
+                            value={inputData.eventHostName}
+                          >
+                          </TextInput>
+                          <TouchableOpacity>
+                            <ReactImage
+                              source={require('../../common/img/magnifying-glass.png')} style={styles.searchIcon} />
+                          </TouchableOpacity>
+                        </View>
+                      </Pressable>
                     </View>
                   </View>
                   <View style={styles.inputWrap}>
