@@ -148,6 +148,7 @@ const Qrscan = (props) => {
           // Barcode Scanner Props
           scanBarcode={true}
           showFrame={false}
+          ratioOverlay={['5:4']}
           laserColor="rgba(0, 0, 0, 0)"
           frameColor="rgba(0, 0, 0, 0)"
           surfaceColor="rgba(0, 0, 0, 0)"
