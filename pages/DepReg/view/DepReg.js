@@ -62,7 +62,7 @@ const DepReg = (props) => {
 
                   <TouchableOpacity
                     style={styles.cell}
-                    onPress={() => props.navigation.navigate('MemberList')}>
+                    onPress={() => props.navigation.navigate('MemberList', {eventId: v.eventId, orgId: orgId})}>
                     <View style={styles.titleWrap}>
                       <Text style={styles.cellTitle}>{v.eventNm}</Text>
                       <TouchableOpacity style={styles.plusIcon}>
