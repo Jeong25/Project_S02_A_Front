@@ -155,13 +155,11 @@ const Qrscan = (props) => {
           // Barcode Scanner Props
           scanBarcode={true}
           showFrame={false}
-          ratioOverlay='5:4'
           laserColor="rgba(0, 0, 0, 0)"
           frameColor="rgba(0, 0, 0, 0)"
           surfaceColor="rgba(0 0, 0, 0)"
           onReadCode={(event) => onBarCodeRead(event.nativeEvent.codeStringValue)}
         />
-
         <View style={styles.textGroup}>
           <Text style={styles.compName}>{qrInfo?.namePathPriortiy || ''}</Text>
           <Text style={styles.eventName}>{qrInfo?.eventNm || ''}</Text>
