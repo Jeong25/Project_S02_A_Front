@@ -53,16 +53,11 @@ const DepReg = (props) => {
             nestedScrollEnabled={true}
           >
             <View style={styles.contentsWrap}>
-              <View style={styles.divider} />
-
-
               {deptLevel.filter(data => data.eventLevel === 0).map((v, i) => (
-
-                <View style={styles.level1}>
-
+                <View style={styles.level1} key={i}>
                   <TouchableOpacity
                     style={styles.cell}
-                    onPress={() => props.navigation.navigate('MemberList', {eventId: v.eventId, orgId: orgId})}>
+                    onPress={() => props.navigation.navigate('MemberList', { eventId: v.eventId, orgId: orgId })}>
                     <View style={styles.titleWrap}>
                       <Text style={styles.cellTitle}>{v.eventNm}</Text>
                       <TouchableOpacity style={styles.plusIcon}>
@@ -72,18 +67,13 @@ const DepReg = (props) => {
                     <View style={styles.dropDownBtn}>
                       <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
                     </View>
-
                   </TouchableOpacity>
-
                   <View style={styles.divider} />
-
                   {deptLevel.filter(data => data.highEventId === v.eventId).map((v2, i2) => (
-                    <View style={styles.level2Wrap}>
+                    <View style={styles.level2Wrap} key={i2}>
                       <View style={styles.level2}>
                         <TouchableOpacity
-                          style={styles.cell}
-                          onPress={() => props.navigation.navigate('MemberList')}>
-
+                          style={styles.cell}>
                           <View style={styles.titleWrap}>
                             <Text style={styles.cellTitle}>{v2.eventNm}</Text>
                             <TouchableOpacity style={styles.plusIcon}>
@@ -95,17 +85,12 @@ const DepReg = (props) => {
                           </View>
                         </TouchableOpacity>
                       </View>
-
-
                       <View style={styles.divider} />
-
                       {deptLevel.filter(data => data.highEventId === v2.eventId).map((v3, i3) => (
-                        <View style={styles.level3Wrap}>
+                        <View style={styles.level3Wrap} key={i3}>
                           <View style={styles.level3}>
                             <TouchableOpacity
-                              style={styles.cell}
-                              onPress={() => props.navigation.navigate('MemberList')}>
-
+                              style={styles.cell}>
                               <View style={styles.titleWrap}>
                                 <Text style={styles.cellTitle}>{v3.eventNm}</Text>
                                 <TouchableOpacity style={styles.plusIcon}>
@@ -117,39 +102,30 @@ const DepReg = (props) => {
                               </View>
                             </TouchableOpacity>
                           </View>
-
                           <View style={styles.divider} />
                           {deptLevel.filter(data => data.highEventId === v3.eventId).map((v4, i4) => (
-                            console.log(v4)
+                            <View style={styles.level4} key={i4}>
+                              <TouchableOpacity
+                                style={styles.cell}>
+                                <View style={styles.titleWrap}>
+                                  <Text style={styles.cellTitle}>{v4.eventNm}</Text>
+                                  <TouchableOpacity style={styles.plusIcon}>
+                                    <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                                  </TouchableOpacity>
+                                </View>
+                                <View style={styles.dropDownBtn}>
+                                  <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
+                                </View>
+                              </TouchableOpacity>
+                              <View style={styles.divider} />
+                            </View>
                           ))}
-                          <View style={styles.level4}>
-                            <TouchableOpacity
-                              style={styles.cell}
-                              onPress={() => props.navigation.navigate('MemberList')}>
-
-                              <View style={styles.titleWrap}>
-                                <Text style={styles.cellTitle}>222</Text>
-                                <TouchableOpacity style={styles.plusIcon}>
-                                  <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
-                                </TouchableOpacity>
-                              </View>
-                              <View style={styles.dropDownBtn}>
-                                <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
-                              </View>
-                            </TouchableOpacity>
-                          </View>
-
-                          <View style={styles.divider} />
-
-
-
                         </View>
                       ))}
                     </View>
                   ))}
                 </View>
               ))}
-
             </View>
           </ScrollView>
         </View>
