@@ -14,6 +14,7 @@ import EvtDetailModal from '../../common/modal/s0221a2001/evtDetailModal';
 
 
 const QrCode = (props) => {
+  const [orgId, setOrgId] = useState('')
   const [memberName, setMemberName] = useState('')
   const [eventId, setEventId] = useState('')
   const [eventIdMd, setEventIdMd] = useState('')
@@ -39,6 +40,9 @@ const QrCode = (props) => {
       const localEventCode = await AsyncStorage.getItem('eventCode')
       if (localName) {
         setMemberName(localName)
+      }
+      if (localOrgId) {
+        setOrgId(localOrgId)
       }
       await setUserTp()
       const localEventNm = await AsyncStorage.getItem('eventNm')
@@ -230,7 +234,7 @@ const QrCode = (props) => {
               </View>
               <Text style={styles.centerText}>QR보기</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('DepReg')}>
+            <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('DepReg', { orgId: orgId })}>
               <View style={styles.btnImg}>
                 <ReactImage source={require('../../common/img/group.png')} style={styles.centerIcon} />
               </View>
@@ -264,7 +268,7 @@ const QrCode = (props) => {
           openModal={qrModalBool}
           onClose={() => setQrModalBool(false)}
         />
-        
+
         <EvtDetailModal
           openModal={evtDetailModal}
           eventId={eventIdMd}
