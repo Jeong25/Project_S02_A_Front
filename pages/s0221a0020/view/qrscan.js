@@ -40,6 +40,10 @@ const Qrscan = (props) => {
   }
 
   const onBarCodeRead = async (event) => {
+    if (eventId === 0) {
+      Alert.alert('QR Code', '행사를 선택해주세요.')
+      return
+    }
     if (!scaned) {
       return
     }
@@ -148,7 +152,7 @@ const Qrscan = (props) => {
           // Barcode Scanner Props
           scanBarcode={true}
           showFrame={false}
-          ratioOverlay={['5:4']}
+          ratioOverlay='5:4'
           laserColor="rgba(0, 0, 0, 0)"
           frameColor="rgba(0, 0, 0, 0)"
           surfaceColor="rgba(0, 0, 0, 0)"
