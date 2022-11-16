@@ -4,7 +4,7 @@ import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
 import Footer from '../../common/footer/Footer';
-import { deptLevelReq, regEventReq } from '../store/store';
+import { deptLevelReq } from '../store/store';
 
 
 const DepReg = (props) => {
@@ -16,10 +16,12 @@ const DepReg = (props) => {
   const { windowHeight, windowWidth } = props
   const styles = useMemo(() => styleSheet(windowHeight, windowWidth), [windowHeight, windowWidth])
 
+  const [orgId, setOrgId] = useState('')
   const [deptLevel, setDeptLevel] = useState([])
 
   useEffect(async () => {
     const orgId = props.route.params.orgId
+    setOrgId(orgId)
     const res = await deptLevelReq(orgId)
     setDeptLevel(res)
   }, [])
@@ -53,7 +55,7 @@ const DepReg = (props) => {
             <View style={styles.contentsWrap}>
               {deptLevel.filter(data => data.eventLevel === 0).map((v, i) => (
                 <View style={styles.level1}>
-                  <TouchableOpacity onPress={() => props.navigation.navigate('MemberList')}>
+                  <TouchableOpacity onPress={() => props.navigation.navigate('MemberList', {eventId: v.eventId, orgId: orgId})}>
                     <View style={styles.titleWrap}>
                       <Text style={styles.cellTitle}>{v.eventNm}</Text>
                       <TouchableOpacity style={styles.plusIcon}>

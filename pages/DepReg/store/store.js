@@ -1,8 +1,18 @@
-import { deptLevel, regEvent } from '../repository/repository';
+import { deptLevel, deptInfo, deptPayInfo, regEvent } from '../repository/repository';
 
 const deptLevelReq = async (params) => {
     const res = await deptLevel(params);
     return res.data.data;
+}
+
+const deptInfoReq = async (params) => {
+    const res = await deptInfo(params);
+    return res.data.data
+}
+
+const deptPayInfoReq = async (params) => {
+    const res = await deptPayInfo(params);
+    return res.data.data
 }
 
 const regEventReq = async (params) => {
@@ -10,4 +20,4 @@ const regEventReq = async (params) => {
     return res;
 }
 
-export { deptLevelReq, regEventReq }
+export { deptLevelReq, deptInfoReq, deptPayInfoReq, regEventReq }
