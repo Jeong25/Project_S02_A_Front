@@ -168,28 +168,31 @@ const Tempo = (props) => {
                 <View style={styles.layer}>
                   <View style={styles.inputWrap}>
                     <Text style={styles.label}>책임자</Text>
-                    <View style={styles.depWrap} >
-                      <Pressable onPress={() => props.navigation.navigate('SearchMemList', { inputData, setInputData })}>
-                        <View pointerEvents="none">
-                          <TextInput style={styles.depManagerInfo}
-                            placeholder={"책임자"}
-                            placeholderTextColor='rgba(0,0,0,0.2)'
-                            editable={false}
-                            onFocus={() => {
-                              setheightMagnifi(1.5)
-                              setIsFoucs(true)
-                            }}
-                            onBlur={() => { setheightMagnifi(1.2) }}
-                            value={inputData.eventHostName}
-                          >
-                          </TextInput>
-                          <TouchableOpacity>
-                            <ReactImage
-                              source={require('../../common/img/magnifying-glass.png')} style={styles.searchIcon} />
-                          </TouchableOpacity>
-                        </View>
-                      </Pressable>
-                    </View>
+
+                    <TouchableOpacity
+                      
+                      onPress={() => props.navigation.navigate('SearchMemList', { inputData, setInputData })}>
+                      <View 
+                      style={styles.depWrap}
+                      pointerEvents="none">
+
+
+                        <TextInput style={styles.depManagerInfo}
+                          placeholder={"책임자"}
+                          placeholderTextColor='rgba(0,0,0,0.2)'
+                          editable={false}
+                          onFocus={() => {
+                            setheightMagnifi(1.5)
+                            setIsFoucs(true)
+                          }}
+                          onBlur={() => { setheightMagnifi(1.2) }}
+                          value={inputData.eventHostName}
+                        >
+                        </TextInput>
+                        <ReactImage
+                          source={require('../../common/img/magnifying-glass.png')} style={styles.searchIcon} />
+                      </View>
+                    </TouchableOpacity>
                   </View>
                   <View style={styles.inputWrap}>
                     <Text style={styles.label}>예산금액</Text>
