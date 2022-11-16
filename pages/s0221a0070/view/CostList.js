@@ -91,7 +91,7 @@ const CostList = (props) => {
               <View style={styles.cellInner}>
                 <Text style={styles.cellTitle}>{cutTitle}</Text>
                 <Text style={styles.cellDate}>
-                  <Text style={styles.name}>{item?.payName}</Text> / {item?.usedDate} / {numberToCost(item?.useAmount) && `${numberToCost(item?.useAmount)} 원`}
+                  {item?.usedDate} / {numberToCost(item?.useAmount) && `${numberToCost(item?.useAmount)} 원`}
                 </Text>
                 <Text style={styles.cellAmount}>{item?.useProStatusNm}</Text>
               </View>

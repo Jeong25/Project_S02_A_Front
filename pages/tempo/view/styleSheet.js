@@ -19,7 +19,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "marginLeft": 'auto',
       "marginRight": 'auto',
       'paddingHorizontal': 20,
-      'backgroundColor' :'#f15a24',
+      'backgroundColor': '#f15a24',
       'flexDirection': 'row',
       'alignItems': 'center',
       'justifyContent': 'center',
@@ -48,69 +48,75 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'width': '90%',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-  },
+    },
 
-   
+
     'form': {
       'width': '100%',
       "marginLeft": 'auto',
       "marginRight": 'auto',
       'marginTop': '8%',
-  },
-  'layer':{
-      'width' : '100%',
-      'flexDirection' :'row',
-      'alignItems' : 'center',
-      'justifyContent' : 'space-between',
+    },
+    'layer': {
+      'width': '100%',
+      'flexDirection': 'row',
+      'alignItems': 'center',
+      'justifyContent': 'space-between',
       'marginBottom': '5%',
 
-  },
-  
-  'inputWrap': {
+    },
+
+    'inputWrap': {
       'width': '45%',
-  },
-  'hpInputWrap': {
+    },
+    'hpInputWrap': {
       'width': '29%',
-  },
-  'infoWrap': {
+    },
+    'infoWrap': {
       'marginBottom': '5%',
-  },
+    },
 
-  "label": {
+    "label": {
       "fontFamily": "Apple SD Gothic Neo",
       "color": "#f15a24",
       "fontWeight": '700',
       "fontSize": 14,
-  },
+    },
 
- 
-  'checkBoxWrap' : {
-    'flexDirection' : 'row',
-    'alignItems' : 'center',
-  
-  },
-  "checkText": {
-    "fontFamily": "Apple SD Gothic Neo",
-    "color": "#f15a24",
-    "fontWeight": '700',
-    "fontSize": 14,
-    'marginLeft' : 10,
-},
-  'checkBox' : {
-    'backgroundColor' : '#f15a24',
-    'borderRadius': 50,
-    'width' : 30,
-    'height' : 30,
-  },
-  'checkIcon' : {
-    'width' : '100%',
-    'height' : '100%',
-  },
-  
 
-  "depInfo": {
+    'checkBoxWrap': {
+      'flexDirection': 'row',
+      'alignItems': 'center',
+
+    },
+    "checkText": {
+      "fontFamily": "Apple SD Gothic Neo",
+      "color": "#f15a24",
+      "fontWeight": '700',
+      "fontSize": 14,
+      'marginLeft': 10,
+    },
+    'checkBox': {
+      'backgroundColor': '#f15a24',
+      'borderRadius': 50,
+      'width': 30,
+      'height': 30,
+    },
+    'checkIcon': {
+      'width': '100%',
+      'height': '100%',
+    },
+    'unCheckBox': {
+      'width': 30,
+      'height': 30,
+      'backgroundColor': '#d9d9d9',
+      'borderRadius': 100,
+    },
+
+
+    "depInfo": {
       "width": "100%",
-      'height' : 40,
+      'height': 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
       "fontWeight": '700',
@@ -118,28 +124,28 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'textAlign': 'center',
       'borderBottomWidth': 2,
       'borderBottomColor': '#888',
-  },
+    },
 
-  'btnWrap': {
+    'btnWrap': {
       'width': '90%',
       'marginLeft': 'auto',
       'marginRight': 'auto',
       'marginTop': '10%',
       'marginBottom': '10%',
-  },
+    },
 
-  'signInBtn': {
+    'signInBtn': {
       'backgroundColor': '#f15a24',
       'borderRadius': 10,
-  },
-  'signInBtnText': {
+    },
+    'signInBtnText': {
       'color': 'white',
       'fontSize': 24,
       'fontWeight': Platform.OS === 'ios' ? '700' : 'bold',
       'fontFamily': "Apple SD Gothic Neo",
       'textAlign': 'center',
       'lineHeight': 50,
-  },
+    },
 
   });
 }

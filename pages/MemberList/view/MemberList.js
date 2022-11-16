@@ -14,7 +14,13 @@ const MemberList = (props) => {
 
   const [userInfo, setUserInfo] = useState([])
   const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const toggleSwitch = () => {
+    if (isEnabled) {
+      setIsEnabled(false);
+    } else {
+      setIsEnabled(true);
+    }
+  }
 
   useEffect(() => {
     const callData = async () => {
@@ -60,6 +66,8 @@ const MemberList = (props) => {
                       <View style={styles.memberNameWrap}>
                         <Text style={styles.memberName}>{v.memberName}</Text>
                         <SwitchToggle
+                          onPress={toggleSwitch}
+                          switchOn={isEnabled}
                           circleColorOff='#333'
                           circleColorOn='#fff'
                           backgroundColorOn='#f15a24'
@@ -77,7 +85,7 @@ const MemberList = (props) => {
                         />
                       </View>
                       <Text style={styles.memberDetail}>
-                        {v.hpNo} / {v.eventPayRoleCd}
+                        {v.hpNo}{v.eventPayRoleCd ? ` / ${v.eventPayRoleCd}` : ''}
                       </Text>
                       {v.eventPayLevel === 1 ?
                         <View style={styles.selectBox}>

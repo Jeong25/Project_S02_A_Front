@@ -1,14 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Dimensions, Keyboard, Alert } from 'react-native';
-import { Text, View, SafeAreaView, TextInput, TouchableOpacity, } from 'react-native';
-import { Image as ReactImage } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { signInReq } from '../store/store';
-import { styleSheet } from './stylesheet';
+import React, { useEffect, useRef, useState } from 'react';
+import { Alert, Dimensions, Image as ReactImage, Keyboard, SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { setUserTp } from '../../common/lib/getuserinfo';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
-
+import { signInReq } from '../store/store';
+import { styleSheet } from './stylesheet';
 
 const Signin = (props) => {
   const { windowHeight } = props
@@ -24,7 +21,6 @@ const Signin = (props) => {
   const [isFocus, setIsFoucs] = useState(false)
   const [privacyAgree, setPrivacyAgree] = useState(false)
   const [faqModalBool, setFaqModalBool] = useState(false)
-
 
   const ref_input = []
   ref_input[0] = useRef(null)
@@ -63,6 +59,11 @@ const Signin = (props) => {
       keyboardSub?.remove()
     }
   }, [isFocus])
+
+  const checkAuth = () => {
+    setPrivacyAgree(!privacyAgree)
+    Keyboard.dismiss()
+  }
 
   const blurTextInput = () => {
     if (isFocus) {
@@ -121,11 +122,6 @@ const Signin = (props) => {
     await props.navigation.reset({ routes: [{ name: 'QrCode' }] })
   }
 
-  const test = (e) => {
-    // console.log(e.nativeEvent.text)
-    // const a = e.nativeEvent.text.toUpperCase()
-    setEventCode(e.nativeEvent.text)
-  }
   const openFaqModal = () => {
     Keyboard.dismiss()
     setFaqModalBool(true)
@@ -144,7 +140,6 @@ const Signin = (props) => {
       <SafeAreaView
         style={{ flex: 1, backgroundColor: '#f15a25' }}
       >
-
         <View style={styles.wrap}>
           <View style={styles.titleWrap}>
             <Text style={styles.subTitle}>
@@ -218,7 +213,6 @@ const Signin = (props) => {
                   style={styles.phoneInput3}
                   placeholder={"0000"}
                   placeholderTextColor="rgba(0,0,0,0.2)"
-
                   onChange={(e) => {
                     setInputHpNo({ ...inputhpNo, last: e.nativeEvent.text })
                     if (e.nativeEvent.text.length === 4) {
@@ -246,12 +240,10 @@ const Signin = (props) => {
                 >
                   {eventCode}
                 </TextInput>
-          
                 <TouchableOpacity style={styles.searchCode} onPress={() => props.navigation.navigate('SearchCode')}>
                   <Text style={styles.searchCodeText}>부서코드를 잊어버렸다면?</Text>
                 </TouchableOpacity>
-
-              <TouchableOpacity onPress={() => setPrivacyAgree(!privacyAgree)}>
+              <TouchableOpacity onPress={() => checkAuth()}>
                 <View style={styles.infoAggWrap}>
                   <View style={privacyAgree ? styles.checkBox : styles.unCheckBox}>
                     <ReactImage source={require('../../common/img/check.png')} style={styles.checkIcon} />
@@ -267,7 +259,6 @@ const Signin = (props) => {
                   <Text style={styles.text}>보유기간 : 목적 달성 시 지체없이 폐기</Text>
                 </View>
               </View>
-
               <View style={styles.btnWrap}>
                 <TouchableOpacity style={styles.loginBtn} onPress={() => doLogin(name, `${inputhpNo.first}-${inputhpNo.middle}-${inputhpNo.last}`, eventCode, privacyAgree)}>
                   <Text style={styles.loginText}>로그인</Text>
@@ -279,21 +270,17 @@ const Signin = (props) => {
             </View>
           </View>
         </View>
-       
       </SafeAreaView>
       <FaqModal
           openModal={faqModalBool}
           onClose={() => setFaqModalBool(false)}
         />
     </KeyboardAwareScrollView >
-
   );
 }
 
 Signin.propTypes = {
-
 }
-
 Signin.defaultProps = {
   windowWidth: Dimensions.get('window').width,
   windowHeight: Dimensions.get('window').height
