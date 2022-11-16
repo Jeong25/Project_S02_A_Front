@@ -1,3 +1,9 @@
+import React, { useEffect, useMemo, useState, Fragment } from 'react';
+import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard, Alert, TextInput,Pressable } from 'react-native';
+import { Image as ReactImage } from 'react-native';
+import { Dimensions } from 'react-native';
+import { styleSheet } from './styleSheet';
+import Footer from '../../common/footer/Footer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { Fragment, useEffect, useMemo, useState } from 'react';
 import { Dimensions, Image as ReactImage, Keyboard, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View, Pressable, LogBox } from 'react-native';
@@ -6,6 +12,8 @@ import { regEventReq } from '../../DepReg/store/store';
 import { styleSheet } from './styleSheet';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import numberToCost from '../../common/util/numberToCost';
+
+
 
 const Tempo = (props) => {
 
