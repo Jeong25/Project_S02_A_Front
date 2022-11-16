@@ -54,8 +54,8 @@ const MemberList = (props) => {
             <View style={styles.contentsWrap}>
 
               {userInfo.map((v, i) => (
-                <TouchableOpacity key={i}>
-                  <View style={styles.cell} >
+                <View key={i}>
+                  <View style={styles.cell}>
                     <View style={styles.cellInner}>
                       <View style={styles.memberNameWrap}>
                         <Text style={styles.memberName}>{v.memberName}</Text>
@@ -79,17 +79,34 @@ const MemberList = (props) => {
                       <Text style={styles.memberDetail}>
                         {v.hpNo} / {v.eventPayRoleCd}
                       </Text>
-                      <View style={styles.selectBox}>
-                        <Text style={styles.selectBoxText}>
-                          {v.eventPayLevel === 1 ?
-                            v.eventPayLevel === 2 ? '2차 결제자' : '1차 결제자'
-                            : ''}
-                        </Text>
-                      </View>
+                      {v.eventPayLevel === 1 ?
+                        <View style={styles.selectBox}>
+                          <Text style={styles.selectBoxText}>
+                            1차 결제자
+                          </Text>
+                        </View>
+                        : v.eventPayLevel === 2 ?
+                          <View style={styles.selectBox}>
+                            <Text style={styles.selectBoxText}>
+                              2차 결제자
+                            </Text>
+                          </View>
+                          : v.eventPayLevel === 3 ?
+                            <View style={styles.selectBox}>
+                              <Text style={styles.selectBoxText}>
+                                3차 결제자
+                              </Text>
+                            </View>
+                            : v.eventPayLevel === 4 ?
+                              <View style={styles.selectBox}>
+                                <Text style={styles.selectBoxText}>
+                                  4차 결제자
+                                </Text>
+                              </View> : <View />}
                     </View>
                   </View>
                   <View style={styles.divider} />
-                </TouchableOpacity>
+                </View>
               ))}
 
             </View>
