@@ -69,9 +69,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
     'inputWrap': {
       'width': '45%',
     },
-    'hpInputWrap': {
-      'width': '29%',
-    },
+   
     'infoWrap': {
       'marginBottom': '5%',
     },
@@ -81,6 +79,24 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "color": "#f15a24",
       "fontWeight": '700',
       "fontSize": 14,
+    },
+    'depWrap' : {
+      'flexDirection': 'row',
+      'borderBottomWidth': 2,
+      'borderBottomColor': '#888',
+
+    },
+    'searchIcon':{
+      'width' :25,
+      'height' :25,
+      'marginTop': 10,
+    },
+    'won':{
+      "fontFamily": "Apple SD Gothic Neo",
+      "color": "#f15a24",
+      "fontWeight": '700',
+      "fontSize": 18,
+      'marginTop': 8,
     },
 
 
@@ -115,7 +131,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
 
     "depInfo": {
-      "width": "100%",
+      "flex": 1,
       'height': 40,
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
@@ -124,6 +140,28 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'textAlign': 'center',
       'borderBottomWidth': 2,
       'borderBottomColor': '#888',
+    },
+    "depManagerInfo": {
+      "flex": 1,
+      'height': 40,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontSize": 18,
+      "fontWeight": '700',
+      "color": "#383838",
+      'textAlign': 'center',
+      'marginLeft' :25,
+     
+    },
+    "depAmountInfo": {
+      "flex": 1,
+      'height': 40,
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontSize": 18,
+      "fontWeight": '700',
+      "color": "#383838",
+      'textAlign': 'right',
+      'marginRight' :10,
+     
     },
 
     'btnWrap': {
@@ -134,11 +172,11 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'marginBottom': '10%',
     },
 
-    'signInBtn': {
+    'regBtn': {
       'backgroundColor': '#f15a24',
       'borderRadius': 10,
     },
-    'signInBtnText': {
+    'regBtnText': {
       'color': 'white',
       'fontSize': 24,
       'fontWeight': Platform.OS === 'ios' ? '700' : 'bold',

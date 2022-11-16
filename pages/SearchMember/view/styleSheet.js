@@ -117,7 +117,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
     "cellWrap": {
       "width": "100%",
-      "height": "70%",
+      "height": "100%",
       'marginTop' : 10,
     },
 
@@ -152,22 +152,22 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "marginRight": "auto",
       "marginTop": "auto",
       "marginBottom": "auto",
-      "position": "relative",
+      'flexDirection' : 'row',
+      'justifyContent' : 'space-between'
     },
-    'eventName': {
+    'name': {
       "color": "#1d1d1d",
       "fontFamily": "Apple SD Gothic Neo",
-      "fontSize": 18,
+      "fontSize": 22,
       "fontWeight": "700",
     },
 
-    "eventDate": {
+    "phoneNm": {
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontSize": 22,
+      "fontWeight": "700",
+      "color": "#1d1d1d",
 
-      "fontSize": 11,
-      "lineHeight": 13.2,
-      "fontWeight": "500",
-      "color": "#707070",
-      "marginTop": 5,
     },
 
   })

@@ -113,9 +113,7 @@ const DepReg = (props) => {
                                 <View style={styles.titleWrap}>
                                   <Text style={styles.cellTitle}>{v4.eventNm}</Text>
                                 </View>
-                                <View style={styles.dropDownBtn}>
-                                  <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
-                                </View>
+                               
                               </TouchableOpacity>
                               <View style={styles.divider} />
                             </View>
