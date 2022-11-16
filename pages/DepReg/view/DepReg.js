@@ -79,7 +79,7 @@ const DepReg = (props) => {
                           style={styles.cell}>
                           <View style={styles.titleWrap}>
                             <Text style={styles.cellTitle}>{v2.eventNm}</Text>
-                            <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', {highEvId: v.eventId, eventLv: v.eventLevel+1, eventTp: 'A'})}>
+                            <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', {highEvId: v2.eventId, eventLv: v2.eventLevel+1, eventTp: 'A'})}>
                               <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
                             </TouchableOpacity>
                           </View>
@@ -96,7 +96,7 @@ const DepReg = (props) => {
                               style={styles.cell}>
                               <View style={styles.titleWrap}>
                                 <Text style={styles.cellTitle}>{v3.eventNm}</Text>
-                                <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', {highEvId: v.eventId, eventLv: v.eventLevel+1, eventTp: 'A'})}>
+                                <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', {highEvId: v3.eventId, eventLv: v3.eventLevel+1, eventTp: 'A'})}>
                                   <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
                                 </TouchableOpacity>
                               </View>

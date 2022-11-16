@@ -16,5 +16,9 @@ const regEvent = async (params) => {
     const res = await client.post(`/rest/v1/s021100070/reg-event`, params);
     return res;
 }
+const retrieveMem = async (params) => {
+    const res = await client.get(`/rest/v1/s021100050/retrieve-member-list?&orgId=${Number(params.orgId)}&memberName=${params.memberName}`);
+    return res;
+}
 
-export { deptLevel, deptInfo, deptPayInfo, regEvent };
+export { deptLevel, deptInfo, deptPayInfo, regEvent, retrieveMem };

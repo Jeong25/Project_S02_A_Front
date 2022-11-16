@@ -1,5 +1,5 @@
 import React, { Component, Fragment, useEffect, useMemo, useState } from 'react';
-import { Text, View, TextInput, ScrollView, SafeAreaView } from 'react-native';
+import { Text, View, TextInput, ScrollView, SafeAreaView, LogBox } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import { costPayListReq } from '../store/store';
@@ -11,6 +11,11 @@ import numberToCost from '../../common/util/numberToCost';
 import { useIsFocused } from '@react-navigation/native';
 
 const PaymentList = (props) => {
+
+  LogBox.ignoreLogs([
+    'Non-serializable values were found in the navigation state'
+  ]);
+  
   const styles = styleSheet()
   const isFocused = useIsFocused();
   const [listData, setListData] = useState([])

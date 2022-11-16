@@ -1,11 +1,9 @@
-import React, { useEffect, useMemo, useState, Fragment } from 'react';
-import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard, Alert, TextInput } from 'react-native';
-import { Image as ReactImage } from 'react-native';
-import { Dimensions } from 'react-native';
-import { styleSheet } from './styleSheet';
-import Footer from '../../common/footer/Footer';
-import { regEventReq } from '../../DepReg/store/store'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { Fragment, useEffect, useMemo, useState } from 'react';
+import { Dimensions, Image as ReactImage, Keyboard, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import Footer from '../../common/footer/Footer';
+import { regEventReq } from '../../DepReg/store/store';
+import { styleSheet } from './styleSheet';
 
 
 const Tempo = (props) => {
@@ -27,13 +25,13 @@ const Tempo = (props) => {
     eventEndDate: `${year}-12-31`,
     eventComment: '',
     eventStatus: 'A',
-    
+
     payFlag: 'Y',
     eventFinalFlag: 'Y',
     eventPayDept: null,
     defaultEventFlag: 'N',
     eventCode: null,
-    
+
     orgId: '',
     eventRegId: '',
     highEventId: '',
@@ -54,8 +52,10 @@ const Tempo = (props) => {
     Keyboard.dismiss()
   }
 
-  const regEvent = () => {
+  const regEvent = async () => {
     console.log(JSON.stringify(inputData, null, 4))
+    // const res = regEventReq(inputData)
+    // return res
   }
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const Tempo = (props) => {
       const highEvId = props.route.params.highEvId
       const eventLv = props.route.params.eventLv
       const eventTp = props.route.params.eventTp
-      setInputData({...inputData, orgId: localOrgId, eventRegId: localMemId, highEventId: highEvId, eventLevel: eventLv, eventTp: eventTp})
+      setInputData({ ...inputData, orgId: localOrgId, eventRegId: localMemId, highEventId: highEvId, eventLevel: eventLv, eventTp: eventTp })
     }
     callData()
   }, [])

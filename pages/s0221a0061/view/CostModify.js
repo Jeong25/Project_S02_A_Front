@@ -17,6 +17,7 @@ import FastImage from 'react-native-fast-image';
 
 
 const CostModify = (props) => {
+
   const height = Dimensions.get('window').height
   const styles = styleSheet()
   const [memberId, setMemberId] = useState('')
