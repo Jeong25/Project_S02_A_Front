@@ -1,5 +1,5 @@
 import React, { Component, useRef, useState, useMemo, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Alert } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Alert, LogBox } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import Svg from 'react-native-svg';
 import { Path as SvgPath } from 'react-native-svg';
@@ -11,6 +11,11 @@ import { styleSheet } from './stylesheet';
 import { qrInfoReq, qrScanReq } from '../store/store';
 
 const Qrscan = (props) => {
+
+  LogBox.ignoreLogs([
+    'Non-serializable values were found in the navigation state'
+  ]);
+  
   const [qrInfo, setQrInfo] = useState({})
   const [dateData, setDateData] = useState('')
   const [orgId, setOrgId] = useState('')
