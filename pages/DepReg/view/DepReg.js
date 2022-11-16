@@ -19,11 +19,14 @@ const DepReg = (props) => {
   const [orgId, setOrgId] = useState('')
   const [deptLevel, setDeptLevel] = useState([])
 
-  useEffect(async () => {
-    const orgId = props.route.params.orgId
-    setOrgId(orgId)
-    const res = await deptLevelReq(orgId)
-    setDeptLevel(res)
+  useEffect(() => {
+    const callData = async () => {
+      const orgId = props.route.params.orgId
+      setOrgId(orgId)
+      const res = await deptLevelReq(orgId)
+      setDeptLevel(res)
+    }
+    callData()
   }, [])
 
   return (

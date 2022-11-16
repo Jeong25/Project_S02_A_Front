@@ -16,15 +16,18 @@ const MemberList = (props) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
-  useEffect(async () => {
-    const orgId = props.route.params.orgId
-    const eventId = props.route.params.eventId
-    const params = {
-      orgId: orgId,
-      eventId: eventId
+  useEffect(() => {
+    const callData = async () => {
+      const orgId = props.route.params.orgId
+      const eventId = props.route.params.eventId
+      const params = {
+        orgId: orgId,
+        eventId: eventId
+      }
+      const res = await deptPayInfoReq(params)
+      setUserInfo(res)
     }
-    const res = await deptPayInfoReq(params)
-    setUserInfo(res)
+    callData()
   }, [])
 
   return (
@@ -50,8 +53,8 @@ const MemberList = (props) => {
           >
             <View style={styles.contentsWrap}>
 
-              {userInfo.map((v) => (
-                <TouchableOpacity>
+              {userInfo.map((v, i) => (
+                <TouchableOpacity key={i}>
                   <View style={styles.cell} >
                     <View style={styles.cellInner}>
                       <View style={styles.memberNameWrap}>
