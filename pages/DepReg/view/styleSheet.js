@@ -71,34 +71,45 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'width': '100%',
       'marginBottom': 5,
       'paddingLeft': 5,
-      'paddingVertical': 5,
-      'position': 'relative',
+    },
+    'cell' : {
+      'width' : "100%",
+      'position' : 'relative',
+      'paddingVertical': 10,
+      'paddingHorizontal': 10,
+      'flexDirection' : 'row',
+      'justifyContent' : 'space-between',
+
     },
     'level2Wrap': {
       'width': '96%',
       'marginLeft': 'auto',
       'paddingLeft': 10,
       'borderLeftColor': '#888',
-      'borderLeftWidth': 2,
-
-
+      'borderLeftWidth': 1,
     },
     'level2': {
       'paddingLeft': 5,
       'position': 'relative',
-      'paddingVertical': 5,
     },
     'level3Wrap': {
       'width': '96%',
       'marginLeft': 'auto',
       'paddingLeft': 10,
       'borderLeftColor': '#888',
-      'borderLeftWidth': 2,
+      'borderLeftWidth': 1,
     },
     'level3': {
       'paddingLeft': 5,
       'position': 'relative',
-      'paddingVertical': 5,
+    },
+    'level4': {
+      'width': '96%',
+      'marginLeft': 'auto',
+      'paddingLeft': 15,
+      'position': 'relative',
+      'borderLeftColor': '#888',
+      'borderLeftWidth': 1,
     },
     'cellTitle': {
       'color': "#333",
@@ -146,18 +157,11 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
   
     "dropDownBtn": {
-      "position": "absolute",
-      "right": 10,
-      "top": 20,
-      "color": "#F15A24",
-      "fontSize": 21,
-      "fontWeight": "800",
+    
     },
     'dropDownIcon' : {
       'width': 20,
       'height': 20,
-      'marginLeft' : 10,
-
     },
 
     'divider': {
