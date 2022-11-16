@@ -6,6 +6,9 @@ import { styleSheet } from './styleSheet';
 import Footer from '../../common/footer/Footer';
 import { regEventReq } from '../../DepReg/store/store'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+
 
 
 const Tempo = (props) => {
@@ -18,6 +21,13 @@ const Tempo = (props) => {
   const [heightMagnifi, setheightMagnifi] = useState(1.2)
   const [isFocus, setIsFoucs] = useState(false)
   const [privacyAgree, setPrivacyAgree] = useState(false)
+  const [onDate, setOnDate] = useState(true)
+  const [dateState, setDateState] = useState({
+    viewModal: false,
+    fromToFlag: '',
+    confirmFromDate: new Date(new Date().setMonth(new Date().getMonth() - 1)),
+    confirmToDate: new Date(),
+  })
   const [inputData, setInputData] = useState({
     eventNm: '',
     eventLoc: '',
@@ -27,13 +37,13 @@ const Tempo = (props) => {
     eventEndDate: `${year}-12-31`,
     eventComment: '',
     eventStatus: 'A',
-    
+
     payFlag: 'Y',
     eventFinalFlag: 'Y',
     eventPayDept: null,
     defaultEventFlag: 'N',
     eventCode: null,
-    
+
     orgId: '',
     eventRegId: '',
     highEventId: '',
@@ -65,7 +75,7 @@ const Tempo = (props) => {
       const highEvId = props.route.params.highEvId
       const eventLv = props.route.params.eventLv
       const eventTp = props.route.params.eventTp
-      setInputData({...inputData, orgId: localOrgId, eventRegId: localMemId, highEventId: highEvId, eventLevel: eventLv, eventTp: eventTp})
+      setInputData({ ...inputData, orgId: localOrgId, eventRegId: localMemId, highEventId: highEvId, eventLevel: eventLv, eventTp: eventTp })
     }
     callData()
   }, [])
@@ -76,6 +86,25 @@ const Tempo = (props) => {
       keyboardSub?.remove()
     }
   }, [isFocus])
+
+  const openDateModal = (flag) => {
+    setDateState({ ...dateState, viewModal: true, fromToFlag: flag })
+  }
+  const confirmDateChange = (val, flag) => {
+    setOnDate(true)
+    if (flag === 'from') {
+      setDateState({ ...dateState, confirmFromVal: convertDateToVal(val), confirmFromDate: val, viewModal: false })
+    } else {
+      setDateState({ ...dateState, confirmToVal: convertDateToVal(val), confirmToDate: val, viewModal: false })
+    }
+  }
+  const convertDateToVal = (val) => {
+    const year = val.getFullYear()
+    const month = val.getMonth() + 1
+    const date = val.getDate()
+    return `${year}-${month}-${date}`
+  }
+
 
   return (
     <Fragment>
@@ -130,27 +159,33 @@ const Tempo = (props) => {
                 <View style={styles.layer}>
                   <View style={styles.inputWrap}>
                     <Text style={styles.label}>책임자</Text>
-                    <TextInput style={styles.depInfo}
-                      placeholder={"책임자"}
-                      placeholderTextColor='rgba(0,0,0,0.2)'
-                      onFocus={() => {
-                        setheightMagnifi(1.5)
-                        setIsFoucs(true)
-                      }}
-                      onBlur={() => { setheightMagnifi(1.2) }}
-                    ></TextInput>
+                    <View style={styles.depWrap} >
+                      <TextInput style={styles.depManagerInfo}
+                        placeholder={"책임자"}
+                        placeholderTextColor='rgba(0,0,0,0.2)'
+                        onFocus={() => {
+                          setheightMagnifi(1.5)
+                          setIsFoucs(true)
+                        }}
+                        onBlur={() => { setheightMagnifi(1.2) }}
+                      >
+                      </TextInput>
+                      <TouchableOpacity onPress={() => props.navigation.navigate('SearchMemList')}>
+                        <ReactImage
+                          source={require('../../common/img/magnifying-glass.png')} style={styles.searchIcon} />
+                      </TouchableOpacity>
+                    </View>
                   </View>
                   <View style={styles.inputWrap}>
                     <Text style={styles.label}>예산금액</Text>
-                    <TextInput style={styles.depInfo}
-                      placeholder={"예산금액"}
-                      placeholderTextColor='rgba(0,0,0,0.2)'
-                      onFocus={() => {
-                        setheightMagnifi(1.5)
-                        setIsFoucs(true)
-                      }}
-                      onBlur={() => { setheightMagnifi(1.2) }}
-                    ></TextInput>
+                    <View style={styles.depWrap}>
+                      <TextInput style={styles.depAmountInfo}
+                      >
+                      </TextInput>
+                      <Text style={styles.won}>
+                        원
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View style={styles.infoWrap}>
@@ -163,22 +198,40 @@ const Tempo = (props) => {
                 <View style={styles.layer}>
                   <View style={styles.inputWrap}>
                     <Text style={styles.label}>행사일</Text>
-                    <TextInput style={styles.depInfo}
-                      placeholder={"시작일"}
-                      placeholderTextColor='rgba(0,0,0,0.2)'
-                      onFocus={() => {
-                        setheightMagnifi(1.5)
-                        setIsFoucs(true)
-                      }}
-                      onBlur={() => { setheightMagnifi(1.2) }}
-                    ></TextInput>
+                    <Pressable onPress={() => openDateModal('from')}>
+                      <View pointerEvents="none">
+                        <TextInput
+                          style={styles.depInfo}
+                          placeholder={"시작일"}
+                          placeholderTextColor='rgba(0,0,0,0.2)'
+                          type="date"
+                          required aria-required="true"
+                          editable={false}
+                          onBlur={() => { setheightMagnifi(1.2) }}
+                        >
+                          {onDate ? convertDateToVal(dateState.confirmFromDate) : '날짜 선택'}
+                        </TextInput>
+                      </View>
+                    </Pressable>
                   </View>
                   <View style={styles.inputWrap}>
                     <Text style={styles.label}></Text>
-                    <TextInput style={styles.depInfo}
-                      placeholder={"종료일"}
-                      placeholderTextColor='rgba(0,0,0,0.2)'
-                    ></TextInput>
+                    <Pressable onPress={() => openDateModal('to')}>
+                      <View pointerEvents="none">
+                        <TextInput
+                          style={styles.depInfo}
+                          placeholder={"종료일"}
+                          placeholderTextColor='rgba(0,0,0,0.2)'
+                          type="date"
+                          required aria-required="true"
+                          editable={false}
+                          onBlur={() => { setheightMagnifi(1.2) }}
+                        >
+                          {onDate ? convertDateToVal(dateState.confirmToDate) : '날짜 선택'}
+                        </TextInput>
+                      </View>
+                    </Pressable>
+
                   </View>
                 </View>
                 <View style={styles.infoWrap}>
@@ -201,12 +254,23 @@ const Tempo = (props) => {
                 </TouchableOpacity>
               </View>
               <View style={styles.btnWrap}>
-                <TouchableOpacity style={styles.signInBtn} onPress={() => regEvent()}>
-                  <Text style={styles.signInBtnText}>등록</Text>
+                <TouchableOpacity style={styles.regBtn} onPress={() => regEvent()}>
+                  <Text style={styles.regBtnText}>등록</Text>
                 </TouchableOpacity>
               </View>
             </View>
           </ScrollView>
+
+          <DateTimePickerModal
+            isVisible={dateState.viewModal}
+            mode="date"
+            onConfirm={(a) => confirmDateChange(a, dateState.fromToFlag)}
+            onCancel={() =>
+              setDateState({ ...dateState, viewModal: false })
+            }
+            date={dateState.fromToFlag === 'from' ? dateState.confirmFromDate : dateState.confirmToDate}
+          />
+
         </View>
       </SafeAreaView>
       <Footer
