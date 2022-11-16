@@ -310,7 +310,6 @@ const Cost = (props) => {
                 <TextInput
                   style={styles.amountInput}
                   onChange={(e) => {
-                    console.log(e.nativeEvent.text.replace(/,/gi, ""))
                     setInputData({ ...inputData, useAmount: e.nativeEvent.text.replace(/,/gi, "") })
                   }}
                   value={numberToCost(inputData?.useAmount)}

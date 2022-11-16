@@ -5,6 +5,7 @@ import Footer from '../../common/footer/Footer';
 import { regEventReq } from '../../DepReg/store/store';
 import { styleSheet } from './styleSheet';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import numberToCost from '../../common/util/numberToCost';
 
 const Tempo = (props) => {
 
@@ -19,13 +20,12 @@ const Tempo = (props) => {
 
   const [heightMagnifi, setheightMagnifi] = useState(1.2)
   const [isFocus, setIsFoucs] = useState(false)
-  const [privacyAgree, setPrivacyAgree] = useState(false)
-  const [onDate, setOnDate] = useState(true)
+  const [privacyAgree, setPrivacyAgree] = useState(true)
   const [dateState, setDateState] = useState({
     viewModal: false,
     fromToFlag: '',
-    confirmFromDate: new Date(new Date().setMonth(new Date().getMonth() - 1)),
-    confirmToDate: new Date(),
+    confirmFromDate: new Date(new Date().setFullYear(new Date().getFullYear(),0,1)),
+    confirmToDate: new Date(new Date().setFullYear(new Date().getFullYear(),11,31)),
   })
   const [inputData, setInputData] = useState({
     eventNm: '',
@@ -61,13 +61,18 @@ const Tempo = (props) => {
 
   const checkStatus = () => {
     setPrivacyAgree(!privacyAgree)
+    if (privacyAgree) {
+      setInputData({ ...inputData, eventStatus: 'B' })
+    } else {
+      setInputData({ ...inputData, eventStatus: 'A' })
+    }
     Keyboard.dismiss()
   }
 
   const regEvent = async () => {
     console.log(JSON.stringify(inputData, null, 4))
-    // const res = regEventReq(inputData)
-    // return res
+    const res = regEventReq(inputData)
+    return res
   }
 
   useEffect(() => {
@@ -93,11 +98,12 @@ const Tempo = (props) => {
     setDateState({ ...dateState, viewModal: true, fromToFlag: flag })
   }
   const confirmDateChange = (val, flag) => {
-    setOnDate(true)
     if (flag === 'from') {
       setDateState({ ...dateState, confirmFromVal: convertDateToVal(val), confirmFromDate: val, viewModal: false })
+      setInputData({...inputData, eventStartDate: convertDateToVal(val)})
     } else {
       setDateState({ ...dateState, confirmToVal: convertDateToVal(val), confirmToDate: val, viewModal: false })
+      setInputData({...inputData, eventEndDate: convertDateToVal(val)})
     }
   }
   const convertDateToVal = (val) => {
@@ -106,7 +112,6 @@ const Tempo = (props) => {
     const date = val.getDate()
     return `${year}-${month}-${date}`
   }
-
 
   return (
     <Fragment>
@@ -138,6 +143,7 @@ const Tempo = (props) => {
                     <TextInput style={styles.depInfo}
                       placeholder={"부서명"}
                       placeholderTextColor='rgba(0,0,0,0.2)'
+                      onChange={(e) => setInputData({ ...inputData, eventNm: e.nativeEvent.text })}
                       onFocus={() => {
                         setheightMagnifi(1.5)
                         setIsFoucs(true)
@@ -150,6 +156,7 @@ const Tempo = (props) => {
                     <TextInput style={styles.depInfo}
                       placeholder={"부서코드"}
                       placeholderTextColor='rgba(0,0,0,0.2)'
+                      editable={false}
                       onFocus={() => {
                         setheightMagnifi(1.5)
                         setIsFoucs(true)
@@ -188,6 +195,8 @@ const Tempo = (props) => {
                     <Text style={styles.label}>예산금액</Text>
                     <View style={styles.depWrap}>
                       <TextInput style={styles.depAmountInfo}
+                        onChange={(e) => setInputData({ ...inputData, eventBudgetAmount: e.nativeEvent.text.replace(/,/gi, "") })}
+                        value={numberToCost(inputData?.eventBudgetAmount)}
                       >
                       </TextInput>
                       <Text style={styles.won}>
@@ -199,6 +208,7 @@ const Tempo = (props) => {
                 <View style={styles.infoWrap}>
                   <Text style={styles.label}>행사장소</Text>
                   <TextInput style={styles.depInfo}
+                    onChange={(e) => setInputData({ ...inputData, eventLoc: e.nativeEvent.text })}
                     placeholder={"행사장소"}
                     placeholderTextColor='rgba(0,0,0,0.2)'
                   ></TextInput>
@@ -217,7 +227,7 @@ const Tempo = (props) => {
                           editable={false}
                           onBlur={() => { setheightMagnifi(1.2) }}
                         >
-                          {onDate ? convertDateToVal(dateState.confirmFromDate) : '날짜 선택'}
+                          {convertDateToVal(dateState.confirmFromDate)}
                         </TextInput>
                       </View>
                     </Pressable>
@@ -235,7 +245,7 @@ const Tempo = (props) => {
                           editable={false}
                           onBlur={() => { setheightMagnifi(1.2) }}
                         >
-                          {onDate ? convertDateToVal(dateState.confirmToDate) : '날짜 선택'}
+                          {convertDateToVal(dateState.confirmToDate)}
                         </TextInput>
                       </View>
                     </Pressable>
@@ -247,6 +257,7 @@ const Tempo = (props) => {
                   <TextInput style={styles.depInfo}
                     placeholder={"비고"}
                     placeholderTextColor='rgba(0,0,0,0.2)'
+                    onChange={(e) => setInputData({ ...inputData, eventComment: e.nativeEvent.text })}
                     onFocus={() => {
                       setheightMagnifi(1.5)
                       setIsFoucs(true)
