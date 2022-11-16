@@ -85,31 +85,25 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'width': '96%',
       'marginLeft': 'auto',
       'paddingLeft': 10,
-      'borderLeftColor': '#888',
-      'borderLeftWidth': 1,
+     
     },
     'level2': {
       'paddingLeft': 5,
-      'position': 'relative',
     },
     'level3Wrap': {
       'width': '96%',
       'marginLeft': 'auto',
       'paddingLeft': 10,
-      'borderLeftColor': '#888',
-      'borderLeftWidth': 1,
+   
     },
     'level3': {
       'paddingLeft': 5,
-      'position': 'relative',
     },
     'level4': {
       'width': '96%',
       'marginLeft': 'auto',
       'paddingLeft': 15,
-      'position': 'relative',
-      'borderLeftColor': '#888',
-      'borderLeftWidth': 1,
+     
     },
     'cellTitle': {
       'color': "#333",
