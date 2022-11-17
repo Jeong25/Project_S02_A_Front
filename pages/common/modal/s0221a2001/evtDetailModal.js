@@ -53,7 +53,7 @@ const EvtDetailModal = (props) => {
                 <View style={styles.contentsWrap}>
                     <Text style={styles.evtPath}>{data.eventPath}</Text>
                     <Text style={styles.evtName}>{data.eventNm}</Text>
-                    <Text style={styles.evtText}>부서코드 : AAA01</Text>
+                    <Text style={styles.evtText}>부서코드 : {data.eventCode}</Text>
                     <Text style={styles.evtText}>책임자 : {data.memberName}</Text>
                     <Text style={styles.evtText}>발의부서 : </Text>
                     <Text style={styles.evtText}>행사장소 : {data.eventLoc}</Text>

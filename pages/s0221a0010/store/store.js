@@ -17,7 +17,6 @@ const deletMemReq = async (memId) => {
 
 const recentEventReq = async (orgId, eventCode) => {
     const res = await recentEvent(orgId, eventCode);
-    console.log('recentEvent Log: '+JSON.stringify(res.data.data, null, 4))
     return res;
 }
 
