@@ -68,19 +68,19 @@ const UserData = (props) => {
 
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>단체명</Text>
-                            <TextInput style={styles.userInfo}>{orgName}</TextInput>
+                            <TextInput editable={false} style={styles.userInfo}>{orgName}</TextInput>
                         </View>
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>부서명</Text>
-                            <TextInput style={styles.userInfo}>{eventNm}</TextInput>
+                            <TextInput editable={false} style={styles.userInfo}>{eventNm}</TextInput>
                         </View>
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>성명</Text>
-                            <TextInput style={styles.userInfo}>{memberName}</TextInput>
+                            <TextInput editable={false} style={styles.userInfo}>{memberName}</TextInput>
                         </View>
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>핸드폰 번호</Text>
-                            <TextInput style={styles.userInfo}>{hpNo}</TextInput>
+                            <TextInput editable={false} style={styles.userInfo}>{hpNo}</TextInput>
                         </View>
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>이메일</Text>
