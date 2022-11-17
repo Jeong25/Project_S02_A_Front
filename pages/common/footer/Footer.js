@@ -44,7 +44,7 @@ const Footer = (props) => {
                         <Text style={styles.menuText}>비용결제</Text>
                     </View>
                 </TouchableOpacity>
-                {(memberTp === 'R' || memberTp === 'C') && <TouchableOpacity style={styles.scanBtn} onPress={() => props.navigation.navigate('Qrscan')}>
+                {(memberTp === 'R'|| memberTp === 'E' || memberTp === 'C' || memberTp === 'S') && <TouchableOpacity style={styles.scanBtn} onPress={() => props.navigation.navigate('Qrscan')}>
                     <View>
                         <ReactImage source={require('./assets/scanIcon.png')} style={styles.menuIcon} />
                         <Text style={styles.menuText}>QR스캔</Text>
