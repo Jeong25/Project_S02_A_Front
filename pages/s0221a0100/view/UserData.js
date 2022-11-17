@@ -82,6 +82,10 @@ const UserData = (props) => {
                             <Text style={styles.label}>핸드폰 번호</Text>
                             <TextInput style={styles.userInfo}>{hpNo}</TextInput>
                         </View>
+                        <View style={styles.infoWrap}>
+                            <Text style={styles.label}>이메일</Text>
+                            <TextInput style={styles.userInfo}></TextInput>
+                        </View>
                         <View style={styles.layer}>
                             <View style={styles.inputWrap}>
                                 <Text style={styles.label}>은행</Text>
