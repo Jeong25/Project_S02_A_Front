@@ -4,7 +4,7 @@ import { Dimensions, Image as ReactImage, Keyboard, LogBox, Pressable, SafeAreaV
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
-import { regEventReq } from '../../DepReg/store/store';
+import { regEventReq, deptInfoReq } from '../../DepReg/store/store';
 import { styleSheet } from './styleSheet';
 
 const Tempo = (props) => {
@@ -71,8 +71,8 @@ const Tempo = (props) => {
 
   const regEvent = async () => {
     console.log(JSON.stringify(inputData, null, 4))
-    const res = regEventReq(inputData)
-    return res
+    // const res = regEventReq(inputData)
+    // return res
   }
 
   useEffect(() => {
@@ -84,7 +84,17 @@ const Tempo = (props) => {
       const eventTp = props.route.params.eventTp
       setInputData({ ...inputData, orgId: localOrgId, eventRegId: localMemId, highEventId: highEvId, eventLevel: eventLv, eventTp: eventTp })
     }
-    callData()
+    const callInfo = async () => {
+      const eventId = props.route.params.eventId
+      const res = await deptInfoReq(eventId)
+      res.eventHostName = res.memberName
+      setInputData(res)
+    }
+    if (props.route.params.eventId) {
+      callInfo()
+    } else {
+      callData()
+    }
   }, [])
 
   useEffect(() => {
@@ -124,7 +134,7 @@ const Tempo = (props) => {
                 <ReactImage source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
               </TouchableOpacity>
             </View>
-            <Text style={styles.title}>부서등록</Text>
+            <Text style={styles.title}>{props.route.params.eventTp === 'D' ? '부서등록' : '행사등록'}</Text>
           </View>
           <ScrollView
             resetScrollToCoords={{ x: 0, y: 0 }}
@@ -139,11 +149,12 @@ const Tempo = (props) => {
               <View style={styles.form}>
                 <View style={styles.layer}>
                   <View style={styles.inputWrap}>
-                    <Text style={styles.label}>부서명</Text>
+                    <Text style={styles.label}>{props.route.params.eventTp === 'D' ? '부서명' : '행사명'}</Text>
                     <TextInput style={styles.depInfo}
-                      placeholder={"부서명"}
+                      placeholder={props.route.params.eventTp === 'D' ? '부서명' : '행사명'}
                       placeholderTextColor='rgba(0,0,0,0.2)'
                       onChange={(e) => setInputData({ ...inputData, eventNm: e.nativeEvent.text })}
+                      value={inputData.eventNm}
                       onFocus={() => {
                         setheightMagnifi(1.5)
                         setIsFoucs(true)
@@ -152,11 +163,12 @@ const Tempo = (props) => {
                     ></TextInput>
                   </View>
                   <View style={styles.inputWrap}>
-                    <Text style={styles.label}>부서코드</Text>
+                    <Text style={styles.label}>{props.route.params.eventTp === 'D' ? '부서코드' : '행사코드'}</Text>
                     <TextInput style={styles.depInfo}
-                      placeholder={"부서코드"}
+                      placeholder={props.route.params.eventTp === 'D' ? '부서코드' : '행사코드'}
                       placeholderTextColor='rgba(0,0,0,0.2)'
                       editable={false}
+                      value={inputData.eventCode}
                       onFocus={() => {
                         setheightMagnifi(1.5)
                         setIsFoucs(true)
@@ -168,15 +180,11 @@ const Tempo = (props) => {
                 <View style={styles.layer}>
                   <View style={styles.inputWrap}>
                     <Text style={styles.label}>책임자</Text>
-
                     <TouchableOpacity
-                      
                       onPress={() => props.navigation.navigate('SearchMemList', { inputData, setInputData })}>
                       <View 
                       style={styles.depWrap}
                       pointerEvents="none">
-
-
                         <TextInput style={styles.depManagerInfo}
                           placeholder={"책임자"}
                           placeholderTextColor='rgba(0,0,0,0.2)'
@@ -212,6 +220,7 @@ const Tempo = (props) => {
                   <Text style={styles.label}>행사장소</Text>
                   <TextInput style={styles.depInfo}
                     onChange={(e) => setInputData({ ...inputData, eventLoc: e.nativeEvent.text })}
+                    value={inputData.eventLoc}
                     placeholder={"행사장소"}
                     placeholderTextColor='rgba(0,0,0,0.2)'
                   ></TextInput>
@@ -230,7 +239,7 @@ const Tempo = (props) => {
                           editable={false}
                           onBlur={() => { setheightMagnifi(1.2) }}
                         >
-                          {convertDateToVal(dateState.confirmFromDate)}
+                          {inputData.eventStartDate.split(' ')[0]}
                         </TextInput>
                       </View>
                     </Pressable>
@@ -248,7 +257,7 @@ const Tempo = (props) => {
                           editable={false}
                           onBlur={() => { setheightMagnifi(1.2) }}
                         >
-                          {convertDateToVal(dateState.confirmToDate)}
+                          {inputData.eventEndDate.split(' ')[0]}
                         </TextInput>
                       </View>
                     </Pressable>
@@ -261,6 +270,7 @@ const Tempo = (props) => {
                     placeholder={"비고"}
                     placeholderTextColor='rgba(0,0,0,0.2)'
                     onChange={(e) => setInputData({ ...inputData, eventComment: e.nativeEvent.text })}
+                    value={inputData.eventComment}
                     onFocus={() => {
                       setheightMagnifi(1.5)
                       setIsFoucs(true)
