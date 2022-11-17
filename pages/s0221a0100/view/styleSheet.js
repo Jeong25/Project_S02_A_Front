@@ -76,8 +76,20 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       "fontWeight": '700',
       "color": "#383838",
       'textAlign' : 'center',
+      'paddingVertical' : Platform.OS === 'ios' ? 5 : 3 ,
       'borderBottomWidth' : 2,
       'borderBottomColor' :'#888'
+    },
+    'inputWrap': {
+      'width': '45%',
+    },
+    'layer': {
+      'width': '100%',
+      'flexDirection': 'row',
+      'alignItems': 'center',
+      'justifyContent': 'space-between',
+      'marginBottom': '5%',
+
     },
 
     'btnWrap':{
@@ -88,21 +100,33 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'marginBottom' : 30,
     },
     
-    'delAccountBtn' : { 
-      'width' : 100,
-      'backgroundColor' : '#e9e9e9',
+    'saveBtn' : { 
+      'width' : '100%',
+      'backgroundColor' : '#f15a24',
       'borderRadius' : 10,
       'marginLeft' : 'auto',
-
+      'marginRight' : 'auto',
 
     },
-    'delBtnText' : { 
+    'saveBtnText' : { 
+      'color' : 'white',
+      'fontSize': 24,
+      'fontWeight': Platform.OS === 'ios' ? '700' : 'bold',
+      'fontFamily': "Apple SD Gothic Neo",
+      'textAlign': 'center',
+      'lineHeight': 50,
+    },
+    
+    'delBtn' : { 
+      'width' : 70,
       'color' : '#888',
       'fontSize' : 12,
       'fontWeight': Platform.OS === 'ios' ? '700' : 'bold' ,
       'fontFamily': "Apple SD Gothic Neo",
       'textAlign' : 'center',
-      'lineHeight': 40,
+      'marginLeft' : 'auto',
+      'marginRight' : 'auto',
+      'marginTop' : 40,
     },
     
     
