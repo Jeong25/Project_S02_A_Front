@@ -81,7 +81,6 @@ const SearchMemList = (props) => {
             <View style={styles.cellWrap}>
               {memData.map((v, i) => (
                 <View key={i}>
-                  <View>
                     <TouchableOpacity onPress={() => onClick(v.memberId, v.memberName)}>
                       <View style={styles.cell}>
                         <View style={styles.cellInner}>
@@ -90,7 +89,6 @@ const SearchMemList = (props) => {
                         </View>
                       </View>
                     </TouchableOpacity>
-                  </View>
                   <View style={styles.cellDivider}></View>
                 </View>
               ))}

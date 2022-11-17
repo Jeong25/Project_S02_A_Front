@@ -3,8 +3,9 @@ import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, } from 'react-n
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
-import SwitchToggle from "react-native-switch-toggle";
+// import SwitchToggle from "react-native-switch-toggle";
 import { deptPayInfoReq } from '../../DepReg/store/store';
+import Switch, { SwitchProps } from '@mui/material/Switch';
 
 
 const MemberList = (props) => {
@@ -65,7 +66,7 @@ const MemberList = (props) => {
                     <View style={styles.cellInner}>
                       <View style={styles.memberNameWrap}>
                         <Text style={styles.memberName}>{v.memberName}</Text>
-                        <SwitchToggle
+                        {/* <SwitchToggle
                           onPress={toggleSwitch}
                           switchOn={isEnabled}
                           circleColorOff='#333'
@@ -82,7 +83,12 @@ const MemberList = (props) => {
                             height: 15,
                             borderRadius: 25,
                           }}
-                        />
+                        /> */}
+                        <Switch {...label} defaultChecked size="small" />
+
+                        {/* <FormControlLabel
+                          control={<Android12Switch defaultChecked />}
+                        /> */}
                       </View>
                       <Text style={styles.memberDetail}>
                         {v.hpNo}{v.eventPayRoleCd ? ` / ${v.eventPayRoleCd}` : ''}
