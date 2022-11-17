@@ -55,7 +55,7 @@ const EvtDetailModal = (props) => {
                     <Text style={styles.evtName}>{data.eventNm}</Text>
                     <Text style={styles.evtText}>부서코드 : {data.eventCode}</Text>
                     <Text style={styles.evtText}>책임자 : {data.memberName}</Text>
-                    <Text style={styles.evtText}>발의부서 : </Text>
+                    <Text style={styles.evtText}>발의부서 : {data.eventPath?.split('-')[0]}</Text>
                     <Text style={styles.evtText}>행사장소 : {data.eventLoc}</Text>
                     <Text style={styles.evtText}>행사일시 : {`${data.eventStartDate?.split(' ')[0]} ~ ${data.eventEndDate?.split(' ')[0]}`}</Text>
    
