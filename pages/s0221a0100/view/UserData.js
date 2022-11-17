@@ -65,6 +65,7 @@ const UserData = (props) => {
                         <Text style={styles.topTitle}>회원정보</Text>
                     </View>
                     <View style={styles.contentsWrap}>
+
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>단체명</Text>
                             <TextInput style={styles.userInfo}>{orgName}</TextInput>
@@ -81,15 +82,28 @@ const UserData = (props) => {
                             <Text style={styles.label}>핸드폰 번호</Text>
                             <TextInput style={styles.userInfo}>{hpNo}</TextInput>
                         </View>
+                        <View style={styles.layer}>
+                            <View style={styles.inputWrap}>
+                                <Text style={styles.label}>은행</Text>
+                                <TextInput style={styles.userInfo}></TextInput>
+                            </View>
+                            <View style={styles.inputWrap}>
+                                <Text style={styles.label}>계좌번호</Text>
+                                <TextInput style={styles.userInfo}></TextInput>
+                            </View>
+                        </View>
+
 
                     </View>
                     <View style={styles.btnWrap}>
 
-                        <TouchableOpacity style={styles.delAccountBtn} onPress={() => deletMem()}>
-                            <Text style={styles.delBtnText}>부서 나가기</Text>
+                        <TouchableOpacity style={styles.saveBtn} onPress={() => deletMem()}>
+                            <Text style={styles.saveBtnText}>저장</Text>
                         </TouchableOpacity>
-
+                        
+                        <Text style={styles.delBtn} onPress={() => deletMem()}>부서 나가기</Text>
                     </View>
+                    
                 </View>
             </SafeAreaView>
             <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />

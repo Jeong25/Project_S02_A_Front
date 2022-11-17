@@ -168,7 +168,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     'btnWrap': {
-      'width': '90%',
+      'width': '100%',
       'marginLeft': 'auto',
       'marginRight': 'auto',
       'marginTop': '10%',
