@@ -4,6 +4,8 @@ import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
 import { deptPayInfoReq } from '../../DepReg/store/store';
+import SwitchToggle from "react-native-switch-toggle";
+
 
 
 const MemberList = (props) => {
@@ -64,6 +66,24 @@ const MemberList = (props) => {
                     <View style={styles.cellInner}>
                       <View style={styles.memberNameWrap}>
                         <Text style={styles.memberName}>{v.memberName}</Text>
+                        <SwitchToggle
+                          onPress={toggleSwitch}
+                          switchOn={isEnabled}
+                          circleColorOff='#333'
+                          circleColorOn='#fff'
+                          backgroundColorOn='#f15a24'
+                          backgroundColorOff='#C4C4C4'
+                          containerStyle={{
+                            width: 30,
+                            height: 15,
+                            borderRadius: 25,
+                          }}
+                          circleStyle={{
+                            width: 15,
+                            height: 15,
+                            borderRadius: 25,
+                          }}
+                        /> 
                        
                       </View>
                       <Text style={styles.memberDetail}>

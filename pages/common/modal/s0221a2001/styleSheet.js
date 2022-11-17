@@ -37,34 +37,15 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'fontFamily': "Apple SD Gothic Neo",
       'marginBottom' : 20
     },
-    'evtAdmin':{
+    'evtText':{
       'fontSize' : 16,
       'fontWeight' : '500',
       'fontFamily': "Apple SD Gothic Neo",
       'marginBottom' : 10,
       'color' : '#888'
     },
-    'evtDep':{
-      'fontSize' : 16,
-      'fontWeight' : '500',
-      'fontFamily': "Apple SD Gothic Neo",
-      'marginBottom' : 10,
-      'color' : '#888'
-    },
-    'evtLocation':{
-      'fontSize' : 16,
-      'fontWeight' : '500',
-      'fontFamily': "Apple SD Gothic Neo",
-      'marginBottom' : 10,
-      'color' : '#888'
-    },
-    'evtDate':{
-      'fontSize' : 16,
-      'fontWeight' : '500',
-      'fontFamily': "Apple SD Gothic Neo",
-      'marginBottom' : 10,
-      'color' : '#888'
-    },
+   
+  
     'evtPath':{
       'fontSize' : 12,
       'fontWeight' : '500',

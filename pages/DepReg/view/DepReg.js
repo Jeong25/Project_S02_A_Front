@@ -32,6 +32,9 @@ const DepReg = (props) => {
     callData()
   }, [isFocused])
 
+
+
+
   return (
     <Fragment>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#f15a24' }}>

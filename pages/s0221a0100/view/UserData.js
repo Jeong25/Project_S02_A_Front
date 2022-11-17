@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, BackHandler, SafeAreaView, Alert } from 'react-native';
+import { Text, View, TextInput, BackHandler, SafeAreaView, Alert } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useState, useEffect, Fragment } from "react";
@@ -67,19 +67,19 @@ const UserData = (props) => {
                     <View style={styles.contentsWrap}>
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>단체명</Text>
-                            <Text style={styles.userInfo}>{orgName}</Text>
+                            <TextInput style={styles.userInfo}>{orgName}</TextInput>
                         </View>
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>부서명</Text>
-                            <Text style={styles.userInfo}>{eventNm}</Text>
+                            <TextInput style={styles.userInfo}>{eventNm}</TextInput>
                         </View>
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>성명</Text>
-                            <Text style={styles.userInfo}>{memberName}</Text>
+                            <TextInput style={styles.userInfo}>{memberName}</TextInput>
                         </View>
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>핸드폰 번호</Text>
-                            <Text style={styles.userInfo}>{hpNo}</Text>
+                            <TextInput style={styles.userInfo}>{hpNo}</TextInput>
                         </View>
 
                     </View>

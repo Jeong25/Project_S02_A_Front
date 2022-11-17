@@ -71,7 +71,6 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
 
     "userInfo": {
       "width": "100%",
-      "lineHeight": 35,
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 18,
       "fontWeight": '700',
