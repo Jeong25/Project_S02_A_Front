@@ -12,8 +12,9 @@ const deptPayInfo = async (params) => {
     const res = await client.get(`/rest/v1/s021100070/dept-pay-info?orgId=${params.orgId}&eventId=${params.eventId}`);
     return res;
 }
-const regEvent = async (params) => {
-    const res = await client.post(`/rest/v1/s021100070/reg-event`, params);
+const reqSaveEvent = async (eventId, params) => {
+    const res = await client.post(`/rest/v1/s021100070/save-event?eventId=${eventId}`, params);
+    // console.log('saveEvent Log: ' + JSON.stringify(params, null, 4) + '\n결과: ' + JSON.stringify(res, null, 4));
     return res;
 }
 const retrieveMem = async (params) => {
@@ -21,4 +22,4 @@ const retrieveMem = async (params) => {
     return res;
 }
 
-export { deptLevel, deptInfo, deptPayInfo, regEvent, retrieveMem };
+export { deptLevel, deptInfo, deptPayInfo, reqSaveEvent, retrieveMem };

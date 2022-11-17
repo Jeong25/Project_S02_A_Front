@@ -5,6 +5,8 @@ import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
 import Footer from '../../common/footer/Footer';
 import { deptLevelReq } from '../store/store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useIsFocused } from '@react-navigation/native';
 
 
 const DepReg = (props) => {
@@ -15,19 +17,20 @@ const DepReg = (props) => {
   }
   const { windowHeight, windowWidth } = props
   const styles = useMemo(() => styleSheet(windowHeight, windowWidth), [windowHeight, windowWidth])
+  const isFocused = useIsFocused();
 
   const [orgId, setOrgId] = useState('')
   const [deptLevel, setDeptLevel] = useState([])
 
   useEffect(() => {
     const callData = async () => {
-      const orgId = props.route.params.orgId
+      const orgId = await AsyncStorage.getItem('orgId')
       setOrgId(orgId)
       const res = await deptLevelReq(orgId)
       setDeptLevel(res)
     }
     callData()
-  }, [])
+  }, [isFocused])
 
   return (
     <Fragment>

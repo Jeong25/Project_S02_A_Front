@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { Fragment, useEffect, useMemo, useState } from 'react';
-import { Dimensions, Image as ReactImage, Keyboard, LogBox, Pressable, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Dimensions, Image as ReactImage, Keyboard, LogBox, Pressable, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
@@ -70,11 +70,45 @@ const Tempo = (props) => {
   }
 
   const regEvent = async () => {
-    console.log(JSON.stringify(inputData, null, 4))
-    // const res = regEventReq(inputData)
-    // return res
+    try {
+      if (props.route.params.eventId) {
+          const res = await regEventReq(props.route.params.eventId, inputData)
+          if (res.data.status === 200) {
+            Alert.alert('알림', res.data.massage)
+          }
+          props.navigation.goBack()
+      } else {
+          const res = await regEventReq(0, inputData)
+          if (res.data.status === 200) {
+            Alert.alert('알림', res.data.massage)
+          }
+          props.navigation.goBack()
+      }
+    } catch (error) {
+      Alert.alert('알림', '오류 발생, 관리자에게 문의해주세요.')
+      props.navigation.goBack()
+    }
   }
 
+  const openDateModal = (flag) => {
+    setDateState({ ...dateState, viewModal: true, fromToFlag: flag })
+  }
+  const confirmDateChange = (val, flag) => {
+    if (flag === 'from') {
+      setDateState({ ...dateState, confirmFromVal: convertDateToVal(val), confirmFromDate: val, viewModal: false })
+      setInputData({...inputData, eventStartDate: convertDateToVal(val)})
+    } else {
+      setDateState({ ...dateState, confirmToVal: convertDateToVal(val), confirmToDate: val, viewModal: false })
+      setInputData({...inputData, eventEndDate: convertDateToVal(val)})
+    }
+  }
+  const convertDateToVal = (val) => {
+    const year = val.getFullYear()
+    const month = val.getMonth() + 1
+    const date = val.getDate()
+    return `${year}-${month}-${date}`
+  }
+  
   useEffect(() => {
     const callData = async () => {
       const localOrgId = await AsyncStorage.getItem('orgId')
@@ -103,25 +137,6 @@ const Tempo = (props) => {
       keyboardSub?.remove()
     }
   }, [isFocus])
-
-  const openDateModal = (flag) => {
-    setDateState({ ...dateState, viewModal: true, fromToFlag: flag })
-  }
-  const confirmDateChange = (val, flag) => {
-    if (flag === 'from') {
-      setDateState({ ...dateState, confirmFromVal: convertDateToVal(val), confirmFromDate: val, viewModal: false })
-      setInputData({...inputData, eventStartDate: convertDateToVal(val)})
-    } else {
-      setDateState({ ...dateState, confirmToVal: convertDateToVal(val), confirmToDate: val, viewModal: false })
-      setInputData({...inputData, eventEndDate: convertDateToVal(val)})
-    }
-  }
-  const convertDateToVal = (val) => {
-    const year = val.getFullYear()
-    const month = val.getMonth() + 1
-    const date = val.getDate()
-    return `${year}-${month}-${date}`
-  }
 
   return (
     <Fragment>
