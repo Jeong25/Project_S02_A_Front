@@ -6,7 +6,7 @@ import { useIsFocused } from '@react-navigation/native';
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
-import { useStateCntReq, payCntReq, deletMemReq, recentEventReq } from '../store/store';
+import { useStateCntReq, payCntReq, recentEventReq } from '../store/store';
 import { setUserTp } from '../../common/lib/getuserinfo';
 import QrModal from '../../common/modal/s0221a0040/QrModal';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
