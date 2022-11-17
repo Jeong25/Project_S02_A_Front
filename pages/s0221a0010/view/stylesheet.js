@@ -293,7 +293,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       
           "cellDate": {
             "fontSize": 11,
-            "lineHeight": 13.2,
             "fontWeight": "500",
             "color": "#707070",
           },
