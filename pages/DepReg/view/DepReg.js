@@ -69,17 +69,22 @@ const DepReg = (props) => {
                     onPress={() => props.navigation.navigate('Tempo', { eventId: v.eventId, eventTp: v.eventTp })}
                   >
                     <View style={styles.titleWrap}>
-                      <Text style={styles.cellTitle}>{v.eventNm}</Text>
-                      <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v.eventId, eventLv: v.eventLevel + 1, eventTp: 'A' })}>
-                        <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                      <TouchableOpacity style={styles.dropDownBtn} >
+                        <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
                       </TouchableOpacity>
+                      <Text style={styles.cellTitle}>{v.eventNm}</Text>
+                    </View>
+                    <View style={styles.iconWrap}>
                       <TouchableOpacity style={styles.infoIcon} onPress={() => props.navigation.navigate('MemberList', { eventId: v.eventId, orgId: orgId })}>
                         <ReactImage source={require('../../common/img/info.png')} style={styles.info} />
                       </TouchableOpacity>
+                      <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v.eventId, eventLv: v.eventLevel + 1, eventTp: 'A' })}>
+                        <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                      </TouchableOpacity>
+
                     </View>
-                    <TouchableOpacity style={styles.dropDownBtn} >
-                      <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
-                    </TouchableOpacity>
+
+
                   </TouchableOpacity>
                   <View style={styles.divider} />
                   {deptLevel.filter(data => data.highEventId === v.eventId).map((v2, i2) => (
@@ -90,14 +95,16 @@ const DepReg = (props) => {
                           onPress={() => props.navigation.navigate('Tempo', { eventId: v2.eventId, eventTp: v2.eventTp })}
                         >
                           <View style={styles.titleWrap}>
+                            <View style={styles.dropDownBtn}>
+                              <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
+                            </View>
                             <Text style={styles.cellTitle}>{v2.eventNm}</Text>
-                            <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v2.eventId, eventLv: v2.eventLevel + 1, eventTp: 'A' })}>
-                              <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
-                            </TouchableOpacity>
+
                           </View>
-                          <View style={styles.dropDownBtn}>
-                            <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
-                          </View>
+                          <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v2.eventId, eventLv: v2.eventLevel + 1, eventTp: 'A' })}>
+                            <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                          </TouchableOpacity>
+
                         </TouchableOpacity>
                       </View>
                       <View style={styles.divider} />
@@ -109,14 +116,16 @@ const DepReg = (props) => {
                               onPress={() => props.navigation.navigate('Tempo', { eventId: v3.eventId, eventTp: v3.eventTp })}
                             >
                               <View style={styles.titleWrap}>
+                                <View style={styles.dropDownBtn}>
+                                  <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
+                                </View>
                                 <Text style={styles.cellTitle}>{v3.eventNm}</Text>
-                                <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v3.eventId, eventLv: v3.eventLevel + 1, eventTp: 'A' })}>
-                                  <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
-                                </TouchableOpacity>
+
                               </View>
-                              <View style={styles.dropDownBtn}>
-                                <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
-                              </View>
+                              <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v3.eventId, eventLv: v3.eventLevel + 1, eventTp: 'A' })}>
+                                <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                              </TouchableOpacity>
+
                             </TouchableOpacity>
                           </View>
                           <View style={styles.divider} />

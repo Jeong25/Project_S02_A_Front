@@ -1,9 +1,8 @@
 import { Platform, StyleSheet } from 'react-native';
 
 
-export const styleSheet = (windowHeight, windowWidth) => {
-  const wp = windowWidth / 360
-  const hp = windowHeight / 800
+export const styleSheet = () => {
+  
   return StyleSheet.create({
     "wrap": {
       "backgroundColor": "white",
@@ -65,19 +64,25 @@ export const styleSheet = (windowHeight, windowWidth) => {
       "height": 50,
       "marginLeft": 'auto',
       "marginRight": 'auto',
+      
     },
 
-    "cellInner": {
-      "width": "90%",
-      "marginLeft": "auto",
-      "marginRight": "auto",
-      "marginTop": "auto",
-      "marginBottom": "auto",
-      "position": "relative",
+    'cellInner' : {
+      'width' : '90%',
+      'flexDirection' :'row',
+      'alignItems' :'center',
+      "marginLeft": 'auto',
+      "marginRight": 'auto',
+      "marginTop": 'auto',
+      "marginBottom": 'auto',
+
+    },
+
+    "cellTextWrap": {
+      
     },
     'cellNameWrap' :{
       'flexDirection' : 'row',
-
     },
 
 
@@ -104,23 +109,35 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
 
     'selectBox':{
-      'position' : 'absolute',
-      'right' : 0,
-      'top' : 3,
-      'paddingHorizontal' : 10,
-      'paddingVertical' : 5,
-      'borderRadius' : 100,
-      'backgroundColor' : '#f15a24',
-
-
+      'marginLeft' :'auto',
+      
+      
     },
-    'selectBoxText':{
-      'color' : "white",
-      "fontWeight": "700",
-      "fontSize": 16,
-    },
+    'inputIOS': {
+      'fontSize': 16,
+      "fontFamily": "Apple SD Gothic Neo",
+      'fontWeight': '700',
+      'color': 'white',
+      'paddingVertical':5,
 
+    
+    },
+    'inputAndroid': {
+      'fontSize': 16,
+      "fontFamily": "Apple SD Gothic Neo",
+      'fontWeight': '700',
+      'color': 'white',
+      'paddingVertical':3,
   
+    },
+    'inputContainer': {
+      'backgroundColor' : '#f15a24',
+      'paddingHorizontal':10,
+      'borderRadius' : 50,
+   
+    },
+  
+    
 
     'btnWrap' : {
      'width' : '100%',

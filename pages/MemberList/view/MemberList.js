@@ -108,6 +108,7 @@ const MemberList = (props) => {
         }
       }
     }
+    console.log('확인: ' + JSON.stringify(arr, null, 4))
     setUserInfo(arr)
   }
 
@@ -144,6 +145,7 @@ const MemberList = (props) => {
     }
     callData()
   }, [])
+
 
 
 
@@ -225,11 +227,17 @@ const MemberList = (props) => {
                               </View> : <View />} */}
                       <View style={styles.selectBox}>
                         <RNPickerSelect
-                          style={styles.selectBoxText}
+                          style={{
+                            placeholder: { color: 'white' },
+                            inputAndroid: styles.inputAndroid,
+                            inputIOS: styles.inputIOS,
+                            inputAndroidContainer: styles.inputContainer,
+                            inputIOSContainer: styles.inputContainer,
+                          }}
                           useNativeAndroidPickerStyle={false}
                           fixAndroidTouchableBug={true}
                           placeholder={{
-                            label: '?차 결제자', value: ''
+                            label: '결제자 지정', value: ''
                           }}
                           items={[
                             { label: '1차 결제자', value: 'A' },
@@ -239,28 +247,34 @@ const MemberList = (props) => {
 
                           ]}
                         />
+
                       </View>
+
                     </View>
                   </View>
                   <View style={styles.divider} />
                 </View>
+
+          </View>
               ))}
 
-            </View>
-          </ScrollView>
+      </View>
+      </ScrollView >
+      </View >
 
-          <TouchableOpacity style={styles.btnWrap} onPress={() => regUser()}>
-            <View style={styles.requestBtn}>
-              <Text style={styles.btnText}>저장</Text>
-            </View>
-          </TouchableOpacity>
 
-        </View>
-      </SafeAreaView>
-      {/* <Footer
+  <TouchableOpacity style={styles.btnWrap} onPress={() => regUser()}>
+    <View style={styles.requestBtn}>
+      <Text style={styles.btnText}>저장</Text>
+    </View>
+  </TouchableOpacity>
+
+        </View >
+      </SafeAreaView >
+{/* <Footer
         navigation={props.navigation}
       /> */}
-      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
+  < SafeAreaView style = {{ flex: 0, backgroundColor: 'white' }} />
     </Fragment >
 
   );

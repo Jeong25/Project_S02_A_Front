@@ -140,6 +140,10 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'flexDirection' : 'row',
       'alignItems' : 'center',
     },
+    'iconWrap':{
+      'flexDirection' : 'row',
+      'alignItems' : 'center',
+    },
     'plusIcon': {
       'width': 15,
       'height': 15,
@@ -160,6 +164,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
     },
   
     "dropDownBtn": {
+      'marginRight' :10
     
     },
     'dropDownIcon' : {
