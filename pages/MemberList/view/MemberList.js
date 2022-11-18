@@ -24,6 +24,60 @@ const MemberList = (props) => {
     }
   }
 
+  const initPayLv = (eventPayLevel) => {
+    let arr = userInfo.slice()
+    for (let i = 0; i < arr.length; i++) {
+      if (Number(userInfo[i].eventPayLevel) === Number(eventPayLevel)) {
+        arr[i] = {
+          eventPayUserId: arr[i].eventPayUserId,
+          eventPayLevel: null,
+          eventPayRoleCd: arr[i].eventPayRoleCd,
+          useRegFlag: arr[i].useRegFlag,
+          memberName: arr[i].memberName,
+          hpNo: arr[i].hpNo,
+        }
+      } else {
+        arr[i] = {
+          eventPayUserId: arr[i].eventPayUserId,
+          eventPayLevel: arr[i].eventPayLevel,
+          eventPayRoleCd: arr[i].eventPayRoleCd,
+          useRegFlag: arr[i].useRegFlag,
+          memberName: arr[i].memberName,
+          hpNo: arr[i].hpNo,
+        }
+      }
+    }
+    return arr
+  }
+  const setUser = (eventPayUserId, eventPayLevel) => {
+    const payId = eventPayUserId
+    const payLv = eventPayLevel
+    let arr = initPayLv(payLv)
+    for (let i = 0; i < arr.length; i++) {
+      if (userInfo[i].eventPayUserId === payId) {
+        arr[i] = {
+          eventPayUserId: arr[i].eventPayUserId,
+          eventPayLevel: payLv,
+          eventPayRoleCd: arr[i].eventPayRoleCd,
+          useRegFlag: arr[i].useRegFlag,
+          memberName: arr[i].memberName,
+          hpNo: arr[i].hpNo,
+        }
+      } else {
+        arr[i] = {
+          eventPayUserId: arr[i].eventPayUserId,
+          eventPayLevel: arr[i].eventPayLevel,
+          eventPayRoleCd: arr[i].eventPayRoleCd,
+          useRegFlag: arr[i].useRegFlag,
+          memberName: arr[i].memberName,
+          hpNo: arr[i].hpNo,
+        }
+      }
+    }
+    console.log('확인: '+JSON.stringify(arr, null, 4))
+    setUserInfo(arr)
+  }
+
   const regUser = async () => {
     const eventId = props.route.params.eventId
     const memberId = await AsyncStorage.getItem('memberId')
