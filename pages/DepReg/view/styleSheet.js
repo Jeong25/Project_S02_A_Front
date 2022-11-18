@@ -149,6 +149,15 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'width': '100%',
       'height': '100%',
     },
+    'infoIcon': {
+      'width': 20,
+      'height': 20,
+      'marginLeft' : 10,
+    },
+    'info': {
+      'width': '100%',
+      'height': '100%',
+    },
   
     "dropDownBtn": {
     

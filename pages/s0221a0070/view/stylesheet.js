@@ -90,11 +90,6 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'borderRightWidth' : 2,
       
     },
-    'selectIOS' : {
-      'backgroundColor' : 'red',
-      'marginTop' :100,
-
-    },
    
     "searchDate": {
       "width": '60%',
