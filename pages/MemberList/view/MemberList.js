@@ -14,14 +14,25 @@ const MemberList = (props) => {
 
   const [deptInfo, setDeptInfo] = useState({})
   const [userInfo, setUserInfo] = useState([])
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [authArr, setAuthArr] = useState([])
 
-  const toggleSwitch = () => {
-    if (isEnabled) {
-      setIsEnabled(false);
-    } else {
-      setIsEnabled(true);
+  const toggleSwitch = (index) => {
+    let arr = authArr.slice()
+    for (let i=0; i<arr.length; i++) {
+      if (i === index) {
+        arr[i] = {
+          id: arr[i].id,
+          useRegFlag: arr[i].useRegFlag ? false : true
+        }
+      } else {
+        arr[i] = {
+          id: arr[i].id,
+          useRegFlag: arr[i].useRegFlag ? true : false
+        }
+      }
     }
+    console.log(arr[index].id)
+    setAuthArr(arr)
   }
 
   const initPayLv = (eventPayLevel) => {
@@ -97,6 +108,14 @@ const MemberList = (props) => {
       }
       const resDept = await deptInfoReq(eventId)
       const resUser = await deptPayInfoReq(params)
+      let arr = []
+      for (let i=0; i<resUser.length; i++) {
+        arr.push({
+          id: resUser[i].eventPayUserId,
+          useRegFlag: resUser[i].useRegFlag === 'Y' ? true : false
+        })
+      }
+      setAuthArr(arr)
       setDeptInfo(resDept)
       setUserInfo(resUser)
     }
@@ -133,8 +152,8 @@ const MemberList = (props) => {
                       <View style={styles.memberNameWrap}>
                         <Text style={styles.memberName}>{v.memberName}</Text>
                         <SwitchToggle
-                          onPress={toggleSwitch}
-                          switchOn={isEnabled}
+                          switchOn={authArr[i].useRegFlag}
+                          onPress={() => toggleSwitch(i)}
                           circleColorOff='#333'
                           circleColorOn='#fff'
                           backgroundColorOn='#f15a24'

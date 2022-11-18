@@ -69,7 +69,7 @@ const regUserReq = async (eventId, deptInfo, userInfo, memId) => {
         inputUserInfo.push({
             eventPayUserId: userInfo[i].eventPayUserId,
             memberId: memId,
-            eventPayLevel: userInfo[i].eventPayLevel,
+            eventPayLevel: userInfo[i].eventPayLevel === 99 ? null : userInfo[i].eventPayLevel,
             eventPayRoleCd: userInfo[i].eventPayRoleCd,
             useRegFlag: userInfo[i].useRegFlag,
         })
