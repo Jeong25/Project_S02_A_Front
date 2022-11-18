@@ -177,31 +177,33 @@ const MemberList = (props) => {
                 <View key={i}>
                   <View style={styles.cell}>
                     <View style={styles.cellInner}>
-                      <View style={styles.memberNameWrap}>
-                        <Text style={styles.memberName}>{v.memberName}</Text>
-                        <SwitchToggle
-                          switchOn={authArr[i].useRegFlag}
-                          onPress={() => setUserAuth(i)}
-                          circleColorOff='#333'
-                          circleColorOn='#fff'
-                          backgroundColorOn='#f15a24'
-                          backgroundColorOff='#C4C4C4'
-                          containerStyle={{
-                            width: 30,
-                            height: 15,
-                            borderRadius: 25,
-                          }}
-                          circleStyle={{
-                            width: 15,
-                            height: 15,
-                            borderRadius: 25,
-                          }}
-                        />
-                      </View>
-                      <Text style={styles.memberDetail}>
-                        {v.hpNo}{v.eventPayRoleCd ? ` / ${v.eventPayRoleCd}` : ''}
-                      </Text>
-                      {/* {v.eventPayLevel === 1 ?
+                      <View style={styles.cellTextWrap}>
+
+                        <View style={styles.memberNameWrap}>
+                          <Text style={styles.memberName}>{v.memberName}</Text>
+                          <SwitchToggle
+                            switchOn={authArr[i].useRegFlag}
+                            onPress={() => setUserAuth(i)}
+                            circleColorOff='#333'
+                            circleColorOn='#fff'
+                            backgroundColorOn='#f15a24'
+                            backgroundColorOff='#C4C4C4'
+                            containerStyle={{
+                              width: 30,
+                              height: 15,
+                              borderRadius: 25,
+                            }}
+                            circleStyle={{
+                              width: 15,
+                              height: 15,
+                              borderRadius: 25,
+                            }}
+                          />
+                        </View>
+                        <Text style={styles.memberDetail}>
+                          {v.hpNo}{v.eventPayRoleCd ? ` / ${v.eventPayRoleCd}` : ''}
+                        </Text>
+                        {/* {v.eventPayLevel === 1 ?
                         <View style={styles.selectBox}>
                           <Text style={styles.selectBoxText}>
                             1차 결제자
@@ -225,6 +227,7 @@ const MemberList = (props) => {
                                   4차 결제자
                                 </Text>
                               </View> : <View />} */}
+                      </View>
                       <View style={styles.selectBox}>
                         <RNPickerSelect
                           style={{
@@ -254,28 +257,26 @@ const MemberList = (props) => {
                   </View>
                   <View style={styles.divider} />
                 </View>
-
-          </View>
               ))}
 
-      </View>
-      </ScrollView >
-      </View >
+            </View>
 
 
-  <TouchableOpacity style={styles.btnWrap} onPress={() => regUser()}>
-    <View style={styles.requestBtn}>
-      <Text style={styles.btnText}>저장</Text>
-    </View>
-  </TouchableOpacity>
+          </ScrollView >
+        </View>
 
-        </View >
+        <TouchableOpacity style={styles.btnWrap} onPress={() => regUser()}>
+          <View style={styles.requestBtn}>
+            <Text style={styles.btnText}>저장</Text>
+          </View>
+        </TouchableOpacity>
+
       </SafeAreaView >
-{/* <Footer
+      {/* <Footer
         navigation={props.navigation}
       /> */}
-  < SafeAreaView style = {{ flex: 0, backgroundColor: 'white' }} />
-    </Fragment >
+      < SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
+    </Fragment>
 
   );
 }
