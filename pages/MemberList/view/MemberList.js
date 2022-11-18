@@ -1,25 +1,35 @@
 import React, { useEffect, useMemo, useState, Fragment } from 'react';
-import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Alert, } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
-import { deptPayInfoReq } from '../../DepReg/store/store';
+import { deptPayInfoReq, deptInfoReq, regUserReq } from '../../DepReg/store/store';
 import SwitchToggle from "react-native-switch-toggle";
-
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const MemberList = (props) => {
 
   const { windowHeight, windowWidth } = props
   const styles = useMemo(() => styleSheet(windowHeight, windowWidth), [windowHeight, windowWidth])
 
+  const [deptInfo, setDeptInfo] = useState({})
   const [userInfo, setUserInfo] = useState([])
   const [isEnabled, setIsEnabled] = useState(false);
+
   const toggleSwitch = () => {
     if (isEnabled) {
       setIsEnabled(false);
     } else {
       setIsEnabled(true);
+    }
+  }
+
+  const regUser = async () => {
+    const eventId = props.route.params.eventId
+    const memberId = await AsyncStorage.getItem('memberId')
+    const res = await regUserReq(eventId, deptInfo, userInfo, memberId)
+    if (res.data.status === 200) {
+      Alert.alert('알림', '사용자 정보가 저장되었습니다.')
     }
   }
 
@@ -31,8 +41,10 @@ const MemberList = (props) => {
         orgId: orgId,
         eventId: eventId
       }
-      const res = await deptPayInfoReq(params)
-      setUserInfo(res)
+      const resDept = await deptInfoReq(eventId)
+      const resUser = await deptPayInfoReq(params)
+      setDeptInfo(resDept)
+      setUserInfo(resUser)
     }
     callData()
   }, [])
@@ -83,8 +95,8 @@ const MemberList = (props) => {
                             height: 15,
                             borderRadius: 25,
                           }}
-                        /> 
-                       
+                        />
+
                       </View>
                       <Text style={styles.memberDetail}>
                         {v.hpNo}{v.eventPayRoleCd ? ` / ${v.eventPayRoleCd}` : ''}
@@ -122,7 +134,7 @@ const MemberList = (props) => {
             </View>
           </ScrollView>
 
-          <TouchableOpacity style={styles.btnWrap}>
+          <TouchableOpacity style={styles.btnWrap} onPress={() => regUser()}>
             <View style={styles.requestBtn}>
               <Text style={styles.btnText}>저장</Text>
             </View>

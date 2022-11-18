@@ -47,9 +47,44 @@ const regEventReq = async (eventId, params) => {
     return res;
 }
 
+const regUserReq = async (eventId, deptInfo, userInfo, memId) => {
+    const inputDeptInfo = {
+        eventNm: deptInfo.eventNm,
+        eventLoc: deptInfo.eventLoc,
+        eventHostId: deptInfo.eventHostId,
+        eventBudgetAmount: deptInfo.eventBudgetAmount,
+        eventStartDate: deptInfo.eventStartDate,
+        eventEndDate: deptInfo.eventEndDate,
+        eventComment: deptInfo.eventComment,
+        eventStatus: deptInfo.eventStatus,
+        payFlag: deptInfo.payFlag,
+        eventFinalFlag: deptInfo.eventFinalFlag,
+        eventPayDept: deptInfo.eventPayDept,
+        defaultEventFlag: deptInfo.defaultEventFlag,
+        orgId: deptInfo.orgId,
+        eventRegId: deptInfo.eventRegId,
+    }
+    let inputUserInfo = []
+    for (let i = 0; i < userInfo.length; i++) {
+        inputUserInfo.push({
+            eventPayUserId: userInfo[i].eventPayUserId,
+            memberId: memId,
+            eventPayLevel: userInfo[i].eventPayLevel,
+            eventPayRoleCd: userInfo[i].eventPayRoleCd,
+            useRegFlag: userInfo[i].useRegFlag,
+        })
+    }
+    const regData = {
+        eventInfo: inputDeptInfo,
+        memberList: inputUserInfo
+    }
+    const res = await reqSaveEvent(eventId, regData);
+    return res;
+}
+
 const retrieveMemReq = async (params) => {
     const res = await retrieveMem(params);
     return res.data.data;
 }
 
-export { deptLevelReq, deptInfoReq, deptPayInfoReq, regEventReq, retrieveMemReq }
+export { deptLevelReq, deptInfoReq, deptPayInfoReq, regEventReq, regUserReq, retrieveMemReq }
