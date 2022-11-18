@@ -1,14 +1,12 @@
 import React, { useEffect, useMemo, useState, Fragment } from 'react';
-import { Text, View, SafeAreaView, ScrollView, TouchableOpacity,Pressable } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Pressable, Alert } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
 import { deptPayInfoReq, deptInfoReq, regUserReq } from '../../DepReg/store/store';
 import SwitchToggle from "react-native-switch-toggle";
 import RNPickerSelect from 'react-native-picker-select';
-import ToggleSwitch from '../../common/toggle/ToggleSwitch';
-
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const MemberList = (props) => {
 
@@ -19,29 +17,51 @@ const MemberList = (props) => {
   const [userInfo, setUserInfo] = useState([])
   const [authArr, setAuthArr] = useState([])
 
-  const toggleSwitch = (index) => {
-    let arr = authArr.slice()
-    for (let i=0; i<arr.length; i++) {
+  const setUserAuth = (index) => {
+    let arrAuth = authArr.slice()
+    let arrUser = userInfo.slice()
+    for (let i = 0; i < arrAuth.length; i++) {
       if (i === index) {
-        arr[i] = {
-          id: arr[i].id,
-          useRegFlag: arr[i].useRegFlag ? false : true
+        arrAuth[i] = {
+          id: arrAuth[i].id,
+          useRegFlag: arrAuth[i].useRegFlag ? false : true
         }
       } else {
-        arr[i] = {
-          id: arr[i].id,
-          useRegFlag: arr[i].useRegFlag ? true : false
+        arrAuth[i] = {
+          id: arrAuth[i].id,
+          useRegFlag: arrAuth[i].useRegFlag ? true : false
         }
       }
     }
-    console.log(arr[index].id)
-    setAuthArr(arr)
+    for (let i = 0; i < arrUser.length; i++) {
+      if (arrUser[i].eventPayUserId === arrAuth[index].id) {
+        arrUser[i] = {
+          eventPayUserId: arrUser[i].eventPayUserId,
+          eventPayLevel: arrUser[i].eventPayLevel,
+          eventPayRoleCd: arrUser[i].eventPayRoleCd,
+          useRegFlag: arrAuth[i].useRegFlag ? 'Y' : 'N',
+          memberName: arrUser[i].memberName,
+          hpNo: arrUser[i].hpNo,
+        }
+      } else {
+        arrUser[i] = {
+          eventPayUserId: arrUser[i].eventPayUserId,
+          eventPayLevel: arrUser[i].eventPayLevel,
+          eventPayRoleCd: arrUser[i].eventPayRoleCd,
+          useRegFlag: arrUser[i].useRegFlag,
+          memberName: arrUser[i].memberName,
+          hpNo: arrUser[i].hpNo,
+        }
+      }
+    }
+    console.log(arrAuth[index].id)
+    setAuthArr(arrAuth)
+    setUserInfo(arrUser)
   }
-
   const initPayLv = (eventPayLevel) => {
     let arr = userInfo.slice()
     for (let i = 0; i < arr.length; i++) {
-      if (Number(userInfo[i].eventPayLevel) === Number(eventPayLevel)) {
+      if (Number(arr[i].eventPayLevel) === Number(eventPayLevel)) {
         arr[i] = {
           eventPayUserId: arr[i].eventPayUserId,
           eventPayLevel: null,
@@ -63,12 +83,12 @@ const MemberList = (props) => {
     }
     return arr
   }
-  const setUser = (eventPayUserId, eventPayLevel) => {
+  const setPayLv = (eventPayUserId, eventPayLevel) => {
     const payId = eventPayUserId
     const payLv = eventPayLevel
     let arr = initPayLv(payLv)
     for (let i = 0; i < arr.length; i++) {
-      if (userInfo[i].eventPayUserId === payId) {
+      if (arr[i].eventPayUserId === payId) {
         arr[i] = {
           eventPayUserId: arr[i].eventPayUserId,
           eventPayLevel: payLv,
@@ -88,11 +108,11 @@ const MemberList = (props) => {
         }
       }
     }
-    console.log('확인: '+JSON.stringify(arr, null, 4))
     setUserInfo(arr)
   }
 
   const regUser = async () => {
+    console.log(JSON.stringify(userInfo, null, 4))
     const eventId = props.route.params.eventId
     const memberId = await AsyncStorage.getItem('memberId')
     const res = await regUserReq(eventId, deptInfo, userInfo, memberId)
@@ -112,7 +132,7 @@ const MemberList = (props) => {
       const resDept = await deptInfoReq(eventId)
       const resUser = await deptPayInfoReq(params)
       let arr = []
-      for (let i=0; i<resUser.length; i++) {
+      for (let i = 0; i < resUser.length; i++) {
         arr.push({
           id: resUser[i].eventPayUserId,
           useRegFlag: resUser[i].useRegFlag === 'Y' ? true : false
@@ -126,7 +146,7 @@ const MemberList = (props) => {
   }, [])
 
 
-  
+
 
   return (
     <Fragment>
@@ -159,7 +179,7 @@ const MemberList = (props) => {
                         <Text style={styles.memberName}>{v.memberName}</Text>
                         <SwitchToggle
                           switchOn={authArr[i].useRegFlag}
-                          onPress={() => toggleSwitch(i)}
+                          onPress={() => setUserAuth(i)}
                           circleColorOff='#333'
                           circleColorOn='#fff'
                           backgroundColorOn='#f15a24'
@@ -174,10 +194,7 @@ const MemberList = (props) => {
                             height: 15,
                             borderRadius: 25,
                           }}
-                        /> */}
-                        <ToggleSwitch isOn={true} onToggle={(e) => console.log(e.target.value)}/>
-                        
-
+                        />
                       </View>
                       <Text style={styles.memberDetail}>
                         {v.hpNo}{v.eventPayRoleCd ? ` / ${v.eventPayRoleCd}` : ''}
