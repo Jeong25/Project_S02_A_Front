@@ -73,8 +73,8 @@ const DepReg = (props) => {
                       <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v.eventId, eventLv: v.eventLevel + 1, eventTp: 'A' })}>
                         <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
                       </TouchableOpacity>
-                      <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('MemberList', { eventId: v.eventId, orgId: orgId })}>
-                        <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                      <TouchableOpacity style={styles.infoIcon} onPress={() => props.navigation.navigate('MemberList', { eventId: v.eventId, orgId: orgId })}>
+                        <ReactImage source={require('../../common/img/info.png')} style={styles.info} />
                       </TouchableOpacity>
                     </View>
                     <TouchableOpacity style={styles.dropDownBtn} >

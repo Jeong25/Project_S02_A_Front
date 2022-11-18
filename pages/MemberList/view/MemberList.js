@@ -1,11 +1,14 @@
 import React, { useEffect, useMemo, useState, Fragment } from 'react';
-import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Alert, } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, TouchableOpacity,Pressable } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
 import { deptPayInfoReq, deptInfoReq, regUserReq } from '../../DepReg/store/store';
 import SwitchToggle from "react-native-switch-toggle";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import RNPickerSelect from 'react-native-picker-select';
+import ToggleSwitch from '../../common/toggle/ToggleSwitch';
+
+
 
 const MemberList = (props) => {
 
@@ -103,6 +106,9 @@ const MemberList = (props) => {
     callData()
   }, [])
 
+
+  
+
   return (
     <Fragment>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#f15a24' }}>
@@ -132,7 +138,7 @@ const MemberList = (props) => {
                     <View style={styles.cellInner}>
                       <View style={styles.memberNameWrap}>
                         <Text style={styles.memberName}>{v.memberName}</Text>
-                        <SwitchToggle
+                        {/* <SwitchToggle
                           onPress={toggleSwitch}
                           switchOn={isEnabled}
                           circleColorOff='#333'
@@ -149,13 +155,15 @@ const MemberList = (props) => {
                             height: 15,
                             borderRadius: 25,
                           }}
-                        />
+                        /> */}
+                        <ToggleSwitch isOn={true} onToggle={(e) => console.log(e.target.value)}/>
+                        
 
                       </View>
                       <Text style={styles.memberDetail}>
                         {v.hpNo}{v.eventPayRoleCd ? ` / ${v.eventPayRoleCd}` : ''}
                       </Text>
-                      {v.eventPayLevel === 1 ?
+                      {/* {v.eventPayLevel === 1 ?
                         <View style={styles.selectBox}>
                           <Text style={styles.selectBoxText}>
                             1차 결제자
@@ -178,7 +186,24 @@ const MemberList = (props) => {
                                 <Text style={styles.selectBoxText}>
                                   4차 결제자
                                 </Text>
-                              </View> : <View />}
+                              </View> : <View />} */}
+                      <View style={styles.selectBox}>
+                        <RNPickerSelect
+                          style={styles.selectBoxText}
+                          useNativeAndroidPickerStyle={false}
+                          fixAndroidTouchableBug={true}
+                          placeholder={{
+                            label: '?차 결제자', value: ''
+                          }}
+                          items={[
+                            { label: '1차 결제자', value: 'A' },
+                            { label: '2차 결제자', value: 'B' },
+                            { label: '3차 결제자 ', value: 'C' },
+                            { label: '4차 결제자', value: 'D' },
+
+                          ]}
+                        />
+                      </View>
                     </View>
                   </View>
                   <View style={styles.divider} />
