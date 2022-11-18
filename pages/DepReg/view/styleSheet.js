@@ -71,6 +71,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'width': '100%',
       'marginBottom': 5,
       'paddingLeft': 5,
+
     },
     'cell' : {
       'width' : "100%",
