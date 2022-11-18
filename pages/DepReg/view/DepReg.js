@@ -8,7 +8,6 @@ import { deptLevelReq } from '../store/store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useIsFocused } from '@react-navigation/native';
 
-
 const DepReg = (props) => {
 
   DepReg.defaultProps = {
@@ -31,9 +30,6 @@ const DepReg = (props) => {
     }
     callData()
   }, [isFocused])
-
-
-
 
   return (
     <Fragment>
@@ -81,10 +77,7 @@ const DepReg = (props) => {
                       <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v.eventId, eventLv: v.eventLevel + 1, eventTp: 'A' })}>
                         <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
                       </TouchableOpacity>
-
                     </View>
-
-
                   </TouchableOpacity>
                   <View style={styles.divider} />
                   {deptLevel.filter(data => data.highEventId === v.eventId).map((v2, i2) => (
@@ -99,12 +92,10 @@ const DepReg = (props) => {
                               <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
                             </View>
                             <Text style={styles.cellTitle}>{v2.eventNm}</Text>
-
                           </View>
                           <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v2.eventId, eventLv: v2.eventLevel + 1, eventTp: 'A' })}>
                             <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
                           </TouchableOpacity>
-
                         </TouchableOpacity>
                       </View>
                       <View style={styles.divider} />
@@ -120,12 +111,10 @@ const DepReg = (props) => {
                                   <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
                                 </View>
                                 <Text style={styles.cellTitle}>{v3.eventNm}</Text>
-
                               </View>
                               <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v3.eventId, eventLv: v3.eventLevel + 1, eventTp: 'A' })}>
                                 <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
                               </TouchableOpacity>
-
                             </TouchableOpacity>
                           </View>
                           <View style={styles.divider} />

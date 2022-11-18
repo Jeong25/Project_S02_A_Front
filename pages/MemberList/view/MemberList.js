@@ -16,7 +16,9 @@ const MemberList = (props) => {
   const [deptInfo, setDeptInfo] = useState({})
   const [userInfo, setUserInfo] = useState([])
   const [authArr, setAuthArr] = useState([])
+  const [refresh, setRefresh] = useState(0)
 
+  // 권한 설정
   const setUserAuth = (index) => {
     let arrAuth = authArr.slice()
     let arrUser = userInfo.slice()
@@ -54,10 +56,10 @@ const MemberList = (props) => {
         }
       }
     }
-    console.log(arrAuth[index].id)
     setAuthArr(arrAuth)
     setUserInfo(arrUser)
   }
+  // 결제자 정보 초기화
   const initPayLv = (eventPayLevel) => {
     let arr = userInfo.slice()
     for (let i = 0; i < arr.length; i++) {
@@ -83,6 +85,7 @@ const MemberList = (props) => {
     }
     return arr
   }
+  // 결제자 정보 설정
   const setPayLv = (eventPayUserId, eventPayLevel) => {
     const payId = eventPayUserId
     const payLv = eventPayLevel
@@ -108,17 +111,45 @@ const MemberList = (props) => {
         }
       }
     }
-    console.log('확인: ' + JSON.stringify(arr, null, 4))
     setUserInfo(arr)
   }
 
+  // 등록
   const regUser = async () => {
-    console.log(JSON.stringify(userInfo, null, 4))
+    for (let i = 0; i < userInfo.length; i++) {
+      if (userInfo[i].useRegFlag === 'Y') {
+        if (userInfo[i].eventPayLevel === 1 || userInfo[i].eventPayLevel === 2 || userInfo[i].eventPayLevel === 3 || userInfo[i].eventPayLevel === 4) {
+          Alert.alert('알림', '결제자 지정 또는 권한 없음 둘 중 하나만 선택해주세요.')
+          return
+        }
+      }
+    }
+    let countPayLv = []
+    for (let i = 0; i < userInfo.length; i++) {
+      if (userInfo[i].eventPayLevel === 1) { countPayLv.push(1) }
+      if (userInfo[i].eventPayLevel === 2) { countPayLv.push(2) }
+      if (userInfo[i].eventPayLevel === 3) { countPayLv.push(3) }
+      if (userInfo[i].eventPayLevel === 4) { countPayLv.push(4) }
+    }
+    let countLv = userInfo[0].eventPayLevel
+    for (let i = 0; i < userInfo.length; i++) {
+      if (userInfo[i].eventPayLevel > countLv) {
+        if (userInfo[i].eventPayLevel !== 99) {
+          countLv = userInfo[i].eventPayLevel
+        }
+      }
+    }
+    if (countLv !== countPayLv.length) {
+      Alert.alert('알림', '결제자를 순번대로 지정해주세요.')
+      return
+    } else {}
     const eventId = props.route.params.eventId
     const memberId = await AsyncStorage.getItem('memberId')
     const res = await regUserReq(eventId, deptInfo, userInfo, memberId)
     if (res.data.status === 200) {
       Alert.alert('알림', '사용자 정보가 저장되었습니다.')
+      let count = refresh + 1
+      setRefresh(count)
     }
   }
 
@@ -144,11 +175,7 @@ const MemberList = (props) => {
       setUserInfo(resUser)
     }
     callData()
-  }, [])
-
-
-
-
+  }, [refresh])
 
   return (
     <Fragment>
@@ -172,17 +199,15 @@ const MemberList = (props) => {
             nestedScrollEnabled={true}
           >
             <View style={styles.contentsWrap}>
-
               {userInfo.map((v, i) => (
                 <View key={i}>
                   <View style={styles.cell}>
                     <View style={styles.cellInner}>
                       <View style={styles.cellTextWrap}>
-
                         <View style={styles.memberNameWrap}>
                           <Text style={styles.memberName}>{v.memberName}</Text>
                           <SwitchToggle
-                            switchOn={authArr[i].useRegFlag}
+                            switchOn={!authArr[i].useRegFlag}
                             onPress={() => setUserAuth(i)}
                             circleColorOff='#333'
                             circleColorOn='#fff'
@@ -203,33 +228,10 @@ const MemberList = (props) => {
                         <Text style={styles.memberDetail}>
                           {v.hpNo}{v.eventPayRoleCd ? ` / ${v.eventPayRoleCd}` : ''}
                         </Text>
-                        {/* {v.eventPayLevel === 1 ?
-                        <View style={styles.selectBox}>
-                          <Text style={styles.selectBoxText}>
-                            1차 결제자
-                          </Text>
-                        </View>
-                        : v.eventPayLevel === 2 ?
-                          <View style={styles.selectBox}>
-                            <Text style={styles.selectBoxText}>
-                              2차 결제자
-                            </Text>
-                          </View>
-                          : v.eventPayLevel === 3 ?
-                            <View style={styles.selectBox}>
-                              <Text style={styles.selectBoxText}>
-                                3차 결제자
-                              </Text>
-                            </View>
-                            : v.eventPayLevel === 4 ?
-                              <View style={styles.selectBox}>
-                                <Text style={styles.selectBoxText}>
-                                  4차 결제자
-                                </Text>
-                              </View> : <View />} */}
                       </View>
                       <View style={styles.selectBox}>
                         <RNPickerSelect
+                          onValueChange={(value) => { setPayLv(v.eventPayUserId, value) }}
                           style={{
                             placeholder: { color: 'white' },
                             inputAndroid: styles.inputAndroid,
@@ -243,34 +245,27 @@ const MemberList = (props) => {
                             label: '결제자 지정', value: ''
                           }}
                           items={[
-                            { label: '1차 결제자', value: 'A' },
-                            { label: '2차 결제자', value: 'B' },
-                            { label: '3차 결제자 ', value: 'C' },
-                            { label: '4차 결제자', value: 'D' },
-
+                            { label: '1차 결제자', value: 1 },
+                            { label: '2차 결제자', value: 2 },
+                            { label: '3차 결제자 ', value: 3 },
+                            { label: '4차 결제자', value: 4 },
                           ]}
+                          value={v.eventPayLevel}
                         />
-
                       </View>
-
                     </View>
                   </View>
                   <View style={styles.divider} />
                 </View>
               ))}
-
             </View>
-
-
           </ScrollView >
+          <TouchableOpacity style={styles.btnWrap} onPress={() => regUser()}>
+            <View style={styles.requestBtn}>
+              <Text style={styles.btnText}>저장</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-
-        <TouchableOpacity style={styles.btnWrap} onPress={() => regUser()}>
-          <View style={styles.requestBtn}>
-            <Text style={styles.btnText}>저장</Text>
-          </View>
-        </TouchableOpacity>
-
       </SafeAreaView >
       {/* <Footer
         navigation={props.navigation}

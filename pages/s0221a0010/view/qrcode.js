@@ -12,7 +12,6 @@ import QrModal from '../../common/modal/s0221a0040/QrModal';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
 import EvtDetailModal from '../../common/modal/s0221a2001/evtDetailModal';
 
-
 const QrCode = (props) => {
   const [orgId, setOrgId] = useState('')
   const [memberName, setMemberName] = useState('')
@@ -111,16 +110,13 @@ const QrCode = (props) => {
           <TouchableOpacity style={styles.profileTextGroup} onPress={() => props.navigation.navigate('UserData')}>
             <Text style={styles.memberPosition}>{`${eventNm} / ${eventRole ? eventRole : '일반회원'}`}</Text>
           </TouchableOpacity>
-
           <View style={styles.accountBtnWrap}>
-
             <View style={styles.logoutBtn}>
               <TouchableOpacity onPress={() => logOut()}>
                 <ReactImage source={require('../../common/img/power-off.png')} style={styles.logout} />
               </TouchableOpacity>
             </View>
           </View>
-
         </View>
         <ScrollView
           resetScrollToCoords={{ x: 0, y: 0 }}
@@ -156,7 +152,6 @@ const QrCode = (props) => {
               </View>
               <View style={styles.rightBox}>
                 <View style={styles.upperProcessInner}>
-
                   <TouchableOpacity style={styles.rightUpperProcess} onPress={() => props.navigation.navigate('PaymentList', { delDate: true })}>
                     <Text style={styles.processText}>
                       결제대기
@@ -169,9 +164,6 @@ const QrCode = (props) => {
                 </View>
               </View>
             </View>
-
-
-
             <View style={styles.underProcessBox}>
               <View style={styles.processInner}>
                 <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList', { usePS: 'B' })}>
@@ -183,7 +175,6 @@ const QrCode = (props) => {
                   </Text>
                 </TouchableOpacity>
                 <View style={styles.divider}></View>
-
                 <TouchableOpacity style={styles.process} onPress={() => props.navigation.navigate('CostList', { usePS: 'C' })}>
                   <Text style={styles.processText}>
                     결제완료
@@ -210,11 +201,9 @@ const QrCode = (props) => {
                     {statusCnt?.F || 0}
                   </Text>
                 </TouchableOpacity>
-
               </View>
             </View>
           </View>
-
           <View style={styles.centerBtnWrap}>
             <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('CostList', { usePS: '' })}>
               <View style={styles.btnImg}>
@@ -241,7 +230,6 @@ const QrCode = (props) => {
               <Text style={styles.centerText}>부서등록</Text>
             </TouchableOpacity>
           </View>
-
           <View style={styles.contentsDivider} />
           <View style={styles.recentListWrap}>
             <View style={styles.listTitleWrap}>
@@ -268,7 +256,6 @@ const QrCode = (props) => {
           openModal={qrModalBool}
           onClose={() => setQrModalBool(false)}
         />
-
         <EvtDetailModal
           openModal={evtDetailModal}
           eventId={eventIdMd}
@@ -279,7 +266,6 @@ const QrCode = (props) => {
         navigation={props.navigation}
       />
     </SafeAreaView>
-
   );
 }
 
