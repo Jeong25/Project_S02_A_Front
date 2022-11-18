@@ -263,13 +263,14 @@ const MemberList = (props) => {
 
 
           </ScrollView >
+
+          <TouchableOpacity style={styles.btnWrap} onPress={() => regUser()}>
+            <View style={styles.requestBtn}>
+              <Text style={styles.btnText}>저장</Text>
+            </View>
+          </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.btnWrap} onPress={() => regUser()}>
-          <View style={styles.requestBtn}>
-            <Text style={styles.btnText}>저장</Text>
-          </View>
-        </TouchableOpacity>
 
       </SafeAreaView >
       {/* <Footer
