@@ -30,11 +30,24 @@ const Qrscan = (props) => {
 
   const getQrInfo = async () => {
     const defaultEventId = await AsyncStorage.getItem('defaultEventId')
-    const orgId = await AsyncStorage.getItem('orgId')
-    const res = await qrInfoReq(defaultEventId)
-    setOrgId(orgId)
-    setQrInfo(res.data.data)
     setEventId(defaultEventId)
+    const res = await qrInfoReq(defaultEventId)
+    setQrInfo(res.data.data)
+    const orgId = await AsyncStorage.getItem('orgId')
+    setOrgId(orgId)
+    const val1 = res.data.data?.eventStartDate.split(' ')[0] || ''
+    const val2 = res.data.data?.eventEndDate.split(' ')[0] || ''
+    if (val1 === '') {
+      setDateData(`행사를 선택해 주세요.`)
+    } else {
+      setDateData(`${val1} ~ ${val2}`)
+    }
+  }
+
+  const getEventInfo = async (params) => {
+    setEventId(params.eventId)
+    const res = await qrInfoReq(params.eventId)
+    setQrInfo(res.data.data)
     const val1 = res.data.data?.eventStartDate.split(' ')[0] || ''
     const val2 = res.data.data?.eventEndDate.split(' ')[0] || ''
     if (val1 === '') {
@@ -92,19 +105,6 @@ const Qrscan = (props) => {
   //     camera.current.resumePreview()
   //   }, 1500)
   // }
-
-  const getEventInfo = async (params) => {
-    setEventId(params.eventId)
-    const res = await qrInfoReq(params.eventId)
-    setQrInfo(res.data.data)
-    const val1 = res.data.data?.eventStartDate.split(' ')[0] || ''
-    const val2 = res.data.data?.eventEndDate.split(' ')[0] || ''
-    if (val1 === '') {
-      setDateData(`행사를 선택해 주세요.`)
-    } else {
-      setDateData(`${val1} ~ ${val2}`)
-    }
-  }
 
   useEffect(() => {
     getQrInfo()

@@ -245,7 +245,7 @@ const QrCode = (props) => {
             <View style={styles.cellWrap}>
               {recentEvent?.map((v, i) => (
                 <TouchableOpacity style={styles.cell} key={i} onPress={() => openEvtDetailModal(v.eventId)}>
-                  <Text style={styles.cellTitle}>{v.eventNm}</Text>
+                  <Text style={styles.cellTitle}>{v.eventPath}</Text>
                   <Text style={styles.cellDate}>{v.eventHostName} / {v.eventStartDate.split(' ')[0]} ~ {v.eventEndDate.split(' ')[0]} / {v.eventCode}</Text>
                 </TouchableOpacity>
               ))}
