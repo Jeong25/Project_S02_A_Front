@@ -55,6 +55,7 @@ const Qrscan = (props) => {
     } else {
       setDateData(`${val1} ~ ${val2}`)
     }
+    setScaned(true)
   }
 
   const onBarCodeRead = async (event) => {
