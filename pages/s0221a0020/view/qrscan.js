@@ -15,7 +15,7 @@ const Qrscan = (props) => {
   LogBox.ignoreLogs([
     'Non-serializable values were found in the navigation state'
   ]);
-  
+
   const [qrInfo, setQrInfo] = useState({})
   const [dateData, setDateData] = useState('')
   const [orgId, setOrgId] = useState('')
@@ -45,10 +45,6 @@ const Qrscan = (props) => {
   }
 
   const onBarCodeRead = async (event) => {
-    if (eventId === 0) {
-      Alert.alert('QR Code', '행사를 선택해주세요.')
-      return
-    }
     if (!scaned) {
       return
     }
@@ -61,14 +57,18 @@ const Qrscan = (props) => {
     try {
       const res = await qrScanReq(memId, mbId, orgId, eventId)
       if (res.data.status === 200) {
-        Alert.alert('QR Code', res.data.massage !== null ? res.data.massage : '등록되었습니다.')
+        Alert.alert('QR Code', res.data.massage !== null ? res.data.massage : '등록되었습니다.', [
+          { text: '확인', onPress: () => setScaned(true) }
+        ])
       } else {
-        Alert.alert('QR Code', '다시 시도해주세요.')
+        Alert.alert('QR Code', '다시 시도해주세요.', [
+          { text: '확인', onPress: () => setScaned(true) }
+        ])
       }
-      setScaned(true)
     } catch (error) {
-      Alert.alert('QR Code', '오류가 발생했습니다.')
-      setScaned(true)
+      Alert.alert('QR Code', '오류가 발생했습니다.', [
+        { text: '확인', onPress: () => setScaned(true) }
+      ])
     }
   }
   // const onBarCodeRead = async (e) => {
