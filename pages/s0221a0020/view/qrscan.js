@@ -48,6 +48,8 @@ const Qrscan = (props) => {
     setEventId(params.eventId)
     const res = await qrInfoReq(params.eventId)
     setQrInfo(res.data.data)
+    const orgId = await AsyncStorage.getItem('orgId')
+    setOrgId(orgId)
     const val1 = res.data.data?.eventStartDate.split(' ')[0] || ''
     const val2 = res.data.data?.eventEndDate.split(' ')[0] || ''
     if (val1 === '') {
