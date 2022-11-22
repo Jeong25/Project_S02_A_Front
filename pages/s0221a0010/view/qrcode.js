@@ -24,6 +24,8 @@ const QrCode = (props) => {
   // const [hpNo, setHpNo] = useState('')
   // const [eventCode, setEventCode] = useState('')
   const [qrModalBool, setQrModalBool] = useState(false)
+  const [faqModalBool, setFaqModalBool] = useState(false)
+
   const [evtDetailModal, setEvtDetailModal] = useState(false)
   const [recentEvent, setRecentEvent] = useState([]);
   const { windowHeight, windowWidth } = props
@@ -100,6 +102,10 @@ const QrCode = (props) => {
     setEventIdMd(eventId)
     Keyboard.dismiss()
     setEvtDetailModal(true)
+  }
+  const openFaqModal = () => {
+    Keyboard.dismiss()
+    setFaqModalBool(true)
   }
 
   return (
@@ -223,11 +229,19 @@ const QrCode = (props) => {
               </View>
               <Text style={styles.centerText}>QR보기</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('DepReg', { orgId: orgId })}>
+           
+            {/* <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('DepReg', { orgId: orgId })}>
               <View style={styles.btnImg}>
                 <ReactImage source={require('../../common/img/group.png')} style={styles.centerIcon} />
               </View>
               <Text style={styles.centerText}>부서등록</Text>
+            </TouchableOpacity> */}
+            <TouchableOpacity style={styles.centerBtn} onPress={() => openFaqModal()}>
+              <View style={styles.btnImg}>
+                <ReactImage source={require('../../common/img/faq.png')} style={styles.centerIcon} />
+              </View>
+              <Text style={styles.centerText}>FAQ</Text>
+
             </TouchableOpacity>
           </View>
           <View style={styles.contentsDivider} />
@@ -260,6 +274,10 @@ const QrCode = (props) => {
           openModal={evtDetailModal}
           eventId={eventIdMd}
           onClose={() => setEvtDetailModal(false)}
+        />
+        <FaqModal
+          openModal={faqModalBool}
+          onClose={() => setFaqModalBool(false)}
         />
       </View>
       <Footer
