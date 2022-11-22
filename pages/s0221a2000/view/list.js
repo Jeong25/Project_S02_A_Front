@@ -34,13 +34,13 @@ const EventList = (props) => {
 
   const onClick = (eventId, eventNm) => {
     const data = { "eventId": eventId, 'eventNm': eventNm }
-    if (props.route.params.nonShutDown) {
+    if (props.route.params?.nonShutDown) {
       setEventIdMd(eventId)
       Keyboard.dismiss()
       setEvtDetailModal(true)
     } else {
-      props.route.params.getEventInfo(data)
-      props.navigation.goBack()
+      // props.route.params.getEventInfo(data)
+      props.navigation.navigate('Qrscan', {data: data})
     }
   }
 

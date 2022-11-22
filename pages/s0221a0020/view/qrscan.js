@@ -29,27 +29,11 @@ const Qrscan = (props) => {
   const styles = useMemo(() => styleSheet(CAM_VIEW_HEIGHT, CAM_VIEW_WIDTH), [CAM_VIEW_HEIGHT, CAM_VIEW_WIDTH])
 
   const getQrInfo = async () => {
-    const defaultEventId = await AsyncStorage.getItem('defaultEventId')
-    setEventId(defaultEventId)
-    const res = await qrInfoReq(defaultEventId)
-    setQrInfo(res.data.data)
-    const orgId = await AsyncStorage.getItem('orgId')
-    setOrgId(orgId)
-    const val1 = res.data.data?.eventStartDate.split(' ')[0] || ''
-    const val2 = res.data.data?.eventEndDate.split(' ')[0] || ''
-    if (val1 === '') {
-      setDateData(`행사를 선택해 주세요.`)
-    } else {
-      setDateData(`${val1} ~ ${val2}`)
-    }
-  }
-
-  const getEventInfo = async (params) => {
+    // const defaultEventId = await AsyncStorage.getItem('defaultEventId')
+    const params = props.route.params.data
     setEventId(params.eventId)
     const res = await qrInfoReq(params.eventId)
     setQrInfo(res.data.data)
-    const orgId = await AsyncStorage.getItem('orgId')
-    setOrgId(orgId)
     const val1 = res.data.data?.eventStartDate.split(' ')[0] || ''
     const val2 = res.data.data?.eventEndDate.split(' ')[0] || ''
     if (val1 === '') {
@@ -57,7 +41,24 @@ const Qrscan = (props) => {
     } else {
       setDateData(`${val1} ~ ${val2}`)
     }
+    const orgId = await AsyncStorage.getItem('orgId')
+    setOrgId(orgId)
   }
+
+  // const getEventInfo = async (params) => {
+  //   setEventId(params.eventId)
+  //   const res = await qrInfoReq(params.eventId)
+  //   setQrInfo(res.data.data)
+  //   const orgId = await AsyncStorage.getItem('orgId')
+  //   setOrgId(orgId)
+  //   const val1 = res.data.data?.eventStartDate.split(' ')[0] || ''
+  //   const val2 = res.data.data?.eventEndDate.split(' ')[0] || ''
+  //   if (val1 === '') {
+  //     setDateData(`행사를 선택해 주세요.`)
+  //   } else {
+  //     setDateData(`${val1} ~ ${val2}`)
+  //   }
+  // }
 
   const onBarCodeRead = async (event) => {
     if (!scaned) {
@@ -148,7 +149,8 @@ const Qrscan = (props) => {
             <ReactImage source={require('../../common/img/change.png')} style={styles.closeIcon} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.eventSelectBtn} onPress={() => {
-            props.navigation.navigate('EventList', { getEventInfo })
+            props.navigation.navigate('EventList')
+            // props.navigation.navigate('EventList', { getEventInfo })
           }}>
             <ReactImage source={require('../../common/img/magnifier.png')} style={styles.searchIcon} />
             <Text style={styles.eventSelect}>행사선택</Text>
