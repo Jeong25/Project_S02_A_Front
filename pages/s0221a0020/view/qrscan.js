@@ -148,13 +148,13 @@ const Qrscan = (props) => {
           }}>
             <ReactImage source={require('../../common/img/change.png')} style={styles.closeIcon} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.eventSelectBtn} onPress={() => {
+          {/* <TouchableOpacity style={styles.eventSelectBtn} onPress={() => {
             props.navigation.navigate('EventList')
             // props.navigation.navigate('EventList', { getEventInfo })
           }}>
             <ReactImage source={require('../../common/img/magnifier.png')} style={styles.searchIcon} />
             <Text style={styles.eventSelect}>행사선택</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         <Camera
