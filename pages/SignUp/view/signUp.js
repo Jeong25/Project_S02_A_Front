@@ -31,20 +31,21 @@ const SignUp = (props) => {
     firstTelNo: '',
     middleTelNo: '',
     lastTelNo: '',
-    memberId: '',
+    memberId: 0,
     zipCode: '',
   })
 
   const SignUpReq = async () => {
     if (inputData.orgName && inputData.ceoName && inputData.pwd && inputData.memberName && inputData.firstHpNo && inputData.middleHpNo && inputData.lastHpNo && inputData.email !== null) {
       const org = await checkOrgReq(inputData.orgName, inputData.ceoName)
-      const email = await checkEmailReq(inputData.email)
+      const email = await checkEmailReq(inputData.email, inputData.orgName)
       if (org) {
         if (email) {
           if (inputData.pwd === inputData.pwdCheck) {
             try {
               delete inputData.pwdCheck
               await regOrgReq(inputData)
+              Alert.alert('알림', '등록되었습니다.')
               props.navigation.navigate('Signin')
             } catch (e) {
               Alert.alert('알림', '오류가 발생하여 처리하지 못했습니다.')
@@ -191,6 +192,8 @@ const SignUp = (props) => {
                       setIsFoucs(true)
                     }}
                     onBlur={() => { setheightMagnifi(1.2) }}
+                    returnKeyType="done"
+                    ref={ref_input[3]}
                   ></TextInput>
                 </View>
 
@@ -230,13 +233,13 @@ const SignUp = (props) => {
                   onBlur={() => { setheightMagnifi(1.2) }}
                 ></TextInput>
               </View>
-              <View style={styles.infoWrap}>
+              {/* <View style={styles.infoWrap}>
                   <Text style={styles.label}>부서명</Text>
                   <TextInput style={styles.userInfo}
                     placeholder={"부서명"}
                     placeholderTextColor='rgba(0,0,0,0.2)'
                   ></TextInput>
-                </View>
+                </View> */}
             </View>
             <View style={styles.btnWrap}>
 

@@ -42,11 +42,11 @@ const DepReg = (props) => {
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>부서정보</Text>
-            <View style={styles.regBtnWrap}>
+            {/* <View style={styles.regBtnWrap}>
               <TouchableOpacity onPress={() => props.navigation.navigate('Tempo', { highEvId: 0, eventLv: 0, eventTp: 'D' })}>
                 <ReactImage source={require('../../common/img/registIcon.png')} style={styles.registIcon} />
               </TouchableOpacity>
-            </View>
+            </View> */}
           </View>
           <ScrollView
             resetScrollToCoords={{ x: 0, y: 0 }}
