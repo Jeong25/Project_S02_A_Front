@@ -1,7 +1,7 @@
 import { eventList, eventDetail } from '../repository/repository';
 
-const eventListReq = async (orgId, eventCode) => {
-    const res = await eventList(orgId, eventCode);
+const eventListReq = async (orgId, eventCode, eventNm) => {
+    const res = await eventList(orgId, eventCode, eventNm);
     console.log('eventList Store Log1: ' + JSON.stringify(res, null, 4));
     return res;
 }

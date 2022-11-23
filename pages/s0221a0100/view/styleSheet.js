@@ -56,7 +56,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
       'marginTop' : '10%',
     },
     'infoWrap' : {
-      'marginBottom' : '5%',
+      'marginBottom' : '2.5%',
 
     },
   

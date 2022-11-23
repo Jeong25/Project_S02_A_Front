@@ -15,13 +15,24 @@ const EventList = (props) => {
   const [eventInfo, setEventInfo] = useState([])
   const [eventIdMd, setEventIdMd] = useState('')
   const [evtDetailModal, setEvtDetailModal] = useState(false)
+  const [params, setParams] = useState({
+    eventCode: '',
+    orgId: '',
+    eventNm: ''
+  })
   const [userName, setUserName] = useState('')
   const styles = styleSheet()
 
   const getData = async () => {
     const orgId = await AsyncStorage.getItem('orgId')
     const eventCode = await AsyncStorage.getItem('eventCode')
-    const res = await eventListReq(orgId, eventCode)
+    const res = await eventListReq(orgId, eventCode, '')
+    setParams({ ...params, eventCode: eventCode, orgId: orgId })
+    setEventInfo(res.data.data)
+  }
+
+  const searchData = async () => {
+    const res = await eventListReq(params.orgId, params.eventCode, params.eventNm)
     setEventInfo(res.data.data)
   }
 
@@ -40,7 +51,7 @@ const EventList = (props) => {
       setEvtDetailModal(true)
     } else {
       // props.route.params.getEventInfo(data)
-      props.navigation.navigate('Qrscan', {data: data})
+      props.navigation.navigate('Qrscan', { data: data })
     }
   }
 
@@ -71,11 +82,11 @@ const EventList = (props) => {
               <TextInput style={styles.input}
                 placeholder="행사명으로 검색"
                 placeholderTextColor="#888"
+                onChange={(e) => setParams({ ...params, eventNm: e.nativeEvent.text })}
               ></TextInput>
             </View>
-
             <View style={styles.searchBtn}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => searchData()}>
                 <ReactImage source={require('./assets/searchIcon.png')} style={styles.searchIcon}></ReactImage>
               </TouchableOpacity>
             </View>

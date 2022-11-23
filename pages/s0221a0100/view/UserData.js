@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useState, useEffect, Fragment } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styleSheet } from './styleSheet';
-import { deletMemReq } from '../../s0221a0010/store/store';
+import { deletMemReq, retMemDetailReq, updateMemInfoReq } from '../../s0221a0010/store/store';
 
 const UserData = (props) => {
 
@@ -14,12 +14,47 @@ const UserData = (props) => {
     const [eventNm, setEventNm] = useState('')
     const [memberName, setMemberName] = useState('')
     const [hpNo, setHpNo] = useState('')
+    const [params, setParams] = useState({})
+
+    const updateMem = async () => {
+        if (params.pwd === '' || params.pwdCheck === '' || params.pwd !== params.pwdCheck) {
+            Alert.alert('알림', '비밀번호를 확인해주세요.')
+        } else {
+            const res = await updateMemInfoReq(params);
+            if (res.data.status === 200) {
+                Alert.alert('알림', '저장되었습니다.')
+                props.navigation.replace('UserData')
+            } else {
+                Alert.alert('알림', '오류가 발생했습니다.')
+                props.navigation.replace('UserData')
+            }
+        }
+    }
 
     const deletMem = async () => {
         const memId = await AsyncStorage.getItem('memberId')
-        const res = await deletMemReq(Number(memId))
-        Alert.alert('알림', '회원 탈퇴가 완료되었습니다.')
-        logOut();
+        const memTp = await AsyncStorage.getItem('memberTp')
+        Alert.alert('알림', '부서에서 탈퇴하시겠습니까?', [
+            {
+                text: '확인', onPress: async () => {
+                    try {
+                        const res = await deletMemReq(Number(memId), memTp)
+                        if (res.data.status === 200) {
+                            Alert.alert('알림', '회원 탈퇴가 완료되었습니다.')
+                            logOut();
+                        } else {
+                            Alert.alert('알림', '오류가 발생했습니다.')
+                            logOut();
+                        }
+                    } catch (e) {
+                        console.log(e)
+                        Alert.alert('알림', '오류가 발생했습니다.')
+                        logOut();
+                    }
+                }
+            },
+            { text: '취소', onPress: () => { } }
+        ])
     }
 
     const logOut = async () => {
@@ -49,8 +84,30 @@ const UserData = (props) => {
             setMemberName(memberName)
             setHpNo(hpNo)
         }
+        const getMemInfo = async () => {
+            const memId = await AsyncStorage.getItem('memberId')
+            const res = await retMemDetailReq(memId)
+            setParams({
+                accountNo: res.data.data.accountNo,
+                address: res.data.data.address,
+                bankNm: res.data.data.bankNm,
+                birth: res.data.data.birth,
+                detailAddress: res.data.data.detailAddress,
+                email: res.data.data.email,
+                firstHpNo: res.data.data.hpNo.split('-')[0],
+                lastHpNo: res.data.data.hpNo.split('-')[2],
+                loginId: res.data.data.memberId,
+                memberId: res.data.data.memberId,
+                memberName: res.data.data.memberName,
+                middleHpNo: res.data.data.hpNo.split('-')[1],
+                pwd: '',
+                pwdCheck: '',
+                zipCode: res.data.data.zipCode
+            })
+        }
         getData()
-    })
+        getMemInfo()
+    }, [])
 
     return (
         <Fragment >
@@ -84,16 +141,44 @@ const UserData = (props) => {
                         </View>
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>이메일</Text>
-                            <TextInput style={styles.userInfo}></TextInput>
+                            <TextInput style={styles.userInfo}
+                                onChange={(e) => setParams({ ...params, email: e.nativeEvent.text })}
+                                value={params.email}
+                            ></TextInput>
                         </View>
                         <View style={styles.layer}>
                             <View style={styles.inputWrap}>
                                 <Text style={styles.label}>은행</Text>
-                                <TextInput style={styles.userInfo}></TextInput>
+                                <TextInput style={styles.userInfo}
+                                    onChange={(e) => setParams({ ...params, bankNm: e.nativeEvent.text })}
+                                    value={params.bankNm}
+                                ></TextInput>
                             </View>
                             <View style={styles.inputWrap}>
                                 <Text style={styles.label}>계좌번호</Text>
-                                <TextInput style={styles.userInfo}></TextInput>
+                                <TextInput style={styles.userInfo}
+                                    keyboardType="number-pad"
+                                    onChange={(e) => setParams({ ...params, accountNo: e.nativeEvent.text })}
+                                    value={params.accountNo}
+                                ></TextInput>
+                            </View>
+                        </View>
+                        <View style={styles.layer}>
+                            <View style={styles.inputWrap}>
+                                <Text style={styles.label}>비밀번호</Text>
+                                <TextInput style={styles.userInfo}
+                                    onChange={(e) => setParams({ ...params, pwd: e.nativeEvent.text })}
+                                    value={params.pwd}
+                                    secureTextEntry={true}
+                                ></TextInput>
+                            </View>
+                            <View style={styles.inputWrap}>
+                                <Text style={styles.label}>비밀번호 확인</Text>
+                                <TextInput style={styles.userInfo}
+                                    onChange={(e) => setParams({ ...params, pwdCheck: e.nativeEvent.text })}
+                                    value={params.pwdCheck}
+                                    secureTextEntry={true}
+                                ></TextInput>
                             </View>
                         </View>
 
@@ -101,13 +186,13 @@ const UserData = (props) => {
                     </View>
                     <View style={styles.btnWrap}>
 
-                        <TouchableOpacity style={styles.saveBtn} onPress={() => deletMem()}>
+                        <TouchableOpacity style={styles.saveBtn} onPress={() => updateMem()}>
                             <Text style={styles.saveBtnText}>저장</Text>
                         </TouchableOpacity>
-                        
+
                         <Text style={styles.delBtn} onPress={() => deletMem()}>부서 나가기</Text>
                     </View>
-                    
+
                 </View>
             </SafeAreaView>
             <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />

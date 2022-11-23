@@ -17,15 +17,15 @@ const SignUp = (props) => {
   const [heightMagnifi, setheightMagnifi] = useState(1.2)
   const [isFocus, setIsFoucs] = useState(false)
   const [inputData, setInputData] = useState({
-    orgName: null,
-    ceoName: null,
-    pwd: null,
-    pwdCheck: null,
-    memberName: null,
-    firstHpNo: null,
-    middleHpNo: null,
-    lastHpNo: null,
-    email: null,
+    orgName: '',
+    ceoName: '',
+    pwd: '',
+    pwdCheck: '',
+    memberName: '',
+    firstHpNo: '',
+    middleHpNo: '',
+    lastHpNo: '',
+    email: '',
     address: '',
     detailAddress: '',
     firstTelNo: '',
@@ -33,10 +33,11 @@ const SignUp = (props) => {
     lastTelNo: '',
     memberId: 0,
     zipCode: '',
+    eventNm: ''
   })
 
   const SignUpReq = async () => {
-    if (inputData.orgName && inputData.ceoName && inputData.pwd && inputData.memberName && inputData.firstHpNo && inputData.middleHpNo && inputData.lastHpNo && inputData.email !== null) {
+    if (inputData.orgName && inputData.ceoName && inputData.pwd && inputData.memberName && inputData.firstHpNo && inputData.middleHpNo && inputData.lastHpNo && inputData.email && inputData.eventNm !== '') {
       const org = await checkOrgReq(inputData.orgName, inputData.ceoName)
       const email = await checkEmailReq(inputData.email, inputData.orgName)
       if (org) {
@@ -44,9 +45,14 @@ const SignUp = (props) => {
           if (inputData.pwd === inputData.pwdCheck) {
             try {
               delete inputData.pwdCheck
-              await regOrgReq(inputData)
-              Alert.alert('알림', '등록되었습니다.')
-              props.navigation.navigate('Signin')
+              const res = await regOrgReq(inputData)
+              if (res.data.status === 200) {
+                Alert.alert('알림', `${res.data.massage}`)
+                props.navigation.navigate('Signin')
+              } else {
+                Alert.alert('알림', '오류가 발생했습니다.')
+                props.navigation.navigate('Signin')
+              }
             } catch (e) {
               Alert.alert('알림', '오류가 발생하여 처리하지 못했습니다.')
             }
@@ -54,10 +60,10 @@ const SignUp = (props) => {
             Alert.alert('알림', '비밀번호가 일치하지 않습니다.')
           }
         } else {
-          Alert.alert('알림', '중복되는 이메일입니다.')
+          Alert.alert('알림', '사용할 수 없는 이메일입니다.')
         }
       } else {
-        Alert.alert('알림', '중복되는 단체명입니다.')
+        Alert.alert('알림', '단체명&대표자명이 중복됩니다.')
       }
     } else {
       Alert.alert('알림', '비어있는 항목을 작성해주세요.')
@@ -76,7 +82,7 @@ const SignUp = (props) => {
                 <ReactImage source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
               </TouchableOpacity>
             </View>
-            <Text style={styles.topTitle}>단체등록</Text>
+            <Text style={styles.topTitle}>신규가입</Text>
           </View>
           <KeyboardAwareScrollView
             resetScrollToCoords={{ x: 0, y: 0 }}
@@ -117,7 +123,7 @@ const SignUp = (props) => {
                     ></TextInput>
                   </View>
                 </View>
-            
+
               </View>
               <View style={styles.infoWrap}>
                 <Text style={styles.label}>담당자 이름</Text>
@@ -202,6 +208,7 @@ const SignUp = (props) => {
               <View style={styles.infoWrap}>
                 <Text style={styles.label}>비밀번호</Text>
                 <TextInput style={styles.userInfo}
+                  secureTextEntry={true}
                   placeholder={"비밀번호"}
                   placeholderTextColor='rgba(0,0,0,0.2)'
                   onChange={(e) => setInputData({ ...inputData, pwd: e.nativeEvent.text })}
@@ -215,6 +222,7 @@ const SignUp = (props) => {
               <View style={styles.infoWrap}>
                 <Text style={styles.label}>비밀번호 확인</Text>
                 <TextInput style={styles.userInfo}
+                  secureTextEntry={true}
                   placeholder={"비밀번호 확인"}
                   placeholderTextColor='rgba(0,0,0,0.2)'
                   onChange={(e) => setInputData({ ...inputData, pwdCheck: e.nativeEvent.text })}
@@ -233,18 +241,19 @@ const SignUp = (props) => {
                   onBlur={() => { setheightMagnifi(1.2) }}
                 ></TextInput>
               </View>
-              {/* <View style={styles.infoWrap}>
+              <View style={styles.infoWrap}>
                   <Text style={styles.label}>부서명</Text>
                   <TextInput style={styles.userInfo}
                     placeholder={"부서명"}
                     placeholderTextColor='rgba(0,0,0,0.2)'
+                    onChange={(e) => setInputData({ ...inputData, eventNm: e.nativeEvent.text })}
                   ></TextInput>
-                </View> */}
+                </View>
             </View>
             <View style={styles.btnWrap}>
 
               <TouchableOpacity style={styles.signInBtn} onPress={() => SignUpReq()}>
-                <Text style={styles.signInBtnText}>단체등록</Text>
+                <Text style={styles.signInBtnText}>신규가입</Text>
               </TouchableOpacity>
 
             </View>

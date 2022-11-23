@@ -1,4 +1,4 @@
-import { useStateCnt, payCnt, deletMem, recentEvent } from '../repository/repository';
+import { useStateCnt, payCnt, deletMem, recentEvent, retMemDetail, updateMemInfo } from '../repository/repository';
 
 const useStateCntReq = async (hpNo, eventCode) => {
     const res = await useStateCnt(hpNo, eventCode);
@@ -10,8 +10,8 @@ const payCntReq = async (hpNo, eventCode) => {
     return res;
 }
 
-const deletMemReq = async (memId) => {
-    const res = await deletMem(memId);
+const deletMemReq = async (memId, memTp) => {
+    const res = await deletMem(memId, memTp);
     return res;
 }
 
@@ -20,4 +20,14 @@ const recentEventReq = async (orgId, eventCode) => {
     return res;
 }
 
-export { useStateCntReq, payCntReq, deletMemReq, recentEventReq }
+const retMemDetailReq = async (params) => {
+    const res = await retMemDetail(params);
+    return res;
+}
+
+const updateMemInfoReq = async (params) => {
+    const res = await updateMemInfo(params);
+    return res;
+}
+
+export { useStateCntReq, payCntReq, deletMemReq, recentEventReq, retMemDetailReq, updateMemInfoReq }
