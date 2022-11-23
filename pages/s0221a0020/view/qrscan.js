@@ -66,11 +66,11 @@ const Qrscan = (props) => {
     }
     setScaned(false)
     const qrData = JSON.parse(event)
-    const memId = qrData.memberId
-    const mbId = qrData.mobileId
-    console.log(event)
-    console.log(memId, mbId, orgId, eventId)
+    const memId = qrData?.memberId
+    const mbId = qrData?.mobileId
     try {
+      console.log(event)
+      console.log(memId, mbId, orgId, eventId)
       const res = await qrScanReq(memId, mbId, orgId, eventId)
       if (res.data.status === 200) {
         Alert.alert('QR Code', res.data.massage !== null ? res.data.massage : '등록되었습니다.', [
