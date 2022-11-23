@@ -65,10 +65,10 @@ const Qrscan = (props) => {
       return
     }
     setScaned(false)
-    const qrData = JSON.parse(event)
-    const memId = qrData?.memberId
-    const mbId = qrData?.mobileId
     try {
+      const qrData = JSON.parse(event)
+      const memId = qrData?.memberId
+      const mbId = qrData?.mobileId
       console.log(event)
       console.log(memId, mbId, orgId, eventId)
       const res = await qrScanReq(memId, mbId, orgId, eventId)
