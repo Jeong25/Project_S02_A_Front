@@ -24,8 +24,8 @@ const Tempo = (props) => {
   const [dateState, setDateState] = useState({
     viewModal: false,
     fromToFlag: '',
-    confirmFromDate: new Date(new Date().setFullYear(new Date().getFullYear(),0,1)),
-    confirmToDate: new Date(new Date().setFullYear(new Date().getFullYear(),11,31)),
+    confirmFromDate: new Date(new Date().setFullYear(new Date().getFullYear(), 0, 1)),
+    confirmToDate: new Date(new Date().setFullYear(new Date().getFullYear(), 11, 31)),
   })
   const [inputData, setInputData] = useState({
     eventNm: '',
@@ -70,19 +70,29 @@ const Tempo = (props) => {
   }
 
   const regEvent = async () => {
+    if (inputData.eventNm === '') {
+      Alert.alert('알림', '행사명을 작성해주세요.')
+      return
+    }
+    if (inputData.eventLevel === 0 || inputData.eventLevel === 1) {
+      if (inputData.eventHostId === 0) {
+        Alert.alert('알림', '책임자를 선택해주세요.')
+        return
+      }
+    }
     try {
       if (props.route.params.eventId) {
-          const res = await regEventReq(props.route.params.eventId, inputData)
-          if (res.data.status === 200) {
-            Alert.alert('알림', res.data.massage)
-          }
-          props.navigation.goBack()
+        const res = await regEventReq(props.route.params.eventId, inputData)
+        if (res.data.status === 200) {
+          Alert.alert('알림', res.data.massage)
+        }
+        props.navigation.goBack()
       } else {
-          const res = await regEventReq(0, inputData)
-          if (res.data.status === 200) {
-            Alert.alert('알림', res.data.massage)
-          }
-          props.navigation.goBack()
+        const res = await regEventReq(0, inputData)
+        if (res.data.status === 200) {
+          Alert.alert('알림', res.data.massage)
+        }
+        props.navigation.goBack()
       }
     } catch (error) {
       Alert.alert('알림', '오류 발생, 관리자에게 문의해주세요.')
@@ -96,10 +106,10 @@ const Tempo = (props) => {
   const confirmDateChange = (val, flag) => {
     if (flag === 'from') {
       setDateState({ ...dateState, confirmFromVal: convertDateToVal(val), confirmFromDate: val, viewModal: false })
-      setInputData({...inputData, eventStartDate: convertDateToVal(val)})
+      setInputData({ ...inputData, eventStartDate: convertDateToVal(val) })
     } else {
       setDateState({ ...dateState, confirmToVal: convertDateToVal(val), confirmToDate: val, viewModal: false })
-      setInputData({...inputData, eventEndDate: convertDateToVal(val)})
+      setInputData({ ...inputData, eventEndDate: convertDateToVal(val) })
     }
   }
   const convertDateToVal = (val) => {
@@ -108,7 +118,7 @@ const Tempo = (props) => {
     const date = val.getDate()
     return `${year}-${month}-${date}`
   }
-  
+
   useEffect(() => {
     const callData = async () => {
       const localOrgId = await AsyncStorage.getItem('orgId')
@@ -197,9 +207,9 @@ const Tempo = (props) => {
                     <Text style={styles.label}>책임자</Text>
                     <TouchableOpacity
                       onPress={() => props.navigation.navigate('SearchMemList', { inputData, setInputData })}>
-                      <View 
-                      style={styles.depWrap}
-                      pointerEvents="none">
+                      <View
+                        style={styles.depWrap}
+                        pointerEvents="none">
                         <TextInput style={styles.depManagerInfo}
                           placeholder={"책임자"}
                           placeholderTextColor='rgba(0,0,0,0.2)'
