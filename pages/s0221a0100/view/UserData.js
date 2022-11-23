@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, TextInput, BackHandler, SafeAreaView, Alert } from 'react-native';
+import { Text, View, TextInput, BackHandler, SafeAreaView, Alert, ScrollView } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useState, useEffect, Fragment } from "react";
@@ -112,6 +112,7 @@ const UserData = (props) => {
     return (
         <Fragment >
             <SafeAreaView style={{ flex: 1, backgroundColor: '#f15a24' }}>
+
                 <View style={styles.wrap}>
                     <View style={styles.topMenu}>
                         <View style={styles.backBtn}>
@@ -119,9 +120,19 @@ const UserData = (props) => {
                                 <ReactImage source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
                             </TouchableOpacity>
                         </View>
+
                         <Text style={styles.topTitle}>회원정보</Text>
                     </View>
-                    <View style={styles.contentsWrap}>
+                    <ScrollView
+                        style={styles.contentsWrap}
+                        resetScrollToCoords={{ x: 0, y: 0 }}
+                        enableOnAndroid={true}
+                        scrollEnabled={true}
+                        scrollToOverflowEnabled={true}
+                        enableAutomaticScroll={true}
+                        keyboardShouldPersistTaps='always'
+                        nestedScrollEnabled={true}
+                    >
 
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>단체명</Text>
@@ -182,17 +193,16 @@ const UserData = (props) => {
                             </View>
                         </View>
 
+                        <View style={styles.btnWrap}>
 
-                    </View>
-                    <View style={styles.btnWrap}>
+                            <TouchableOpacity style={styles.saveBtn} onPress={() => updateMem()}>
+                                <Text style={styles.saveBtnText}>저장</Text>
+                            </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.saveBtn} onPress={() => updateMem()}>
-                            <Text style={styles.saveBtnText}>저장</Text>
-                        </TouchableOpacity>
+                            <Text style={styles.delBtn} onPress={() => deletMem()}>부서 나가기</Text>
+                        </View>
 
-                        <Text style={styles.delBtn} onPress={() => deletMem()}>부서 나가기</Text>
-                    </View>
-
+                    </ScrollView>
                 </View>
             </SafeAreaView>
             <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
