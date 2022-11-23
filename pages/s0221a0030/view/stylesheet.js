@@ -20,8 +20,8 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
         },
         'faqBtn':{
             'position' : 'absolute',
-            'top' :0,
-            'right':10,
+            'top' :5,
+            'right':15,
         },
         'icon':{
             'width' :25,
