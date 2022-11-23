@@ -76,7 +76,7 @@ const SignUp = (props) => {
                 <ReactImage source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
               </TouchableOpacity>
             </View>
-            <Text style={styles.topTitle}>단체등록</Text>
+            <Text style={styles.topTitle}>신규가입</Text>
           </View>
           <KeyboardAwareScrollView
             resetScrollToCoords={{ x: 0, y: 0 }}
