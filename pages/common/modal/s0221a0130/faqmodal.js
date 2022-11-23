@@ -42,7 +42,7 @@ const FaqModal = (props) => {
                     <Text style={styles.modalTitle}>FAQ</Text>
                    <View style={styles.closeBtn}>
                         <TouchableOpacity onPress={() => closeModal()}>
-                            <ReactImage source={require('../assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+                            <ReactImage source={require('../../img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
                         </TouchableOpacity>
                     </View>
                 </View>
