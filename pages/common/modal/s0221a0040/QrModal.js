@@ -25,7 +25,7 @@ const QrModal = (props) => {
         setMemberName(memberName)
         setEventNm(eventNm)
         setEventRole(eventRole)
-        setInfo({memberId: memberId, mobileId: mobileId})
+        setInfo({ memberId: memberId, mobileId: mobileId })
     }
 
     useEffect(() => {
@@ -55,16 +55,31 @@ const QrModal = (props) => {
     }
 
     return (
-        <View style={{ ...styles.wrap, display: display ? 'flex' : 'none' }} nestedScrollEnabled={true}>
-            <View style={styles.inner}>
-                    <View style={styles.closeBtn}>
+        <View style={{ ...styles.background, display: display ? 'flex' : 'none' }} nestedScrollEnabled={true}>
+            <View style={styles.wrap}>
+                <View style={styles.inner}>
+                    <View style={styles.contentsWrap}>
+                        <View style={styles.iconWrap}>
+                            <ReactImage source={require('./assets/warning.png')} style={styles.alertIcon} />
+                        </View>
+                        <View style={styles.textWrap}>
+                            <Text style={styles.alertText}>
+                                모든 항목을 입력해야합니다.
+                                모든 항목을 입력해야합니다.
+                                모든 항목을 입력해야합니다.
+                                모든 항목을 입력해야합니다.
+                            </Text>
+
+                        </View>
+
+
+                    </View>
+                    <View style={styles.btnWrap}>
                         <TouchableOpacity onPress={() => closeModal()}>
                             <Text style={styles.closeText}>확인</Text>
                         </TouchableOpacity>
                     </View>
-                <View style={styles.modalInner}>
-                    
-                 
+
                 </View>
             </View>
         </View>

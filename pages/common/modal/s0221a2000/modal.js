@@ -59,7 +59,7 @@ const TempoModal = (props) => {
                     <Text style={styles.modalTitle}>행사명</Text>
                     <View style={styles.closeBtn}>
                         <TouchableOpacity onPress={() => closeModal()}>
-                            <ReactImage source={require('../assets/backBtnIcon-w.png')} style={styles.backBtnIcon} />
+                            <ReactImage source={require('../../img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
                         </TouchableOpacity>
                     </View>
                 </View>
