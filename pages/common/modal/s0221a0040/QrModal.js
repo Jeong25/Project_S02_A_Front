@@ -25,7 +25,7 @@ const QrModal = (props) => {
         setMemberName(memberName)
         setEventNm(eventNm)
         setEventRole(eventRole)
-        setInfo({ memberId: memberId, mobileId: mobileId })
+        setInfo({memberId: memberId, mobileId: mobileId})
     }
 
     useEffect(() => {
@@ -55,31 +55,27 @@ const QrModal = (props) => {
     }
 
     return (
-        <View style={{ ...styles.background, display: display ? 'flex' : 'none' }} nestedScrollEnabled={true}>
-            <View style={styles.wrap}>
-                <View style={styles.inner}>
-                    <View style={styles.contentsWrap}>
-                        <View style={styles.iconWrap}>
-                            <ReactImage source={require('./assets/warning.png')} style={styles.alertIcon} />
-                        </View>
-                        <View style={styles.textWrap}>
-                            <Text style={styles.alertText}>
-                                모든 항목을 입력해야합니다.
-                                모든 항목을 입력해야합니다.
-                                모든 항목을 입력해야합니다.
-                                모든 항목을 입력해야합니다.
-                            </Text>
-
-                        </View>
-
-
-                    </View>
-                    <View style={styles.btnWrap}>
+        <View style={{ ...styles.modalBox, display: display ? 'flex' : 'none' }} nestedScrollEnabled={true}>
+            <View style={styles.box}>
+                <View style={styles.titleSection}>
+                    <Text style={styles.modalTitle}>QR코드</Text>
+                    <View style={styles.closeBtn}>
                         <TouchableOpacity onPress={() => closeModal()}>
-                            <Text style={styles.closeText}>확인</Text>
+                            <ReactImage source={require('../../img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
                         </TouchableOpacity>
                     </View>
-
+                </View>
+                <View style={styles.modalInner}>
+                    <View style={styles.qrcodeWrap}>
+                        <View style={styles.qrImg}>
+                            <QRCode value={JSON.stringify({...info})} size={210} quietZone ={20} backgroundColor ='transparent'/>
+                        </View>
+                    </View>
+                    <View style={styles.divider}></View>
+                    <View style={styles.textWrap}>
+                        <Text style={styles.memberName}>{memberName}</Text>
+                        <Text style={styles.memberPosition}>{`${eventNm} / ${eventRole ? eventRole : '일반회원'}`}</Text>
+                    </View>
                 </View>
             </View>
         </View>

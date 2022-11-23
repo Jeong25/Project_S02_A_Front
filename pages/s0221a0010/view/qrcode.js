@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
 import { useStateCntReq, payCntReq, recentEventReq } from '../store/store';
 import { setUserTp } from '../../common/lib/getuserinfo';
+// import QrModal from '../../common/Alert/Toast/Alert';
 import QrModal from '../../common/modal/s0221a0040/QrModal';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
 import EvtDetailModal from '../../common/modal/s0221a2001/evtDetailModal';
