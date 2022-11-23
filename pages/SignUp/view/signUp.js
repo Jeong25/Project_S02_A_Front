@@ -14,6 +14,7 @@ const SignUp = (props) => {
   ref_input[1] = useRef(null)
   ref_input[2] = useRef(null)
   ref_input[3] = useRef(null)
+  const [regCnt, setRegCnt] = useState(true)
   const [heightMagnifi, setheightMagnifi] = useState(1.2)
   const [isFocus, setIsFoucs] = useState(false)
   const [inputData, setInputData] = useState({
@@ -37,36 +38,42 @@ const SignUp = (props) => {
   })
 
   const SignUpReq = async () => {
-    if (inputData.orgName && inputData.ceoName && inputData.pwd && inputData.memberName && inputData.firstHpNo && inputData.middleHpNo && inputData.lastHpNo && inputData.email && inputData.eventNm !== '') {
-      const org = await checkOrgReq(inputData.orgName, inputData.ceoName)
-      const email = await checkEmailReq(inputData.email, inputData.orgName)
-      if (org) {
-        if (email) {
-          if (inputData.pwd === inputData.pwdCheck) {
-            try {
-              delete inputData.pwdCheck
-              const res = await regOrgReq(inputData)
-              if (res.data.status === 200) {
-                Alert.alert('알림', `${res.data.massage}`)
-                props.navigation.navigate('Signin')
-              } else {
-                Alert.alert('알림', '오류가 발생했습니다.')
-                props.navigation.navigate('Signin')
+    if (regCnt) {
+      setRegCnt(false)
+      if (inputData.orgName && inputData.ceoName && inputData.pwd && inputData.memberName && inputData.firstHpNo && inputData.middleHpNo && inputData.lastHpNo && inputData.email && inputData.eventNm !== '') {
+        const org = await checkOrgReq(inputData.orgName, inputData.ceoName)
+        const email = await checkEmailReq(inputData.email, inputData.orgName)
+        if (org) {
+          if (email) {
+            if (inputData.pwd === inputData.pwdCheck) {
+              try {
+                delete inputData.pwdCheck
+                const res = await regOrgReq(inputData)
+                if (res.data.status === 200) {
+                  Alert.alert('삐용에 오신 것을 환영합니다.', `단체명: ${res.data.data.orgName}\n부서명: ${res.data.data.eventNm}\n코드번호: ${res.data.data.eventCode}`)
+                  props.navigation.navigate('Signin')
+                } else {
+                  Alert.alert('알림', '오류가 발생했습니다.')
+                  props.navigation.navigate('Signin')
+                }
+              } catch (e) {
+                Alert.alert('알림', '오류가 발생하여 처리하지 못했습니다.')
               }
-            } catch (e) {
-              Alert.alert('알림', '오류가 발생하여 처리하지 못했습니다.')
+            } else {
+              Alert.alert('알림', '비밀번호가 일치하지 않습니다.')
             }
           } else {
-            Alert.alert('알림', '비밀번호가 일치하지 않습니다.')
+            Alert.alert('알림', '사용할 수 없는 이메일입니다.')
           }
         } else {
-          Alert.alert('알림', '사용할 수 없는 이메일입니다.')
+          Alert.alert('알림', '단체명&대표자명이 중복됩니다.')
         }
       } else {
-        Alert.alert('알림', '단체명&대표자명이 중복됩니다.')
+        Alert.alert('알림', '비어있는 항목을 작성해주세요.')
       }
+      setRegCnt(true)
     } else {
-      Alert.alert('알림', '비어있는 항목을 작성해주세요.')
+      Alert.alert('알림', '등록처리중입니다.')
     }
   }
 
