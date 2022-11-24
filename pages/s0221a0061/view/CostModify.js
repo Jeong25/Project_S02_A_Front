@@ -14,6 +14,7 @@ import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
 import ImageModal from 'react-native-image-modal';
 import FastImage from 'react-native-fast-image';
+import CustomAlert from '../../common/Alert/Toast/Alert';
 
 
 const CostModify = (props) => {
@@ -48,10 +49,20 @@ const CostModify = (props) => {
     windowHeight: Dimensions.get('window').height
   }
 
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertConfirm, setAlertConfirm] = useState(false)
+  const [alertImage, setAlertImage] = useState('info')
+  const [alertUseFunc, setAlertUseFunc] = useState(false)
 
-  useEffect(() => {
-    getData()
-  }, [props])
+  const cusAlert = async (message, image, use) => {
+    setAlertMessage(message)
+    setAlertImage(image)
+    setAlertConfirm(false)
+    setAlertUseFunc(use)
+    setAlertOpen(true)
+    return true
+  }
 
   const getData = async () => {
     const localMemberId = await AsyncStorage.getItem('memberId')
@@ -62,7 +73,7 @@ const CostModify = (props) => {
     setInputData({ ...data })
     setDateState({ ...dateState, confirmDate: new Date(data.usedDate), confirmVal: data.usedDate })
     if (!data.eventUseId) {
-      Alert.alert('Error', 'Error')
+      cusAlert('Error', '', false)
       props.navigation.goBack()
     } else {
       const res = await eventCostReq(data.eventUseId)
@@ -87,23 +98,28 @@ const CostModify = (props) => {
   }
 
   const modifyEvent = async () => {
-    console.log('CostModify_Log1: ' + JSON.stringify(inputData, null, 4))
+    if (inputData.useSubject === '') {
+      cusAlert('사용 제목을 입력해 주세요.', '', false)
+      return
+    }
+    if (inputData.useAmount === '' || Number(inputData.useAmount) < 1) {
+      cusAlert('사용 금액을 입력해 주세요.', '', false)
+      return
+    }
     if (inputData?.base64String) {
       const body = { ...inputData, usedDate: dateState.confirmVal, }
       delete body.payName
       delete body.useProStatus
       delete body.useProStatusNm
-      console.log('CostModify_Log2: ' + JSON.stringify(body, null, 4))
       if (SC === 0) {
         setSC(1)
         const response = await patchEventCostReq(body)
         if (response.status === 200) {
-          Alert.alert('알림', '비용 청구 영수증 수정 되었습니다.')
-          goback()
+          cusAlert('비용 청구 영수증 수정 되었습니다.', 'check', true)
           setSC(0)
         }
       } else {
-        Alert.alert('알림', '이미 작업을 요청하였으니, 잠시만 기다려주세요.')
+        cusAlert('이미 작업을 요청하였으니, 잠시만 기다려주세요.', '', false)
         return
       }
     } else {
@@ -111,19 +127,17 @@ const CostModify = (props) => {
       delete body.payName
       delete body.useProStatus
       delete body.useProStatusNm
-      console.log('CostModify_Log3: ' + JSON.stringify(body, null, 4))
       if (SC === 0) {
         setSC(1)
         const response = await patchEventCostReq(body)
         if (response.status === 200) {
-          Alert.alert('알림', '비용 청구 영수증 수정 되었습니다.')
-          goback()
+          cusAlert('비용 청구 영수증 수정 되었습니다.', 'check', true)
           setSC(0)
         } else {
-          Alert.alert('시스템 오류', '잠시 후 다시 시도하시거나 담당자에게 문의해 주세요.')
+          cusAlert('잠시 후 다시 시도하시거나 담당자에게 문의해 주세요.', '', false)
         }
       } else {
-        Alert.alert('알림', '이미 작업을 요청하였으니, 잠시만 기다려주세요.')
+        cusAlert('이미 작업을 요청하였으니, 잠시만 기다려주세요.', '', false)
         return
       }
     }
@@ -307,6 +321,10 @@ const CostModify = (props) => {
     setInputData({ ...inputData, eventId: params.eventId })
   }
 
+  useEffect(() => {
+    getData()
+  }, [props])
+
   return (
     <Fragment>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#f15a24' }}>
@@ -359,7 +377,6 @@ const CostModify = (props) => {
                     </TouchableOpacity>
                   </View>
                 </View>
-
                 <View style={styles.contentsLayer}>
                   <View style={styles.contentsInner}>
                     <Text style={styles.label}>사용일자</Text>
@@ -380,7 +397,6 @@ const CostModify = (props) => {
                     </View>
                   </View>
                 </View>
-
                 <View style={styles.contents}>
                   <Text style={styles.label}>첨부파일</Text>
                   {/* <TextInput style={styles.fileInput} value={inputData.useReceiptName}></TextInput> */}
@@ -407,7 +423,6 @@ const CostModify = (props) => {
                       <ReactImage source={require('../../common/img/plus-w.png')} style={styles.addIcon} ></ReactImage>
                     </TouchableOpacity>
                   </View>
-
                 </View>
                 <View style={styles.contents}>
                   <Text style={styles.label}>사용내역</Text>
@@ -420,12 +435,9 @@ const CostModify = (props) => {
                 </View>
               </View>
             </View>
-
-
             <View style={styles.renderTitleWrap}>
               <Text style={styles.renderTitle}>결제 내역</Text>
             </View>
-
             {detailData.length > 0 ?
               detailData.map((v, i) => (
                 <View key={i}>
@@ -444,7 +456,6 @@ const CostModify = (props) => {
                         <Text style={styles.centerAlignText}>{v.payDate}</Text>
                       </View>
                     </View>
-
                     <View style={styles.contents}>
                       <Text style={styles.label}>결제의견</Text>
                       <Text style={styles.RhistoryInput}>{v.payComment}</Text>
@@ -455,7 +466,6 @@ const CostModify = (props) => {
               )) :
               <View>
               </View>}
-
             {headerData?.useProStatus === 'B' || headerData?.useProStatus === 'C' || headerData?.useProStatus === 'D' ?
               <View style={styles.modifyBtnWrap}></View>
               :
@@ -472,7 +482,6 @@ const CostModify = (props) => {
                 </TouchableOpacity>
               </View>
             }
-
             <DateTimePickerModal
               isVisible={dateState.viewModal}
               mode="date"
@@ -483,18 +492,23 @@ const CostModify = (props) => {
               date={dateState.confirmDate}
             />
           </KeyboardAwareScrollView>
-
         </View>
+        <CustomAlert
+          openModal={alertOpen}
+          confirm={alertConfirm}
+          message={alertMessage}
+          image={alertImage}
+          CusFunc={() => props.navigation.goBack()}
+          useFunc={alertUseFunc}
+          onClose={() => setAlertOpen(false)}
+        />
       </SafeAreaView>
-
       <Footer
         navigation={props.navigation}
       />
       <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }}>
       </SafeAreaView>
     </Fragment>
-
-
   )
 }
 

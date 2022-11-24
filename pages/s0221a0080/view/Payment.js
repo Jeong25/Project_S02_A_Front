@@ -1,7 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import {
-  Text, View, TextInput, SafeAreaView, TouchableOpacity, ScrollView, Dimensions, Image, Alert
-} from 'react-native';
+import { Text, View, TextInput, SafeAreaView, TouchableOpacity, ScrollView, Dimensions, Image, Alert } from 'react-native';
 import { styleSheet } from './stylesheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { costReqDetailReq, processingCostReq } from '../store/store';
@@ -10,6 +8,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import numberToCost from '../../common/util/numberToCost';
 import ImageModal from 'react-native-image-modal';
 import FastImage from 'react-native-fast-image';
+import CustomAlert from '../../common/Alert/Toast/Alert';
 
 const Payment = (props) => {
   const height = Dimensions.get('window').height
@@ -23,9 +22,20 @@ const Payment = (props) => {
     windowHeight: Dimensions.get('window').height
   }
 
-  useEffect(() => {
-    getData()
-  }, [])
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertConfirm, setAlertConfirm] = useState(false)
+  const [alertImage, setAlertImage] = useState('info')
+  const [alertUseFunc, setAlertUseFunc] = useState(false)
+
+  const cusAlert = async (message, image, use) => {
+    setAlertMessage(message)
+    setAlertImage(image)
+    setAlertConfirm(false)
+    setAlertUseFunc(use)
+    setAlertOpen(true)
+    return true
+  }
 
   const getData = async () => {
     const { eventUseId } = props.route.params
@@ -55,11 +65,15 @@ const Payment = (props) => {
     const response = await processingCostReq(body)
 
     if (response?.data?.status === 200) {
-      props.navigation.goBack()
+      cusAlert('처리되었습니다.', 'check', true)
     } else if (response?.data?.status === 500) {
-      Alert.alert('시스템 오류', '잠시 후 다시 시도하시거나 담당자에게 문의해 주세요.')
+      cusAlert('잠시 후 다시 시도하시거나 담당자에게 문의해 주세요.', '', false)
     }
   }
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   return (
     <Fragment>
@@ -75,9 +89,7 @@ const Payment = (props) => {
         keyboardShouldPersistTaps='always'
         nestedScrollEnabled={true}
       // contentContainerStyle={{ height: height + 130 }}
-
       >
-
         <View style={styles.topMenu}>
           <View style={styles.backBtn}>
             <TouchableOpacity onPress={() => props.navigation.goBack()}>
@@ -88,7 +100,6 @@ const Payment = (props) => {
         </View>
         <View style={styles.inner}>
           <View style={styles.contentsWrap}>
-
             <View style={styles.contentsLayer}>
               <View style={styles.contentsInner}>
                 <Text style={styles.label}>작성자</Text>
@@ -117,13 +128,10 @@ const Payment = (props) => {
                 <Text style={styles.rightAlignText}>{`${numberToCost(headerData.useAmount)}`}</Text>
                 <Text style={styles.won}>원</Text>
               </View>
-
             </View>
-
             <View style={styles.contents}>
               <Text style={styles.label}>첨부파일</Text>
               <View style={styles.fileBox}>
-
                 <FastImage
                   style={{
                     width: 40,
@@ -140,7 +148,6 @@ const Payment = (props) => {
                     source={{ uri: `${preFix}${headerData?.useReceiptId}` }}
                   />
                 </FastImage>
-
               </View>
             </View>
             <View style={styles.contents}>
@@ -155,16 +162,13 @@ const Payment = (props) => {
           </View>
         </View>
         <View style={styles.divider}></View>
-
-
         {detailData.length > 0 ?
           detailData.map((v, k) => (
-
             <View key={k}>
               <View style={styles.renderInner}>
-                <View style={styles.renderTitleWrap}>
+                {/* <View style={styles.renderTitleWrap}>
                   <Text style={styles.renderTitle}>1차 결제</Text>
-                </View>
+                </View> */}
                 <View style={styles.contentsLayer}>
                   <View style={styles.RcontentsInner}>
                     <Text style={styles.label}>이름</Text>
@@ -179,7 +183,6 @@ const Payment = (props) => {
                     <Text style={styles.centerAlignText}>{v.payDate}</Text>
                   </View>
                 </View>
-
                 <View style={styles.contents}>
                   <Text style={styles.label}>결제의견</Text>
                   <Text style={styles.RhistoryInput}>{v.payComment}</Text>
@@ -197,7 +200,6 @@ const Payment = (props) => {
             <TextInput style={styles.opinion} onChange={(e) => setInputData({ ...inputData, payComment: e.nativeEvent.text })} />
           </View>
         </View>
-
         <View style={styles.btnWrap}>
           <TouchableOpacity onPress={() => requestPay("Y")}>
             <View style={styles.confBtn}>
@@ -210,6 +212,15 @@ const Payment = (props) => {
             </View>
           </TouchableOpacity>
         </View>
+        <CustomAlert
+          openModal={alertOpen}
+          confirm={alertConfirm}
+          message={alertMessage}
+          image={alertImage}
+          CusFunc={() => props.navigation.goBack()}
+          useFunc={alertUseFunc}
+          onClose={() => setAlertOpen(false)}
+        />
       </KeyboardAwareScrollView>
 
       <Footer

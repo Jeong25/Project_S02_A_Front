@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard, Alert, Modal } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard, Modal } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
@@ -8,7 +8,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
 import { useStateCntReq, payCntReq, recentEventReq } from '../store/store';
 import { setUserTp } from '../../common/lib/getuserinfo';
-import CustomAlert from '../../common/Alert/Toast/Alert';
 import QrModal from '../../common/modal/s0221a0040/QrModal';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
 import EvtDetailModal from '../../common/modal/s0221a2001/evtDetailModal';
@@ -30,8 +29,6 @@ const QrCode = (props) => {
 
   const [qrModalBool, setQrModalBool] = useState(false)
   const [faqModalBool, setFaqModalBool] = useState(false)
-  const [alertOpen, setAlertOpen] = useState(false)
-  const [alertMessage, setAlertMessage] = useState('')
 
   const [evtDetailModal, setEvtDetailModal] = useState(false)
   const [recentEvent, setRecentEvent] = useState([]);
@@ -62,11 +59,6 @@ const QrCode = (props) => {
     }
     getData()
   }, [isFocused])
-
-  const test = async () => {
-    setAlertMessage('에러가 발생했습니다')
-    setAlertOpen(true)
-  }
 
   const logOut = async () => {
     await AsyncStorage.setItem('memberName', '')
@@ -131,7 +123,6 @@ const QrCode = (props) => {
           <View style={styles.accountBtnWrap}>
             <View style={styles.logoutBtn}>
               <TouchableOpacity onPress={() => logOut()}>
-              {/* <TouchableOpacity onPress={() => test()}> */}
                 <ReactImage source={require('../../common/img/power-off.png')} style={styles.logout} />
               </TouchableOpacity>
             </View>
@@ -293,11 +284,6 @@ const QrCode = (props) => {
         <FaqModal
           openModal={faqModalBool}
           onClose={() => setFaqModalBool(false)}
-        />
-        <CustomAlert
-          openModal={alertOpen}
-          message={alertMessage}
-          onClose={() => setAlertOpen(false)}
         />
       </View>
       <Footer

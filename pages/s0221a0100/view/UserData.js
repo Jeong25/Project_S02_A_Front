@@ -6,6 +6,7 @@ import { useState, useEffect, Fragment } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styleSheet } from './styleSheet';
 import { deletMemReq, retMemDetailReq, updateMemInfoReq } from '../../s0221a0010/store/store';
+import CustomAlert from '../../common/Alert/Toast/Alert';
 
 const UserData = (props) => {
 
@@ -16,17 +17,40 @@ const UserData = (props) => {
     const [hpNo, setHpNo] = useState('')
     const [params, setParams] = useState({})
 
+    const [alertOpen, setAlertOpen] = useState(false)
+    const [alertOpen_, setAlertOpen_] = useState(false)
+    const [alertMessage, setAlertMessage] = useState('')
+    const [alertConfirm, setAlertConfirm] = useState(false)
+    const [alertImage, setAlertImage] = useState('info')
+    const [alertUseFunc, setAlertUseFunc] = useState(false)
+
+    const cusAlert = async (message, image, use) => {
+        setAlertMessage(message)
+        setAlertImage(image)
+        setAlertConfirm(false)
+        setAlertUseFunc(use)
+        setAlertOpen(true)
+        return true
+    }
+
+    const cusAlert_ = async (message, image, use) => {
+        setAlertMessage(message)
+        setAlertImage(image)
+        setAlertConfirm(false)
+        setAlertUseFunc(use)
+        setAlertOpen_(true)
+        return true
+    }
+
     const updateMem = async () => {
         if (params.pwd === '' || params.pwdCheck === '' || params.pwd !== params.pwdCheck) {
-            Alert.alert('알림', '비밀번호를 확인해주세요.')
+            cusAlert('비밀번호를 확인해주세요.', '', false)
         } else {
             const res = await updateMemInfoReq(params);
             if (res.data.status === 200) {
-                Alert.alert('알림', '저장되었습니다.')
-                props.navigation.replace('UserData')
+                cusAlert('저장되었습니다.', 'check', true)
             } else {
-                Alert.alert('알림', '오류가 발생했습니다.')
-                props.navigation.replace('UserData')
+                cusAlert('오류가 발생했습니다.', '', false)
             }
         }
     }
@@ -40,16 +64,13 @@ const UserData = (props) => {
                     try {
                         const res = await deletMemReq(Number(memId), memTp)
                         if (res.data.status === 200) {
-                            Alert.alert('알림', '회원 탈퇴가 완료되었습니다.')
-                            logOut();
+                            cusAlert_('회원 탈퇴가 완료되었습니다.', 'check', true)
                         } else {
-                            Alert.alert('알림', '오류가 발생했습니다.')
-                            logOut();
+                            cusAlert_('오류가 발생했습니다.', '', false)
                         }
                     } catch (e) {
                         console.log(e)
-                        Alert.alert('알림', '오류가 발생했습니다.')
-                        logOut();
+                        cusAlert_('오류가 발생했습니다.', '', false)
                     }
                 }
             },
@@ -204,6 +225,24 @@ const UserData = (props) => {
 
                     </ScrollView>
                 </View>
+                <CustomAlert
+                    openModal={alertOpen}
+                    confirm={alertConfirm}
+                    message={alertMessage}
+                    image={alertImage}
+                    CusFunc={() => props.navigation.replace('UserData')}
+                    useFunc={alertUseFunc}
+                    onClose={() => setAlertOpen(false)}
+                />
+                <CustomAlert
+                    openModal={alertOpen_}
+                    confirm={alertConfirm}
+                    message={alertMessage}
+                    image={alertImage}
+                    CusFunc={() => logOut()}
+                    useFunc={alertUseFunc}
+                    onClose={() => setAlertOpen(false)}
+                />
             </SafeAreaView>
             <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
         </Fragment >

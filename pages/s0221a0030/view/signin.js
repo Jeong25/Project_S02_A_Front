@@ -6,6 +6,7 @@ import { setUserTp } from '../../common/lib/getuserinfo';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
 import { signInReq } from '../store/store';
 import { styleSheet } from './stylesheet';
+import CustomAlert from '../../common/Alert/Toast/Alert';
 
 const Signin = (props) => {
   const { windowHeight } = props
@@ -21,6 +22,10 @@ const Signin = (props) => {
   const [isFocus, setIsFoucs] = useState(false)
   const [privacyAgree, setPrivacyAgree] = useState(false)
   const [faqModalBool, setFaqModalBool] = useState(false)
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertConfirm, setAlertConfirm] = useState(false)
+  const [alertImage, setAlertImage] = useState('info')
 
   const ref_input = []
   ref_input[0] = useRef(null)
@@ -32,6 +37,13 @@ const Signin = (props) => {
   const styles = styleSheet()
 
   let keyboardSub = null;
+
+  const cusAlert = async (message, image) => {
+    setAlertMessage(message)
+    setAlertImage(image)
+    setAlertConfirm(false)
+    setAlertOpen(true)
+  }
 
   useEffect(() => {
     try {
@@ -75,19 +87,19 @@ const Signin = (props) => {
 
   const doLogin = async (paramName, paramHpNo, paramEventCode, privacy) => {
     if (!privacy) {
-      Alert.alert('알림', '개인정보 수집에 동의해주세요.')
+      cusAlert('개인정보 수집에 동의해주세요.', '')
       return
     }
     if (paramName === '') {
-      Alert.alert('알림', '성명을 입력해주세요.')
+      cusAlert('성명을 입력해주세요.', '')
       return
     }
     if (paramHpNo === '' || paramHpNo.length < 11) {
-      Alert.alert('알림', '핸드폰 번호를 확인해주세요.')
+      cusAlert('핸드폰 번호를 확인해주세요.', '')
       return
     }
     if (paramEventCode === '') {
-      Alert.alert('알림', '부서코드를 확인해주세요.')
+      cusAlert('부서코드를 확인해주세요.', '')
       return
     }
     if (!paramName || !paramHpNo) {
@@ -98,12 +110,12 @@ const Signin = (props) => {
     try {
       const result = await signInReq(paramName, paramHpNo, paramEventCode)
       if (result?.status === 500) {
-        Alert.alert('알림', result.massage)
+        cusAlert(result.massage, '')
         return
       } else if (result?.status === 200) {
         const { data } = result
         if (data.massage === '등록되지 않은 부서코드입니다.') {
-          Alert.alert('알림', data.massage)
+          cusAlert(data.massage, '')
           return
         }
 
@@ -229,19 +241,19 @@ const Signin = (props) => {
                   ref={ref_input[3]}
                 />
               </View>
-                <TextInput
-                  style={styles.inputCode}
-                  placeholder={'운영자에게 받은 코드'}
-                  placeholderTextColor="#rgba(0,0,0,0.2)"
-                  ref={ref_input[4]}
-                  onChange={(e) => setEventCode(e.nativeEvent.text)}
-                  autoCapitalize={'characters'}
-                >
-                  {eventCode}
-                </TextInput>
-                <TouchableOpacity style={styles.searchCode} onPress={() => props.navigation.navigate('SearchCode')}>
-                  <Text style={styles.searchCodeText}>부서코드를 잊어버렸다면?</Text>
-                </TouchableOpacity>
+              <TextInput
+                style={styles.inputCode}
+                placeholder={'운영자에게 받은 코드'}
+                placeholderTextColor="#rgba(0,0,0,0.2)"
+                ref={ref_input[4]}
+                onChange={(e) => setEventCode(e.nativeEvent.text)}
+                autoCapitalize={'characters'}
+              >
+                {eventCode}
+              </TextInput>
+              <TouchableOpacity style={styles.searchCode} onPress={() => props.navigation.navigate('SearchCode')}>
+                <Text style={styles.searchCodeText}>부서코드를 잊어버렸다면?</Text>
+              </TouchableOpacity>
               <TouchableOpacity onPress={() => checkAuth()}>
                 <View style={styles.infoAggWrap}>
                   <View style={privacyAgree ? styles.checkBox : styles.unCheckBox}>
@@ -271,9 +283,16 @@ const Signin = (props) => {
         </View>
       </SafeAreaView>
       <FaqModal
-          openModal={faqModalBool}
-          onClose={() => setFaqModalBool(false)}
-        />
+        openModal={faqModalBool}
+        onClose={() => setFaqModalBool(false)}
+      />
+      <CustomAlert
+        openModal={alertOpen}
+        confirm={alertConfirm}
+        message={alertMessage}
+        image={alertImage}
+        onClose={() => setAlertOpen(false)}
+      />
     </KeyboardAwareScrollView >
   );
 }

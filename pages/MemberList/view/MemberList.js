@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState, Fragment } from 'react';
-import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Pressable, Alert } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
@@ -7,7 +7,7 @@ import { deptPayInfoReq, deptInfoReq, regUserReq } from '../../DepReg/store/stor
 import SwitchToggle from "react-native-switch-toggle";
 import RNPickerSelect from 'react-native-picker-select';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import CustomAlert from '../../common/Alert/Toast/Alert';
 
 const MemberList = (props) => {
 
@@ -18,6 +18,18 @@ const MemberList = (props) => {
   const [userInfo, setUserInfo] = useState([])
   const [authArr, setAuthArr] = useState([])
   const [refresh, setRefresh] = useState(0)
+
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertConfirm, setAlertConfirm] = useState(false)
+  const [alertImage, setAlertImage] = useState('info')
+
+  const cusAlert = async (message, image) => {
+    setAlertMessage(message)
+    setAlertImage(image)
+    setAlertConfirm(false)
+    setAlertOpen(true)
+  }
 
   // 권한 설정
   const setUserAuth = (index) => {
@@ -120,7 +132,7 @@ const MemberList = (props) => {
     for (let i = 0; i < userInfo.length; i++) {
       if (userInfo[i].useRegFlag === 'Y') {
         if (userInfo[i].eventPayLevel === 1 || userInfo[i].eventPayLevel === 2 || userInfo[i].eventPayLevel === 3 || userInfo[i].eventPayLevel === 4) {
-          Alert.alert('알림', '결제자 지정 또는 권한 없음 둘 중 하나만 선택해주세요.')
+          cusAlert('결제자 지정 또는 권한 없음 중 하나만 선택해주세요.', '')
           return
         }
       }
@@ -132,7 +144,7 @@ const MemberList = (props) => {
       }
     }
     if (payFlag === '') {
-      Alert.alert('알림', '결제자를 한 명 이상 지정해주세요.')
+      cusAlert('결제자를 한 명 이상 지정해주세요.', '')
       return
     }
     let countPayLv = []
@@ -151,14 +163,14 @@ const MemberList = (props) => {
       }
     }
     if (countLv !== countPayLv.length) {
-      Alert.alert('알림', '결제자를 순번대로 지정해주세요.')
+      cusAlert('결제자를 순번대로 지정해주세요.', '')
       return
-    } else {}
+    } else { }
     const eventId = props.route.params.eventId
     const memberId = await AsyncStorage.getItem('memberId')
     const res = await regUserReq(eventId, deptInfo, userInfo, memberId)
     if (res.data.status === 200) {
-      Alert.alert('알림', '사용자 정보가 저장되었습니다.')
+      cusAlert('사용자 정보가 저장되었습니다.', 'check')
       let count = refresh + 1
       setRefresh(count)
     }
@@ -277,6 +289,13 @@ const MemberList = (props) => {
             </View>
           </TouchableOpacity>
         </View>
+        <CustomAlert
+          openModal={alertOpen}
+          confirm={alertConfirm}
+          message={alertMessage}
+          image={alertImage}
+          onClose={() => setAlertOpen(false)}
+        />
       </SafeAreaView >
       {/* <Footer
         navigation={props.navigation}

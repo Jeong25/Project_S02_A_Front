@@ -5,6 +5,7 @@ import { Text, View, SafeAreaView, TouchableOpacity, TextInput } from 'react-nat
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { styleSheet } from './stylesheet';
 import { regOrgReq, checkEmailReq, checkOrgReq } from '../store/store'
+import CustomAlert from '../../common/Alert/Toast/Alert';
 
 const SignUp = (props) => {
   const { windowHeight } = props
@@ -37,10 +38,49 @@ const SignUp = (props) => {
     eventNm: ''
   })
 
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertConfirm, setAlertConfirm] = useState(false)
+  const [alertImage, setAlertImage] = useState('info')
+  const [alertUseFunc, setAlertUseFunc] = useState(false)
+
+  const cusAlert = async (message, image, use) => {
+    setAlertMessage(message)
+    setAlertImage(image)
+    setAlertConfirm(false)
+    setAlertUseFunc(use)
+    setAlertOpen(true)
+  }
+
   const SignUpReq = async () => {
     if (regCnt) {
+      let checkParams = false
+      if (inputData.orgName === '') {
+        cusAlert('단체명을 작성해주세요.', '', false)
+        return
+      } else if (inputData.ceoName === '') {
+        cusAlert('대표자 이름을 작성해주세요.', '', false)
+        return
+      } else if (inputData.memberName === '') {
+        cusAlert('담당자 이름을 작성해주세요.', '', false)
+        return
+      } else if (inputData.firstHpNo === '' || inputData.middleHpNo === '' || inputData.lastHpNo === '') {
+        cusAlert('담당자 연락처를 작성해주세요.', '', false)
+        return
+      } else if (inputData.pwd === '') {
+        cusAlert('비밀번호를 작성해주세요.', '', false)
+        return
+      } else if (inputData.email === '') {
+        cusAlert('이메일을 작성해주세요.', '', false)
+        return
+      } else if (inputData.eventNm === '') {
+        cusAlert('부서명을 작성해주세요.', '', false)
+        return
+      } else {
+        checkParams = true
+      }
       setRegCnt(false)
-      if (inputData.orgName && inputData.ceoName && inputData.pwd && inputData.memberName && inputData.firstHpNo && inputData.middleHpNo && inputData.lastHpNo && inputData.email && inputData.eventNm !== '') {
+      if (checkParams) {
         const org = await checkOrgReq(inputData.orgName, inputData.ceoName)
         const email = await checkEmailReq(inputData.email, inputData.orgName)
         if (org) {
@@ -50,30 +90,26 @@ const SignUp = (props) => {
                 delete inputData.pwdCheck
                 const res = await regOrgReq(inputData)
                 if (res.data.status === 200) {
-                  Alert.alert('삐용에 오신 것을 환영합니다.', `단체명: ${res.data.data.orgName}\n부서명: ${res.data.data.eventNm}\n코드번호: ${res.data.data.eventCode}`)
-                  props.navigation.navigate('Signin')
+                  cusAlert(`삐용에 오신 것을 환영합니다.\n\n단체명: ${res.data.data.orgName}\n부서명: ${res.data.data.eventNm}\n코드번호: ${res.data.data.eventCode}`, 'checke', true)
                 } else {
-                  Alert.alert('알림', '오류가 발생했습니다.')
-                  props.navigation.navigate('Signin')
+                  cusAlert('오류가 발생했습니다.', '', false)
                 }
               } catch (e) {
-                Alert.alert('알림', '오류가 발생하여 처리하지 못했습니다.')
+                cusAlert('오류가 발생했습니다.', '', false)
               }
             } else {
-              Alert.alert('알림', '비밀번호가 일치하지 않습니다.')
+              cusAlert('비밀번호가 일치하지 않습니다.', '', false)
             }
           } else {
-            Alert.alert('알림', '사용할 수 없는 이메일입니다.')
+            cusAlert('사용할 수 없는 이메일입니다.', '', false)
           }
         } else {
-          Alert.alert('알림', '단체명&대표자명이 중복됩니다.')
+          cusAlert('단체명&대표자명이 중복됩니다.', '', false)
         }
-      } else {
-        Alert.alert('알림', '비어있는 항목을 작성해주세요.')
-      }
+      } else { }
       setRegCnt(true)
     } else {
-      Alert.alert('알림', '등록처리중입니다.')
+      cusAlert('알림', '등록처리중입니다.', '', false)
     }
   }
 
@@ -101,6 +137,7 @@ const SignUp = (props) => {
             nestedScrollEnabled={true}
           >
             <View style={styles.contentsWrap}>
+              
               <View style={styles.form}>
                 <View style={styles.layer}>
                   <View style={styles.inputWrap}>
@@ -145,7 +182,6 @@ const SignUp = (props) => {
                   }}
                   onBlur={() => { setheightMagnifi(1.2) }}
                 ></TextInput>
-
               </View>
               <View style={styles.layer}>
                 <View style={styles.hpInputWrap}>
@@ -202,6 +238,7 @@ const SignUp = (props) => {
                       setInputData({ ...inputData, lastHpNo: e.nativeEvent.text })
                     }}
                     keyboardType="number-pad"
+                    maxLength={4}
                     onFocus={() => {
                       setheightMagnifi(1.5)
                       setIsFoucs(true)
@@ -271,6 +308,15 @@ const SignUp = (props) => {
             </View>
           </KeyboardAwareScrollView >
         </View>
+        <CustomAlert
+          openModal={alertOpen}
+          confirm={alertConfirm}
+          message={alertMessage}
+          image={alertImage}
+          CusFunc={() => props.navigation.navigate('Signin')}
+          useFunc={alertUseFunc}
+          onClose={() => setAlertOpen(false)}
+        />
       </SafeAreaView>
       <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
     </Fragment>

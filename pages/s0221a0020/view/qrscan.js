@@ -10,6 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styleSheet } from './stylesheet';
 import { qrInfoReq, qrScanReq } from '../store/store';
 import RNBeep from 'react-native-a-beep';
+import CustomAlert from '../../common/Alert/Toast/Alert';
 
 const Qrscan = (props) => {
 
@@ -28,6 +29,18 @@ const Qrscan = (props) => {
   const CAM_VIEW_HEIGHT = Dimensions.get('screen').height;
   const CAM_VIEW_WIDTH = Dimensions.get('screen').width;
   const styles = useMemo(() => styleSheet(CAM_VIEW_HEIGHT, CAM_VIEW_WIDTH), [CAM_VIEW_HEIGHT, CAM_VIEW_WIDTH])
+
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertConfirm, setAlertConfirm] = useState(false)
+  const [alertImage, setAlertImage] = useState('info')
+
+  const cusAlert = async (message, image) => {
+    setAlertMessage(message)
+    setAlertImage(image)
+    setAlertConfirm(true)
+    setAlertOpen(true)
+  }
 
   const getQrInfo = async () => {
     // const defaultEventId = await AsyncStorage.getItem('defaultEventId')
@@ -86,14 +99,16 @@ const Qrscan = (props) => {
         //   { text: '확인', onPress: () => setScaned(true) }
         // ])
       } else {
-        Alert.alert('QR Code', '다시 시도해주세요.', [
-          { text: '확인', onPress: () => setScaned(true) }
-        ])
+        cusAlert('다시 시도해주세요.', '')
+        // Alert.alert('QR Code', '다시 시도해주세요.', [
+        //   { text: '확인', onPress: () => setScaned(true) }
+        // ])
       }
     } catch (error) {
-      Alert.alert('QR Code', 'QR코드를 확인해주세요.', [
-        { text: '확인', onPress: () => setScaned(true) }
-      ])
+      cusAlert('QR코드를 확인해주세요.', '')
+      // Alert.alert('QR Code', 'QR코드를 확인해주세요.', [
+      //   { text: '확인', onPress: () => setScaned(true) }
+      // ])
     }
   }
   // const onBarCodeRead = async (e) => {
@@ -184,6 +199,14 @@ const Qrscan = (props) => {
           <Text style={styles.eventDate}>{dateData || ''}</Text>
         </View>
       </View>
+      <CustomAlert
+        openModal={alertOpen}
+        confirm={alertConfirm}
+        message={alertMessage}
+        image={alertImage}
+        CusFunc={() => setScaned(true)}
+        onClose={() => setAlertOpen(false)}
+      />
       {/* </RNCamera > */}
     </>
   );

@@ -1,5 +1,5 @@
 import React, { Component, Fragment, useEffect, useMemo, useState } from 'react';
-import { Text, View, SafeAreaView, TextInput, ScrollView, Alert, LogBox } from 'react-native';
+import { Text, View, SafeAreaView, TextInput, ScrollView, LogBox } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { styleSheet } from './stylesheet';
 import { retrieveCostReq } from '../store/store';
@@ -128,17 +128,11 @@ const CostList = (props) => {
               writeAuth === '\"Y\"' ?
                 <View /> :
                 <View style={styles.regBtnWrap}>
-                  <TouchableOpacity onPress={() => {
-                    {
-                      writeAuth === '\"Y\"' ? Alert.alert('알림', '권한이 없는 사용자입니다.') :
-                        props.navigation.navigate('Cost', { refresh: callList })
-                    }
-                  }}>
+                  <TouchableOpacity onPress={() => props.navigation.navigate('Cost', { refresh: callList })}>
                     <ReactImage source={require('../../common/img/registIcon.png')} style={styles.registIcon} />
                   </TouchableOpacity>
                 </View>
             }
-
           </View>
           <View style={styles.layer1}>
             <View style={styles.selectWrap}>

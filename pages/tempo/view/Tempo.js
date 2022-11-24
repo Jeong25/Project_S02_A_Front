@@ -6,6 +6,7 @@ import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
 import { regEventReq, deptInfoReq } from '../../DepReg/store/store';
 import { styleSheet } from './styleSheet';
+import CustomAlert from '../../common/Alert/Toast/Alert';
 
 const Tempo = (props) => {
 
@@ -51,6 +52,20 @@ const Tempo = (props) => {
     eventTp: '',
   })
 
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertConfirm, setAlertConfirm] = useState(false)
+  const [alertImage, setAlertImage] = useState('info')
+  const [alertUseFunc, setAlertUseFunc] = useState(false)
+
+  const cusAlert = async (message, image, use) => {
+    setAlertMessage(message)
+    setAlertImage(image)
+    setAlertConfirm(false)
+    setAlertUseFunc(use)
+    setAlertOpen(true)
+  }
+
   const blurTextInput = () => {
     if (isFocus) {
       Keyboard.dismiss()
@@ -71,12 +86,12 @@ const Tempo = (props) => {
 
   const regEvent = async () => {
     if (inputData.eventNm === '') {
-      Alert.alert('알림', '행사명을 작성해주세요.')
+      cusAlert('행사명을 작성해주세요.', '', false)
       return
     }
     if (inputData.eventLevel === 0 || inputData.eventLevel === 1) {
       if (inputData.eventHostId === 0) {
-        Alert.alert('알림', '책임자를 선택해주세요.')
+        cusAlert('책임자를 선택해주세요.', '', false)
         return
       }
     }
@@ -84,19 +99,16 @@ const Tempo = (props) => {
       if (props.route.params.eventId) {
         const res = await regEventReq(props.route.params.eventId, inputData)
         if (res.data.status === 200) {
-          Alert.alert('알림', res.data.massage)
+          cusAlert(res.data.massage, 'check', true)
         }
-        props.navigation.goBack()
       } else {
         const res = await regEventReq(0, inputData)
         if (res.data.status === 200) {
-          Alert.alert('알림', res.data.massage)
+          cusAlert(res.data.massage, 'check', true)
         }
-        props.navigation.goBack()
       }
     } catch (error) {
-      Alert.alert('알림', '오류 발생, 관리자에게 문의해주세요.')
-      props.navigation.goBack()
+      cusAlert('오류 발생, 관리자에게 문의해주세요.', '', true)
     }
   }
 
@@ -329,6 +341,15 @@ const Tempo = (props) => {
           />
 
         </View>
+        <CustomAlert
+          openModal={alertOpen}
+          confirm={alertConfirm}
+          message={alertMessage}
+          image={alertImage}
+          CusFunc={() => props.navigation.goBack()}
+          useFunc={alertUseFunc}
+          onClose={() => setAlertOpen(false)}
+        />
       </SafeAreaView>
       <Footer
         navigation={props.navigation}

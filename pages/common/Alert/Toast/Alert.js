@@ -3,14 +3,12 @@ import { Text, View, BackHandler } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useState, useEffect } from "react";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AlertStyleSheet } from './AlertStyleSheet';
 
 const Alert = (props) => {
-    const { onClose, openModal, message } = props
+    const { onClose, openModal, message, confirm, CusFunc, useFunc, image } = props
     const [display, setDisplay] = useState(false)
     const styles = AlertStyleSheet()
-
 
     useEffect(() => {
         setDisplay(openModal)
@@ -43,9 +41,13 @@ const Alert = (props) => {
                 <View style={styles.inner}>
                     <View style={styles.contentsWrap}>
                         <View style={styles.iconWrap}>
-                            <ReactImage source={require('./assets/warning.png')} style={styles.warningIcon} />
-                            {/* <ReactImage source={require('./assets/info.png')} style={styles.alertIcon} /> */}
-                            {/* <ReactImage source={require('./assets/check.png')} style={styles.alertIcon} /> */}
+                            {image === 'info' ?
+                                <ReactImage source={require('./assets/info.png')} style={styles.alertIcon} />
+                                : image === 'check' ?
+                                    <ReactImage source={require('./assets/check.png')} style={styles.alertIcon} />
+                                    :
+                                    <ReactImage source={require('./assets/warning.png')} style={styles.warningIcon} />
+                            }
                         </View>
                         <View style={styles.textWrap}>
                             <Text style={styles.alertText}>
@@ -54,13 +56,30 @@ const Alert = (props) => {
                         </View>
                     </View>
                     <View style={styles.btnWrap}>
-                        <TouchableOpacity onPress={() => closeModal()} style={styles.cancelBtn}>
-                            <Text style={styles.cancelText}>취소</Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={() => closeModal()} style={styles.closeBtn}>
-                            <Text style={styles.confirmText}>확인</Text>
-                        </TouchableOpacity>
+                        {confirm ?
+                            <>
+                                <TouchableOpacity onPress={() => closeModal()} style={styles.cancelBtn}>
+                                    <Text style={styles.cancelText}>취소</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        CusFunc()
+                                        closeModal()
+                                    }}
+                                    style={styles.closeBtn}>
+                                    <Text style={styles.confirmText}>확인</Text>
+                                </TouchableOpacity>
+                            </>
+                            :
+                            useFunc ? 
+                            <TouchableOpacity onPress={() => CusFunc()} style={styles.closeBtn}>
+                                <Text style={styles.confirmText}>확인</Text>
+                            </TouchableOpacity>
+                            :
+                            <TouchableOpacity onPress={() => closeModal()} style={styles.closeBtn}>
+                                <Text style={styles.confirmText}>확인</Text>
+                            </TouchableOpacity>
+                        }
 
 
                     </View>

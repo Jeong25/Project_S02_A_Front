@@ -5,6 +5,7 @@ import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
 import Footer from '../../common/footer/Footer';
 import { findCdReq } from '../store/store'
+import CustomAlert from '../../common/Alert/Toast/Alert';
 
 const SearchCode = (props) => {
 
@@ -17,6 +18,18 @@ const SearchCode = (props) => {
     orgName: ""
   })
 
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertConfirm, setAlertConfirm] = useState(false)
+  const [alertImage, setAlertImage] = useState('info')
+
+  const cusAlert = async (message, image) => {
+    setAlertMessage(message)
+    setAlertImage(image)
+    setAlertConfirm(false)
+    setAlertOpen(true)
+  }
+
   const onClick = async () => {
     const res = await findCdReq(inputData)
     Keyboard.dismiss()
@@ -26,10 +39,9 @@ const SearchCode = (props) => {
       for (let i = 0; i < res.data.data.length; i++) {
         data += `${res.data.data[i].eventNm}: ${res.data.data[i].eventCode}\n`
       }
-      console.log(data)
-      Alert.alert('부서코드 목록', data)
+      cusAlert(data, 'check')
     } else {
-      Alert.alert('알림', '부서코드를 찾을 수 없습니다.')
+      cusAlert('부서코드를 찾을 수 없습니다.', '')
     }
   }
 
@@ -69,6 +81,13 @@ const SearchCode = (props) => {
             </TouchableOpacity>
           </View>
         </View>
+        <CustomAlert
+          openModal={alertOpen}
+          confirm={alertConfirm}
+          message={alertMessage}
+          image={alertImage}
+          onClose={() => setAlertOpen(false)}
+        />
       </SafeAreaView>
       <Footer
         navigation={props.navigation}

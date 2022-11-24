@@ -14,6 +14,7 @@ import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
 import ImageModal from 'react-native-image-modal';
 import FastImage from 'react-native-fast-image';
+import CustomAlert from '../../common/Alert/Toast/Alert';
 
 
 const Cost = (props) => {
@@ -44,9 +45,19 @@ const Cost = (props) => {
     windowHeight: Dimensions.get('window').height
   }
 
-  useEffect(() => {
-    getData()
-  }, [])
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertConfirm, setAlertConfirm] = useState(false)
+  const [alertImage, setAlertImage] = useState('info')
+  const [alertUseFunc, setAlertUseFunc] = useState(false)
+
+  const cusAlert = async (message, image, use) => {
+    setAlertMessage(message)
+    setAlertImage(image)
+    setAlertConfirm(false)
+    setAlertUseFunc(use)
+    setAlertOpen(true)
+  }
 
   const getData = async () => {
     const localName = await AsyncStorage.getItem('memberName')
@@ -74,23 +85,23 @@ const Cost = (props) => {
 
   const regist = async () => {
     if (inputData.useSubject === '') {
-      Alert.alert('알림', '사용 제목을 입력해 주세요.')
+      cusAlert('사용 제목을 입력해 주세요.', '', false)
       return
     }
-    if (inputData.eventNm === '') {
-      Alert.alert('알림', '행사명을 입력해 주세요.')
+    if (eventName === '') {
+      cusAlert('행사명을 입력해 주세요.', '', false)
       return
     }
     if (inputData.usedDate === '') {
-      Alert.alert('알림', '사용 일자를 입력해 주세요.')
+      cusAlert('사용 일자를 입력해 주세요.', '', false)
       return
     }
     if (inputData.useAmount === '' || Number(inputData.useAmount) < 1) {
-      Alert.alert('알림', '사용 금액을 입력해 주세요.')
+      cusAlert('사용 금액을 입력해 주세요.', '', false)
       return
     }
     if (inputData.useReceiptName === '') {
-      Alert.alert('알림', '첨부파일을 입력해 주세요.')
+      cusAlert('첨부파일을 입력해 주세요.', '', false)
       return
     }
     if (SC === 0) {
@@ -99,26 +110,16 @@ const Cost = (props) => {
       const body = { ...inputData, usedDate: dateState.confirmVal, "eventUserId": memberId, }
       const response = await registerEventCostReq(body, headers)
       if (response.status === 200) {
-        Alert.alert('알림', '비용 청구 영수증 등록 되었습니다.')
-        goback()
+        cusAlert('비용 청구 영수증 등록 되었습니다.', 'check', true)
         setSC(0)
       } else {
-        Alert.alert('시스템 오류', '잠시 후 다시 시도하시거나 담당자에게 문의해 주세요.')
+        cusAlert('잠시 후 다시 시도하시거나 담당자에게 문의해 주세요.', '', false)
       }
     } else {
-      Alert.alert('알림', '이미 작업을 요청하였으니, 잠시만 기다려주세요.')
+      cusAlert('이미 작업을 요청하였으니, 잠시만 기다려주세요.', '', false)
       return
     }
 
-  }
-
-  const goback = async () => {
-    // try {
-    //   props.route.params.refresh()
-    // } catch (error) {
-    //   console.log(error)
-    // }
-    props.navigation.goBack()
   }
 
   const checkAndAuth = async () => {
@@ -255,6 +256,10 @@ const Cost = (props) => {
     setInputData({ ...inputData, eventId: params.eventId })
   }
 
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <Fragment>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#f15a24' }}>
@@ -268,16 +273,14 @@ const Cost = (props) => {
           keyboardShouldPersistTaps='always'
           nestedScrollEnabled={true}
         >
-
           <View style={styles.topMenu}>
             <View style={styles.backBtn}>
-              <TouchableOpacity onPress={goback} >
+              <TouchableOpacity onPress={() => props.navigation.goBack()} >
                 <Image source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
               </TouchableOpacity>
             </View>
             <Text style={styles.topTitle}>비용작성</Text>
           </View>
-
           <View style={styles.inner}>
             <View style={styles.form}>
               <View style={styles.inputWrap}>
@@ -369,17 +372,22 @@ const Cost = (props) => {
             }
             date={dateState.confirmDate}
           />
-
         </KeyboardAwareScrollView>
+        <CustomAlert
+          openModal={alertOpen}
+          confirm={alertConfirm}
+          message={alertMessage}
+          image={alertImage}
+          CusFunc={() => props.navigation.goBack()}
+          useFunc={alertUseFunc}
+          onClose={() => setAlertOpen(false)}
+        />
       </SafeAreaView>
-
       <Footer
         navigation={props.navigation}
       />
       <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
     </Fragment>
-
-
   )
 }
 

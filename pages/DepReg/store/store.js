@@ -1,4 +1,3 @@
-import { Alert } from 'react-native';
 import { deptLevel, deptInfo, deptPayInfo, reqSaveEvent, retrieveMem } from '../repository/repository';
 
 const deptLevelReq = async (params) => {
