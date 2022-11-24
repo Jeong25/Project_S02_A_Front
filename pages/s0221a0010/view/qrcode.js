@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard, Alert } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard, Alert, Modal } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
@@ -24,6 +24,10 @@ const QrCode = (props) => {
   const [payCnt, setPayCnt] = useState(0)
   // const [hpNo, setHpNo] = useState('')
   // const [eventCode, setEventCode] = useState('')
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+
   const [qrModalBool, setQrModalBool] = useState(false)
   const [faqModalBool, setFaqModalBool] = useState(false)
   const [alertOpen, setAlertOpen] = useState(false)
@@ -232,7 +236,7 @@ const QrCode = (props) => {
               </View>
               <Text style={styles.centerText}>QR보기</Text>
             </TouchableOpacity>
-           
+
             <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('DepReg', { orgId: orgId })}>
               <View style={styles.btnImg}>
                 <ReactImage source={require('../../common/img/group.png')} style={styles.centerIcon} />
@@ -269,6 +273,8 @@ const QrCode = (props) => {
             </View>
           </View>
         </ScrollView>
+
+        
         <QrModal
           openModal={qrModalBool}
           onClose={() => setQrModalBool(false)}

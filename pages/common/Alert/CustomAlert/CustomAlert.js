@@ -4,12 +4,12 @@ import { Image as ReactImage } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useState, useEffect } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AlertStyleSheet } from './AlertStyleSheet';
+import { styleSheet } from './styleSheet';
 
-const Alert = (props) => {
-    const { onClose, openModal, message } = props
+const CustomAlert = (props) => {
+    const { onClose, openModal } = props
     const [display, setDisplay] = useState(false)
-    const styles = AlertStyleSheet()
+    const styles = styleSheet()
 
   
     useEffect(() => {
@@ -47,11 +47,16 @@ const Alert = (props) => {
                         </View>
                         <View style={styles.textWrap}>
                             <Text style={styles.alertText}>
-                                {message}
+                                모든 항목을 입력해야합니다.{"\n"}
+                              
                             </Text>
+
                         </View>
                     </View>
                     <View style={styles.btnWrap}>
+                        <TouchableOpacity onPress={() => closeModal()} style={styles.cancelBtn}>
+                            <Text style={styles.cancelText}>취소</Text>
+                        </TouchableOpacity>
                         <TouchableOpacity onPress={() => closeModal()} style={styles.closeBtn}>
                             <Text style={styles.closeText}>확인</Text>
                         </TouchableOpacity>
@@ -64,4 +69,4 @@ const Alert = (props) => {
 
 }
 
-export default Alert;
+export default CustomAlert;

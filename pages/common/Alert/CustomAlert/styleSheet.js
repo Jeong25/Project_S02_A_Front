@@ -1,22 +1,19 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
-export const AlertStyleSheet = (windowHeight = Dimensions.get('window').height, windowWidth = Dimensions.get('window').width) => {
+export const styleSheet = (windowHeight = Dimensions.get('window').height, windowWidth = Dimensions.get('window').width) => {
   const wp = windowWidth / 360
   const hp = windowHeight / 800
   return StyleSheet.create({
     'background':{
-      "width": '100%',
-      "height": '100%',
-      'backgroundColor': 'rgba(0,0,0,0.7)',
-      "position": 'absolute',
-      "zIndex": 9,
+      'height' : windowHeight,
+      'backgroundColor' : 'transparent',
     },
     "wrap": {
       "width": '90%',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop':'auto',
-      'marginBottom':'auto',
+      'marginTop': 'auto',
+      'marginBottom': 'auto',
       'backgroundColor': 'white',
       'elevation': 9,
       'shadowColor': '#333',
@@ -71,12 +68,26 @@ export const AlertStyleSheet = (windowHeight = Dimensions.get('window').height, 
       'justifyContent' : 'flex-end'
     },
 
+    'cancelBtn' : {
+      'marginRight' : 10,
+
+    },
+
+    'cancelText': {
+      'width': 30,
+      'color': '#f15a24',
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontSize": 16,
+      "fontWeight": "800",
+    },
     'closeText': {
       'width': 30,
       'color': '#f15a24',
       "fontFamily": "Apple SD Gothic Neo",
       "fontSize": 16,
       "fontWeight": "800",
+
+
     },
   })
 }
