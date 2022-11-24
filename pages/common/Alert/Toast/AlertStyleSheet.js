@@ -84,7 +84,14 @@ export const AlertStyleSheet = (windowHeight = Dimensions.get('window').height, 
 
     },
 
-    'btnText': {
+    'cancelText': {
+      'width': 30,
+      'color': '#888',
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontSize": 16,
+      "fontWeight": "800",
+    },
+    'confirmText': {
       'width': 30,
       'color': '#f15a24',
       "fontFamily": "Apple SD Gothic Neo",

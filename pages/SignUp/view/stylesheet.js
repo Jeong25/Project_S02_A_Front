@@ -103,6 +103,8 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
             'textAlign': 'center',
             'borderBottomWidth': 2,
             'borderBottomColor': '#888',
+            'paddingVertical' : Platform.OS === 'ios' ? 5 : 3 ,
+
         },
 
         'btnWrap': {

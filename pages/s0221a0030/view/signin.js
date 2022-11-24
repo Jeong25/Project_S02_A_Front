@@ -147,12 +147,11 @@ const Signin = (props) => {
             </Text>
             <Text style={styles.title}>삐  용</Text>
           </View>
-          <TouchableOpacity style={styles.faqBtn} onPress={() => openFaqModal()}>
+          {/* <TouchableOpacity style={styles.faqBtn} onPress={() => openFaqModal()}>
               <View style={styles.btnImg}>
                 <ReactImage source={require('../../common/img/question.png')} style={styles.icon} />
               </View>
-              
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <View style={styles.contentsWrap}>
             <View style={styles.contentsInner}>
               <TextInput
@@ -232,7 +231,7 @@ const Signin = (props) => {
               </View>
                 <TextInput
                   style={styles.inputCode}
-                  placeholder={'코드번호'}
+                  placeholder={'운영자에게 받은 코드'}
                   placeholderTextColor="#rgba(0,0,0,0.2)"
                   ref={ref_input[4]}
                   onChange={(e) => setEventCode(e.nativeEvent.text)}

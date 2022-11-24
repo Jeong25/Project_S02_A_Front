@@ -43,9 +43,9 @@ const Alert = (props) => {
                 <View style={styles.inner}>
                     <View style={styles.contentsWrap}>
                         <View style={styles.iconWrap}>
-                            {/* <ReactImage source={require('./assets/warning.png')} style={styles.warningIcon} /> */}
+                            <ReactImage source={require('./assets/warning.png')} style={styles.warningIcon} />
                             {/* <ReactImage source={require('./assets/info.png')} style={styles.alertIcon} /> */}
-                            <ReactImage source={require('./assets/check.png')} style={styles.alertIcon} />
+                            {/* <ReactImage source={require('./assets/check.png')} style={styles.alertIcon} /> */}
                         </View>
                         <View style={styles.textWrap}>
                             <Text style={styles.alertText}>
@@ -55,11 +55,11 @@ const Alert = (props) => {
                     </View>
                     <View style={styles.btnWrap}>
                         <TouchableOpacity onPress={() => closeModal()} style={styles.cancelBtn}>
-                            <Text style={styles.btnText}>취소</Text>
+                            <Text style={styles.cancelText}>취소</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={() => closeModal()} style={styles.closeBtn}>
-                            <Text style={styles.btnText}>확인</Text>
+                            <Text style={styles.confirmText}>확인</Text>
                         </TouchableOpacity>
 
 

@@ -64,7 +64,7 @@ const QrCode = (props) => {
   }, [isFocused])
 
   const test = async () => {
-    setAlertMessage('test\n테스트\n테스트\n테스트\n테스트')
+    setAlertMessage('에러가 발생했습니다')
     setAlertOpen(true)
   }
 
