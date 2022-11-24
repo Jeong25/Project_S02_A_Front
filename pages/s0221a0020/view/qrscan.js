@@ -9,6 +9,7 @@ import { Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styleSheet } from './stylesheet';
 import { qrInfoReq, qrScanReq } from '../store/store';
+import RNBeep from 'react-native-a-beep';
 
 const Qrscan = (props) => {
 
@@ -45,6 +46,13 @@ const Qrscan = (props) => {
     setOrgId(orgId)
   }
 
+  const processQr = async () => {
+    RNBeep.beep(false)
+    setTimeout(() => {
+      setScaned(true)
+    }, 1500)
+  }
+
   // const getEventInfo = async (params) => {
   //   setEventId(params.eventId)
   //   const res = await qrInfoReq(params.eventId)
@@ -73,9 +81,10 @@ const Qrscan = (props) => {
       console.log(memId, mbId, orgId, eventId)
       const res = await qrScanReq(memId, mbId, orgId, eventId)
       if (res.data.status === 200) {
-        Alert.alert('QR Code', res.data.massage !== null ? res.data.massage : '등록되었습니다.', [
-          { text: '확인', onPress: () => setScaned(true) }
-        ])
+        processQr()
+        // Alert.alert('QR Code', res.data.massage !== null ? res.data.massage : '등록되었습니다.', [
+        //   { text: '확인', onPress: () => setScaned(true) }
+        // ])
       } else {
         Alert.alert('QR Code', '다시 시도해주세요.', [
           { text: '확인', onPress: () => setScaned(true) }
