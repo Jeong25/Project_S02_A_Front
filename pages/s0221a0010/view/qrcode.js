@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard, Alert } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, TouchableOpacity, Keyboard, Alert, Modal } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
@@ -8,8 +8,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
 import { useStateCntReq, payCntReq, recentEventReq } from '../store/store';
 import { setUserTp } from '../../common/lib/getuserinfo';
-// import QrModal from '../../common/Alert/Toast/Alert';
-import QrModal from '../../common/modal/s0221a0040/QrModal';
+import QrModal from '../../common/Alert/Toast/Alert';
+// import QrModal from '../../common/modal/s0221a0040/QrModal';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
 import EvtDetailModal from '../../common/modal/s0221a2001/evtDetailModal';
 
@@ -24,6 +24,10 @@ const QrCode = (props) => {
   const [payCnt, setPayCnt] = useState(0)
   // const [hpNo, setHpNo] = useState('')
   // const [eventCode, setEventCode] = useState('')
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+
   const [qrModalBool, setQrModalBool] = useState(false)
   const [faqModalBool, setFaqModalBool] = useState(false)
 
@@ -230,7 +234,7 @@ const QrCode = (props) => {
               </View>
               <Text style={styles.centerText}>QR보기</Text>
             </TouchableOpacity>
-           
+
             <TouchableOpacity style={styles.centerBtn} onPress={() => props.navigation.navigate('DepReg', { orgId: orgId })}>
               <View style={styles.btnImg}>
                 <ReactImage source={require('../../common/img/group.png')} style={styles.centerIcon} />
@@ -267,6 +271,8 @@ const QrCode = (props) => {
             </View>
           </View>
         </ScrollView>
+
+        
         <QrModal
           openModal={qrModalBool}
           onClose={() => setQrModalBool(false)}
