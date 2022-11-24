@@ -125,6 +125,16 @@ const MemberList = (props) => {
         }
       }
     }
+    let payFlag = ''
+    for (let i = 0; i < userInfo.length; i++) {
+      if (userInfo[i].eventPayLevel === 1) {
+        payFlag = userInfo[i].eventPayUserId
+      }
+    }
+    if (payFlag === '') {
+      Alert.alert('알림', '결제자를 한 명 이상 지정해주세요.')
+      return
+    }
     let countPayLv = []
     for (let i = 0; i < userInfo.length; i++) {
       if (userInfo[i].eventPayLevel === 1) { countPayLv.push(1) }
