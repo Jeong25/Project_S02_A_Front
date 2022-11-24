@@ -15,10 +15,9 @@ export const AlertStyleSheet = (windowHeight = Dimensions.get('window').height, 
       "width": '90%',
       'marginLeft': 'auto',
       'marginRight': 'auto',
-      'marginTop':'auto',
-      'marginBottom':'auto',
+      'marginTop':'60%',
       'backgroundColor': 'white',
-      'elevation': 9,
+      'elevation': 9, //android only
       'shadowColor': '#333',
       'shadowOpacity': 0.7,
       'shadowOffset': {
@@ -83,7 +82,6 @@ export const AlertStyleSheet = (windowHeight = Dimensions.get('window').height, 
       'marginRight' : 20,
 
     },
-
     'cancelText': {
       'width': 30,
       'color': '#888',

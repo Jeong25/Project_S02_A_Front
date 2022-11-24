@@ -130,8 +130,8 @@ const QrCode = (props) => {
           </TouchableOpacity>
           <View style={styles.accountBtnWrap}>
             <View style={styles.logoutBtn}>
-              <TouchableOpacity onPress={() => logOut()}>
-              {/* <TouchableOpacity onPress={() => test()}> */}
+              {/* <TouchableOpacity onPress={() => logOut()}> */}
+              <TouchableOpacity onPress={() => test()}>
                 <ReactImage source={require('../../common/img/power-off.png')} style={styles.logout} />
               </TouchableOpacity>
             </View>
