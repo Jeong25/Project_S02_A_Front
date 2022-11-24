@@ -144,7 +144,7 @@ const UserData = (props) => {
                         </View>
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>성명</Text>
-                            <TextInput editable={false} style={styles.userInfo}>{memberName}</TextInput>
+                            <TextInput editable={false} style={styles.userInfo}>{params.memberName}</TextInput>
                         </View>
                         <View style={styles.infoWrap}>
                             <Text style={styles.label}>핸드폰 번호</Text>

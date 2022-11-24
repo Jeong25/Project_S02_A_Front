@@ -49,8 +49,10 @@ const EventList = (props) => {
       setEventIdMd(eventId)
       Keyboard.dismiss()
       setEvtDetailModal(true)
+    } else if (props.route.params?.getInfo) {
+      props.route.params.getEventInfo(data)
+      props.navigation.goBack()
     } else {
-      // props.route.params.getEventInfo(data)
       props.navigation.navigate('Qrscan', { data: data })
     }
   }

@@ -287,7 +287,7 @@ const Cost = (props) => {
               <View style={styles.inputWrap}>
                 <Text style={styles.label}>행사명</Text>
                 <View style={styles.searchBtn} >
-                  <TouchableOpacity onPressIn={() => props.navigation.navigate('EventList', { getEventInfo })} >
+                  <TouchableOpacity onPressIn={() => props.navigation.navigate('EventList', { getEventInfo, getInfo: true })} >
                     <ReactImage source={require('../../common/img/magnifying-glass.png')} style={styles.searchIcon} />
                   </TouchableOpacity>
                 </View>

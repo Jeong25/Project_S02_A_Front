@@ -82,7 +82,7 @@ const Qrscan = (props) => {
         ])
       }
     } catch (error) {
-      Alert.alert('QR Code', '오류가 발생했습니다.', [
+      Alert.alert('QR Code', 'QR코드를 확인해주세요.', [
         { text: '확인', onPress: () => setScaned(true) }
       ])
     }

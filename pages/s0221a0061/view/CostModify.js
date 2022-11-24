@@ -354,7 +354,7 @@ const CostModify = (props) => {
                     editable={false}
                     value={eventName}></TextInput>
                   <View style={styles.searchBtn} >
-                    <TouchableOpacity onPressIn={() => props.navigation.navigate('EventList', { getEventInfo })}>
+                    <TouchableOpacity onPressIn={() => props.navigation.navigate('EventList', { getEventInfo, getInfo: true })}>
                       <ReactImage source={require('../../common/img/magnifying-glass.png')} style={styles.searchIcon} />
                     </TouchableOpacity>
                   </View>
