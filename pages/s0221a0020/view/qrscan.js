@@ -168,8 +168,7 @@ const Qrscan = (props) => {
             <ReactImage source={require('../../common/img/closeIcon.png')} style={styles.closeIcon} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.closeBtn} onPress={() => {
-            // setCameraFront(!cameraFront)
-            processQr()
+            setCameraFront(!cameraFront)
           }}>
             <ReactImage source={require('../../common/img/change.png')} style={styles.closeIcon} />
           </TouchableOpacity>

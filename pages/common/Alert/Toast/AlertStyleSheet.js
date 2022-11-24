@@ -6,7 +6,7 @@ export const AlertStyleSheet = (windowHeight = Dimensions.get('window').height, 
   return StyleSheet.create({
     'background':{
       "width": '100%',
-      "height": '100%',
+      "height": windowHeight,
       'backgroundColor': 'rgba(0,0,0,0.7)',
       "position": 'absolute',
       "zIndex": 9,

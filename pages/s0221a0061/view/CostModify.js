@@ -493,7 +493,14 @@ const CostModify = (props) => {
             />
           </KeyboardAwareScrollView>
         </View>
-        <CustomAlert
+        
+      </SafeAreaView>
+      <Footer
+        navigation={props.navigation}
+      />
+      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }}>
+      </SafeAreaView>
+      <CustomAlert
           openModal={alertOpen}
           confirm={alertConfirm}
           message={alertMessage}
@@ -502,12 +509,6 @@ const CostModify = (props) => {
           useFunc={alertUseFunc}
           onClose={() => setAlertOpen(false)}
         />
-      </SafeAreaView>
-      <Footer
-        navigation={props.navigation}
-      />
-      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }}>
-      </SafeAreaView>
     </Fragment>
   )
 }

@@ -81,18 +81,19 @@ const SearchCode = (props) => {
             </TouchableOpacity>
           </View>
         </View>
-        <CustomAlert
+        
+      </SafeAreaView>
+      <Footer
+        navigation={props.navigation}
+      />
+      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
+      <CustomAlert
           openModal={alertOpen}
           confirm={alertConfirm}
           message={alertMessage}
           image={alertImage}
           onClose={() => setAlertOpen(false)}
         />
-      </SafeAreaView>
-      <Footer
-        navigation={props.navigation}
-      />
-      <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
     </Fragment >
 
   );

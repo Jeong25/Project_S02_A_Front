@@ -212,15 +212,7 @@ const Payment = (props) => {
             </View>
           </TouchableOpacity>
         </View>
-        <CustomAlert
-          openModal={alertOpen}
-          confirm={alertConfirm}
-          message={alertMessage}
-          image={alertImage}
-          CusFunc={() => props.navigation.goBack()}
-          useFunc={alertUseFunc}
-          onClose={() => setAlertOpen(false)}
-        />
+        
       </KeyboardAwareScrollView>
 
       <Footer
@@ -229,6 +221,15 @@ const Payment = (props) => {
       />
 
       <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
+      <CustomAlert
+          openModal={alertOpen}
+          confirm={alertConfirm}
+          message={alertMessage}
+          image={alertImage}
+          CusFunc={() => props.navigation.goBack()}
+          useFunc={alertUseFunc}
+          onClose={() => setAlertOpen(false)}
+        />
     </Fragment >
   )
 }

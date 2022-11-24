@@ -225,7 +225,10 @@ const UserData = (props) => {
 
                     </ScrollView>
                 </View>
-                <CustomAlert
+                
+            </SafeAreaView>
+            <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
+            <CustomAlert
                     openModal={alertOpen}
                     confirm={alertConfirm}
                     message={alertMessage}
@@ -243,8 +246,6 @@ const UserData = (props) => {
                     useFunc={alertUseFunc}
                     onClose={() => setAlertOpen(false)}
                 />
-            </SafeAreaView>
-            <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
         </Fragment >
     );
 }
