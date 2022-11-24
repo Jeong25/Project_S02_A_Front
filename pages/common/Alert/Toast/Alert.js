@@ -43,7 +43,7 @@ const Alert = (props) => {
                 <View style={styles.inner}>
                     <View style={styles.contentsWrap}>
                         <View style={styles.iconWrap}>
-                            <ReactImage source={require('./assets/warning.png')} style={styles.alertIcon} />
+                            <ReactImage source={require('./assets/info.png')} style={styles.alertIcon} />
                         </View>
                         <View style={styles.textWrap}>
                             <Text style={styles.alertText}>
