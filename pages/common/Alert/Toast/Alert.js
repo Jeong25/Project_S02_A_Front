@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, BackHandler} from 'react-native';
+import { Text, View, BackHandler } from 'react-native';
 import { Image as ReactImage } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useState, useEffect } from "react";
@@ -11,7 +11,7 @@ const Alert = (props) => {
     const [display, setDisplay] = useState(false)
     const styles = AlertStyleSheet()
 
-  
+
     useEffect(() => {
         setDisplay(openModal)
         BackHandler.addEventListener('hardwareBackPress', close)
@@ -43,7 +43,7 @@ const Alert = (props) => {
                 <View style={styles.inner}>
                     <View style={styles.contentsWrap}>
                         <View style={styles.iconWrap}>
-                            {/* <ReactImage source={require('./assets/warning.png')} style={styles.alertIcon} /> */}
+                            {/* <ReactImage source={require('./assets/warning.png')} style={styles.warningIcon} /> */}
                             {/* <ReactImage source={require('./assets/info.png')} style={styles.alertIcon} /> */}
                             <ReactImage source={require('./assets/check.png')} style={styles.alertIcon} />
                         </View>
@@ -54,14 +54,15 @@ const Alert = (props) => {
                         </View>
                     </View>
                     <View style={styles.btnWrap}>
-                        <TouchableOpacity onPress={() => closeModal()} style={styles.closeBtn}>
-                            <Text style={styles.closeText}>확인</Text>
+                        <TouchableOpacity onPress={() => closeModal()} style={styles.cancelBtn}>
+                            <Text style={styles.btnText}>취소</Text>
                         </TouchableOpacity>
-                    </View>
-                    <View style={styles.btnWrap}>
+
                         <TouchableOpacity onPress={() => closeModal()} style={styles.closeBtn}>
-                            <Text style={styles.closeText}>취소</Text>
+                            <Text style={styles.btnText}>확인</Text>
                         </TouchableOpacity>
+
+
                     </View>
 
                 </View>

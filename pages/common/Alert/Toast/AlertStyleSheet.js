@@ -43,6 +43,14 @@ export const AlertStyleSheet = (windowHeight = Dimensions.get('window').height, 
       'flex': 0.15,
     },
     'alertIcon': {
+      'width': 35,
+      'height': 35,
+      'marginLeft': 'auto',
+      'marginRight': 'auto',
+      'marginTop': 'auto',
+      'marginBottom': 'auto',
+    },
+    'warningIcon': {
       'width': 40,
       'height': 40,
       'marginLeft': 'auto',
@@ -52,7 +60,8 @@ export const AlertStyleSheet = (windowHeight = Dimensions.get('window').height, 
     },
     'textWrap': {
       'flex': 0.8,
-      'marginLeft': 10,
+      'marginLeft': 15,
+      'marginTop' : 10,
     },
     'alertText': {
       "fontFamily": "Apple SD Gothic Neo",
@@ -62,7 +71,7 @@ export const AlertStyleSheet = (windowHeight = Dimensions.get('window').height, 
     },
 
     'btnWrap': {
-      'width': '95%',
+      'width': '90%',
       'marginLeft': 'auto',
       'marginRight': 'auto',
       'marginTop': 5,
@@ -70,8 +79,12 @@ export const AlertStyleSheet = (windowHeight = Dimensions.get('window').height, 
       'flexDirection' : 'row',
       'justifyContent' : 'flex-end'
     },
+    'cancelBtn' :{
+      'marginRight' : 20,
 
-    'closeText': {
+    },
+
+    'btnText': {
       'width': 30,
       'color': '#f15a24',
       "fontFamily": "Apple SD Gothic Neo",
