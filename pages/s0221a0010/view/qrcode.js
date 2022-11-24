@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Footer from '../../common/footer/Footer';
 import { useStateCntReq, payCntReq, recentEventReq } from '../store/store';
 import { setUserTp } from '../../common/lib/getuserinfo';
-// import QrModal from '../../common/Alert/Toast/Alert';
+import CustomAlert from '../../common/Alert/Toast/Alert';
 import QrModal from '../../common/modal/s0221a0040/QrModal';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
 import EvtDetailModal from '../../common/modal/s0221a2001/evtDetailModal';
@@ -26,6 +26,8 @@ const QrCode = (props) => {
   // const [eventCode, setEventCode] = useState('')
   const [qrModalBool, setQrModalBool] = useState(false)
   const [faqModalBool, setFaqModalBool] = useState(false)
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
 
   const [evtDetailModal, setEvtDetailModal] = useState(false)
   const [recentEvent, setRecentEvent] = useState([]);
@@ -279,6 +281,11 @@ const QrCode = (props) => {
         <FaqModal
           openModal={faqModalBool}
           onClose={() => setFaqModalBool(false)}
+        />
+        <CustomAlert
+          openModal={alertOpen}
+          message={alertMessage}
+          onClose={() => setAlertOpen(false)}
         />
       </View>
       <Footer

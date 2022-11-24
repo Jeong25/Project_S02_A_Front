@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AlertStyleSheet } from './AlertStyleSheet';
 
 const Alert = (props) => {
-    const { onClose, openModal } = props
+    const { onClose, openModal, message } = props
     const [display, setDisplay] = useState(false)
     const styles = AlertStyleSheet()
 
@@ -47,15 +47,9 @@ const Alert = (props) => {
                         </View>
                         <View style={styles.textWrap}>
                             <Text style={styles.alertText}>
-                                모든 항목을 입력해야합니다.{"\n"}
-                                모든 항목을 입력해야합니다.
-                                모든 항목을 입력해야합니다.
-                                모든 항목을 입력해야합니다.
+                                {message}
                             </Text>
-
                         </View>
-
-
                     </View>
                     <View style={styles.btnWrap}>
                         <TouchableOpacity onPress={() => closeModal()}>
