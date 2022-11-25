@@ -210,7 +210,7 @@ const MemberList = (props) => {
                 <ReactImage source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
               </TouchableOpacity>
             </View>
-            <Text style={styles.title}>사용자 정보</Text>
+            <Text style={styles.title}>구성원 List</Text>
           </View>
           <ScrollView
             resetScrollToCoords={{ x: 0, y: 0 }}

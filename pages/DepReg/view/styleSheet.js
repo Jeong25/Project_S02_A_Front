@@ -79,6 +79,7 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'paddingVertical': 10,
       'paddingHorizontal': 10,
       'flexDirection' : 'row',
+      'alignItems' : 'center',
       'justifyContent' : 'space-between',
 
     },
@@ -164,14 +165,14 @@ export const styleSheet = (windowHeight, windowWidth) => {
       'height': '100%',
     },
   
-    "dropDownBtn": {
-      'marginRight' :10
-    
-    },
-    'dropDownIcon' : {
-      'width': 20,
-      'height': 20,
-    },
+    // "dropDownBtn": {
+    //   'marginRight' :10
+  
+    // },
+    // 'dropDownIcon' : {
+    //   'width': 20,
+    //   'height': 20,
+    // },
 
     'divider': {
       "width": '100%',

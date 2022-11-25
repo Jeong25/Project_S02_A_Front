@@ -68,16 +68,17 @@ const DepReg = (props) => {
                       {/* <TouchableOpacity style={styles.dropDownBtn} >
                         <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
                       </TouchableOpacity> */}
+
                       <Text style={styles.cellTitle}>{v.eventNm}</Text>
-                    </View>
-                    <View style={styles.iconWrap}>
                       <TouchableOpacity style={styles.infoIcon} onPress={() => props.navigation.navigate('MemberList', { eventId: v.eventId, orgId: orgId })}>
                         <ReactImage source={require('../../common/img/info.png')} style={styles.info} />
                       </TouchableOpacity>
-                      <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v.eventId, eventLv: v.eventLevel + 1, eventTp: 'A' })}>
-                        <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
-                      </TouchableOpacity>
                     </View>
+
+                    <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v.eventId, eventLv: v.eventLevel + 1, eventTp: 'A' })}>
+                      <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                    </TouchableOpacity>
+
                   </TouchableOpacity>
                   <View style={styles.divider} />
                   {deptLevel.filter(data => data.highEventId === v.eventId).map((v2, i2) => (
@@ -93,46 +94,50 @@ const DepReg = (props) => {
                             </View> */}
                             <Text style={styles.cellTitle}>{v2.eventNm}</Text>
                           </View>
+
                           <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v2.eventId, eventLv: v2.eventLevel + 1, eventTp: 'A' })}>
                             <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
                           </TouchableOpacity>
                         </TouchableOpacity>
+
                       </View>
                       <View style={styles.divider} />
-                      {deptLevel.filter(data => data.highEventId === v2.eventId).map((v3, i3) => (
-                        <View style={styles.level3Wrap} key={i3}>
-                          <View style={styles.level3}>
-                            <TouchableOpacity
-                              style={styles.cell}
-                              onPress={() => props.navigation.navigate('Tempo', { eventId: v3.eventId, eventTp: v3.eventTp })}
-                            >
-                              <View style={styles.titleWrap}>
-                                {/* <View style={styles.dropDownBtn}>
-                                  <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
-                                </View> */}
-                                <Text style={styles.cellTitle}>{v3.eventNm}</Text>
-                              </View>
-                              <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v3.eventId, eventLv: v3.eventLevel + 1, eventTp: 'A' })}>
-                                <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
-                              </TouchableOpacity>
-                            </TouchableOpacity>
-                          </View>
-                          <View style={styles.divider} />
-                          {deptLevel.filter(data => data.highEventId === v3.eventId).map((v4, i4) => (
-                            <View style={styles.level4} key={i4}>
+                      {
+                        deptLevel.filter(data => data.highEventId === v2.eventId).map((v3, i3) => (
+                          <View style={styles.level3Wrap} key={i3}>
+                            <View style={styles.level3}>
                               <TouchableOpacity
                                 style={styles.cell}
-                                onPress={() => props.navigation.navigate('Tempo', { eventId: v4.eventId, eventTp: v4.eventTp })}
+                                onPress={() => props.navigation.navigate('Tempo', { eventId: v3.eventId, eventTp: v3.eventTp })}
                               >
                                 <View style={styles.titleWrap}>
-                                  <Text style={styles.cellTitle}>{v4.eventNm}</Text>
+                                  {/* <View style={styles.dropDownBtn}>
+                                  <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
+                                </View> */}
+                                  <Text style={styles.cellTitle}>{v3.eventNm}</Text>
                                 </View>
+                                <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v3.eventId, eventLv: v3.eventLevel + 1, eventTp: 'A' })}>
+                                  <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                                </TouchableOpacity>
                               </TouchableOpacity>
-                              <View style={styles.divider} />
                             </View>
-                          ))}
-                        </View>
-                      ))}
+                            <View style={styles.divider} />
+                            {deptLevel.filter(data => data.highEventId === v3.eventId).map((v4, i4) => (
+                              <View style={styles.level4} key={i4}>
+                                <TouchableOpacity
+                                  style={styles.cell}
+                                  onPress={() => props.navigation.navigate('Tempo', { eventId: v4.eventId, eventTp: v4.eventTp })}
+                                >
+                                  <View style={styles.titleWrap}>
+                                    <Text style={styles.cellTitle}>{v4.eventNm}</Text>
+                                  </View>
+                                </TouchableOpacity>
+                                <View style={styles.divider} />
+                              </View>
+                            ))}
+                          </View>
+                        ))
+                      }
                     </View>
                   ))}
                 </View>
