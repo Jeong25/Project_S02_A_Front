@@ -7,7 +7,7 @@ export const styleSheet = (windowHeight = Dimensions.get('window').height, windo
     return StyleSheet.create({
         "wrap": {
             'width': '100%',
-            'height': windowHeight,
+            'height': '100%',
             'backgroundColor' : 'white',
         },
 
