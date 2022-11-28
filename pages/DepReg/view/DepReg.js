@@ -41,7 +41,7 @@ const DepReg = (props) => {
                 <ReactImage source={require('../../common/img/backBtnIcon-w.png')} style={styles.backBtnIcon} />
               </TouchableOpacity>
             </View>
-            <Text style={styles.title}>부서정보</Text>
+            <Text style={styles.title}>부서관리</Text>
             {/* <View style={styles.regBtnWrap}>
               <TouchableOpacity onPress={() => props.navigation.navigate('Tempo', { highEvId: 0, eventLv: 0, eventTp: 'D' })}>
                 <ReactImage source={require('../../common/img/registIcon.png')} style={styles.registIcon} />
