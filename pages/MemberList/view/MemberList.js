@@ -18,6 +18,7 @@ const MemberList = (props) => {
   const [userInfo, setUserInfo] = useState([])
   const [authArr, setAuthArr] = useState([])
   const [refresh, setRefresh] = useState(0)
+  const [memberTp, setMemberTp] = useState('')
 
   const [alertOpen, setAlertOpen] = useState(false)
   const [alertMessage, setAlertMessage] = useState('')
@@ -144,8 +145,10 @@ const MemberList = (props) => {
       }
     }
     if (payFlag === '') {
-      cusAlert('결제자를 한 명 이상 지정해주세요.', '')
-      return
+      if (deptInfo.eventTp === 'D') {
+        cusAlert('결제자를 한 명 이상 지정해주세요.', '')
+        return
+      }
     }
     let countPayLv = []
     for (let i = 0; i < userInfo.length; i++) {
@@ -154,7 +157,7 @@ const MemberList = (props) => {
       if (userInfo[i].eventPayLevel === 3) { countPayLv.push(3) }
       if (userInfo[i].eventPayLevel === 4) { countPayLv.push(4) }
     }
-    let countLv = userInfo[0].eventPayLevel
+    let countLv = userInfo[0]?.eventPayLevel
     for (let i = 0; i < userInfo.length; i++) {
       if (userInfo[i].eventPayLevel > countLv) {
         if (userInfo[i].eventPayLevel !== 99) {
@@ -163,8 +166,10 @@ const MemberList = (props) => {
       }
     }
     if (countLv !== countPayLv.length) {
-      cusAlert('결제자를 순번대로 지정해주세요.', '')
-      return
+      if (deptInfo.eventTp === 'D') {
+        cusAlert('결제자를 순번대로 지정해주세요.', '')
+        return
+      }
     } else { }
     const eventId = props.route.params.eventId
     const memberId = await AsyncStorage.getItem('memberId')
@@ -197,7 +202,12 @@ const MemberList = (props) => {
       setDeptInfo(resDept)
       setUserInfo(resUser)
     }
+    const getMemTp = async () => {
+      const tp = await AsyncStorage.getItem('memberTp')
+      setMemberTp(tp)
+    }
     callData()
+    getMemTp()
   }, [refresh])
 
   return (
@@ -283,25 +293,27 @@ const MemberList = (props) => {
               ))}
             </View>
           </ScrollView >
-          <TouchableOpacity style={styles.btnWrap} onPress={() => regUser()}>
-            <View style={styles.requestBtn}>
-              <Text style={styles.btnText}>저장</Text>
-            </View>
-          </TouchableOpacity>
+          {memberTp === 'S' || memberTp === 'C' ? // 부서책임자 == 로그인아이디 조건 추가
+            <TouchableOpacity style={styles.btnWrap} onPress={() => regUser()}>
+              <View style={styles.requestBtn}>
+                <Text style={styles.btnText}>저장</Text>
+              </View>
+            </TouchableOpacity>
+            : <View />}
         </View>
-        
+
       </SafeAreaView >
       {/* <Footer
         navigation={props.navigation}
       /> */}
       < SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
       <CustomAlert
-          openModal={alertOpen}
-          confirm={alertConfirm}
-          message={alertMessage}
-          image={alertImage}
-          onClose={() => setAlertOpen(false)}
-        />
+        openModal={alertOpen}
+        confirm={alertConfirm}
+        message={alertMessage}
+        image={alertImage}
+        onClose={() => setAlertOpen(false)}
+      />
     </Fragment>
 
   );

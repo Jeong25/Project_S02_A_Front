@@ -71,24 +71,23 @@ const Alert = (props) => {
                                 </TouchableOpacity>
                             </>
                             :
-                            useFunc ? 
-                            <TouchableOpacity onPress={() => CusFunc()} style={styles.closeBtn}>
-                                <Text style={styles.confirmText}>확인</Text>
-                            </TouchableOpacity>
-                            :
-                            <TouchableOpacity onPress={() => closeModal()} style={styles.closeBtn}>
-                                <Text style={styles.confirmText}>확인</Text>
-                            </TouchableOpacity>
+                            useFunc ?
+                                <TouchableOpacity onPress={() => {
+                                    CusFunc()
+                                    closeModal()
+                                }} style={styles.closeBtn}>
+                                    <Text style={styles.confirmText}>확인</Text>
+                                </TouchableOpacity>
+                                :
+                                <TouchableOpacity onPress={() => closeModal()} style={styles.closeBtn}>
+                                    <Text style={styles.confirmText}>확인</Text>
+                                </TouchableOpacity>
                         }
-
-
                     </View>
-
                 </View>
             </View>
         </View>
     );
-
 }
 
 export default Alert;

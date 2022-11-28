@@ -8,7 +8,7 @@ const setUserTp = async () => {
     if (result?.data?.data.length > 0) {
 
         const { eventCode, orgId, orgName, memberTp, orgEventName, mobileId, memberId, eventNm, eventRole, eventId, defaultEventId, useRegFlag } = result?.data?.data[0]
-        // console.log('getInfoLog: '+JSON.stringify(result, null, 4))
+        console.log('getInfoLog: '+JSON.stringify(result, null, 4))
 
         await AsyncStorage.setItem('eventCode', eventCode  || '')
         await AsyncStorage.setItem('orgEventName', orgEventName || '')

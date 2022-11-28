@@ -11,6 +11,7 @@ import { styleSheet } from './stylesheet';
 import { qrInfoReq, qrScanReq } from '../store/store';
 import RNBeep from 'react-native-a-beep';
 import CustomAlert from '../../common/Alert/Toast/Alert';
+import NotificationSounds, { playSampleSound } from 'react-native-notification-sounds';
 
 const Qrscan = (props) => {
 
@@ -34,11 +35,13 @@ const Qrscan = (props) => {
   const [alertMessage, setAlertMessage] = useState('')
   const [alertConfirm, setAlertConfirm] = useState(false)
   const [alertImage, setAlertImage] = useState('info')
+  const [alertUseFunc, setAlertUseFunc] = useState(true)
 
-  const cusAlert = async (message, image) => {
+  const cusAlert = async (message, image, use) => {
     setAlertMessage(message)
     setAlertImage(image)
-    setAlertConfirm(true)
+    setAlertConfirm(false)
+    setAlertUseFunc(use)
     setAlertOpen(true)
   }
 
@@ -60,9 +63,14 @@ const Qrscan = (props) => {
   }
 
   const processQr = async () => {
-    RNBeep.beep(false)
+    // RNBeep.beep(false)
+    NotificationSounds.getNotifications('notification').then((soundsList)  => {
+      // console.log('SOUNDS', JSON.stringify(soundsList));
+      playSampleSound(soundsList[2]);
+    });
     setTimeout(() => {
       setScaned(true)
+      setAlertOpen(false)
     }, 1500)
   }
 
@@ -94,18 +102,19 @@ const Qrscan = (props) => {
       console.log(memId, mbId, orgId, eventId)
       const res = await qrScanReq(memId, mbId, orgId, eventId)
       if (res.data.status === 200) {
+        cusAlert(res.data.massage !== null ? res.data.massage : '등록되었습니다.', 'check', true)
         processQr()
         // Alert.alert('QR Code', res.data.massage !== null ? res.data.massage : '등록되었습니다.', [
         //   { text: '확인', onPress: () => setScaned(true) }
         // ])
       } else {
-        cusAlert('다시 시도해주세요.', '')
+        cusAlert('다시 시도해주세요.', '', true)
         // Alert.alert('QR Code', '다시 시도해주세요.', [
         //   { text: '확인', onPress: () => setScaned(true) }
         // ])
       }
     } catch (error) {
-      cusAlert('QR코드를 확인해주세요.', '')
+      cusAlert('QR코드를 확인해주세요.', '', true)
       // Alert.alert('QR Code', 'QR코드를 확인해주세요.', [
       //   { text: '확인', onPress: () => setScaned(true) }
       // ])
@@ -205,6 +214,7 @@ const Qrscan = (props) => {
         message={alertMessage}
         image={alertImage}
         CusFunc={() => setScaned(true)}
+        useFunc={alertUseFunc}
         onClose={() => setAlertOpen(false)}
       />
       {/* </RNCamera > */}

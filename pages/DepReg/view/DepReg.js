@@ -20,6 +20,8 @@ const DepReg = (props) => {
 
   const [orgId, setOrgId] = useState('')
   const [deptLevel, setDeptLevel] = useState([])
+  const [memberTp, setMemberTp] = useState('')
+  const [eventCode, setEventCode] = useState('')
 
   useEffect(() => {
     const callData = async () => {
@@ -28,7 +30,14 @@ const DepReg = (props) => {
       const res = await deptLevelReq(orgId)
       setDeptLevel(res)
     }
+    const getMemTpCode = async () => {
+      const tp = await AsyncStorage.getItem('memberTp')
+      const code = await AsyncStorage.getItem('eventCode')
+      setMemberTp(tp)
+      setEventCode(code)
+    }
     callData()
+    getMemTpCode()
   }, [isFocused])
 
   return (
@@ -42,11 +51,13 @@ const DepReg = (props) => {
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>부서관리</Text>
-            {/* <View style={styles.regBtnWrap}>
-              <TouchableOpacity onPress={() => props.navigation.navigate('Tempo', { highEvId: 0, eventLv: 0, eventTp: 'D' })}>
-                <ReactImage source={require('../../common/img/registIcon.png')} style={styles.registIcon} />
-              </TouchableOpacity>
-            </View> */}
+            {memberTp === 'S' || memberTp === 'C' ?
+              <View style={styles.regBtnWrap}>
+                <TouchableOpacity onPress={() => props.navigation.navigate('Tempo', { highEvId: 0, eventLv: 0, eventTp: 'D' })}>
+                  <ReactImage source={require('../../common/img/registIcon.png')} style={styles.registIcon} />
+                </TouchableOpacity>
+              </View>
+              : <View />}
           </View>
           <ScrollView
             resetScrollToCoords={{ x: 0, y: 0 }}
@@ -58,30 +69,32 @@ const DepReg = (props) => {
             nestedScrollEnabled={true}
           >
             <View style={styles.contentsWrap}>
-              {deptLevel.filter(data => data.eventLevel === 0).map((v, i) => (
+              {deptLevel.filter(data => memberTp === 'S' || memberTp === 'C' ? data.eventLevel === 0 : data.eventLevel === 0 && data.eventCode === eventCode).map((v, i) => (
                 <View style={styles.level1} key={i}>
                   <TouchableOpacity
                     style={styles.cell}
                     onPress={() => props.navigation.navigate('Tempo', { eventId: v.eventId, eventTp: v.eventTp })}
                   >
                     <View style={styles.titleWrap}>
+
                       {/* <TouchableOpacity style={styles.dropDownBtn} >
                         <ReactImage source={require('../../common/img/down-arrow.png')} style={styles.dropDownIcon} />
                       </TouchableOpacity> */}
-
                       <Text style={styles.cellTitle}>{v.eventNm}</Text>
                       <TouchableOpacity style={styles.infoIcon} onPress={() => props.navigation.navigate('MemberList', { eventId: v.eventId, orgId: orgId })}>
                         <ReactImage source={require('../../common/img/info.png')} style={styles.info} />
                       </TouchableOpacity>
                     </View>
 
-                    <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v.eventId, eventLv: v.eventLevel + 1, eventTp: 'A' })}>
-                      <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
-                    </TouchableOpacity>
+                    {memberTp === 'S' || memberTp === 'C' ? // 멤버리스트 저장이랑 같은 조건 추가
+                      <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v.eventId, eventLv: v.eventLevel + 1, eventTp: 'A' })}>
+                        <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                      </TouchableOpacity>
+                      : <View />}
 
                   </TouchableOpacity>
                   <View style={styles.divider} />
-                  {deptLevel.filter(data => data.highEventId === v.eventId).map((v2, i2) => (
+                  {deptLevel.filter(data => memberTp === 'S' || memberTp === 'C' ? data.highEventId === v.eventId : data.highEventId === v.eventId && data.eventCode === eventCode).map((v2, i2) => (
                     <View style={styles.level2Wrap} key={i2}>
                       <View style={styles.level2}>
                         <TouchableOpacity
@@ -94,16 +107,17 @@ const DepReg = (props) => {
                             </View> */}
                             <Text style={styles.cellTitle}>{v2.eventNm}</Text>
                           </View>
-
-                          <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v2.eventId, eventLv: v2.eventLevel + 1, eventTp: 'A' })}>
-                            <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
-                          </TouchableOpacity>
+                          {memberTp === 'S' || memberTp === 'C' ? // 멤버리스트 저장이랑 같은 조건 추가
+                            <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v2.eventId, eventLv: v2.eventLevel + 1, eventTp: 'A' })}>
+                              <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                            </TouchableOpacity>
+                            : <View />}
                         </TouchableOpacity>
 
                       </View>
                       <View style={styles.divider} />
                       {
-                        deptLevel.filter(data => data.highEventId === v2.eventId).map((v3, i3) => (
+                        deptLevel.filter(data => memberTp === 'S' || memberTp === 'C' ? data.highEventId === v2.eventId : data.highEventId === v2.eventId && data.eventCode === eventCode).map((v3, i3) => (
                           <View style={styles.level3Wrap} key={i3}>
                             <View style={styles.level3}>
                               <TouchableOpacity
@@ -116,13 +130,15 @@ const DepReg = (props) => {
                                 </View> */}
                                   <Text style={styles.cellTitle}>{v3.eventNm}</Text>
                                 </View>
-                                <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v3.eventId, eventLv: v3.eventLevel + 1, eventTp: 'A' })}>
-                                  <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
-                                </TouchableOpacity>
+                                {memberTp === 'S' || memberTp === 'C' ? // 멤버리스트 저장이랑 같은 조건 추가
+                                  <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v3.eventId, eventLv: v3.eventLevel + 1, eventTp: 'A' })}>
+                                    <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
+                                  </TouchableOpacity>
+                                  : <View />}
                               </TouchableOpacity>
                             </View>
                             <View style={styles.divider} />
-                            {deptLevel.filter(data => data.highEventId === v3.eventId).map((v4, i4) => (
+                            {deptLevel.filter(data => memberTp === 'S' || memberTp === 'C' ? data.highEventId === v3.eventId : data.highEventId === v3.eventId && data.eventCode === eventCode).map((v4, i4) => (
                               <View style={styles.level4} key={i4}>
                                 <TouchableOpacity
                                   style={styles.cell}
