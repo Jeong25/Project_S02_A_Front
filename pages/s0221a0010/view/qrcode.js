@@ -73,6 +73,7 @@ const QrCode = (props) => {
     await AsyncStorage.setItem('eventRole', '')
     await AsyncStorage.setItem('eventId', '')
     await AsyncStorage.setItem('defaultEventId', '')
+    await AsyncStorage.setItem('eventHostId', '')
     props.navigation.reset({ routes: [{ name: 'Signin' }] })
   }
 

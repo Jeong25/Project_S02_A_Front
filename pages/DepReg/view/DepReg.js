@@ -20,6 +20,7 @@ const DepReg = (props) => {
 
   const [orgId, setOrgId] = useState('')
   const [deptLevel, setDeptLevel] = useState([])
+  const [memberId, setMemberId] = useState('')
   const [memberTp, setMemberTp] = useState('')
   const [eventCode, setEventCode] = useState('')
 
@@ -30,14 +31,16 @@ const DepReg = (props) => {
       const res = await deptLevelReq(orgId)
       setDeptLevel(res)
     }
-    const getMemTpCode = async () => {
+    const getMemInfo = async () => {
+      const id = await AsyncStorage.getItem('memberId')
       const tp = await AsyncStorage.getItem('memberTp')
       const code = await AsyncStorage.getItem('eventCode')
+      setMemberId(id)
       setMemberTp(tp)
       setEventCode(code)
     }
     callData()
-    getMemTpCode()
+    getMemInfo()
   }, [isFocused])
 
   return (
@@ -86,7 +89,7 @@ const DepReg = (props) => {
                       </TouchableOpacity>
                     </View>
 
-                    {memberTp === 'S' || memberTp === 'C' ? // 멤버리스트 저장이랑 같은 조건 추가
+                    {memberTp === 'S' || memberTp === 'C' || Number(v.eventHostId) === Number(memberId) ?
                       <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v.eventId, eventLv: v.eventLevel + 1, eventTp: 'A' })}>
                         <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
                       </TouchableOpacity>
@@ -107,7 +110,7 @@ const DepReg = (props) => {
                             </View> */}
                             <Text style={styles.cellTitle}>{v2.eventNm}</Text>
                           </View>
-                          {memberTp === 'S' || memberTp === 'C' ? // 멤버리스트 저장이랑 같은 조건 추가
+                          {memberTp === 'S' || memberTp === 'C' || Number(v2.eventHostId) === Number(memberId) ?
                             <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v2.eventId, eventLv: v2.eventLevel + 1, eventTp: 'A' })}>
                               <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
                             </TouchableOpacity>
@@ -130,7 +133,7 @@ const DepReg = (props) => {
                                 </View> */}
                                   <Text style={styles.cellTitle}>{v3.eventNm}</Text>
                                 </View>
-                                {memberTp === 'S' || memberTp === 'C' ? // 멤버리스트 저장이랑 같은 조건 추가
+                                {memberTp === 'S' || memberTp === 'C' || Number(v3.eventHostId) === Number(memberId) ?
                                   <TouchableOpacity style={styles.plusIcon} onPress={() => props.navigation.navigate('Tempo', { highEvId: v3.eventId, eventLv: v3.eventLevel + 1, eventTp: 'A' })}>
                                     <ReactImage source={require('../../common/img/plus.png')} style={styles.plus} />
                                   </TouchableOpacity>

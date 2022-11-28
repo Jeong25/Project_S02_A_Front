@@ -18,7 +18,9 @@ const MemberList = (props) => {
   const [userInfo, setUserInfo] = useState([])
   const [authArr, setAuthArr] = useState([])
   const [refresh, setRefresh] = useState(0)
+  const [memberId, setMemberId] = useState('')
   const [memberTp, setMemberTp] = useState('')
+  const [eventHostId, setEventHostId] = useState('')
 
   const [alertOpen, setAlertOpen] = useState(false)
   const [alertMessage, setAlertMessage] = useState('')
@@ -202,12 +204,16 @@ const MemberList = (props) => {
       setDeptInfo(resDept)
       setUserInfo(resUser)
     }
-    const getMemTp = async () => {
+    const getMemInfo = async () => {
+      const id = await AsyncStorage.getItem('memberId')
       const tp = await AsyncStorage.getItem('memberTp')
+      const host = await AsyncStorage.getItem('eventHostId')
+      setMemberId(id)
       setMemberTp(tp)
+      setEventHostId(host)
     }
     callData()
-    getMemTp()
+    getMemInfo()
   }, [refresh])
 
   return (
@@ -293,7 +299,7 @@ const MemberList = (props) => {
               ))}
             </View>
           </ScrollView >
-          {memberTp === 'S' || memberTp === 'C' ? // 부서책임자 == 로그인아이디 조건 추가
+          {memberTp === 'S' || memberTp === 'C' || Number(eventHostId) === Number(memberId) ?
             <TouchableOpacity style={styles.btnWrap} onPress={() => regUser()}>
               <View style={styles.requestBtn}>
                 <Text style={styles.btnText}>저장</Text>
@@ -301,7 +307,6 @@ const MemberList = (props) => {
             </TouchableOpacity>
             : <View />}
         </View>
-
       </SafeAreaView >
       {/* <Footer
         navigation={props.navigation}

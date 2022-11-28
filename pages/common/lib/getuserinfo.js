@@ -7,8 +7,8 @@ const setUserTp = async () => {
     const result = await client.get(`/rest/v1/s0221a0010/user-info?eventCode=${localEventCode}&hpNo=${localHpNo}`)
     if (result?.data?.data.length > 0) {
 
-        const { eventCode, orgId, orgName, memberTp, orgEventName, mobileId, memberId, eventNm, eventRole, eventId, defaultEventId, useRegFlag } = result?.data?.data[0]
-        console.log('getInfoLog: '+JSON.stringify(result, null, 4))
+        const { eventCode, orgId, orgName, memberTp, orgEventName, mobileId, memberId, eventNm, eventRole, eventId, defaultEventId, useRegFlag, eventHostId } = result?.data?.data[0]
+        // console.log('getInfoLog: '+JSON.stringify(result, null, 4))
 
         await AsyncStorage.setItem('eventCode', eventCode  || '')
         await AsyncStorage.setItem('orgEventName', orgEventName || '')
@@ -22,6 +22,7 @@ const setUserTp = async () => {
         await AsyncStorage.setItem('eventId', JSON.stringify(eventId) || '')
         await AsyncStorage.setItem('defaultEventId', JSON.stringify(defaultEventId) || '')
         await AsyncStorage.setItem('useRegFlag', JSON.stringify(useRegFlag) || '')
+        await AsyncStorage.setItem('eventHostId', JSON.stringify(eventHostId) || '')
 
         return { ...result?.data?.data[0] }
     }

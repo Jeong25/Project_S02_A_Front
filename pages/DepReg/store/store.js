@@ -2,6 +2,7 @@ import { deptLevel, deptInfo, deptPayInfo, reqSaveEvent, retrieveMem } from '../
 
 const deptLevelReq = async (params) => {
     const res = await deptLevel(params);
+    console.log('deptLv Log: '+JSON.stringify(res.data.data, null, 4))
     return res.data.data;
 }
 

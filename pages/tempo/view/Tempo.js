@@ -19,6 +19,8 @@ const Tempo = (props) => {
   const year = new Date().getFullYear();
   let keyboardSub = null;
 
+  const [memberId, setMemberId] = useState('')
+  const [memberTp, setMemberTp] = useState('')
   const [heightMagnifi, setheightMagnifi] = useState(1.2)
   const [isFocus, setIsFoucs] = useState(false)
   const [privacyAgree, setPrivacyAgree] = useState(true)
@@ -135,15 +137,22 @@ const Tempo = (props) => {
     const callData = async () => {
       const localOrgId = await AsyncStorage.getItem('orgId')
       const localMemId = await AsyncStorage.getItem('memberId')
+      const localMemTp = await AsyncStorage.getItem('memberTp')
       const highEvId = props.route.params.highEvId
       const eventLv = props.route.params.eventLv
       const eventTp = props.route.params.eventTp
+      setMemberId(localMemId)
+      setMemberTp(localMemTp)
       setInputData({ ...inputData, orgId: localOrgId, eventRegId: localMemId, highEventId: highEvId, eventLevel: eventLv, eventTp: eventTp })
     }
     const callInfo = async () => {
+      const localMemId = await AsyncStorage.getItem('memberId')
+      const localMemTp = await AsyncStorage.getItem('memberTp')
       const eventId = props.route.params.eventId
       const res = await deptInfoReq(eventId)
       res.eventHostName = res.memberName
+      setMemberId(localMemId)
+      setMemberTp(localMemTp)
       setInputData(res)
     }
     if (props.route.params.eventId) {
@@ -322,11 +331,20 @@ const Tempo = (props) => {
                   <Text style={styles.checkText}>공개여부</Text>
                 </TouchableOpacity>
               </View>
-              <View style={styles.btnWrap}>
-                <TouchableOpacity style={styles.regBtn} onPress={() => regEvent()}>
-                  <Text style={styles.regBtnText}>등록</Text>
-                </TouchableOpacity>
-              </View>
+              {props.route.params.eventId ?
+                memberTp === 'S' || memberTp === 'C' || Number(inputData.eventHostId) === Number(memberId) ?
+                  <View style={styles.btnWrap}>
+                    <TouchableOpacity style={styles.regBtn} onPress={() => regEvent()}>
+                      <Text style={styles.regBtnText}>등록</Text>
+                    </TouchableOpacity>
+                  </View>
+                  : <View />
+                :
+                <View style={styles.btnWrap}>
+                  <TouchableOpacity style={styles.regBtn} onPress={() => regEvent()}>
+                    <Text style={styles.regBtnText}>등록</Text>
+                  </TouchableOpacity>
+                </View>}
             </View>
           </ScrollView>
 
@@ -341,21 +359,21 @@ const Tempo = (props) => {
           />
 
         </View>
-        
+
       </SafeAreaView>
       <Footer
         navigation={props.navigation}
       />
       <SafeAreaView style={{ flex: 0, backgroundColor: 'white' }} />
       <CustomAlert
-          openModal={alertOpen}
-          confirm={alertConfirm}
-          message={alertMessage}
-          image={alertImage}
-          CusFunc={() => props.navigation.goBack()}
-          useFunc={alertUseFunc}
-          onClose={() => setAlertOpen(false)}
-        />
+        openModal={alertOpen}
+        confirm={alertConfirm}
+        message={alertMessage}
+        image={alertImage}
+        CusFunc={() => props.navigation.goBack()}
+        useFunc={alertUseFunc}
+        onClose={() => setAlertOpen(false)}
+      />
     </Fragment >
   );
 }
