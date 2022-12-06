@@ -304,16 +304,15 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
         'adWrap': {
             'width': '100%',
-            'height': 100,
-            'marginTop': '17%',
-            'backgroundColor': '#333',
+            'marginTop' : 20,
+            'flexDirection' : 'row',
+            'justifyContent' : 'center',
+            'alignItems' :'center',
 
         },
-        'adText': {
-            'color': 'white',
-            'textAlign': 'center',
-            'fontSize': 30,
-            'lineHeight': 100,
+        'banner' :{
+            'width' : '100%',
+            'height' : 30,
         }
 
     });

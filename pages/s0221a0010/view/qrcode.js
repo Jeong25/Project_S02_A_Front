@@ -11,6 +11,10 @@ import { setUserTp } from '../../common/lib/getuserinfo';
 import QrModal from '../../common/modal/s0221a0040/QrModal';
 import FaqModal from '../../common/modal/s0221a0130/faqmodal';
 import EvtDetailModal from '../../common/modal/s0221a2001/evtDetailModal';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
+
+
+
 
 const QrCode = (props) => {
   const [orgId, setOrgId] = useState('')
@@ -121,6 +125,7 @@ const QrCode = (props) => {
           <TouchableOpacity style={styles.profileTextGroup} onPress={() => props.navigation.navigate('UserData')}>
             <Text style={styles.memberPosition}>{`${eventNm} / ${eventRole ? eventRole : '일반회원'}`}</Text>
           </TouchableOpacity>
+
           <View style={styles.accountBtnWrap}>
             <View style={styles.logoutBtn}>
               <TouchableOpacity onPress={() => logOut()}>
@@ -129,6 +134,7 @@ const QrCode = (props) => {
             </View>
           </View>
         </View>
+
         <ScrollView
           resetScrollToCoords={{ x: 0, y: 0 }}
           enableOnAndroid={true}
@@ -250,6 +256,7 @@ const QrCode = (props) => {
             </TouchableOpacity> */}
           </View>
           <View style={styles.contentsDivider} />
+
           <View style={styles.recentListWrap}>
             <View style={styles.listTitleWrap}>
               <Text style={styles.listTitle}>최근 등록된 행사</Text>
@@ -270,9 +277,16 @@ const QrCode = (props) => {
               ))}
             </View>
           </View>
+
+          <View style={styles.adWrap}>
+            <BannerAd sizes={[BannerAdSize.INLINE_ADAPTIVE_BANNER]} unitId={TestIds.BANNER} />
+          </View>
+
         </ScrollView>
 
-        
+
+
+
         <QrModal
           openModal={qrModalBool}
           onClose={() => setQrModalBool(false)}
@@ -287,6 +301,7 @@ const QrCode = (props) => {
           onClose={() => setFaqModalBool(false)}
         />
       </View>
+
       <Footer
         navigation={props.navigation}
       />

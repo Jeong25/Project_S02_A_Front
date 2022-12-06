@@ -28,6 +28,8 @@ import MemberList from './pages/MemberList/view/MemberList';
 import SearchCode from './pages/s0221a0130/view/SearchCode';
 import SplashScreen from './pages/s0221a0120/view/SplashScreen';
 import RNSplashScreen from 'react-native-splash-screen';
+import mobileAds from 'react-native-google-mobile-ads';
+
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -35,6 +37,12 @@ const App = () => {
   useEffect(() => {
     RNSplashScreen.hide();
   }, []);
+
+  mobileAds()
+    .initialize()
+    .then(adapterStatuses => {
+      // Initialization complete!
+    });
 
   return (
     <NavigationContainer >
