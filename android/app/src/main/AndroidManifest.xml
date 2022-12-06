@@ -15,7 +15,7 @@
       android:allowBackup="false"
       android:usesCleartextTraffic="true"
       android:theme="@style/AppTheme">
-
+      
       <activity
           android:name="com.BYapp.SplashActivity"
           android:theme="@style/SplashTheme"
