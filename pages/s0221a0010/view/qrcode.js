@@ -275,18 +275,11 @@ const QrCode = (props) => {
                   <Text style={styles.cellDate}>{v.eventHostName} / {v.eventStartDate.split(' ')[0]} ~ {v.eventEndDate.split(' ')[0]} / {v.eventCode}</Text>
                 </TouchableOpacity>
               ))}
+
             </View>
           </View>
 
-          <View style={styles.adWrap}>
-            <BannerAd sizes={[BannerAdSize.INLINE_ADAPTIVE_BANNER]} unitId={TestIds.BANNER} />
-          </View>
-
         </ScrollView>
-
-
-
-
         <QrModal
           openModal={qrModalBool}
           onClose={() => setQrModalBool(false)}
@@ -300,6 +293,9 @@ const QrCode = (props) => {
           openModal={faqModalBool}
           onClose={() => setFaqModalBool(false)}
         />
+        <View style={styles.adWrap}>
+          <BannerAd sizes={[BannerAdSize.ANCHORED_ADAPTIVE_BANNER]} unitId={'ca-app-pub-9953594617332828/8401676185'} />
+        </View>
       </View>
 
       <Footer

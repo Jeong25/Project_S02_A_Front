@@ -9,6 +9,8 @@ export const styleSheet = (windowHeight, windowWidth) => {
             "backgroundColor": "white",
             "width": '100%',
             "height": '100%',
+            'position' : 'relative'
+        
         },
        
         'topMenu': {
@@ -249,10 +251,10 @@ export const styleSheet = (windowHeight, windowWidth) => {
 
         'recentListWrap' :{
             'width' : '90%',
-            'height' : '50%',
+            'maxHeight' : 280,
             'marginLeft' : 'auto',
             'marginRight' : 'auto',
-            
+            'overflow' : 'hidden',
         },
         'listTitleWrap':{
             'flexDirection' : 'row',
@@ -303,17 +305,16 @@ export const styleSheet = (windowHeight, windowWidth) => {
         },
 
         'adWrap': {
+            'position' : 'absolute',
+            'bottom' : 80,
             'width': '100%',
-            'marginTop' : 20,
             'flexDirection' : 'row',
             'justifyContent' : 'center',
             'alignItems' :'center',
-
+            'zIndex' : 9,
+           
         },
-        'banner' :{
-            'width' : '100%',
-            'height' : 30,
-        }
-
+        
+       
     });
 }
