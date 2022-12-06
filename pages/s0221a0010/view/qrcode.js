@@ -294,7 +294,7 @@ const QrCode = (props) => {
           onClose={() => setFaqModalBool(false)}
         />
         <View style={styles.adWrap}>
-          <BannerAd sizes={[BannerAdSize.ANCHORED_ADAPTIVE_BANNER]} unitId={'ca-app-pub-9953594617332828/8401676185'} />
+          <BannerAd sizes={[BannerAdSize.ANCHORED_ADAPTIVE_BANNER]} unitId={'ca-app-pub-3940256099942544/6300978111'} />
         </View>
       </View>
 
