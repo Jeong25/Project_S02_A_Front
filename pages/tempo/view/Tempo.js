@@ -35,8 +35,8 @@ const Tempo = (props) => {
     eventLoc: '',
     eventHostId: 0,
     eventBudgetAmount: null,
-    eventStartDate: `${year}-01-01`,
-    eventEndDate: `${year}-12-31`,
+    eventStartDate: `${year}-01-01 00:00:00`,
+    eventEndDate: `${year}-12-31 00:00:00`,
     eventComment: '',
     eventStatus: 'A',
 
@@ -130,7 +130,10 @@ const Tempo = (props) => {
     const year = val.getFullYear()
     const month = val.getMonth() + 1
     const date = val.getDate()
-    return `${year}-${month}-${date}`
+    const hours = val.getHours()
+    const minutes = val.getMinutes()
+    const seconds = val.getSeconds()
+    return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`
   }
 
   useEffect(() => {
@@ -271,44 +274,42 @@ const Tempo = (props) => {
                     placeholderTextColor='rgba(0,0,0,0.2)'
                   ></TextInput>
                 </View>
-                <View style={styles.layer}>
-                  <View style={styles.inputWrap}>
-                    <Text style={styles.label}>행사일</Text>
-                    <Pressable onPress={() => openDateModal('from')}>
-                      <View pointerEvents="none">
-                        <TextInput
-                          style={styles.depInfo}
-                          placeholder={"시작일"}
-                          placeholderTextColor='rgba(0,0,0,0.2)'
-                          type="date"
-                          required aria-required="true"
-                          editable={false}
-                          onBlur={() => { setheightMagnifi(1.2) }}
-                        >
-                          {inputData.eventStartDate.split(' ')[0]}
-                        </TextInput>
-                      </View>
-                    </Pressable>
-                  </View>
-                  <View style={styles.inputWrap}>
-                    <Text style={styles.label}></Text>
-                    <Pressable onPress={() => openDateModal('to')}>
-                      <View pointerEvents="none">
-                        <TextInput
-                          style={styles.depInfo}
-                          placeholder={"종료일"}
-                          placeholderTextColor='rgba(0,0,0,0.2)'
-                          type="date"
-                          required aria-required="true"
-                          editable={false}
-                          onBlur={() => { setheightMagnifi(1.2) }}
-                        >
-                          {inputData.eventEndDate.split(' ')[0]}
-                        </TextInput>
-                      </View>
-                    </Pressable>
+                <View style={styles.infoWrap}>
+                  <Text style={styles.label}>{`행사일 (From)`}</Text>
+                  <Pressable onPress={() => openDateModal('from')}>
+                    <View pointerEvents="none">
+                      <TextInput
+                        style={styles.depInfo}
+                        placeholder={"시작일"}
+                        placeholderTextColor='rgba(0,0,0,0.2)'
+                        type="date"
+                        required aria-required="true"
+                        editable={false}
+                        onBlur={() => { setheightMagnifi(1.2) }}
+                      >
+                        {inputData.eventStartDate.split('.')[0]}
+                      </TextInput>
+                    </View>
+                  </Pressable>
+                </View>
+                <View style={styles.infoWrap}>
+                  <Text style={styles.label}>{`행사일 (To)`}</Text>
+                  <Pressable onPress={() => openDateModal('to')}>
+                    <View pointerEvents="none">
+                      <TextInput
+                        style={styles.depInfo}
+                        placeholder={"종료일"}
+                        placeholderTextColor='rgba(0,0,0,0.2)'
+                        type="date"
+                        required aria-required="true"
+                        editable={false}
+                        onBlur={() => { setheightMagnifi(1.2) }}
+                      >
+                        {inputData.eventEndDate.split('.')[0]}
+                      </TextInput>
+                    </View>
+                  </Pressable>
 
-                  </View>
                 </View>
                 <View style={styles.infoWrap}>
                   <Text style={styles.label}>비고</Text>
@@ -350,7 +351,7 @@ const Tempo = (props) => {
 
           <DateTimePickerModal
             isVisible={dateState.viewModal}
-            mode="date"
+            mode="datetime"
             onConfirm={(a) => confirmDateChange(a, dateState.fromToFlag)}
             onCancel={() =>
               setDateState({ ...dateState, viewModal: false })
