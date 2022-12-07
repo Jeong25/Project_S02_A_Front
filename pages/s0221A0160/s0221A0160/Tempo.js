@@ -4,7 +4,7 @@ import { Alert, Dimensions, Image as ReactImage, Keyboard, LogBox, Pressable, Sa
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Footer from '../../common/footer/Footer';
 import numberToCost from '../../common/util/numberToCost';
-import { regEventReq, deptInfoReq } from '../../DepReg/store/store';
+import { regEventReq, deptInfoReq } from '../../s0221A0150/store/store';
 import { styleSheet } from './styleSheet';
 import CustomAlert from '../../common/Alert/Toast/Alert';
 

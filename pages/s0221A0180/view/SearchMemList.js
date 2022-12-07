@@ -6,7 +6,7 @@ import { Path as SvgPath } from 'react-native-svg';
 import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { retrieveMemReq } from '../../DepReg/store/store';
+import { retrieveMemReq } from '../../s0221A0150/store/store';
 
 const SearchMemList = (props) => {
 

@@ -3,7 +3,7 @@ import { Text, View, SafeAreaView, ScrollView, TouchableOpacity } from 'react-na
 import { Image as ReactImage } from 'react-native';
 import { Dimensions } from 'react-native';
 import { styleSheet } from './styleSheet';
-import { deptPayInfoReq, deptInfoReq, regUserReq } from '../../DepReg/store/store';
+import { deptPayInfoReq, deptInfoReq, regUserReq } from '../../s0221A0150/store/store';
 import SwitchToggle from "react-native-switch-toggle";
 import RNPickerSelect from 'react-native-picker-select';
 import AsyncStorage from '@react-native-async-storage/async-storage';

@@ -10,7 +10,7 @@ import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import Signin from './pages/s0221a0030/view/signin';
-import SignUp from './pages/SignUp/view/signUp';
+import SignUp from './pages/s0221A0140/view/signUp';
 import Qrscan from './pages/s0221a0020/view/qrscan';
 import Qrcode from './pages/s0221a0010/view/qrcode';
 import EventList from './pages/s0221a2000/view/list';
@@ -21,10 +21,10 @@ import Payment from './pages/s0221a0080/view/Payment';
 import PaymentList from './pages/s0221a0090/view/PaymentList';
 import Access from './pages/s0221a0110/view/Access';
 import UserData from './pages/s0221a0100/view/UserData';
-import DepReg from './pages/DepReg/view/DepReg';
-import Tempo from './pages/tempo/view/Tempo';
-import SearchMemList from './pages/SearchMember/view/SearchMemList';
-import MemberList from './pages/MemberList/view/MemberList';
+import DepReg from './pages/s0221A0150/view/DepReg';
+import Tempo from './pages/s0221A0160/view/Tempo';
+import SearchMemList from './pages/s0221A0180/view/SearchMemList';
+import MemberList from './pages/s0221A0170/view/MemberList';
 import SearchCode from './pages/s0221a0130/view/SearchCode';
 import SplashScreen from './pages/s0221a0120/view/SplashScreen';
 import RNSplashScreen from 'react-native-splash-screen';
