@@ -151,7 +151,7 @@
 				A46D80913AABF0ADC54759CA /* Pods-BYapp-BYappTests.debug.xcconfig */,
 				F991D7EC07135E1A048FA077 /* Pods-BYapp-BYappTests.release.xcconfig */,
 			);
-			path = Pods;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		D463D5295935443291AF74D2 /* Resources */ = {

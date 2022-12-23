@@ -4,6 +4,9 @@ const numberToCost = (num) => {
     if (num > 0) {
         const res = Number(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return res;
+    } else if (num === 0) {
+        const res = 0
+        return res;
     } else {
         const res = ''
         return res;
