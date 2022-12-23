@@ -96,7 +96,7 @@ const Cost = (props) => {
       cusAlert('사용 일자를 입력해 주세요.', '', false)
       return
     }
-    if (inputData.useAmount === '' || Number(inputData.useAmount) < 1) {
+    if (inputData.useAmount === '') {
       cusAlert('사용 금액을 입력해 주세요.', '', false)
       return
     }
